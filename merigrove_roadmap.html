@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merigrove — Corporate Roadmap Q2 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #D4622A;
+    --orange-light: #E8834A;
+    --cream: #F5EFE6;
+    --cream-dim: rgba(245,239,230,0.75);
+    --dark: #111010;
+    --dark-mid: #1C1A18;
+    --dark-card: rgba(28,26,24,0.85);
+    --border: rgba(212,98,42,0.25);
+    --text-muted: rgba(245,239,230,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 6vw 8vh;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(180,70,20,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 20% 80%, rgba(100,40,10,0.3) 0%, transparent 60%),
+      linear-gradient(170deg, #0d0b09 0%, #1a120a 40%, #0e0c0a 100%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .hero-lines::before,
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,98,42,0.4), transparent);
+  }
+  .hero-lines::before { top: 35%; }
+  .hero-lines::after { top: 65%; opacity: 0.3; }
+
+  .hero-eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(11px, 1.1vw, 14px);
+    letter-spacing: 0.3em;
+    color: var(--orange);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    line-height: 0.9;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s ease forwards;
+  }
+
+  .hero-title .big {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 13vw, 200px);
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+
+  .hero-title .script {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(36px, 6.5vw, 100px);
+    color: var(--orange);
+    margin-left: 0.05em;
+    line-height: 1.1;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 4rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s ease forwards;
+  }
+
+  .hero-meta-item label {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    margin-bottom: 0.35rem;
+  }
+  .hero-meta-item span {
+    font-size: 14px;
+    color: var(--cream-dim);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 3vh;
+    right: 6vw;
+    writing-mode: vertical-lr;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s ease forwards;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, var(--orange), transparent);
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    position: relative;
+    padding: 10vh 6vw;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-heading {
+    line-height: 0.92;
+    margin-bottom: 3rem;
+  }
+  .section-heading .line1 {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 88px);
+    color: var(--cream);
+  }
+  .section-heading .line2 {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 60px);
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* ─── OBJECTIVE SECTION ─── */
+  .objective-section {
+    background:
+      radial-gradient(ellipse 60% 80% at 85% 50%, rgba(160,60,15,0.18) 0%, transparent 70%),
+      var(--dark-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .objective-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .objective-statement {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.2vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+    border-left: 3px solid var(--orange);
+    padding-left: 2rem;
+  }
+
+  .objective-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .objective-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+  }
+  .objective-bullets li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-top: 0.55em;
+  }
+
+  /* ─── P&L SECTION ─── */
+  .pl-section {
+    background: var(--dark);
+  }
+
+  .pl-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .pl-card {
+    background: var(--dark-mid);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .pl-card:hover { background: #221e1a; }
+
+  .pl-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  .pl-card:hover::before { transform: scaleX(1); }
+
+  .pl-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(212,98,42,0.12);
+    line-height: 1;
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+  }
+
+  .pl-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+
+  .pl-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 1.25rem;
+    line-height: 1;
+  }
+
+  .pl-body {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    position: relative;
+    z-index: 1;
+  }
+
+  .pl-trigger {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.5rem;
+    background: rgba(212,98,42,0.1);
+    border: 1px solid rgba(212,98,42,0.25);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    display: inline-block;
+  }
+
+  /* ─── MONTHS ─── */
+  .months-section {
+    background:
+      radial-gradient(ellipse 50% 70% at 10% 50%, rgba(100,35,5,0.2) 0%, transparent 60%),
+      var(--dark-mid);
+    border-top: 1px solid var(--border);
+  }
+
+  .month-block {
+    margin-bottom: 7rem;
+  }
+  .month-block:last-child { margin-bottom: 0; }
+
+  .month-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .month-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 160px);
+    color: rgba(212,98,42,0.08);
+    line-height: 1;
+  }
+
+  .month-name-block { flex: 1; }
+
+  .month-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 72px);
+    color: var(--cream);
+    line-height: 0.9;
+    display: block;
+  }
+  .month-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 32px);
+    color: var(--orange);
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  .month-theme {
+    max-width: 320px;
+    text-align: right;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    padding-left: 2rem;
+    border-left: 1px solid var(--border);
+  }
+  .month-theme strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 0.4rem;
+  }
+
+  .month-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .pillar-card {
+    background: var(--dark);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+  .pillar-card:hover { background: #1a1613; }
+
+  .pillar-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .pillar-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .pillar-items li {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--cream-dim);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .pillar-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 10px;
+    top: 0.15em;
+  }
+
+  /* ─── PRINCIPLES / DIVIDER ─── */
+  .divider-slide {
+    min-height: 40vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .divider-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 100% at 50% 50%, rgba(180,65,15,0.22) 0%, transparent 70%),
+      linear-gradient(160deg, #0a0907, #1b1008, #0a0907);
+  }
+
+  .divider-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 4vh 6vw;
+  }
+
+  .divider-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 72px);
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .divider-script {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(22px, 3.5vw, 52px);
+    color: var(--orange);
+    display: block;
+    margin-top: 0.5rem;
+  }
+  .divider-sub {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  /* ─── SUCCESS CRITERIA ─── */
+  .success-section {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+  }
+
+  .success-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .success-item {
+    background: var(--dark-mid);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .success-item:hover { background: #221e1a; }
+
+  .success-check {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .success-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+
+  .success-body {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+  }
+
+  /* ─── OPERATING RULES ─── */
+  .rules-section {
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 50%, rgba(160,60,15,0.15) 0%, transparent 60%),
+      var(--dark-mid);
+    border-top: 1px solid var(--border);
+  }
+
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+  }
+
+  .rule-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-row:hover { background: rgba(212,98,42,0.04); }
+
+  .rule-num {
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: rgba(212,98,42,0.3);
+  }
+
+  .rule-content {
+    padding: 1.75rem 2rem;
+  }
+
+  .rule-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .rule-desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 6vh 6vw;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dark);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+  }
+  .footer-logo span { color: var(--orange); }
+
+  .footer-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    padding: 1.5rem 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(17,16,16,0.9) 0%, transparent 100%);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: 0.1em;
+  }
+  .nav-logo span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── INLINE HIGHLIGHT ─── */
+  .hl { color: var(--orange); font-style: italic; font-family: 'Playfair Display', serif; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .objective-grid { grid-template-columns: 1fr; }
+    .pl-cards { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; gap: 1.5rem; }
+    .month-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .month-theme { text-align: left; border-left: none; border-top: 1px solid var(--border); padding-top: 1rem; padding-left: 0; max-width: 100%; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="password-gate" style="
+  position: fixed; inset: 0; z-index: 9999;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(180,70,20,0.28) 0%, transparent 65%), linear-gradient(170deg, #0d0b09 0%, #1a120a 40%, #0e0c0a 100%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  font-family: 'DM Sans', sans-serif;
+">
+  <div style="text-align: center; width: 100%; max-width: 420px; padding: 0 2rem;">
+    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #F5EFE6; letter-spacing: 0.08em; margin-bottom: 0.25rem;">MERI<span style="color:#D4622A">GROVE</span></div>
+    <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: rgba(245,239,230,0.45); margin-bottom: 3rem; letter-spacing: 0.05em;">Corporate Roadmap — Q2 2026</div>
+    <input id="pwd-input" type="password" placeholder="ENTER PASSWORD"
+      style="
+        width: 100%; padding: 1rem 1.25rem;
+        background: rgba(255,255,255,0.04); border: 1px solid rgba(212,98,42,0.35);
+        color: #F5EFE6; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.2em;
+        outline: none; text-align: center; margin-bottom: 0.75rem;
+      "
+    />
+    <div id="pwd-error" style="color: #D4622A; font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 0.2em; height: 1.2em; margin-bottom: 0.75rem;"></div>
+    <button onclick="checkPassword()"
+      style="
+        width: 100%; padding: 1rem; background: var(--orange, #D4622A); border: none; cursor: pointer;
+        font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.25em; color: #F5EFE6;
+        transition: opacity 0.2s;
+      "
+      onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
+    >ENTER</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('pwd-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+  function checkPassword() {
+    const input = document.getElementById('pwd-input').value;
+    const hash = Array.from(input).reduce((h, c) => (Math.imul(31, h) + c.charCodeAt(0)) | 0, 0);
+    if (hash === 1836012133) {
+      document.getElementById('password-gate').style.display = 'none';
+    } else {
+      document.getElementById('pwd-error').textContent = 'INCORRECT PASSWORD';
+      document.getElementById('pwd-input').value = '';
+    }
+  }
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MERI<span>GROVE</span></div>
+  <ul class="nav-links">
+    <li><a href="#objective">OBJECTIVE</a></li>
+    <li><a href="#months">ROADMAP</a></li>
+    <li><a href="#success">CRITERIA</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-eyebrow">CORPORATE ROADMAP — Q2 2026 — CONFIDENTIAL</div>
+
+  <h1 class="hero-title">
+    <span class="big">MERIGROVE</span>
+    <span class="script">Three Month Plan.</span>
+  </h1>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <label>PERIOD</label>
+      <span>April — June 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>ENTITY</label>
+      <span>ERG / Merigrove</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>PHASE</label>
+      <span>Proof of Concept & Market Validation</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>PRINCIPALS</label>
+      <span>KW / JM / MC</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- OBJECTIVE -->
+<section class="objective-section" id="objective">
+  <div class="section-label">01 — EXECUTIVE OBJECTIVE</div>
+  <div class="section-heading">
+    <span class="line1">THE MISSION</span>
+    <span class="line2">What we're building.</span>
+  </div>
+
+  <div class="objective-grid reveal">
+    <div class="objective-statement">
+      Build a credible, revenue-generating advisory business — establishing a unified brand, a functioning content engine, proof-of-concept clients, clear financial structure, and repeatable operating systems.
+    </div>
+    <ul class="objective-bullets">
+      <li>Establish Merigrove as a credible market presence in sales training, fractional management, and operational advisory.</li>
+      <li>Validate the offer with real clients before scaling headcount or spend.</li>
+      <li>Build a content machine that generates leads independently of outbound effort.</li>
+      <li>Implement financial structure that separates legacy income from new ERG P&L from day one.</li>
+      <li>Create operational systems that can absorb growth without the founders becoming the bottleneck.</li>
+      <li>Retain all early profits in a war chest to fund Phase 2 ramp-up.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- DIVIDER -->
+<div class="divider-slide">
+  <div class="divider-bg"></div>
+  <div class="divider-text reveal">
+    <div class="divider-big">WHAT WE MEASURE<span class="divider-script">is what we protect.</span></div>
+    <p class="divider-sub">Every month has a defined objective. Every pillar has defined outputs. No content bottlenecks. No ambiguity. Consistent cadence is what separates businesses that scale from those that stall.</p>
+  </div>
+</div>
+
+<!-- THREE MONTHS -->
+<section class="months-section" id="months">
+  <div class="section-label">02 — THE ROADMAP</div>
+  <div class="section-heading">
+    <span class="line1">MONTH BY MONTH</span>
+    <span class="line2">April to June.</span>
+  </div>
+
+  <!-- APRIL -->
+  <div class="month-block reveal">
+    <div class="month-header">
+      <div class="month-number">01</div>
+      <div class="month-name-block">
+        <span class="month-name">APRIL</span>
+        <span class="month-sub">Build the Foundation.</span>
+      </div>
+      <div class="month-theme">
+        <strong>THEME</strong>
+        Infrastructure first. Everything we do in April is about establishing the engine — not chasing revenue before the machine is ready.
+      </div>
+    </div>
+
+    <div class="month-pillars">
+      <div class="pillar-card">
+        <div class="pillar-icon">CONTENT ENGINE</div>
+        <div class="pillar-title">DAILY POSTING</div>
+        <ul class="pillar-items">
+          <li>Daily posting cadence live across all principals</li>
+          <li>Monthly planning cycle established</li>
+          <li>Fix editing capacity and turnaround</li>
+          <li>Define and align content pillars per account</li>
+          <li>Assign TC, NW, and editors to workflows</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">CLIENT ACQUISITION</div>
+        <div class="pillar-title">FIRST CLIENT</div>
+        <ul class="pillar-items">
+          <li>Focus exclusively on referrals and masterminds</li>
+          <li>Target: close first ERG client</li>
+          <li>Fractional Sales Management (KW) — initial scope</li>
+          <li>Brand Guidelines and Organic (JM) — pitch ready</li>
+          <li>Operations and Finance advisory (MC) — offer defined</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">FINANCE</div>
+        <div class="pillar-title">THREE-PART P&L</div>
+        <ul class="pillar-items">
+          <li>Three-part P&L structure implemented in full</li>
+          <li>Revenue, costs, and retained earnings tracked monthly</li>
+          <li>War chest account opened and earmarked</li>
+          <li>Shared cost allocation confirmed with all partners</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">MARKETING</div>
+        <div class="pillar-title">CRM & INFRASTRUCTURE</div>
+        <ul class="pillar-items">
+          <li>CRM system built and populated</li>
+          <li>Landing pages live for each core offer</li>
+          <li>Lead magnet developed and deployed</li>
+          <li>G-Suite, website, and video toolchain operational</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">OPERATIONS</div>
+        <div class="pillar-title">SYSTEMS & ROLES</div>
+        <ul class="pillar-items">
+          <li>Role accountability matrix confirmed (per business plan)</li>
+          <li>Task tracking system implemented</li>
+          <li>Standard workflows documented for core functions</li>
+          <li>Weekly management cadence established</li>
+          <li>Monthly buffer for content planning in place</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">BRAND</div>
+        <div class="pillar-title">MERIGROVE IDENTITY</div>
+        <ul class="pillar-items">
+          <li>Brand direction defined and signed off</li>
+          <li>Merigrove account creation in progress</li>
+          <li>Individual personal brands aligned to ERG positioning</li>
+          <li>Platform mix confirmed: FB, LI, X, Threads, YT, IG</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAY -->
+  <div class="month-block reveal">
+    <div class="month-header">
+      <div class="month-number">02</div>
+      <div class="month-name-block">
+        <span class="month-name">MAY</span>
+        <span class="month-sub">Prove the Model.</span>
+      </div>
+      <div class="month-theme">
+        <strong>THEME</strong>
+        Consistency and conversion. Systems built in April are stress-tested. We prove the offer with real clients and begin converting content engagement.
+      </div>
+    </div>
+
+    <div class="month-pillars">
+      <div class="pillar-card">
+        <div class="pillar-icon">CONTENT ENGINE</div>
+        <div class="pillar-title">CONSISTENCY</div>
+        <ul class="pillar-items">
+          <li>Maintain daily posting without bottleneck</li>
+          <li>Optimise engagement and test CTA formats</li>
+          <li>Launch Merigrove brand account officially</li>
+          <li>Engagement data review and content pivot if needed</li>
+          <li>Rolling 4-week content buffer maintained</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">CLIENT ACQUISITION</div>
+        <div class="pillar-title">1–2 NEW CLIENTS</div>
+        <ul class="pillar-items">
+          <li>Target: close 1–2 additional ERG clients</li>
+          <li>Begin structured delivery on April client</li>
+          <li>Cross-sell validation: offer one client a second service</li>
+          <li>Referral loop from existing relationships formalised</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">FINANCE</div>
+        <div class="pillar-title">TRACK & ASSESS</div>
+        <ul class="pillar-items">
+          <li>First ERG P&L reviewed end of month</li>
+          <li>War chest balance assessed against targets</li>
+          <li>Revenue run rate vs $30k/month trigger checked</li>
+          <li>Reinvestment decision made for June spend</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">MARKETING</div>
+        <div class="pillar-title">CONVERSION TEST</div>
+        <ul class="pillar-items">
+          <li>Test CTAs across content and landing pages</li>
+          <li>Conversion data from lead magnet reviewed</li>
+          <li>A/B test offer messaging and positioning</li>
+          <li>Webinar or equivalent event planned for June</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">OPERATIONS</div>
+        <div class="pillar-title">OPTIMISE CADENCE</div>
+        <ul class="pillar-items">
+          <li>Weekly cadence reviewed and adjusted</li>
+          <li>Delivery workflows stress-tested with live clients</li>
+          <li>Identify first operational hire or contractor need</li>
+          <li>Management reporting template finalised</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">TALENT</div>
+        <div class="pillar-title">PIPELINE REVIEW</div>
+        <ul class="pillar-items">
+          <li>Luke Mason conversation formalised (Phase 2 planning)</li>
+          <li>James Grogan assessment against Uptime progress</li>
+          <li>Daniel Van partnership discussion advanced</li>
+          <li>Contractor performance reviewed: TC, LC, NW</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUNE -->
+  <div class="month-block reveal">
+    <div class="month-header">
+      <div class="month-number">03</div>
+      <div class="month-name-block">
+        <span class="month-name">JUNE</span>
+        <span class="month-sub">Generate & Convert.</span>
+      </div>
+      <div class="month-theme">
+        <strong>THEME</strong>
+        Content becomes the funnel. The brand does the heavy lifting. We move from founder-led acquisition to system-led acquisition and prepare for Phase 2.
+      </div>
+    </div>
+
+    <div class="month-pillars">
+      <div class="pillar-card">
+        <div class="pillar-icon">CONTENT ENGINE</div>
+        <div class="pillar-title">LEAD GENERATION</div>
+        <ul class="pillar-items">
+          <li>Content now primary inbound channel</li>
+          <li>Measurable leads attributable to organic content</li>
+          <li>Merigrove account generating independent reach</li>
+          <li>Long-form content (YouTube, articles) feeding short-form</li>
+          <li>Content ROI reviewed: cost per lead from organic</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">CLIENT ACQUISITION</div>
+        <div class="pillar-title">CONTENT-LED DEALS</div>
+        <ul class="pillar-items">
+          <li>First inbound enquiry from content converted</li>
+          <li>Pipeline reviewed: referral vs content vs outbound split</li>
+          <li>Case study from first client documented for social proof</li>
+          <li>Broader consultative service offering defined (post-July)</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">FINANCE</div>
+        <div class="pillar-title">WAR CHEST REVIEW</div>
+        <ul class="pillar-items">
+          <li>Q2 P&L fully reconciled across all three parts</li>
+          <li>War chest balance and reinvestment roadmap confirmed</li>
+          <li>Assess proximity to $150k consolidation trigger</li>
+          <li>Phase 2 cost base modelled (new hires, paid acquisition)</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">MARKETING</div>
+        <div class="pillar-title">WEBINAR / EVENT</div>
+        <ul class="pillar-items">
+          <li>Run webinar or equivalent lead-generation event</li>
+          <li>Paid acquisition scoped — budget and channel decided</li>
+          <li>Brand authority piece published (long-form thought leadership)</li>
+          <li>Email list and nurture sequence built from lead magnet</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">OPERATIONS</div>
+        <div class="pillar-title">SCALE READINESS</div>
+        <ul class="pillar-items">
+          <li>Delivery capacity assessed against Phase 2 client load</li>
+          <li>SOPs in place for all core services</li>
+          <li>Hiring decisions for Phase 2 confirmed or rejected</li>
+          <li>Team onboarding infrastructure ready if headcount grows</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">PHASE 2 PREP</div>
+        <div class="pillar-title">RAMP READINESS</div>
+        <ul class="pillar-items">
+          <li>Luke Mason onboarding timeline confirmed</li>
+          <li>James Grogan status — in or deferred to Phase 2</li>
+          <li>Uptime B2B Sales Training opportunity scoped formally</li>
+          <li>Q3 plan drafted and circulated to all partners</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS CRITERIA -->
+<section class="success-section" id="success">
+  <div class="section-label">03 — SUCCESS CRITERIA</div>
+  <div class="section-heading">
+    <span class="line1">HOW WE WIN</span>
+    <span class="line2">The definition of done.</span>
+  </div>
+
+  <div class="success-grid reveal">
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">NO CONTENT BOTTLENECKS</div>
+      <div class="success-body">Daily posting is live, consistent, and not dependent on any single person. Buffer is maintained at all times.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">CLIENTS BUYING SERVICES</div>
+      <div class="success-body">At least one paying client per principal by end of May. Proof of concept is not theoretical — it is evidenced by signed contracts.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">CROSS-SELL VALIDATED</div>
+      <div class="success-body">At least one client has purchased more than one ERG service. Multi-service delivery is tested before Phase 2 scale.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">LEADS FROM CONTENT</div>
+      <div class="success-body">By June, inbound enquiries attributable to organic content. Content engine is generating pipeline, not just awareness.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">UNIFIED BRAND LIVE</div>
+      <div class="success-body">Merigrove brand is publicly active. Individual accounts are aligned. Brand guidelines are documented and followed.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">OPERATIONAL CADENCE</div>
+      <div class="success-body">Weekly management cadence, financial reporting, and content production cycle are all running without founder bottleneck.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">WAR CHEST BUILDING</div>
+      <div class="success-body">All ERG profits are retained. No premature distributions. War chest is funded and growing by end of Q2.</div>
+    </div>
+    <div class="success-item">
+      <div class="success-check">✓</div>
+      <div class="success-title">PHASE 2 READY</div>
+      <div class="success-body">Talent pipeline (LM, JG, DV) assessed and decided. Q3 ramp plan drafted. The business is ready to scale on proven foundations.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NON-NEGOTIABLES -->
+<section class="rules-section">
+  <div class="section-label">04 — OPERATING PRINCIPLES</div>
+  <div class="section-heading">
+    <span class="line1">THE RULES</span>
+    <span class="line2">Non-negotiables.</span>
+  </div>
+
+  <div class="rules-list reveal">
+    <div class="rule-row">
+      <div class="rule-num">I</div>
+      <div class="rule-content">
+        <div class="rule-title">PROFITS STAY INSIDE</div>
+        <div class="rule-desc">No distributions from ERG for minimum 5 months. All profits build the war chest. The business funds its own growth.</div>
+      </div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">II</div>
+      <div class="rule-content">
+        <div class="rule-title">STRUCTURE BEFORE SCALE</div>
+        <div class="rule-desc">Systems, workflows, and accountability frameworks are built before headcount grows. We do not hire to solve problems that process should fix.</div>
+      </div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">III</div>
+      <div class="rule-content">
+        <div class="rule-title">CONTENT CADENCE IS SACRED</div>
+        <div class="rule-desc">Daily posting does not stop because someone is busy. Buffer, delegation, and production cycle are built to absorb all competing demands.</div>
+      </div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">IV</div>
+      <div class="rule-content">
+        <div class="rule-title">FINANCIAL TRANSPARENCY</div>
+        <div class="rule-desc">All three P&Ls are visible to all partners. No surprises. Revenue, costs, and retained earnings are reviewed together monthly.</div>
+      </div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">V</div>
+      <div class="rule-content">
+        <div class="rule-title">ACCOUNTABILITY IS FIXED</div>
+        <div class="rule-desc">The RACI matrix is not advisory. Accountability areas are owned. Consulted partners support, but do not dilute ownership.</div>
+      </div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">VI</div>
+      <div class="rule-content">
+        <div class="rule-title">PROOF BEFORE PROMISES</div>
+        <div class="rule-desc">We do not make commitments to Phase 2 partners (LM, JG, DV) without proof of concept. Phase 2 doors open when Phase 1 earns them.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING DIVIDER -->
+<div class="divider-slide">
+  <div class="divider-bg"></div>
+  <div class="divider-text reveal">
+    <div class="divider-big">YOU ARE RESPONSIBLE<span class="divider-script">for the outcome.</span></div>
+    <p class="divider-sub">The business does not succeed because of the market, the offer, or the timing. It succeeds because the people running it build the right systems and hold the right standards — every week, without exception.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">MERI<span>GROVE</span></div>
+  <div class="footer-meta">
+    CORPORATE ROADMAP — Q2 2026<br>
+    ERG INTERNAL — CONFIDENTIAL<br>
+    KW / JM / MC
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
