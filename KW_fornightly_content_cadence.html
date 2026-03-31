@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kacper Wiloch — Fortnightly Content Plan v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:ital@1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --charcoal:#1E1E1C;--slate:#2F2F2D;--orange:#C85A20;--amber:#E8843A;
+  --cream:#F5EFE0;--blush:#EAD5C0;--muted:#7A7870;--border:rgba(245,239,224,0.1);
+  --font-head:'Barlow Condensed',sans-serif;--font-script:'Playfair Display',serif;
+  --font-body:'Barlow',sans-serif;--max-w:1060px;--gap:80px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--charcoal);color:var(--cream);font-family:var(--font-body);font-weight:300;font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.headline{font-family:var(--font-head);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:0.92;color:var(--cream);}
+.script{font-family:var(--font-script);font-style:italic;font-weight:400;color:var(--orange);text-transform:none;letter-spacing:0;}
+.eyebrow{font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:16px;}
+p{color:var(--blush);margin-bottom:1em;}p:last-child{margin-bottom:0;}
+strong{color:var(--cream);font-weight:500;}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 40px;}
+
+/* COVER */
+.cover{min-height:55vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 70%,rgba(200,90,32,0.14) 0%,transparent 55%);pointer-events:none;}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;position:relative;z-index:1;}
+.cover-kicker{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.cover-kicker::after{content:'';display:block;width:48px;height:1px;background:var(--orange);}
+.cover-name{font-size:clamp(56px,9vw,120px);display:block;}
+.cover-sub{font-size:clamp(26px,4vw,54px);color:transparent;-webkit-text-stroke:1px rgba(245,239,224,0.22);display:block;}
+.cover-rule{width:1px;height:52px;background:linear-gradient(to bottom,var(--orange),transparent);margin:32px 0;}
+.cover-tagline{font-family:var(--font-script);font-size:clamp(18px,2.2vw,24px);font-style:italic;color:var(--blush);max-width:460px;line-height:1.4;}
+.cover-meta{margin-top:44px;display:flex;gap:32px;flex-wrap:wrap;}
+.cover-meta-item{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+/* VOLUME BAR */
+.volume-bar{background:var(--slate);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.volume-inner{max-width:var(--max-w);margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(6,1fr);gap:0;}
+.vol-item{padding:22px 16px;border-right:1px solid var(--border);text-align:center;}
+.vol-item:last-child{border-right:none;}
+.vol-num{font-family:var(--font-head);font-size:clamp(26px,3.5vw,40px);font-weight:900;line-height:1;color:var(--cream);display:block;}
+.vol-num span{color:var(--orange);}
+.vol-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-top:5px;line-height:1.3;}
+
+/* FORMAT GRID */
+.format-key{padding:64px 0 0;}
+.format-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:26px;}
+.format-card{background:var(--slate);border:1px solid var(--border);padding:16px 18px;}
+.format-code{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;display:block;}
+.format-name{font-family:var(--font-head);font-size:14px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:5px;line-height:1.1;}
+.format-card p{font-size:12px;line-height:1.5;}
+
+/* PILLARS STRIP */
+.pillars-strip{background:var(--slate);border:1px solid var(--border);padding:24px 28px;margin-top:36px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
+.ps-item{padding:0 14px;border-right:1px solid var(--border);}
+.ps-item:first-child{padding-left:0;}
+.ps-item:last-child{border-right:none;}
+.ps-num{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.16em;color:var(--orange);margin-bottom:3px;display:block;}
+.ps-name{font-family:var(--font-head);font-size:13px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:4px;}
+.ps-item p{font-size:11px;line-height:1.4;}
+
+/* WEEK SECTIONS */
+.week-section{padding:var(--gap) 0;border-top:1px solid var(--border);}
+.week-header{margin-bottom:32px;display:flex;align-items:baseline;gap:18px;}
+.week-number{font-family:var(--font-head);font-size:clamp(48px,6vw,68px);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(200,90,32,0.26);}
+.week-title{font-size:clamp(26px,4vw,46px);line-height:1;}
+
+/* DAY BLOCK */
+.day-block{border-top:1px solid var(--border);}
+.day-block:last-of-type{border-bottom:1px solid var(--border);}
+.day-head{display:grid;grid-template-columns:96px 1fr;}
+.day-label-col{padding:20px 18px 20px 0;border-right:1px solid var(--border);}
+.day-name{font-family:var(--font-head);font-size:19px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--cream);display:block;}
+.day-num{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.18em;color:var(--orange);display:block;margin-top:3px;}
+.day-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+
+/* PLATFORM COLUMNS */
+.platform-col{padding:16px 18px;border-right:1px solid var(--border);}
+.platform-col:last-child{border-right:none;}
+.platform-col.ig-col{background:rgba(200,90,32,0.025);}
+.platform-col.li-col{background:rgba(26,82,118,0.03);}
+.platform-col.th-col{background:rgba(255,255,255,0.008);}
+.col-header{font-family:var(--font-head);font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;padding:0 0 9px;border-bottom:1px solid var(--border);margin-bottom:11px;display:flex;align-items:center;gap:6px;}
+.col-header.ig{color:#C85A20;}
+.col-header.li{color:#3B82C4;}
+.col-header.th{color:var(--muted);}
+.col-pip{width:5px;height:5px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.col-pip.ig{background:#C85A20;}
+.col-pip.li{background:#3B82C4;}
+.col-pip.th{background:var(--muted);}
+
+/* ENTRIES */
+.entry{margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid rgba(245,239,224,0.055);}
+.entry:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.entry-type{font-family:var(--font-head);font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.entry-title{font-family:var(--font-head);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:var(--cream);line-height:1.2;margin-bottom:5px;}
+.entry-desc{font-size:11.5px;color:var(--blush);line-height:1.5;margin:0;}
+.entry-meta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.entry-pillar{font-family:var(--font-head);font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(200,90,32,0.28);padding:2px 6px;}
+.entry-owner{font-size:10.5px;color:var(--muted);font-style:italic;}
+.rest-day .day-name{color:var(--muted);}
+
+/* YT NOTE */
+.yt-note{margin-top:20px;background:rgba(155,28,28,0.08);border:1px solid rgba(155,28,28,0.25);padding:20px 24px;}
+.yt-note-label{font-family:var(--font-head);font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#C85A5A;margin-bottom:7px;}
+.yt-note-title{font-family:var(--font-head);font-size:15px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:7px;}
+.yt-note p{font-size:13px;}
+
+/* WORKFLOW */
+.workflow{padding:var(--gap) 0;border-top:1px solid var(--border);}
+.workflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border:1px solid var(--border);background:var(--border);}
+.wf-step{background:var(--charcoal);padding:26px 22px;}
+.wf-num{font-family:var(--font-head);font-size:40px;font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(200,90,32,0.18);line-height:1;margin-bottom:10px;}
+.wf-title{font-family:var(--font-head);font-size:16px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:9px;}
+.wf-step p{font-size:13px;line-height:1.55;margin-bottom:9px;}
+.wf-step ul{list-style:none;}
+.wf-step ul li{font-size:12px;color:var(--blush);padding:4px 0 4px 13px;border-bottom:1px solid var(--border);position:relative;line-height:1.4;}
+.wf-step ul li::before{content:'—';position:absolute;left:0;color:var(--orange);font-size:10px;}
+
+/* NOTES */
+.notes-section{padding:var(--gap) 0;border-top:1px solid var(--border);}
+.notes-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.notes-table tr{border-bottom:1px solid var(--border);}
+.notes-table tr:last-child{border-bottom:none;}
+.notes-table td{padding:15px 0;vertical-align:top;font-size:13.5px;}
+.notes-table td:first-child{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);width:130px;padding-right:18px;padding-top:17px;}
+.notes-table td:last-child{color:var(--blush);}
+
+/* FOOTER */
+.footer{background:var(--slate);padding:48px 0 34px;border-top:1px solid var(--border);margin-top:var(--gap);}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+.footer-name{font-family:var(--font-head);font-size:clamp(22px,3.5vw,38px);font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;}
+.footer-meta{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.7;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.cover-inner>*{animation:fadeUp 0.7s ease forwards;opacity:0;}
+.cover-kicker{animation-delay:0.1s;}.cover-name{animation-delay:0.2s;}.cover-sub{animation-delay:0.3s;}
+.cover-rule{animation-delay:0.4s;}.cover-tagline{animation-delay:0.5s;}.cover-meta{animation-delay:0.6s;}
+
+@media(max-width:800px){
+  .container{padding:0 16px;}
+  :root{--gap:50px;}
+  .day-cols{grid-template-columns:1fr;}
+  .platform-col{border-right:none;border-top:1px solid var(--border);}
+  .platform-col:first-child{border-top:none;}
+  .volume-inner{grid-template-columns:repeat(3,1fr);}
+  .pillars-strip{grid-template-columns:1fr 1fr;gap:10px;}
+  .workflow-grid{grid-template-columns:1fr;}
+  .cover,.footer-inner{padding-left:16px;padding-right:16px;}
+  .volume-inner{padding:0 16px;}
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-inner">
+    <span class="cover-kicker">Fortnightly Content Plan</span>
+    <span class="headline cover-name">Kacper<br>Wiloch</span>
+    <span class="headline cover-sub">14-Day Schedule — v2</span>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">Daily LinkedIn. Daily Threads. Five reels.<br>Two carousels. One YouTube. Fourteen days.</p>
+    <div class="cover-meta">
+      <span class="cover-meta-item">March 2026</span>
+      <span class="cover-meta-item">Version 2.0</span>
+      <span class="cover-meta-item">Tommy · Noah · Kacper</span>
+    </div>
+  </div>
+</section>
+
+<div class="volume-bar">
+  <div class="volume-inner">
+    <div class="vol-item"><span class="vol-num">5</span><span class="vol-label">IG Reels / week</span></div>
+    <div class="vol-item"><span class="vol-num">2</span><span class="vol-label">IG Carousels / week</span></div>
+    <div class="vol-item"><span class="vol-num">1</span><span class="vol-label">IG Story / week</span></div>
+    <div class="vol-item"><span class="vol-num">7</span><span class="vol-label">LinkedIn / week</span></div>
+    <div class="vol-item"><span class="vol-num">7</span><span class="vol-label">Threads / week</span></div>
+    <div class="vol-item"><span class="vol-num">1<span>/fn</span></span><span class="vol-label">YouTube long-form</span></div>
+  </div>
+</div>
+
+<main class="container">
+
+<!-- FORMAT KEY -->
+<section class="format-key">
+  <span class="eyebrow">Repeatable Formats</span>
+  <h2 class="headline" style="font-size:clamp(30px,4.5vw,52px);">The <span class="script">Formats</span></h2>
+  <p style="max-width:560px;margin-top:12px;">Every slot anchors to a named format. Topics rotate. Formats do not. This is what makes the system scalable across Tommy, Noah, and Kacper without a bespoke brief each time.</p>
+  <div class="format-grid">
+    <div class="format-card"><span class="format-code">IG · R1</span><div class="format-name">Belief Shift Reel</div><p>60–90s talking head. One belief costing the audience. Reframe with evidence or lived experience. Ends with DM TEAM CTA.</p></div>
+    <div class="format-card"><span class="format-code">IG · R2</span><div class="format-name">Lifestyle Identity Reel</div><p>30–45s cinematic B-roll. MMA, fatherhood, filmmaking, travel. No business angle. S-Log3. Personality without commentary.</p></div>
+    <div class="format-card"><span class="format-code">IG · R3</span><div class="format-name">Diagnostic Reel</div><p>45–75s. Case study or walk-through. "Broken looks like this. It costs you this. Here is how I fix it." Evidence-led. Tablet annotation optional.</p></div>
+    <div class="format-card"><span class="format-code">IG · R4</span><div class="format-name">EOW Recap Reel</div><p>Narration-style. One real challenge or moment from the week. Event footage where available. Raw and honest register.</p></div>
+    <div class="format-card"><span class="format-code">IG · R5</span><div class="format-name">Experiment Block</div><p>Week 2 wildcard. Rant, hype edit, vlog, join-me, trending format test. Kacper drops reference in Slack by Tuesday. Noah pitches execution.</p></div>
+    <div class="format-card"><span class="format-code">IG · C1</span><div class="format-name">Educational Carousel</div><p>6–10 slides. Framework or breakdown. Heavy condensed headline per slide. Warm cream on charcoal. Tommy writes, Noah/Lucy designs. Final slide: DM TEAM.</p></div>
+    <div class="format-card"><span class="format-code">IG · C2</span><div class="format-name">Lifestyle BTS Carousel</div><p>3–5 stills. Gym, family, client prep, travel. Aspiration through lifestyle, not material. Kacper uploads to Drive, Noah sequences.</p></div>
+    <div class="format-card"><span class="format-code">IG · C3</span><div class="format-name">YT Extract Carousel</div><p>Week 2 Saturday only. Key frames and captions pulled from the YouTube long-form. Tommy writes captions from YT script.</p></div>
+    <div class="format-card"><span class="format-code">IG · ST</span><div class="format-name">Sunday Reset Story</div><p>30–60s piece to camera. Recovery, what is coming next week. Candid and unpolished — this is intentional. Posted directly as a Story.</p></div>
+    <div class="format-card"><span class="format-code">YT · L1</span><div class="format-name">YouTube Long-Form</div><p>Once per fortnight, Week 2 Saturday. 12–20 min. One focused topic. Tommy scripts 10 days out. Noah: full edit + thumbnail.</p></div>
+    <div class="format-card"><span class="format-code">LI · Mon</span><div class="format-name">Monday Reflection</div><p>What Kacper observed in the past week. Short hook, 3–4 observations, closer question. Demonstrates active pattern recognition.</p></div>
+    <div class="format-card"><span class="format-code">LI · Tue</span><div class="format-name">Story / Origin Post</div><p>Personal narrative. Origin story, career arc, fatherhood, discipline philosophy. Builds character proof. The 18–24 audience gateway.</p></div>
+    <div class="format-card"><span class="format-code">LI · Wed</span><div class="format-name">"I Wish Managers Knew"</div><p>Data-driven management take. Unique angle, backed by numbers. 60% include a graphic. Ends with a challenge to the reader.</p></div>
+    <div class="format-card"><span class="format-code">LI · Thu</span><div class="format-name">Proof / Results Post</div><p>Client transformation or case study. Evidencing, not bragging. Specific numbers where possible. Removes risk from the buying decision.</p></div>
+    <div class="format-card"><span class="format-code">LI · Fri</span><div class="format-name">Tool / Experiment Post</div><p>New tool or CRM experiment Kacper is testing. "Here is the problem. Here is what I am using." Week 2 delivers the results.</p></div>
+    <div class="format-card"><span class="format-code">LI · Sat</span><div class="format-name">Industry Angle Post</div><p>What is changing in sales. Forward-facing and opinionated. Kacper sounds like someone already living in the future of the industry.</p></div>
+    <div class="format-card"><span class="format-code">LI · Sun</span><div class="format-name">Week-Ahead Intent</div><p>Brief and direct. One priority for the coming week and why. Conversational, low-production feel. Builds rhythm with followers.</p></div>
+    <div class="format-card"><span class="format-code">TH · Daily</span><div class="format-name">Threads Echo</div><p>Tommy-written batch (7/week, delivered Monday). Short-form riff on the day's content. One line, a 3-point drop, a question, or a bare number.</p></div>
+  </div>
+  <div class="pillars-strip">
+    <div class="ps-item"><span class="ps-num">P1</span><div class="ps-name">Authority</div><p>Instructional. Teachable. The definitive voice on sales structure.</p></div>
+    <div class="ps-item"><span class="ps-num">P2</span><div class="ps-name">Story</div><p>Origin. Journey. Personal moments. Character proof behind the expertise.</p></div>
+    <div class="ps-item"><span class="ps-num">P3</span><div class="ps-name">Proof</div><p>Case studies. Transformations. Numbers. Removes risk from buying.</p></div>
+    <div class="ps-item"><span class="ps-num">P4</span><div class="ps-name">Belief Shift</div><p>The scroll-stoppers. True in a way the audience hasn't articulated yet.</p></div>
+    <div class="ps-item"><span class="ps-num">P5</span><div class="ps-name">CTA & Offer</div><p>Direct. No apology. DM "TEAM" is the trigger. Once per fortnight minimum.</p></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     WEEK 1
+     ================================================================ -->
+<section class="week-section" id="week1">
+  <div class="week-header">
+    <span class="headline week-number">01</span>
+    <span class="headline week-title">Week <span class="script">One</span></span>
+  </div>
+
+  <!-- MON W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Mon</span><span class="day-num">Day 01</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · C1 — Educational Carousel</div>
+            <div class="entry-title">Your Sales System Is Broken — Here Is Why</div>
+            <p class="entry-desc">6–8 slides. The most common structural failures Kacper finds when stepping in: CRM chaos, comp plan problems, missing onboarding, leaking pipeline. Final slide: DM TEAM.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes · Noah/Lucy designs</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Mon — Monday Reflection</div>
+            <div class="entry-title">What Running a Sales Org Taught Me This Week</div>
+            <p class="entry-desc">3–4 observations from the past week. Provocative first line, no hedging. Demonstrates active pattern recognition. Ends with a question to the audience.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">Sharpest line from the carousel hook</div>
+            <p class="entry-desc">One declarative from today's carousel. The statement that makes someone stop and think. No preamble. Tommy writes as part of the week's batch.</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TUE W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Tue</span><span class="day-num">Day 02</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R2 — Lifestyle Identity Reel</div>
+            <div class="entry-title">Personality Build — MMA / Morning Training</div>
+            <p class="entry-desc">Cinematic B-roll. Early morning training or sparring. No business angle. S-Log3. Short text overlay if needed. Builds the person behind the expertise.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Tue — Story / Origin Post</div>
+            <div class="entry-title">From Pizza Delivery to Sales Director — What Actually Changed</div>
+            <p class="entry-desc">The 2019 turning point. Sold everything, went into debt, six months of almost nothing. What discipline looks like when nobody believes in you. Character proof behind the expertise.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">One truth about discipline and showing up</div>
+            <p class="entry-desc">Loose, honest observation tied to today's content. What training before work does to the rest of the day. 2–3 sentences max. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WED W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Wed</span><span class="day-num">Day 03</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R3 — Diagnostic Reel</div>
+            <div class="entry-title">The Favourite Closer Problem</div>
+            <p class="entry-desc">40% vs 10% close rate. The rigged game disguised as meritocracy. Lead routing, feedback gaps, invisible disadvantage. "If one person looks like a god and everyone else looks broken — look at what they're receiving first."</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Wed — "I Wish Managers Knew"</div>
+            <div class="entry-title">I Wish More Managers Knew: Your CRM Is the Honest Version of Your Business</div>
+            <p class="entry-desc">What clean vs broken CRM data tells you about your operation. Why a messy CRM is not an admin problem — it is a leadership problem. Graphic: clean vs broken pipeline visual preferred.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes · optional graphic Noah</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The data truth — one line posted alone</div>
+            <p class="entry-desc">Sharpest data insight from the LI post. Posted with no preamble. The absence of context is the hook. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THU W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Thu</span><span class="day-num">Day 04</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · C2 — Lifestyle BTS Carousel</div>
+            <div class="entry-title">BTS: The Week Behind the Work</div>
+            <p class="entry-desc">3–5 stills. Gym, family dinner, client prep, keynote, travel. Aspiration through lifestyle — not material. Kacper uploads to Google Drive Thursday morning. Noah sequences and posts.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper sources · Noah sequences</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Thu — Proof / Results Post</div>
+            <div class="entry-title">Before and After: A Team That Was Leaking — What We Fixed</div>
+            <p class="entry-desc">A client transformation as a before-and-after. What the situation looked like when Kacper arrived, what the structural failure was, what changed. Specific numbers where available.</p>
+            <div class="entry-meta"><span class="entry-pillar">P3 Proof</span><span class="entry-owner">Tommy writes · Kacper supplies numbers</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">A question about what people want from their work</div>
+            <p class="entry-desc">Reflective prompt. Not motivational. Specific and honest. E.g. "How much of your sales process is intentional vs inherited from whoever hired you?" Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRI W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Fri</span><span class="day-num">Day 05</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R1 — Belief Shift Reel (Part 1 of 2)</div>
+            <div class="entry-title">What Is Changing in Sales Right Now</div>
+            <p class="entry-desc">Industry trend reel — Part 1. AI in CRMs, pressure selling dying, data-first teams pulling ahead. Week 2 Friday follows up with what has changed and where this is heading in 90 days.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Fri — Tool / Experiment (Part 1)</div>
+            <div class="entry-title">The Tool I Am Testing This Week — And Why</div>
+            <p class="entry-desc">Specific tool or CRM experiment Kacper is actively running. "Here is the problem. Here is what I am using. Here is what I expect to learn." Week 2 Friday delivers the results and the verdict.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes from Kacper's Slack notes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The trend line — one forward-looking statement</div>
+            <p class="entry-desc">One sentence about where sales is heading. No hedging. Framed as observation, not prediction. Posted with no context. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAT W1 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Sat</span><span class="day-num">Day 06</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R4 — EOW Recap Reel</div>
+            <div class="entry-title">This Week: What Challenged Me, What I Learned</div>
+            <p class="entry-desc">Narration-style piece to camera. One real challenge or moment. Event footage where available — keynotes, client wins, travel. Honest register. Not a highlight reel. This is where the audience becomes fans.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper films · Noah minimal cut</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Sat — Industry Angle Post</div>
+            <div class="entry-title">The Sales Shift Nobody Is Talking About Yet</div>
+            <p class="entry-desc">Forward-looking and opinionated. One trend Kacper is watching closely that most people have not caught yet. No hedging. The Saturday post reads like a dispatch from someone already living in the future of the industry.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The week in one sentence</div>
+            <p class="entry-desc">One honest line from the week — a lesson, a contradiction, a moment. Could be a direct extract from the recap reel. Tommy writes from Kacper's Saturday debrief in Slack.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUN W1 -->
+  <div class="day-block rest-day">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Sun</span><span class="day-num">Day 07</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · ST — Sunday Reset Story</div>
+            <div class="entry-title">Reset + What's Coming Next Week</div>
+            <p class="entry-desc">30–60s piece to camera. Training, recovery, what Kacper is reading or thinking about. What is coming. Candid and unpolished — intentional. No edit needed. Posted directly as an IG Story.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper records and posts</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Sun — Week-Ahead Intent</div>
+            <div class="entry-title">This Week I Am Focused On</div>
+            <p class="entry-desc">Brief and direct. One priority for the coming week and why it matters. Conversational register — not polished. Builds rhythm with followers who check in every week.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes or Kacper posts direct</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">One question to end the week with</div>
+            <p class="entry-desc">A reflective or provocative question the audience can sit with. Not motivational — uncomfortable in a productive way. Something that makes them think about their own operation. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================================================================
+     WEEK 2
+     ================================================================ -->
+<section class="week-section" id="week2">
+  <div class="week-header">
+    <span class="headline week-number">02</span>
+    <span class="headline week-title">Week <span class="script">Two</span></span>
+  </div>
+
+  <!-- MON W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Mon</span><span class="day-num">Day 08</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · C1 — Educational Carousel</div>
+            <div class="entry-title">The Rep Lifecycle: Search, Hire, Onboard, Manage</div>
+            <p class="entry-desc">Kacper's core framework made visual. One slide per stage. What breaks at each stage, what good looks like. Each fortnight rotates to a different authority topic — never repeating the prior fortnight's subject.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes · Noah/Lucy designs</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Mon — Monday Reflection</div>
+            <div class="entry-title">What This Fortnight Reminded Me About Leadership</div>
+            <p class="entry-desc">Slightly heavier than Week 1's reflection — a bigger observation from two accumulated weeks. The hook line is always different from the previous fortnight's. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">One truth from the Rep Lifecycle framework</div>
+            <p class="entry-desc">The sharpest insight from the carousel — the one statement that makes a founder question their process. Posted alone. Tommy writes (batch).</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TUE W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Tue</span><span class="day-num">Day 09</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R2 — Lifestyle Identity Reel</div>
+            <div class="entry-title">Personality Build — Fatherhood / Filmmaking</div>
+            <p class="entry-desc">Second lifestyle reel of the fortnight. Rotates away from MMA — leans into fatherhood or filmmaking this week. Whichever has the strongest B-roll available. S-Log3. No business angle.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Tue — Story / Origin Post</div>
+            <div class="entry-title">The Day I Found Out I Was Going to Be a Dad Changed Everything</div>
+            <p class="entry-desc">Fatherhood as the lever that raised every standard. The moment Kacper became harder to please, lost the most weight, and made the most money. Honest, specific. Nothing like a motivational poster.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">One honest line about what it costs to build something serious</div>
+            <p class="entry-desc">Could be about the guilt of 12-hour days or the clarity from a 6am training session. Not motivational — honest. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WED W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Wed</span><span class="day-num">Day 10</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R5 — Experiment Block</div>
+            <div class="entry-title">Creative Sandbox — Format TBC by Tuesday</div>
+            <p class="entry-desc">Deliberately open. Piece-to-camera rant, hype edit, tablet annotation, vlog, trending format. Kacper drops a reference in Slack by Tuesday. Noah pitches execution by Tuesday evening. The R&D slot for new repeatable formats.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 or P4</span><span class="entry-owner">Kacper directs · Noah executes</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Wed — "I Wish Managers Knew"</div>
+            <div class="entry-title">I Wish More Managers Knew: Ramp Speed Has Nothing to Do With the Rep</div>
+            <p class="entry-desc">The environment determines how fast someone develops. Walk through the actual drivers: hiring precision, structured shadowing, clear SOPs, data visibility, coaching speed. Graphic: ramp timeline preferred.</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Tommy writes · optional graphic Noah</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The management truth — sharpest line from the LI post</div>
+            <p class="entry-desc">One statement from the belief shift. Posted alone. No context needed. Could be a quote or a question. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P4 Belief Shift</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THU W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Thu</span><span class="day-num">Day 11</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · C2 — Lifestyle BTS Carousel</div>
+            <div class="entry-title">BTS: Behind the Camera, Behind the Business</div>
+            <p class="entry-desc">Second BTS carousel. Leans toward filming setups, keynote prep, or Week 2 travel footage. Kacper uploads to Google Drive Thursday morning. Noah sequences.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Kacper sources · Noah sequences</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Thu — Proof / Results Post</div>
+            <div class="entry-title">$20M to $39M in 12 Months — What Actually Made the Difference</div>
+            <p class="entry-desc">The flagship proof post. Numbers from the authority stack used as evidence for a structural argument. What specifically changed and why it worked. Removes risk from the buying decision.</p>
+            <div class="entry-meta"><span class="entry-pillar">P3 Proof</span><span class="entry-owner">Tommy writes · Kacper approves specifics</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The proof drop — one number with no explanation</div>
+            <p class="entry-desc">Post a single data point with zero context. Let the number do the work. $20M to $39M. $5M+ personally closed. The audience asks the question. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P3 Proof</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRI W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Fri</span><span class="day-num">Day 12</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R1 — Belief Shift Reel (Part 2 of 2)</div>
+            <div class="entry-title">What Changed in Sales — Follow-Up</div>
+            <p class="entry-desc">Direct follow-up to Week 1 Friday's industry reel. "Last week I said X. Here is what I've seen since. Here is where this is going in 90 days." Drives re-engagement, creates series loyalty.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Fri — Tool / Experiment (Follow-Up)</div>
+            <div class="entry-title">Results: What I Learned Testing [Tool] for Two Weeks</div>
+            <p class="entry-desc">Follow-up to Week 1 Friday. What worked, what did not, what is changing. Nobody listens to people talking about what the industry was. Make them feel Kacper holds the keys to what is coming.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy writes from Kacper's Slack debrief</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">What changed or was confirmed from Week 1</div>
+            <p class="entry-desc">Two-sentence update. What Kacper found. What he is changing because of it. Builds the series arc on Threads alongside LI and IG. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P1 Authority</span><span class="entry-owner">Tommy (batch)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAT W2 -->
+  <div class="day-block">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Sat</span><span class="day-num">Day 13</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · C3 — YT Extract Carousel</div>
+            <div class="entry-title">Key Frames from Today's YouTube Video</div>
+            <p class="entry-desc">5–7 slides. Visual extracts and captions from the YouTube long-form. Drives IG audience to the full video. Tommy writes captions from YT script. Thumbnail visual carries across to the carousel cover for consistency.</p>
+            <div class="entry-meta"><span class="entry-pillar">P3 Proof</span><span class="entry-owner">Tommy captions · Noah designs from YT assets</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Sat — YT Launch Post</div>
+            <div class="entry-title">New Video: [Title] — Three Things You Will Take Away</div>
+            <p class="entry-desc">Direct drive to the YouTube drop. Three punchy bullets from the video's core argument. Hard CTA — link in post or first comment. Not a soft tease. "Watch this if X is a problem for you." Goes live when video uploads.</p>
+            <div class="entry-meta"><span class="entry-pillar">P5 CTA & Offer</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">The video hook — the one line that makes people click</div>
+            <p class="entry-desc">Single most provocative line from the YouTube video. Posted with a direct link. Tommy writes.</p>
+            <div class="entry-meta"><span class="entry-pillar">P5 CTA & Offer</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUN W2 -->
+  <div class="day-block rest-day">
+    <div class="day-head">
+      <div class="day-label-col"><span class="day-name">Sun</span><span class="day-num">Day 14</span></div>
+      <div class="day-cols">
+        <div class="platform-col ig-col">
+          <div class="col-header ig"><span class="col-pip ig"></span>Instagram</div>
+          <div class="entry">
+            <div class="entry-type">IG · R3 — Diagnostic Reel (Conversion)</div>
+            <div class="entry-title">DM TEAM — Here Is What Happens Next</div>
+            <p class="entry-desc">The fortnight's conversion reel. Walk through what working with Kacper looks like — the diagnosis call, what gets identified, what gets fixed. Clear and direct. Primary CTA: DM "TEAM". Batched with other talking head recordings.</p>
+            <div class="entry-meta"><span class="entry-pillar">P5 CTA & Offer</span><span class="entry-owner">Kacper films · Noah edits</span></div>
+          </div>
+        </div>
+        <div class="platform-col li-col">
+          <div class="col-header li"><span class="col-pip li"></span>LinkedIn</div>
+          <div class="entry">
+            <div class="entry-type">LI · Sun — Week-Ahead Intent</div>
+            <div class="entry-title">The Fortnight in One Word — Here Is What Is Coming</div>
+            <p class="entry-desc">End-of-fortnight version. A brief look back at what the two weeks produced and what the next fortnight is shaping up to be. One priority. Conversational, low-production feel.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes or Kacper posts direct</span></div>
+          </div>
+        </div>
+        <div class="platform-col th-col">
+          <div class="col-header th"><span class="col-pip th"></span>Threads</div>
+          <div class="entry">
+            <div class="entry-type">TH · Daily — Echo</div>
+            <div class="entry-title">One thing that surprised Kacper this fortnight</div>
+            <p class="entry-desc">Honest, specific, not motivational. Something that changed how he is thinking or what he is building. Tommy writes from Kacper's Sunday debrief in Slack.</p>
+            <div class="entry-meta"><span class="entry-pillar">P2 Story</span><span class="entry-owner">Tommy writes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube callout -->
+  <div class="yt-note">
+    <div class="yt-note-label">YouTube · Week 2 Saturday · YT-L1 — Long-Form</div>
+    <div class="yt-note-title">One Focused Topic — 12–20 Minutes</div>
+    <p>One topic per fortnight explored at depth: a system, a framework, or a full case study interspersed with Kacper's personal lens and S-Log3 cinematic footage. Tommy scripts 10 days in advance. Kacper records. Noah handles the full edit and thumbnail. Uploaded Saturday morning. This is the anchor piece that drives the IG-C3 carousel and the LI-Sat launch post on the same day.</p>
+  </div>
+
+</section>
+
+<!-- WORKFLOW -->
+<section class="workflow">
+  <span class="eyebrow">Production Workflow</span>
+  <h2 class="headline" style="font-size:clamp(30px,4.5vw,52px);">The <span class="script">Machine</span></h2>
+  <p style="max-width:540px;margin-top:12px;">Three phases per fortnight. Clear owner. Clear deadline. Nothing moves to distribution without passing through production.</p>
+  <div class="workflow-grid">
+    <div class="wf-step">
+      <div class="wf-num">01</div>
+      <div class="wf-title">Strategy</div>
+      <p>Locked at the top of each fortnight. All topics confirmed before Tommy or Noah start anything.</p>
+      <ul>
+        <li>Kacper + Jack confirm all topics — Day 1 morning</li>
+        <li>Tommy receives full written brief: 14 LI posts, 2 Threads batches, 2 carousel scripts, YT script</li>
+        <li>Noah receives production brief for all 10 video slots</li>
+        <li>YT script: Tommy delivers by Day 4</li>
+        <li>Kacper approves YT script by Day 6</li>
+        <li>Threads batches (7 posts each): Tommy delivers Monday of each week</li>
+      </ul>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">02</div>
+      <div class="wf-title">Production</div>
+      <p>Content built to brief. Written by Tommy, filmed by Kacper, edited by Noah. All assets to Google Drive.</p>
+      <ul>
+        <li>Kacper films 5–6 talking heads per batch session</li>
+        <li>B-roll: Kacper notifies Noah in Slack when uploaded to Drive</li>
+        <li>Carousel copy: Tommy delivers 48hrs before publish date</li>
+        <li>LI post copy: Tommy delivers Monday of the relevant week</li>
+        <li>Visual assets: Friday deadline for following week's graphics</li>
+        <li>Noah delivers reel edits within 48hrs of receiving footage</li>
+      </ul>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">03</div>
+      <div class="wf-title">Distribution</div>
+      <p>Scheduled and posted. Kacper posts Stories and Sunday LI directly. Everything else runs through the chain.</p>
+      <ul>
+        <li>Reels: Kacper approves Noah's edit within 24hrs</li>
+        <li>Carousels: final file to Kacper for upload</li>
+        <li>LI posts: Kacper reviews Tommy's copy and posts</li>
+        <li>Threads: Tommy delivers batches, Kacper schedules all 7 at once</li>
+        <li>YouTube: Saturday morning upload, LI post goes live same day</li>
+        <li>IG Stories: Kacper posts directly — no approval chain</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <span class="eyebrow">Operating Notes</span>
+  <h2 class="headline" style="font-size:clamp(30px,4.5vw,52px);">What To <span class="script">Keep</span> in Mind</h2>
+  <table class="notes-table">
+    <tr><td>Kacper</td><td>Films talking heads in batches of 5–6. Supplies B-roll via Google Drive with Slack notification. Posts IG Stories and Sunday LI directly. Approves all other content but does not write or edit it. Drops reference inspiration and weekly debrief notes into the team Slack for Tommy to work from.</td></tr>
+    <tr><td>Tommy</td><td>Writes all 14 LI posts per fortnight, two Threads batches (7 posts each), two educational carousel scripts, and the YouTube script. Voice must match Kacper's exactly: direct, earned, diagnostic, never vague. All written pieces delivered before publish date — not day-of. Friday of the prior week is the ceiling for the following week's written copy.</td></tr>
+    <tr><td>Noah</td><td>Edits all 10 short-form reels per fortnight. Manages editor capacity. Designs or commissions carousel graphics as required. Delivers all reel edits to Kacper for approval before publish. Handles YouTube full edit and thumbnail. If Kacper moves to daily posting, Noah sources a dedicated editor.</td></tr>
+    <tr><td>Friday series</td><td>Friday reels (IG) and Friday LI posts are structured as Part 1 / Part 2 across the fortnight. Tommy must write both parts together — not in isolation. Same rule applies to the Tool / Experiment LI posts. The series structure drives re-engagement, creates narrative continuity, and rewards returning viewers.</td></tr>
+    <tr><td>Threads batch</td><td>Tommy writes all 7 Threads posts for each week as a single batch, delivered Monday. The posts echo or riff on that week's IG and LI content — not independent pieces. The register is looser than LI: shorter, more direct, can be a single punchy line, a 3-point drop, a question, or a bare number with no explanation. Kacper schedules all 7 at once via a scheduling tool.</td></tr>
+    <tr><td>DM TEAM CTA</td><td>Appears at least once per fortnight in a dedicated slot (Sunday Week 2 reel). Also optional at the end of Diagnostic or Belief Shift reels when natural. Said once, clearly, without apology or hedge. Never repeated within the same piece. Never softened.</td></tr>
+    <tr><td>YouTube cadence</td><td>Once per fortnight, Week 2 Saturday only — never Week 1. This gives Noah a full 13 days from script delivery to upload. 12–20 minutes, focused single topic, cinematic standard. The IG-C3 carousel and LI Sat launch post both serve as the distribution multiplier on the same day.</td></tr>
+    <tr><td>Experiment block</td><td>Wednesday Week 2 is deliberately unformatted. Kacper drops a reference into Slack by Tuesday. Noah pitches execution by Tuesday evening. The output could become the next repeatable format — treat it as R&D. Jack approves if the concept is a significant departure from the schedule.</td></tr>
+    <tr><td>Facebook / X</td><td>Not in this plan. Kacper has a separate ghostwriter covering FB, X, and existing platforms independently — 12 clients signed from Facebook last year alone. This plan runs in parallel, not in competition with that pipeline.</td></tr>
+  </table>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Kacper <span class="script">Wiloch</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:0.05em;">Fortnightly Content Plan · Version 2.0</div>
+    </div>
+    <div class="footer-meta">
+      <div>Prepared March 2026</div>
+      <div>Jack Manley · Brand & Content Strategy</div>
+      <div>Tommy (Copy) · Noah (Production)</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

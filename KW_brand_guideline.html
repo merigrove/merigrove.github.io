@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kacper Wiloch — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:ital@1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --charcoal:     #1E1E1C;
+  --slate:        #2F2F2D;
+  --orange:       #C85A20;
+  --amber:        #E8843A;
+  --cream:        #F5EFE0;
+  --blush:        #EAD5C0;
+  --muted:        #7A7870;
+  --border:       rgba(245,239,224,0.1);
+
+  --font-head:    'Barlow Condensed', sans-serif;
+  --font-script:  'Playfair Display', serif;
+  --font-body:    'Barlow', sans-serif;
+
+  --max-w:        960px;
+  --section-gap:  120px;
+}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.headline {
+  font-family: var(--font-head);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  color: var(--cream);
+}
+
+.script {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.section-number {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-size: clamp(40px, 6vw, 72px);
+  margin-bottom: 40px;
+}
+
+.sub-heading {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+p { margin-bottom: 1.1em; color: var(--blush); }
+p:last-child { margin-bottom: 0; }
+
+strong { color: var(--cream); font-weight: 500; }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section {
+  padding: var(--section-gap) 0;
+  border-top: 1px solid var(--border);
+}
+
+.section:first-of-type { border-top: none; }
+
+/* Two-column grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .container { padding: 0 24px; }
+  :root { --section-gap: 72px; }
+}
+
+/* ============================================================
+   COVER / HERO
+   ============================================================ */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 60%, rgba(200,90,32,0.18) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(232,132,58,0.10) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cover-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-kicker {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cover-kicker::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.cover-name {
+  font-size: clamp(64px, 10vw, 130px);
+  margin-bottom: 0;
+  display: block;
+}
+
+.cover-subtitle {
+  font-size: clamp(32px, 5vw, 64px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245,239,224,0.3);
+}
+
+.cover-rule {
+  width: 1px;
+  height: 64px;
+  background: linear-gradient(to bottom, var(--orange), transparent);
+  margin: 40px 0;
+}
+
+.cover-tagline {
+  font-family: var(--font-script);
+  font-size: clamp(22px, 3vw, 32px);
+  font-style: italic;
+  color: var(--blush);
+  max-width: 540px;
+  line-height: 1.4;
+}
+
+.cover-meta {
+  margin-top: 60px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.cover-meta-item {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ============================================================
+   NAV / TOC
+   ============================================================ */
+.toc {
+  background: var(--slate);
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 800px) {
+  .toc-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 500px) {
+  .toc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.toc-item {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.toc-item:last-child { border-right: none; }
+.toc-item:hover { background: rgba(200,90,32,0.08); }
+
+.toc-num {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.toc-label {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  display: block;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   CALLOUT / BLOCKQUOTE
+   ============================================================ */
+.callout {
+  border-left: 2px solid var(--orange);
+  padding: 20px 28px;
+  margin: 40px 0;
+  background: rgba(200,90,32,0.06);
+}
+
+.callout p {
+  font-family: var(--font-script);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card {
+  background: var(--slate);
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+}
+
+.card-title {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.card p { font-size: 15px; line-height: 1.65; }
+
+/* ============================================================
+   VALUE BLOCKS
+   ============================================================ */
+.value-block {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.value-block:last-child { border-bottom: none; }
+
+.value-title {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 30px);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.value-block p { font-size: 16px; max-width: 680px; }
+
+/* ============================================================
+   STORY TIMELINE
+   ============================================================ */
+.timeline {
+  margin-top: 40px;
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--orange), rgba(200,90,32,0.1));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 2px solid var(--charcoal);
+  box-shadow: 0 0 0 1px var(--orange);
+}
+
+.timeline-label {
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.timeline-item h3 {
+  font-family: var(--font-head);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   STAT ROW
+   ============================================================ */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin: 48px 0;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat {
+  background: var(--charcoal);
+  padding: 28px 24px;
+}
+
+.stat-number {
+  font-family: var(--font-head);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.stat-number span { color: var(--orange); }
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   AUDIENCE
+   ============================================================ */
+.audience-card {
+  border: 1px solid var(--border);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.audience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--orange);
+}
+
+.audience-age {
+  font-family: var(--font-head);
+  font-size: clamp(52px, 7vw, 80px);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245,239,224,0.15);
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  pointer-events: none;
+}
+
+.audience-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 4px 10px;
+  margin-bottom: 20px;
+}
+
+.pain-list {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.pain-list li {
+  font-size: 14px;
+  color: var(--blush);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-style: italic;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.pain-list li::before {
+  content: '"';
+  color: var(--orange);
+  font-family: var(--font-script);
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   VOICE EXAMPLES
+   ============================================================ */
+.voice-example {
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .voice-example { grid-template-columns: 1fr; }
+}
+
+.voice-do, .voice-dont {
+  padding: 18px 20px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 42px;
+}
+
+.voice-do {
+  background: rgba(200,90,32,0.08);
+  border-left: 2px solid var(--orange);
+  color: var(--cream);
+}
+
+.voice-dont {
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid rgba(245,239,224,0.15);
+  color: var(--muted);
+}
+
+.voice-do::before, .voice-dont::before {
+  position: absolute;
+  left: 14px;
+  top: 18px;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+.voice-do::before { content: '✓'; color: var(--orange); }
+.voice-dont::before { content: '✗'; color: var(--muted); }
+
+/* ============================================================
+   VOCAB TAGS
+   ============================================================ */
+.vocab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.vocab-tag {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  color: var(--blush);
+}
+
+.vocab-tag.negative {
+  color: var(--muted);
+  border-color: rgba(122,120,112,0.2);
+  text-decoration: line-through;
+  text-decoration-color: rgba(122,120,112,0.5);
+}
+
+/* ============================================================
+   CONTENT PILLARS
+   ============================================================ */
+.pillar {
+  border: 1px solid var(--border);
+  padding: 36px;
+  margin-bottom: 24px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.pillar:hover { border-color: rgba(200,90,32,0.4); }
+
+.pillar-num {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: var(--font-head);
+  font-size: 64px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245,239,224,0.06);
+  line-height: 1;
+}
+
+.pillar-job {
+  font-size: 12px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.pillar-name {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.example-list {
+  list-style: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.example-list li {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  padding: 5px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.example-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+}
+
+/* ============================================================
+   POST FRAMEWORK
+   ============================================================ */
+.framework {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 40px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .framework { grid-template-columns: 1fr; }
+}
+
+.framework-step {
+  background: var(--charcoal);
+  padding: 32px 28px;
+  position: relative;
+}
+
+.step-num {
+  font-family: var(--font-head);
+  font-size: 60px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200,90,32,0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step-name {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.step-desc { font-size: 14px; color: var(--muted); }
+
+/* ============================================================
+   COLOUR PALETTE
+   ============================================================ */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .palette { grid-template-columns: repeat(3, 1fr); }
+}
+
+.swatch {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  position: relative;
+}
+
+.swatch-name {
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.swatch-hex {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.swatch-role {
+  font-size: 10px;
+  opacity: 0.7;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   TYPOGRAPHY DEMO
+   ============================================================ */
+.type-demo {
+  background: var(--slate);
+  padding: 48px;
+  margin-top: 40px;
+  border: 1px solid var(--border);
+}
+
+.type-pair {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.type-pair:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.type-label {
+  font-size: 10px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.demo-headline {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 60px);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  color: var(--cream);
+}
+
+.demo-headline .script {
+  font-size: 0.85em;
+}
+
+.demo-body {
+  font-size: 15px;
+  color: var(--blush);
+  max-width: 540px;
+  margin-top: 16px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   LOGO SECTION
+   ============================================================ */
+.logo-demo {
+  background: var(--slate);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  margin-top: 40px;
+  position: relative;
+}
+
+.logo-svg {
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.logo-mono {
+  font-family: var(--font-script);
+  font-size: 48px;
+  color: var(--cream);
+  opacity: 0.3;
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+}
+
+/* ============================================================
+   IMAGERY GRID
+   ============================================================ */
+.imagery-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+  .imagery-rules { grid-template-columns: 1fr; }
+}
+
+.imagery-rule {
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+
+.imagery-rule.use::before {
+  content: 'USE';
+  display: block;
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.imagery-rule.avoid::before {
+  content: 'AVOID';
+  display: block;
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.imagery-rule ul {
+  list-style: none;
+}
+
+.imagery-rule ul li {
+  font-size: 14px;
+  color: var(--blush);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(245,239,224,0.06);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.imagery-rule ul li::before {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.imagery-rule.avoid ul li::before { background: var(--muted); }
+.imagery-rule.avoid ul li { color: var(--muted); }
+
+/* ============================================================
+   DESIGN PATTERNS
+   ============================================================ */
+.pattern-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+  .pattern-grid { grid-template-columns: 1fr; }
+}
+
+.pattern {
+  background: var(--slate);
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+
+.pattern-num {
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.pattern h4 {
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.pattern p { font-size: 14px; }
+
+/* ============================================================
+   SUMMARY TABLE
+   ============================================================ */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+}
+
+.summary-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-table tr:last-child { border-bottom: none; }
+
+.summary-table td {
+  padding: 20px 0;
+  vertical-align: top;
+  font-size: 15px;
+}
+
+.summary-table td:first-child {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  width: 160px;
+  padding-right: 32px;
+  padding-top: 22px;
+}
+
+.summary-table td:last-child { color: var(--blush); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--slate);
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--border);
+  margin-top: var(--section-gap);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-name {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1;
+}
+
+.footer-name .script { font-size: 0.75em; }
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cover-inner > * {
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.cover-kicker        { animation-delay: 0.1s; }
+.cover-name          { animation-delay: 0.25s; }
+.cover-subtitle      { animation-delay: 0.35s; }
+.cover-rule          { animation-delay: 0.45s; }
+.cover-tagline       { animation-delay: 0.55s; }
+.cover-meta          { animation-delay: 0.7s; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+     ============================================================ -->
+<section class="cover" id="top">
+  <div class="cover-inner">
+    <span class="cover-kicker">Brand Guidelines</span>
+    <span class="headline cover-name">Kacper<br>Wiloch</span>
+    <span class="headline cover-subtitle">Brand Guidelines</span>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">Brutal honesty. Earned authority.<br>Human enough to trust.</p>
+    <div class="cover-meta">
+      <span class="cover-meta-item">March 2026</span>
+      <span class="cover-meta-item">Confidential</span>
+      <span class="cover-meta-item">Version 1.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TABLE OF CONTENTS
+     ============================================================ -->
+<nav class="toc">
+  <div class="toc-grid container" style="max-width:100%; padding:0;">
+    <a href="#ethos"      class="toc-item"><span class="toc-num">01</span><span class="toc-label">Ethos</span></a>
+    <a href="#mission"    class="toc-item"><span class="toc-num">02</span><span class="toc-label">Mission</span></a>
+    <a href="#vision"     class="toc-item"><span class="toc-num">03</span><span class="toc-label">Vision</span></a>
+    <a href="#values"     class="toc-item"><span class="toc-num">04</span><span class="toc-label">Values</span></a>
+    <a href="#story"      class="toc-item"><span class="toc-num">05</span><span class="toc-label">Story</span></a>
+    <a href="#audience"   class="toc-item"><span class="toc-num">06</span><span class="toc-label">Audience</span></a>
+    <a href="#voice"      class="toc-item"><span class="toc-num">07</span><span class="toc-label">Voice</span></a>
+    <a href="#pillars"    class="toc-item"><span class="toc-num">08</span><span class="toc-label">Content Pillars</span></a>
+    <a href="#authority"  class="toc-item"><span class="toc-num">09</span><span class="toc-label">Authority</span></a>
+    <a href="#logomark"   class="toc-item"><span class="toc-num">10</span><span class="toc-label">Logomark</span></a>
+    <a href="#colour"     class="toc-item"><span class="toc-num">11</span><span class="toc-label">Colour</span></a>
+    <a href="#typography" class="toc-item"><span class="toc-num">12</span><span class="toc-label">Typography</span></a>
+    <a href="#imagery"    class="toc-item"><span class="toc-num">13</span><span class="toc-label">Imagery</span></a>
+    <a href="#design"     class="toc-item"><span class="toc-num">14</span><span class="toc-label">Design</span></a>
+    <a href="#summary"    class="toc-item"><span class="toc-num">15</span><span class="toc-label">Summary</span></a>
+  </div>
+</nav>
+
+<main class="container">
+
+<!-- ============================================================
+     01 ETHOS
+     ============================================================ -->
+<section class="section" id="ethos">
+  <span class="section-number">01 &mdash; Ethos</span>
+  <h2 class="headline section-title">
+    The <span class="script">Foundation</span>
+  </h2>
+
+  <div class="callout">
+    <p>Brutal honesty. Earned authority. Human enough to trust.</p>
+  </div>
+
+  <p>Most personal brands are built on perception. Kacper's is built on proof.</p>
+  <p>He does not tell people what they want to hear. He tells them what they need to hear, and then shows them exactly what to do about it. The ethos of this brand is straightforward: real results come from real structure. Not from motivation, not from hustle culture, and not from louder leadership.</p>
+  <p>This brand stands for the belief that a good system protects people. That discipline is not punishment; it is the architecture of freedom. That the best leaders do not shout louder. They build environments where people can perform without fear, without burnout, and without constant oversight.</p>
+  <p>Everything created under this brand &mdash; every post, every video, every keynote, every offer &mdash; must pass a single test: <strong>Is this true? Is it useful? Is it earned?</strong></p>
+</section>
+
+<!-- ============================================================
+     02 MISSION
+     ============================================================ -->
+<section class="section" id="mission">
+  <span class="section-number">02 &mdash; Mission</span>
+  <h2 class="headline section-title">
+    The <span class="script">Work</span>
+  </h2>
+
+  <div class="callout">
+    <p>To fix broken sales systems, build disciplined teams, and create environments where people perform &mdash; without fear, burnout, or babysitting.</p>
+  </div>
+
+  <p>Kacper exists in the market to solve one specific problem: the gap between what a sales team could produce and what it actually produces. That gap is not caused by lazy reps. It is caused by structural failure at the leadership level.</p>
+  <p>His mission is to close that gap. Practically. Permanently.</p>
+  <p>Not through motivational content. Through systems, standards, and accountability that outlast his involvement.</p>
+</section>
+
+<!-- ============================================================
+     03 VISION
+     ============================================================ -->
+<section class="section" id="vision">
+  <span class="section-number">03 &mdash; Vision</span>
+  <h2 class="headline section-title">
+    The Long <span class="script">Game</span>
+  </h2>
+
+  <div class="callout">
+    <p>A world where leaders stop blaming their people and start building the structures that make their people great.</p>
+  </div>
+
+  <p>The long-term vision is a generation of sales leaders and founders who understand that performance is a leadership responsibility, not a rep problem. Leaders who can step away from their business for a week, a month, or longer, and return to something that still runs.</p>
+  <p>Kacper's personal north star is to be the person he needed when he was the broke, invisible rep that nobody believed in, and to make sure others never have to figure it out alone.</p>
+</section>
+
+<!-- ============================================================
+     04 VALUES
+     ============================================================ -->
+<section class="section" id="values">
+  <span class="section-number">04 &mdash; Values</span>
+  <h2 class="headline section-title">
+    Non-<span class="script">Negotiables</span>
+  </h2>
+
+  <div class="value-block">
+    <div class="value-title headline">Discipline <span class="script">over talent</span></div>
+    <p>Motivation fades. Talent is inconsistent. Discipline compounds. Everything Kacper teaches, sells, and lives is rooted in the belief that showing up with standards, every day regardless of how you feel, is what separates the people who build something real from the people who stay stuck.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-title headline">Accountability <span class="script">without blame</span></div>
+    <p>Accountability is not about punishing people. It is about creating clarity so that everyone knows what is expected, what success looks like, and where they stand. Blame is lazy. Real accountability is structural.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-title headline">Standards <span class="script">as protection</span></div>
+    <p>High standards do not crush people. Low standards do. When expectations are clear and consistent, people know where they stand, they can grow, and they feel safe. This brand explicitly rejects the idea that being demanding and being supportive are opposites.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-title headline">Integrity <span class="script">at all costs</span></div>
+    <p>His word is currency. If he says he will deliver, he delivers &mdash; regardless of inconvenience. He will not lower expectations to make people comfortable, and he will not tell people what they want to hear if it is not true.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-title headline">Congruency</div>
+    <p>What he teaches, he lives. The gym. The standards. The discipline. The honesty. This brand is not a persona. It is a direct expression of how he operates every day.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="value-title headline">Value <span class="script">over capital</span></div>
+    <p>He walked away from a role that was only about extracting revenue. The intention behind everything he builds is to leave people better than he found them &mdash; not just stronger in results, but stronger in capability.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 STORY
+     ============================================================ -->
+<section class="section" id="story">
+  <span class="section-number">05 &mdash; Story</span>
+  <h2 class="headline section-title">
+    Where It <span class="script">Started</span>
+  </h2>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-number">$5<span>M+</span></div>
+      <div class="stat-label">Personally closed in sales</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">$70<span>M+</span></div>
+      <div class="stat-label">Led through teams</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">$20<span>M</span></div>
+      <div class="stat-label">To $39M in 12 months</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">€500</div>
+      <div class="stat-label">Monthly wage where it all began</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-label">The Beginning</div>
+      <h3>Pizza delivery. No path. No plan.</h3>
+      <p>Kacper Wiloch grew up with no obvious path forward. No connections. No university plan. No safety net. Where he came from, you either accepted the ceiling above you or you fought your way through it. He was a pizza delivery boy. Overweight. Earning €500 a month. Invisible, even to himself. There was no mentor. No system. Nobody coming to save him.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-label">2019 — The Turning Point</div>
+      <h3>Sold everything. Went into debt.</h3>
+      <p>He made a decision that most people in his position would not. He sold everything he had and went into debt to invest in high-ticket sales training. The first six months produced almost nothing. Friends doubted him. Family did not understand. He barely believed in himself. Every day ended with the same question: quit and stay stuck forever, or level up into someone people could not ignore?</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-label">The Build</div>
+      <h3>Discipline as oxygen.</h3>
+      <p>He treated discipline like oxygen. Every spare pound went into learning. He studied his failures obsessively. He ran. He trained in MMA. He showed up when he hated it. Slowly, the numbers changed: £300 a month in commissions to personally closing $5M+. Rep to Manager to Sales Director. A sales organisation scaled from $20M to $39M in 12 months. Teams responsible for $70M+ in cash collected.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-label">Today</div>
+      <h3>The agency. The mission.</h3>
+      <p>He walked away from a role that was only capturing capital. He built an agency that generates in days what used to take a year &mdash; not because he wanted the money, but because he wanted to create something that lasts. His authority is not a certificate. Not a pedigree. It is the lived experience of having sat in every seat: rep, manager, owner.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:48px;">
+    <p>"I was the rep that got failed by management. That is why I can tell you what your team is thinking, even when they will not say it out loud."</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     06 AUDIENCE
+     ============================================================ -->
+<section class="section" id="audience">
+  <span class="section-number">06 &mdash; Audience</span>
+  <h2 class="headline section-title">
+    Who This Is <span class="script">For</span>
+  </h2>
+
+  <div class="grid-2">
+    <div class="audience-card">
+      <span class="audience-tag">Primary — The Buyer</span>
+      <div class="audience-age">35–44</div>
+      <h3 class="sub-heading">The Operator</h3>
+      <p style="font-size:14px;">The founder or sales leader caught between firefighting and growth. They have a team that should be producing more. They have tried the usual fixes. None of it stuck.</p>
+      <p style="font-size:13px; color:var(--muted);">They are not lazy. They are not failing. They are operating inside a broken system and they do not yet have the language to describe it.</p>
+      <ul class="pain-list">
+        <li>Everything keeps changing.</li>
+        <li>I cannot rely on anyone.</li>
+        <li>We have potential but no structure.</li>
+        <li>I am tired of chasing people.</li>
+        <li>I just want clarity and consistency.</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <span class="audience-tag">Secondary — The Growth Audience</span>
+      <div class="audience-age">18–24</div>
+      <h3 class="sub-heading">The Aspiring Leader</h3>
+      <p style="font-size:14px;">Connects with Kacper's origin story and discipline philosophy. Not yet buying sales consulting. Buying a worldview. Wants proof that where you start does not determine where you end.</p>
+      <p style="font-size:13px; color:var(--muted);">Found on Twitter/X, Instagram, and YouTube. Becomes tomorrow's buyer.</p>
+
+      <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+        <div class="sub-heading" style="font-size:12px; margin-bottom:10px;">This brand is built for</div>
+        <p style="font-size:13px; color:var(--blush);">People who are ready to act. Leaders who know something is broken and want to fix it properly. Anyone who wants results that last, not a short-term confidence boost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     07 VOICE AND TONE
+     ============================================================ -->
+<section class="section" id="voice">
+  <span class="section-number">07 &mdash; Voice and Tone</span>
+  <h2 class="headline section-title">
+    How It <span class="script">Sounds</span>
+  </h2>
+
+  <div class="callout">
+    <p>Direct. Earned. Uncompromising, but never cold.</p>
+  </div>
+
+  <div style="margin-top:48px;">
+
+    <div style="margin-bottom:48px;">
+      <div class="sub-heading">1. Say the thing</div>
+      <p>Kacper does not soften hard truths to protect feelings. He names the problem directly and without apology. His audience respects him because he respects them enough to be honest.</p>
+      <div class="voice-example">
+        <div class="voice-do">"Throwing reps into Slack and expecting numbers by Friday is not leadership. It is abandonment with blame attached."</div>
+        <div class="voice-dont">"There are some areas where onboarding could be improved."</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="sub-heading">2. Earn every claim</div>
+      <p>Every assertion is backed by lived experience. He does not teach theory. He teaches what he has done, what failed, and what worked &mdash; with the receipts to prove it.</p>
+      <div class="voice-example">
+        <div class="voice-do">"I have sat in every seat: rep, manager, owner. Here is what your team is thinking."</div>
+        <div class="voice-dont">"Research suggests that effective leadership..."</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="sub-heading">3. Reframe the problem</div>
+      <p>The audience thinks they have a hiring problem. He shows them they have a management problem. They think they need more leads. He shows them they need fewer leaks. This is how belief shifts happen.</p>
+      <div class="voice-example">
+        <div class="voice-do">"Your reps are not inconsistent because they are lazy. They are inconsistent because the system is broken."</div>
+        <div class="voice-dont">"There are multiple factors that contribute to rep underperformance."</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="sub-heading">4. Human enough to trust</div>
+      <p>The vulnerability is deliberate and load-bearing. Without the origin story, the authority has no root. The voice must carry both the edge and the empathy. Neither alone is enough.</p>
+      <div class="voice-example">
+        <div class="voice-do">"I was the rep that got failed by management. That is why I can tell you what your team is thinking."</div>
+        <div class="voice-dont">"As someone with extensive industry experience..."</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="sub-heading">Vocabulary that belongs</div>
+      <div class="vocab">
+        <span class="vocab-tag">Structure</span>
+        <span class="vocab-tag">Systems</span>
+        <span class="vocab-tag">Accountability</span>
+        <span class="vocab-tag">Standards</span>
+        <span class="vocab-tag">Discipline</span>
+        <span class="vocab-tag">Clarity</span>
+        <span class="vocab-tag">Consistency</span>
+        <span class="vocab-tag">Predictability</span>
+        <span class="vocab-tag">Ownership</span>
+        <span class="vocab-tag">Leaks</span>
+        <span class="vocab-tag">Lifecycle</span>
+        <span class="vocab-tag">Pipeline</span>
+        <span class="vocab-tag">Firefighting</span>
+      </div>
+    </div>
+    <div>
+      <div class="sub-heading">Vocabulary to avoid</div>
+      <div class="vocab">
+        <span class="vocab-tag negative">Hustle</span>
+        <span class="vocab-tag negative">Grind</span>
+        <span class="vocab-tag negative">Motivation</span>
+        <span class="vocab-tag negative">Hack</span>
+        <span class="vocab-tag negative">Shortcut</span>
+        <span class="vocab-tag negative">Mindset reset</span>
+        <span class="vocab-tag negative">Vibe</span>
+        <span class="vocab-tag negative">Energy</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="sub-heading">Tone boundaries: what this brand never sounds like</div>
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-title">Not Preachy</div>
+        <p>The brand challenges; it does not lecture. There is a meaningful difference between the two.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Not Arrogant</div>
+        <p>Authority comes from evidence, not from putting others down.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Not Vague</div>
+        <p>Every claim is specific. Every principle is actionable. Generalities are a form of cowardice.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Not Performative</div>
+        <p>If it sounds designed to impress, it is wrong. If it sounds like something a person with hard-won experience would actually say, it is right.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Not Desperate</div>
+        <p>The offer is made once, clearly, and confidently. It is not repeated or hedged into apology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     08 CONTENT PILLARS
+     ============================================================ -->
+<section class="section" id="pillars">
+  <span class="section-number">08 &mdash; Content Pillars</span>
+  <h2 class="headline section-title">
+    Content That <span class="script">Converts</span>
+  </h2>
+
+  <div class="callout">
+    <p>Every piece of content has a job: get attention, build trust, create action.</p>
+  </div>
+
+  <div style="margin-top:40px;">
+
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-job">Teach</div>
+      <div class="headline pillar-name">Authority</div>
+      <p>Positions Kacper as the definitive voice on sales team structure, rep lifecycle management, and leadership accountability. Content here is instructional and gives the audience something they can act on immediately.</p>
+      <ul class="example-list">
+        <li>"Why most sales teams break"</li>
+        <li>"Three signs your reps do not feel valued, and why it is killing your revenue"</li>
+        <li>"Your pipeline is not the problem. Your lack of accountability is."</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-job">Connect</div>
+      <div class="headline pillar-name">Story</div>
+      <p>This is where the origin story lives. The 2019 investment. The zero months. The discipline that built everything. Story content connects the 18 to 24 audience who want a roadmap and gives the 35 to 44 buyer the proof of character behind the expertise.</p>
+      <ul class="example-list">
+        <li>"From £300 a month to leading multimillion-dollar teams"</li>
+        <li>"The moment I realised discipline matters more than talent"</li>
+        <li>"How fixing my health completely changed my career"</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-job">Evidence</div>
+      <div class="headline pillar-name">Proof</div>
+      <p>Testimonials, transformations, case studies, and receipts. Not bragging. Evidencing. This pillar makes the authority concrete and removes risk from the buying decision.</p>
+      <ul class="example-list">
+        <li>"How we added 20 to 30% revenue in 90 days without more leads"</li>
+        <li>"A before-and-after of a broken team becoming consistent in six weeks"</li>
+        <li>"What happens when you start tracking the right KPIs"</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <div class="pillar-job">Challenge</div>
+      <div class="headline pillar-name">Belief <span class="script">Shift</span></div>
+      <p>The posts that make people stop scrolling &mdash; not because they are controversial, but because they are true in a way the audience has not yet had the language to articulate.</p>
+      <ul class="example-list">
+        <li>"You do not need more leads. You need fewer leaks."</li>
+        <li>"Pressure selling is dead. Calm reps close more."</li>
+        <li>"Culture is not built on a speech. It is the standards you enforce every single day."</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">05</div>
+      <div class="pillar-job">Convert</div>
+      <div class="headline pillar-name">CTA <span class="script">&amp; Offer</span></div>
+      <p>Sell. Directly. Without apology. Every content funnel needs a conversion point. No soft closes. No qualification dressed up as humility. The offer: DM "TEAM".</p>
+      <ul class="example-list">
+        <li>"If your team is leaking money, DM me 'TEAM' — I will show you exactly where and how to fix it."</li>
+        <li>"Founders: here is what happens when we fix your systems in 30 days."</li>
+        <li>"Want a sales team that does not need babysitting? Here is what I do."</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="margin-top:60px;">
+    <div class="sub-heading">The post framework</div>
+    <p style="margin-bottom:0;">Every piece of content follows this three-part structure, in this order.</p>
+    <div class="framework">
+      <div class="framework-step">
+        <div class="step-num">01</div>
+        <div class="step-name">Hook</div>
+        <div class="step-desc">Pull them in. One line. No preamble. The first sentence determines whether the rest is read.</div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">02</div>
+        <div class="step-name">Value</div>
+        <div class="step-desc">Lesson, story, reframe, or proof. The substance that earns the right to ask.</div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">03</div>
+        <div class="step-name">CTA</div>
+        <div class="step-desc">DM, save, comment, or buy. Every post earns the right to ask. Never skip it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     09 AUTHORITY POSITIONING
+     ============================================================ -->
+<section class="section" id="authority">
+  <span class="section-number">09 &mdash; Authority Positioning</span>
+  <h2 class="headline section-title">
+    The <span class="script">Category</span>
+  </h2>
+
+  <div class="callout">
+    <p>Sales systems builder and rep lifecycle specialist. Not a sales coach. Not a mindset mentor. He is the person you call when you have a team that should work, and does not.</p>
+  </div>
+
+  <p>Most voices in this space do one of three things: they teach sales skills, they teach leadership theory, or they sell motivation. Kacper does something different. He diagnoses the structural failure underneath the performance problem and builds the operational system to fix it permanently.</p>
+  <p>He is the only credible voice in this space who has sat in every seat: broke rep, manager, sales director, agency owner. He can speak honestly to the view from each chair because he has lived in all of them.</p>
+
+  <div class="grid-2" style="margin-top:40px;">
+    <div>
+      <div class="sub-heading">The authority stack</div>
+      <div style="margin-top:16px;">
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-title">Numbers</div>
+          <p>$5M+ personally closed &middot; $70M+ led through teams &middot; $20M to $39M in 12 months &middot; 20 to 30% revenue growth in 90 days without adding leads</p>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-title">Frameworks</div>
+          <p>Rep Lifecycle: Search, Hire, Onboard, Manage &middot; Five Guiding Principles from five years of documented failures</p>
+        </div>
+        <div class="card">
+          <div class="card-title">The chairs</div>
+          <p>Broke rep &middot; Manager &middot; Sales Director &middot; Agency founder &middot; Every seat, lived honestly</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-heading">The brand opponent</div>
+      <p style="margin-bottom:20px;">Kacper does not fight people. He fights beliefs. His authority is sharpened by what he stands against.</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="padding:14px 16px; border:1px solid var(--border); font-size:14px; color:var(--blush); position:relative; padding-left:28px;">
+          <span style="position:absolute;left:14px;top:14px;color:var(--orange);font-family:var(--font-head);font-size:11px;font-weight:800;">✗</span>
+          The belief that more effort solves broken systems
+        </div>
+        <div style="padding:14px 16px; border:1px solid var(--border); font-size:14px; color:var(--blush); position:relative; padding-left:28px;">
+          <span style="position:absolute;left:14px;top:14px;color:var(--orange);font-family:var(--font-head);font-size:11px;font-weight:800;">✗</span>
+          The belief that bad rep performance is a rep problem
+        </div>
+        <div style="padding:14px 16px; border:1px solid var(--border); font-size:14px; color:var(--blush); position:relative; padding-left:28px;">
+          <span style="position:absolute;left:14px;top:14px;color:var(--orange);font-family:var(--font-head);font-size:11px;font-weight:800;">✗</span>
+          The belief that more leads fixes a leaking pipeline
+        </div>
+        <div style="padding:14px 16px; border:1px solid var(--border); font-size:14px; color:var(--blush); position:relative; padding-left:28px;">
+          <span style="position:absolute;left:14px;top:14px;color:var(--orange);font-family:var(--font-head);font-size:11px;font-weight:800;">✗</span>
+          The belief that culture is built through speeches
+        </div>
+        <div style="padding:14px 16px; border:1px solid var(--border); font-size:14px; color:var(--blush); position:relative; padding-left:28px;">
+          <span style="position:absolute;left:14px;top:14px;color:var(--orange);font-family:var(--font-head);font-size:11px;font-weight:800;">✗</span>
+          The belief that pressure closes more deals than calm structure
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10 LOGOMARK
+     ============================================================ -->
+<section class="section" id="logomark">
+  <span class="section-number">10 &mdash; Logomark</span>
+  <h2 class="headline section-title">
+    The <span class="script">Mark</span>
+  </h2>
+
+  <div class="logo-demo">
+    <svg class="logo-svg" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simplified ram silhouette in fine-line style -->
+      <g stroke="#F5EFE0" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Body -->
+        <ellipse cx="60" cy="95" rx="28" ry="18" />
+        <!-- Head -->
+        <circle cx="78" cy="72" r="14" />
+        <!-- Horn spiral -->
+        <path d="M80 60 C88 52 96 56 94 66 C92 74 84 74 82 68" />
+        <!-- Legs -->
+        <line x1="40" y1="110" x2="36" y2="130" />
+        <line x1="52" y1="112" x2="50" y2="132" />
+        <line x1="70" y1="112" x2="72" y2="132" />
+        <line x1="82" y1="110" x2="86" y2="130" />
+        <!-- Sword held up -->
+        <line x1="72" y1="68" x2="72" y2="20" />
+        <line x1="62" y1="38" x2="82" y2="38" />
+        <path d="M72 18 L68 26 L76 26 Z" fill="#F5EFE0" stroke="none" />
+        <!-- Sword guard -->
+        <rect x="67" y="35" width="10" height="4" rx="1" fill="rgba(245,239,224,0.3)" stroke="#F5EFE0" stroke-width="0.8" />
+        <!-- Tail -->
+        <path d="M32 90 C24 84 22 76 28 72" />
+        <!-- Eye -->
+        <circle cx="82" cy="70" r="1.5" fill="#F5EFE0" />
+      </g>
+    </svg>
+    <span class="logo-mono">KW</span>
+  </div>
+
+  <div class="grid-2" style="margin-top:32px;">
+    <div>
+      <div class="sub-heading">What it means</div>
+      <p>The ram is Aries: the first sign. Associated with primal drive, forward momentum, and the willingness to charge when others hold back. The sword represents precision and decisiveness &mdash; not aggression for its own sake, but the ability to cut through noise and act with clarity.</p>
+      <p>Together: a fighter who is also disciplined. A force that has direction.</p>
+    </div>
+    <div>
+      <div class="sub-heading">Usage rules</div>
+      <ul style="list-style:none; margin-top:8px;">
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--blush);">On dark backgrounds: Cream/off-white (#F5EFE0)</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--blush);">On light backgrounds: Dark charcoal (#1E1E1C)</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--blush);">Never recolour the mark in brand accent orange</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--blush);">Never apply shadows, gradients, or effects</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--blush);">Always maintain clear space equal to the ram's body height</li>
+        <li style="padding:10px 0; font-size:14px; color:var(--blush);">KW monogram may be used independently as a watermark</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11 COLOUR PALETTE
+     ============================================================ -->
+<section class="section" id="colour">
+  <span class="section-number">11 &mdash; Colour Palette</span>
+  <h2 class="headline section-title">
+    The <span class="script">Warmth</span>
+  </h2>
+
+  <div class="palette">
+    <div class="swatch" style="background:#1E1E1C;">
+      <span class="swatch-name" style="color:#F5EFE0;">Charcoal</span>
+      <span class="swatch-hex" style="color:rgba(245,239,224,0.5);">#1E1E1C</span>
+      <span class="swatch-role" style="color:rgba(245,239,224,0.4);">Primary BG</span>
+    </div>
+    <div class="swatch" style="background:#2F2F2D;">
+      <span class="swatch-name" style="color:#F5EFE0;">Dark Slate</span>
+      <span class="swatch-hex" style="color:rgba(245,239,224,0.5);">#2F2F2D</span>
+      <span class="swatch-role" style="color:rgba(245,239,224,0.4);">Secondary BG</span>
+    </div>
+    <div class="swatch" style="background:#C85A20;">
+      <span class="swatch-name" style="color:#fff;">Burnt Orange</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,0.7);">#C85A20</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,0.6);">Primary Accent</span>
+    </div>
+    <div class="swatch" style="background:#E8843A;">
+      <span class="swatch-name" style="color:#fff;">Warm Amber</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,0.7);">#E8843A</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,0.6);">Secondary Accent</span>
+    </div>
+    <div class="swatch" style="background:#F5EFE0; border:1px solid rgba(0,0,0,0.08);">
+      <span class="swatch-name" style="color:#1E1E1C;">Warm Cream</span>
+      <span class="swatch-hex" style="color:rgba(30,30,28,0.6);">#F5EFE0</span>
+      <span class="swatch-role" style="color:rgba(30,30,28,0.4);">Primary Text</span>
+    </div>
+    <div class="swatch" style="background:#EAD5C0; border:1px solid rgba(0,0,0,0.08);">
+      <span class="swatch-name" style="color:#2F2F2D;">Dusty Blush</span>
+      <span class="swatch-hex" style="color:rgba(30,30,28,0.6);">#EAD5C0</span>
+      <span class="swatch-role" style="color:rgba(30,30,28,0.4);">Secondary Text</span>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:40px;">
+    <div>
+      <div class="sub-heading">Palette logic</div>
+      <p>The entire palette is warm-toned. There are no cool greys, no blues, and no clinical whites. The warmth signals organic authority, earned experience, and human grit. It is the opposite of corporate polish.</p>
+      <p>Burnt orange is used sparingly. Its power comes entirely from restraint. Charcoal dominates. Warm Cream on Charcoal is the brand's signature combination.</p>
+    </div>
+    <div>
+      <div class="sub-heading">Do not use</div>
+      <ul style="list-style:none; margin-top:8px;">
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--muted);">Pure white (#FFFFFF) &mdash; use Warm Cream instead</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--muted);">Cool greys or blues &mdash; incompatible with brand warmth</li>
+        <li style="padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--muted);">Bright, saturated colours &mdash; break the cinematic register</li>
+        <li style="padding:10px 0; font-size:14px; color:var(--muted);">Neon or high-contrast accent colours of any kind</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     12 TYPOGRAPHY
+     ============================================================ -->
+<section class="section" id="typography">
+  <span class="section-number">12 &mdash; Typography</span>
+  <h2 class="headline section-title">
+    The <span class="script">Tension</span>
+  </h2>
+
+  <p>The brand uses a two-font system built around deliberate contrast: condensed heavy grotesque for structural force, and elegant cursive italic for personal humanity. The contrast between the two is the brand identity made visible.</p>
+
+  <div class="type-demo">
+    <div class="type-pair">
+      <div class="type-label">Headline font &mdash; Condensed Heavy Grotesque (800&ndash;900 weight, all caps)</div>
+      <div class="demo-headline">Ascension of <span class="script">Value</span></div>
+      <div class="demo-body">Extremely heavy weight. All caps. Tight tracking. Used for slide titles, statement headlines, and confrontational assertions. The weight communicates directness and force before the words are even read.</div>
+    </div>
+    <div class="type-pair">
+      <div class="type-label">Script accent &mdash; Elegant Cursive Italic (1&ndash;2 words only, in Burnt Orange or Warm Cream)</div>
+      <div class="demo-headline">I Walked <span class="script">Away</span></div>
+      <div class="demo-body">Used for the emotional or human word in a headline pairing. Maximum three words. Never a full sentence. Never in body copy. Rendered in Burnt Orange or Warm Cream only.</div>
+    </div>
+    <div class="type-pair">
+      <div class="type-label">Further examples of the pairing in use</div>
+      <div style="display:flex; flex-direction:column; gap:16px; margin-top:8px;">
+        <div class="demo-headline" style="font-size:clamp(22px, 3.5vw, 38px);">The Onboarding <span class="script">Crime</span></div>
+        <div class="demo-headline" style="font-size:clamp(22px, 3.5vw, 38px);">Bad Performance <span class="script">is not a rep problem</span></div>
+        <div class="demo-headline" style="font-size:clamp(22px, 3.5vw, 38px);">My Commitment <span class="script">to you</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     13 IMAGERY GUIDELINES
+     ============================================================ -->
+<section class="section" id="imagery">
+  <span class="section-number">13 &mdash; Imagery Guidelines</span>
+  <h2 class="headline section-title">
+    The Visual <span class="script">World</span>
+  </h2>
+
+  <div class="callout">
+    <p>Grit meets aspiration. The feeling of a long road being walked, not a finish line being celebrated.</p>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="sub-heading">Colour treatment</div>
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-title">Treatment 01</div>
+        <p>Black and white / desaturated. High contrast, gritty, timeless. Used for the most intense and personal moments.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Treatment 02</div>
+        <p>Warm amber and orange toned. The brand's signature. Sunset-lit, fire-adjacent, aspirational. Used for conceptual moments.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Treatment 03</div>
+        <p>Muted natural colour. Slightly desaturated real-world photography. Used for action shots and community moments.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="imagery-rules">
+    <div class="imagery-rule use">
+      <ul>
+        <li>People in motion: running, training, moving forward. Often motion-blurred.</li>
+        <li>Figures from behind or in silhouette, so the audience can project themselves in.</li>
+        <li>Vast natural landscapes: mountains, open plains, desert, night sky, dense forest.</li>
+        <li>Raw environments: corridors, athletic tracks, outdoor terrain.</li>
+        <li>Training environments: gyms, fight camps, early mornings.</li>
+        <li>Quiet personal moments: reflection, solitude, the pause before action.</li>
+      </ul>
+    </div>
+    <div class="imagery-rule avoid">
+      <ul>
+        <li>Polished corporate stock photography.</li>
+        <li>Staged smiling headshots.</li>
+        <li>Bright office environments.</li>
+        <li>Abstract 3D tech visuals.</li>
+        <li>Generic motivational imagery, including sunsets with quote text overlaid.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     14 DESIGN PRINCIPLES
+     ============================================================ -->
+<section class="section" id="design">
+  <span class="section-number">14 &mdash; Slide and Content Design Principles</span>
+  <h2 class="headline section-title">
+    Six <span class="script">Patterns</span>
+  </h2>
+
+  <div class="pattern-grid">
+    <div class="pattern">
+      <div class="pattern-num">Pattern 01</div>
+      <h4>Full-bleed photography with overlaid type</h4>
+      <p>The image fills the entire frame. Text sits directly over the photograph, treated as a design element rather than a caption. Type is large and confident. The most common and most powerful format.</p>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">Pattern 02</div>
+      <h4>The inverted pyramid</h4>
+      <p>Visual shorthand for hierarchical frameworks. Dark charcoal layered triangles with warm amber and orange gradient photography bleeding in from the base. Used for the Rep Lifecycle and Ascension of Value.</p>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">Pattern 03</div>
+      <h4>Dark background with structured text</h4>
+      <p>For detailed, instructional content. Category heading in heavy condensed caps. Body text below in light weight. Right-aligned text blocks with generous whitespace. Clean, architectural, authoritative.</p>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">Pattern 04</div>
+      <h4>Single-concept reveal</h4>
+      <p>One powerful statement. Maximum negative space. The pause-and-land moment. The most emotionally impactful format when used with restraint. Never overuse it.</p>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">Pattern 05</div>
+      <h4>Light background contrast slide</h4>
+      <p>Warm Cream or Dusty Blush backgrounds used for structural or conceptual transitions. Creates breathing room between intense dark sequences without breaking the brand world.</p>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">Pattern 06</div>
+      <h4>The orange bracket device</h4>
+      <p>A single vertical Burnt Orange line or bracket used to group and emphasise a stack of text items. Minimal. Architectural. Precise. A signature micro-detail in commitment statements and key principles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     15 SUMMARY
+     ============================================================ -->
+<section class="section" id="summary">
+  <span class="section-number">15 &mdash; Brand Summary</span>
+  <h2 class="headline section-title">
+    The Whole <span class="script">Picture</span>
+  </h2>
+
+  <div class="callout">
+    <p>In a market full of sales coaches selling harder closes and mindset resets, Kacper Wiloch is the person who identifies the structural failure underneath the performance problem and builds the system that fixes it permanently.</p>
+  </div>
+
+  <table class="summary-table">
+    <tr><td>Ethos</td><td>Brutal honesty. Earned authority. Human enough to trust.</td></tr>
+    <tr><td>Mission</td><td>Fix broken sales systems. Build disciplined teams. Create environments where people perform without fear, burnout, or babysitting.</td></tr>
+    <tr><td>Vision</td><td>A generation of leaders who build structures that make their people great.</td></tr>
+    <tr><td>Core values</td><td>Discipline over talent. Standards as protection. Integrity at all costs. Congruency between what is taught and what is lived.</td></tr>
+    <tr><td>Audience</td><td>Founders and sales leaders aged 35 to 44 who have the team but not the structure to make it perform. Aspiring leaders aged 18 to 24 buying a worldview.</td></tr>
+    <tr><td>Voice</td><td>Direct. Diagnostic. Backs every claim with lived experience and measurable results. The rhythm of a keynote speaker, not a copywriter.</td></tr>
+    <tr><td>Visual signature</td><td>Condensed heavy caps paired with elegant cursive script. Charcoal, Burnt Orange, and Warm Cream. Never cool, never clinical, never corporate.</td></tr>
+    <tr><td>Brand mark</td><td>Ram with sword. Fine-line illustration. KW monogram in ornate script. Always neutral, never accent-coloured.</td></tr>
+    <tr><td>Photography</td><td>Cinematic. Motion. Silhouette. Warm and gritty. Never stock, never staged, never polished.</td></tr>
+    <tr><td>The offer</td><td>DM "TEAM" and fix your sales team. One trigger. One action. No soft close.</td></tr>
+  </table>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">
+        Kacper <span class="script">Wiloch</span>
+      </div>
+      <div style="font-size:12px; color:var(--muted); margin-top:10px; letter-spacing:0.05em;">Brand Guidelines &middot; Version 1.0</div>
+    </div>
+    <div class="footer-meta">
+      <div>Prepared March 2026</div>
+      <div>Synthesised from brand persona workbook and</div>
+      <div>March 2026 keynote presentation</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
