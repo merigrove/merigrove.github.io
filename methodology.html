@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Merigrove | The Methodology</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mg-blue:       #101AD6;
+    --mg-blue-deep:  #0A1299;
+    --mg-blue-soft:  #E6E7FB;
+    --mg-ivory:      #F6F3EC;
+    --mg-cream:      #FBF8F1;
+    --mg-ink:        #0A0A0A;
+    --mg-graphite:   #1A1A1E;
+    --mg-mist:       #6E7180;
+    --mg-rule:       #D9D6CE;
+    --mg-gold:       #C9A24A;
+    --serif: "Fraunces", "Alverata", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", "TT Commons Pro", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--mg-ink);
+    background: var(--mg-cream);
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0 0 16px; }
+  p:last-child { margin-bottom: 0; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+  h1 { font-size: clamp(42px, 6vw, 84px); line-height: 0.95; }
+  h2 { font-size: clamp(28px, 3.4vw, 50px); line-height: 1.04; }
+  h3 { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.15; }
+
+  .wrap        { max-width: 1200px; margin: 0 auto; padding: 0 44px; }
+  .wrap-narrow { max-width:  960px; margin: 0 auto; padding: 0 44px; }
+
+  /* ── Eyebrow ── */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mg-mist);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 999px; background: var(--mg-blue); flex-shrink: 0;
+  }
+  .eyebrow.on-blue  { color: #B8BCF0; }
+  .eyebrow.on-blue .dot { background: #fff; }
+  .eyebrow.on-dark  { color: rgba(201,162,74,0.85); }
+  .eyebrow.on-dark .dot { background: var(--mg-gold); }
+
+  /* ── Section header layout ── */
+  .sh {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .sh .eyebrow { padding-top: 10px; }
+  @media (max-width: 860px) { .sh { grid-template-columns: 1fr; gap: 14px; } }
+
+  /* ══════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════ */
+  .hero {
+    background: var(--mg-blue);
+    color: #fff;
+    padding: clamp(72px,10vw,140px) 0 clamp(88px,12vw,168px);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 88% 12%, rgba(255,255,255,0.13), transparent 58%),
+      radial-gradient(48% 55% at 4%  92%, rgba(255,255,255,0.07), transparent 62%);
+  }
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-wordmark {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 60px;
+  }
+  .hero-wordmark .brand {
+    font-family: var(--serif); font-weight: 500; font-size: 22px;
+    color: #fff; letter-spacing: -0.01em;
+  }
+  .hero-wordmark .brand::after { content: "."; }
+  .hero-wordmark .sep  { color: rgba(255,255,255,0.28); font-size: 18px; }
+  .hero-wordmark .doc  { font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #B8BCF0; }
+
+  .hero h1 { color: #fff; max-width: 820px; margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: #D7D9F5; font-weight: 300; }
+  .hero-lede {
+    font-family: var(--serif); font-size: clamp(17px,1.5vw,22px);
+    color: #B8BCF0; max-width: 640px; line-height: 1.5;
+  }
+
+  /* stage trail */
+  .stage-trail {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+    margin-top: 56px;
+    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .st-pill {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.42); white-space: nowrap;
+  }
+  .st-pill .n {
+    width: 26px; height: 26px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 13px;
+    color: rgba(255,255,255,0.38); flex-shrink: 0;
+  }
+  .st-pill.lit   { color: rgba(255,255,255,0.85); }
+  .st-pill.lit .n { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.45); color: #fff; }
+  .st-arrow {
+    flex: 1; min-width: 18px; height: 1px;
+    background: rgba(255,255,255,0.18); margin: 0 14px;
+    position: relative;
+  }
+  .st-arrow::after {
+    content: "›"; position: absolute; right: -8px; top: 50%;
+    transform: translateY(-52%);
+    color: rgba(255,255,255,0.28); font-size: 16px; line-height: 1;
+  }
+  @media (max-width: 860px) { .st-arrow { display: none; } .stage-trail { gap: 16px 0; flex-wrap: wrap; } }
+
+  /* ══════════════════════════════════════════
+     CONNECTORS
+  ══════════════════════════════════════════ */
+  .connector {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; z-index: 5;
+  }
+  .c-line-down {
+    width: 1px; height: 52px;
+    background: linear-gradient(to bottom, var(--mg-rule), var(--mg-blue));
+  }
+  .c-line-up {
+    width: 1px; height: 52px;
+    background: linear-gradient(to bottom, var(--mg-blue), var(--mg-rule));
+  }
+  .c-line-dark-down {
+    width: 1px; height: 52px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(201,162,74,0.5));
+  }
+  .c-line-dark-up {
+    width: 1px; height: 52px;
+    background: linear-gradient(to bottom, rgba(201,162,74,0.5), rgba(255,255,255,0.06));
+  }
+  .c-badge {
+    background: #fff; border: 1px solid var(--mg-rule);
+    border-radius: 999px; padding: 7px 22px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--mg-mist); white-space: nowrap;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  }
+  .c-badge.dark {
+    background: var(--mg-graphite); border-color: rgba(255,255,255,0.12);
+    color: #9EA1B3;
+    box-shadow: none;
+  }
+  .c-badge.gold {
+    background: var(--mg-graphite); border-color: rgba(201,162,74,0.4);
+    color: var(--mg-gold);
+    box-shadow: none;
+  }
+
+  /* ══════════════════════════════════════════
+     AUDIT
+  ══════════════════════════════════════════ */
+  .audit {
+    background: #fff;
+    padding: clamp(64px,8vw,108px) 0;
+    border-top: 1px solid var(--mg-rule);
+  }
+  .domain-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1px; background: var(--mg-rule);
+    border: 1px solid var(--mg-rule);
+  }
+  @media (max-width: 860px)  { .domain-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px)  { .domain-grid { grid-template-columns: 1fr; } }
+
+  .domain-cell {
+    background: #fff; padding: 32px 28px 36px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: background 0.2s;
+  }
+  .domain-cell:hover { background: var(--mg-cream); }
+  .domain-cell .d-num { font-family: var(--serif); font-size: 12px; color: var(--mg-mist); letter-spacing: 0.06em; }
+  .domain-cell .d-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--mg-blue-soft);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .domain-cell .d-icon svg {
+    width: 20px; height: 20px;
+    stroke: var(--mg-blue); fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .domain-cell h4 {
+    font-family: var(--serif); font-size: 19px; font-weight: 500;
+    letter-spacing: -0.01em; margin: 0; color: var(--mg-ink);
+  }
+  .domain-cell p { font-size: 13.5px; color: var(--mg-mist); line-height: 1.6; margin: 0; }
+
+  .method-strip {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 32px;
+  }
+  @media (max-width: 640px) { .method-strip { grid-template-columns: 1fr; } }
+
+  .method-card {
+    background: var(--mg-cream); border: 1px solid var(--mg-rule);
+    border-radius: 8px; padding: 24px 28px;
+    display: flex; align-items: flex-start; gap: 18px;
+  }
+  .method-card .m-num {
+    font-family: var(--serif); font-size: 30px; font-weight: 500;
+    color: var(--mg-blue); line-height: 1; flex-shrink: 0;
+  }
+  .method-card h4 { font-family: var(--sans); font-size: 14px; font-weight: 600; margin: 0 0 5px; }
+  .method-card p  { font-size: 13.5px; color: var(--mg-mist); margin: 0; line-height: 1.55; }
+
+  /* output arrow */
+  .output-row {
+    display: flex; align-items: center; gap: 16px;
+    margin-top: 32px; padding: 18px 24px;
+    background: var(--mg-blue-soft); border-radius: 8px;
+    border: 1px solid rgba(16,26,214,0.14);
+  }
+  .output-row .output-icon { color: var(--mg-blue); flex-shrink: 0; }
+  .output-row .output-icon svg { width: 18px; height: 18px; stroke: var(--mg-blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .output-row p { font-size: 13.5px; font-weight: 500; color: var(--mg-blue); margin: 0; }
+
+  /* ══════════════════════════════════════════
+     ENGAGEMENT
+  ══════════════════════════════════════════ */
+  .engagement {
+    background: var(--mg-ivory);
+    padding: clamp(64px,8vw,108px) 0;
+    border-top: 1px solid var(--mg-rule);
+  }
+  .eng-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  @media (max-width: 760px) { .eng-grid { grid-template-columns: 1fr; } }
+
+  .eng-card {
+    background: #fff; border: 1px solid var(--mg-rule);
+    border-radius: 10px; padding: 40px 36px;
+    display: flex; flex-direction: column; gap: 18px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+  .eng-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 60px -24px rgba(16,26,214,0.2);
+  }
+  .eng-card.blue {
+    background: var(--mg-blue); border-color: var(--mg-blue);
+  }
+
+  .eng-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.17em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 999px;
+    width: fit-content;
+    background: var(--mg-blue-soft); color: var(--mg-blue);
+  }
+  .eng-card.blue .eng-tag { background: rgba(255,255,255,0.14); color: #D7D9F5; }
+
+  .eng-card h3 { font-size: 26px; color: var(--mg-ink); }
+  .eng-card.blue h3 { color: #fff; }
+
+  .eng-card > p { font-size: 15px; color: var(--mg-graphite); line-height: 1.65; }
+  .eng-card.blue > p { color: #D7D9F5; }
+
+  .eng-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+    padding-top: 20px; border-top: 1px solid var(--mg-rule);
+    margin-top: auto;
+  }
+  .eng-card.blue .eng-list { border-color: rgba(255,255,255,0.2); }
+
+  .eng-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--mg-graphite); line-height: 1.55;
+  }
+  .eng-card.blue .eng-list li { color: #D7D9F5; }
+
+  .eng-list li::before {
+    content: ""; width: 6px; height: 6px; border-radius: 1px;
+    background: var(--mg-blue); flex-shrink: 0;
+    transform: rotate(45deg); margin-top: 5px;
+  }
+  .eng-card.blue .eng-list li::before { background: var(--mg-gold); }
+
+  /* ══════════════════════════════════════════
+     PLAYBOOK BRIDGE
+  ══════════════════════════════════════════ */
+  .playbook-bridge {
+    background: var(--mg-graphite);
+    padding: clamp(48px,6vw,72px) 0;
+  }
+  .bridge-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px; flex-wrap: wrap;
+  }
+  .bridge-inner > div:first-child { max-width: 620px; }
+  .bridge-inner h2 { color: #fff; margin-top: 14px; }
+  .bridge-inner p  { color: #9EA1B3; font-size: 15.5px; margin-top: 14px; }
+
+  .bridge-badge {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 22px 32px;
+    text-align: center; flex-shrink: 0;
+  }
+  .bridge-badge .bv {
+    font-family: var(--serif); font-size: 42px; font-weight: 500;
+    color: var(--mg-gold); line-height: 1;
+  }
+  .bridge-badge .bl {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #9EA1B3; margin-top: 8px; line-height: 1.4;
+  }
+  @media (max-width: 760px) { .bridge-inner { flex-direction: column; align-items: flex-start; } }
+
+  /* ══════════════════════════════════════════
+     REVENUE OPTIMISATION
+  ══════════════════════════════════════════ */
+  .rev-opt {
+    background: var(--mg-blue);
+    padding: clamp(64px,8vw,108px) 0;
+    position: relative; overflow: hidden;
+  }
+  .rev-opt::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(55% 50% at 92% 5%,  rgba(255,255,255,0.09), transparent 54%),
+      radial-gradient(42% 42% at 2%  96%, rgba(255,255,255,0.05), transparent 58%);
+  }
+  .rev-opt .sh { position: relative; z-index: 2; }
+
+  .rev-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative; z-index: 2;
+  }
+  @media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; } }
+
+  .rev-card {
+    background: var(--mg-blue); padding: 38px 32px 42px;
+    display: flex; flex-direction: column; gap: 18px;
+    transition: background 0.22s;
+  }
+  .rev-card:hover { background: var(--mg-blue-deep); }
+
+  .rev-card .r-num { font-family: var(--serif); font-size: 12px; color: #7880E0; letter-spacing: 0.07em; }
+  .rev-card h3 { color: #fff; font-size: 24px; }
+  .rev-card .r-desc { font-size: 14px; color: #B8BCF0; line-height: 1.65; margin: 0; }
+
+  .fn-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: auto; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .fn-tag {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.03em;
+    padding: 5px 13px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #D7D9F5; background: rgba(255,255,255,0.06);
+    white-space: nowrap;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    cursor: default;
+  }
+  .fn-tag:hover {
+    background: rgba(201,162,74,0.18);
+    border-color: rgba(201,162,74,0.45);
+    color: var(--mg-gold);
+  }
+
+  /* ══════════════════════════════════════════
+     PROFIT MAXIMISATION
+  ══════════════════════════════════════════ */
+  .profit {
+    background: var(--mg-graphite);
+    padding: clamp(64px,8vw,108px) 0;
+    position: relative; overflow: hidden;
+  }
+  .profit::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(52% 48% at 80% 28%, rgba(201,162,74,0.07), transparent 62%);
+  }
+  .profit .sh { position: relative; z-index: 2; }
+
+  .profit-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+    position: relative; z-index: 2;
+  }
+  @media (max-width: 760px) { .profit-grid { grid-template-columns: 1fr; } }
+
+  .profit-card {
+    background: transparent; padding: 40px 36px 44px;
+    display: flex; flex-direction: column; gap: 18px;
+    transition: background 0.22s;
+  }
+  .profit-card:hover { background: rgba(255,255,255,0.03); }
+  .profit-card .p-num { font-family: var(--serif); font-size: 12px; color: rgba(201,162,74,0.6); letter-spacing: 0.07em; }
+  .profit-card h3 { color: #fff; font-size: 26px; }
+  .profit-card .p-desc { font-size: 14.5px; color: #9EA1B3; line-height: 1.65; margin: 0; }
+
+  .pt-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: auto; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .pt-tag {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.03em;
+    padding: 5px 13px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #9EA1B3; background: rgba(255,255,255,0.04);
+    white-space: nowrap;
+  }
+  .pt-tag.g {
+    background: rgba(201,162,74,0.14);
+    border-color: rgba(201,162,74,0.38);
+    color: var(--mg-gold);
+  }
+
+  /* ══════════════════════════════════════════
+     OUTCOME STRIP
+  ══════════════════════════════════════════ */
+  .outcome {
+    background: var(--mg-cream);
+    padding: clamp(56px,7vw,88px) 0;
+    border-top: 1px solid var(--mg-rule);
+  }
+  .outcome-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: var(--mg-rule); border: 1px solid var(--mg-rule);
+  }
+  @media (max-width: 640px) { .outcome-grid { grid-template-columns: 1fr; } }
+
+  .outcome-cell {
+    background: var(--mg-cream);
+    padding: 36px 32px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .outcome-cell .o-val {
+    font-family: var(--serif); font-size: clamp(26px,2.8vw,36px);
+    font-weight: 500; color: var(--mg-blue); line-height: 1.1;
+  }
+  .outcome-cell .o-lbl {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mg-mist);
+  }
+
+  /* ══════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════ */
+  footer {
+    background: var(--mg-ink); color: #9EA1B3;
+    padding: 40px 0; font-size: 13px;
+  }
+  .foot-inner {
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .foot-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--serif); font-size: 20px; color: #fff;
+  }
+  .foot-brand::after { content: "."; }
+  .foot-meta { letter-spacing: 0.13em; text-transform: uppercase; font-size: 11px; }
+
+  /* ══════════════════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════════════════ */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.1s; }
+  .d2 { transition-delay: 0.2s; }
+  .d3 { transition-delay: 0.3s; }
+  .d4 { transition-delay: 0.4s; }
+
+  /* ══════════════════════════════════════════
+     GLOBAL RESPONSIVE POLISH
+  ══════════════════════════════════════════ */
+  @media (max-width: 640px) {
+    .wrap, .wrap-narrow { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+
+    <div class="hero-wordmark">
+      <span class="brand">Merigrove</span>
+      <span class="sep">/</span>
+      <span class="doc">The Methodology</span>
+    </div>
+
+    <h1>A framework built for <em>founder-led</em> businesses that have outgrown instinct.</h1>
+    <p class="hero-lede" style="margin-top:26px">Every engagement follows the same logic. Diagnose first. Sequence correctly. Execute with precision and accountability.</p>
+
+    <div class="stage-trail">
+      <div class="st-pill lit"><span class="n">1</span>The Audit</div>
+      <div class="st-arrow"></div>
+      <div class="st-pill lit"><span class="n">2</span>Engagement Model</div>
+      <div class="st-arrow"></div>
+      <div class="st-pill lit"><span class="n">3</span>Revenue Optimisation</div>
+      <div class="st-arrow"></div>
+      <div class="st-pill lit"><span class="n">4</span>Profit Maximisation</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONNECTOR ══ -->
+<div class="connector">
+  <div class="c-line-down"></div>
+  <div class="c-badge">Stage 01 · The Audit</div>
+  <div class="c-line-up"></div>
+</div>
+
+<!-- ══ AUDIT ══════════════════════════════════════ -->
+<section class="audit">
+  <div class="wrap">
+
+    <div class="sh reveal">
+      <div class="eyebrow"><span class="dot"></span>Stage 01</div>
+      <div>
+        <h2>Diagnosing the business before prescribing the solution.</h2>
+        <p style="margin-top:18px;color:var(--mg-mist);font-size:15px;max-width:680px;line-height:1.65">
+          A structured diagnostic across four core domains. The output is a ranked priority list — not a broad recommendation deck — that forms the precise foundation of the playbook.
+        </p>
+      </div>
+    </div>
+
+    <div class="domain-grid">
+
+      <div class="domain-cell reveal d1">
+        <div class="d-num">Domain 01</div>
+        <div class="d-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Sales &amp; Revenue</h4>
+        <p>Pipeline health, conversion rates at each funnel stage, sales team performance, CRM hygiene, and the quality of the sales management layer.</p>
+      </div>
+
+      <div class="domain-cell reveal d2">
+        <div class="d-num">Domain 02</div>
+        <div class="d-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Marketing &amp; Branding</h4>
+        <p>Lead generation volume and quality, channel performance, brand consistency, offer positioning, and content-to-pipeline attribution.</p>
+      </div>
+
+      <div class="domain-cell reveal d3">
+        <div class="d-num">Domain 03</div>
+        <div class="d-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Finance &amp; Operations</h4>
+        <p>Unit economics, margin profile, cash flow patterns, financial reporting quality, operational workflows, and technology cost structure.</p>
+      </div>
+
+      <div class="domain-cell reveal d4">
+        <div class="d-num">Domain 04</div>
+        <div class="d-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Management Layer</h4>
+        <p>Decision-making velocity, team structure, accountability systems, meeting cadence, KPI visibility, and whether leadership is a bottleneck or a multiplier.</p>
+      </div>
+
+    </div>
+
+    <div class="method-strip reveal" style="transition-delay:0.2s">
+      <div class="method-card">
+        <div class="m-num">01</div>
+        <div>
+          <h4>Discovery Call</h4>
+          <p>Structured conversation with the founder covering all four domains. Surfaces the acute pain, the underlying cause, and the founder's theory of what is wrong.</p>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="m-num">02</div>
+        <div>
+          <h4>Discovery Questionnaire</h4>
+          <p>Written submission capturing quantitative data — revenue, conversion rates, team size, CAC, LTV, margin — plus qualitative context on history and blockers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="output-row reveal" style="transition-delay:0.3s">
+      <div class="output-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <p>Output: ranked priority list across all four domains → forms the basis of the initial three-to-six month playbook</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONNECTOR ══ -->
+<div class="connector">
+  <div class="c-line-down"></div>
+  <div class="c-badge">Stage 02 · Engagement Model</div>
+  <div class="c-line-up"></div>
+</div>
+
+<!-- ══ ENGAGEMENT ══════════════════════════════════ -->
+<section class="engagement">
+  <div class="wrap">
+
+    <div class="sh reveal">
+      <div class="eyebrow"><span class="dot"></span>Stage 02</div>
+      <div>
+        <h2>Two ways to work with Merigrove.</h2>
+        <p style="margin-top:18px;color:var(--mg-mist);font-size:15px;max-width:640px;line-height:1.65">
+          The right model is determined during scoping, based on the client's needs, internal capacity, and the nature of the work to be executed. Some engagements blend both models across different workstreams.
+        </p>
+      </div>
+    </div>
+
+    <div class="eng-grid">
+
+      <div class="eng-card blue reveal d1">
+        <div class="eng-tag">Done For You &mdash; DFY</div>
+        <h3>Full operational embedding.</h3>
+        <p>A Merigrove specialist is onboarded into your business as a fractional contractor with access to your systems, tools, and day-to-day operations. We execute directly — not from the outside.</p>
+        <ul class="eng-list">
+          <li>Onboarded into client systems with full operational access</li>
+          <li>Attends relevant meetings and works within the client's environment</li>
+          <li>Takes direct ownership of defined workstreams day-to-day</li>
+          <li>Suited to clients who need hands-on execution capacity</li>
+        </ul>
+      </div>
+
+      <div class="eng-card reveal d2">
+        <div class="eng-tag">Done With You &mdash; DWY</div>
+        <h3>Advisory and consulting.</h3>
+        <p>A Merigrove specialist works alongside your team rather than inside it — providing direction, structured frameworks, and accountability. The client's team handles hands-on execution.</p>
+        <ul class="eng-list">
+          <li>Weekly calls with the specialist and corresponding client team</li>
+          <li>Delivery of memos, frameworks, and structured recommendations</li>
+          <li>Client team owns all implementation</li>
+          <li>Suited to clients with internal capacity who need direction and challenge</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLAYBOOK BRIDGE ══ -->
+<div class="connector">
+  <div class="c-line-dark-down"></div>
+  <div class="c-badge gold">The Playbook · 3–6 Month Initial Engagement</div>
+  <div class="c-line-dark-up"></div>
+</div>
+
+<div class="playbook-bridge">
+  <div class="wrap">
+    <div class="bridge-inner reveal">
+      <div>
+        <div class="eyebrow on-dark"><span class="dot"></span>Stage 03 · The Playbook</div>
+        <h2>Sequenced. Accountable. Revenue first, always.</h2>
+        <p>The playbook always begins with Revenue Optimisation regardless of audit findings. Early revenue wins create credibility, internal alignment, and financial headroom for everything that follows. Profit Maximisation is unlocked once the engine performs.</p>
+      </div>
+      <div class="bridge-badge">
+        <div class="bv">3–6</div>
+        <div class="bl">Month<br>Initial Playbook</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONNECTOR ══ -->
+<div class="connector">
+  <div class="c-line-dark-down" style="background:linear-gradient(to bottom,rgba(201,162,74,0.3),rgba(16,26,214,0.6))"></div>
+  <div class="c-badge" style="background:var(--mg-blue);border-color:var(--mg-blue);color:#fff">Part 01 · Revenue Optimisation</div>
+  <div class="c-line-dark-down" style="background:linear-gradient(to bottom,rgba(16,26,214,0.6),var(--mg-blue))"></div>
+</div>
+
+<!-- ══ REVENUE OPTIMISATION ════════════════════════ -->
+<section class="rev-opt">
+  <div class="wrap">
+
+    <div class="sh reveal">
+      <div class="eyebrow on-blue"><span class="dot"></span>Part 01</div>
+      <div>
+        <h2 style="color:#fff">Revenue Optimisation.</h2>
+        <p style="margin-top:16px;color:#B8BCF0;font-size:15px;max-width:640px;line-height:1.65">
+          Growth, scalability, and predictability. A business with all three grows quickly, absorbs scale without breaking, and stops depending on exceptional months to hit its targets.
+        </p>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+
+      <div class="rev-card reveal">
+        <div class="r-num">1.1</div>
+        <h3>Revenue Growth</h3>
+        <p class="r-desc">Improve pipeline output and close rates using existing resources. The fastest return available — current team and infrastructure are underperforming, and systematic improvement compounds immediately. Covers the full funnel from lead generation to closed revenue.</p>
+        <div class="fn-tags">
+          <span class="fn-tag">Sales Management</span>
+          <span class="fn-tag">Sales Training</span>
+          <span class="fn-tag">Sales Analytics</span>
+          <span class="fn-tag">Marketing &amp; Branding</span>
+        </div>
+      </div>
+
+      <div class="rev-card reveal d1">
+        <div class="r-num">1.2</div>
+        <h3>Revenue Scalability</h3>
+        <p class="r-desc">Put systems in place that allow revenue to grow without proportionally increasing management effort or headcount. Move from a business that scales people to one that scales systems. Onboarding, CRM architecture, automated workflows, management cadence, and recruitment.</p>
+        <div class="fn-tags">
+          <span class="fn-tag">Sales Operations</span>
+          <span class="fn-tag">Sales Management</span>
+          <span class="fn-tag">Marketing &amp; Branding</span>
+          <span class="fn-tag">Management</span>
+        </div>
+      </div>
+
+      <div class="rev-card reveal d2">
+        <div class="r-num">1.3</div>
+        <h3>Revenue Predictability</h3>
+        <p class="r-desc">Give founders the visibility to forecast reliably, reduce dependence on exceptional months, and protect the revenue engine they have built. Unit economics, pipeline reverse-engineering, corporate brand independence, and long-term client value engineering.</p>
+        <div class="fn-tags">
+          <span class="fn-tag">Finance</span>
+          <span class="fn-tag">Marketing &amp; Branding</span>
+          <span class="fn-tag">Sales Management</span>
+          <span class="fn-tag">Product</span>
+          <span class="fn-tag">Operations</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONNECTOR ══ -->
+<div class="connector">
+  <div class="c-line-dark-down" style="background:linear-gradient(to bottom,var(--mg-blue),var(--mg-graphite))"></div>
+  <div class="c-badge dark">Part 02 · Profit Maximisation</div>
+  <div class="c-line-dark-up" style="background:linear-gradient(to bottom,var(--mg-graphite),transparent)"></div>
+</div>
+
+<!-- ══ PROFIT MAXIMISATION ════════════════════════ -->
+<section class="profit">
+  <div class="wrap">
+
+    <div class="sh reveal">
+      <div class="eyebrow on-dark"><span class="dot"></span>Part 02</div>
+      <div>
+        <h2 style="color:#fff">Profit Maximisation.</h2>
+        <p style="margin-top:16px;color:#9EA1B3;font-size:15px;max-width:640px;line-height:1.65">
+          Operational and financial efficiency. The most common failure mode in scaling businesses is costs growing faster than revenue. This part addresses the root causes of margin erosion before it compounds.
+        </p>
+      </div>
+    </div>
+
+    <div class="profit-grid">
+
+      <div class="profit-card reveal">
+        <div class="p-num">2.1</div>
+        <h3>Operational Efficiency</h3>
+        <p class="p-desc">Identify and remove friction in the management and operational layer that is costing time, money, or decision quality. Install the management operating system — productivity systems, meeting cadence, KPIs and reviews for the leadership team — and automate workflows across the wider business.</p>
+        <div class="pt-tags">
+          <span class="pt-tag g">Management</span>
+          <span class="pt-tag g">Operations</span>
+        </div>
+      </div>
+
+      <div class="profit-card reveal d1">
+        <div class="p-num">2.2</div>
+        <h3>Financial Efficiency</h3>
+        <p class="p-desc">Ensure the financial structure is transparent, well-managed, and optimised for profitability — not just top-line growth. Monthly management accounts, accrual vs. cash advisory, business protection metrics (current ratio, gross margin by line), pricing analysis, and a full people and technology cost review.</p>
+        <div class="pt-tags">
+          <span class="pt-tag g">Finance</span>
+          <span class="pt-tag g">Operations</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOME STRIP ═══════════════════════════════ -->
+<section class="outcome">
+  <div class="wrap">
+    <div class="outcome-grid">
+      <div class="outcome-cell reveal">
+        <div class="o-val">Revenue<br>Optimised</div>
+        <div class="o-lbl">Growth &nbsp;·&nbsp; Scalability &nbsp;·&nbsp; Predictability</div>
+      </div>
+      <div class="outcome-cell reveal d1">
+        <div class="o-val">Profit<br>Maximised</div>
+        <div class="o-lbl">Operational &nbsp;·&nbsp; Financial Efficiency</div>
+      </div>
+      <div class="outcome-cell reveal d2">
+        <div class="o-val">Business<br>Protected</div>
+        <div class="o-lbl">Systems that outlast the engagement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">Merigrove</div>
+      <div class="foot-meta">Revenue &amp; Distribution Optimisation · Founder-Led Businesses</div>
+      <div class="foot-meta" style="color:#4A4D5E">Confidential · Internal Use</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
