@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kacper Wiloch — Content Production SOP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:ital@1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --charcoal:#1E1E1C;--slate:#2F2F2D;--orange:#C85A20;--amber:#E8843A;
+  --cream:#F5EFE0;--blush:#EAD5C0;--muted:#7A7870;--border:rgba(245,239,224,0.1);
+  --font-head:'Barlow Condensed',sans-serif;--font-script:'Playfair Display',serif;
+  --font-body:'Barlow',sans-serif;--max-w:1060px;--gap:80px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--charcoal);color:var(--cream);font-family:var(--font-body);font-weight:300;font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.headline{font-family:var(--font-head);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:0.92;color:var(--cream);}
+.script{font-family:var(--font-script);font-style:italic;font-weight:400;color:var(--orange);text-transform:none;letter-spacing:0;}
+.eyebrow{font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:16px;}
+p{color:var(--blush);margin-bottom:1em;}p:last-child{margin-bottom:0;}
+strong{color:var(--cream);font-weight:500;}
+a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(232,132,58,0.3);transition:border-color 0.2s;}
+a:hover{border-color:var(--amber);}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 40px;}
+
+/* COVER */
+.cover{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 70%,rgba(200,90,32,0.14) 0%,transparent 55%);pointer-events:none;}
+.cover-inner{max-width:var(--max-w);margin:0 auto;width:100%;position:relative;z-index:1;}
+.cover-kicker{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.cover-kicker::after{content:'';display:block;width:48px;height:1px;background:var(--orange);}
+.cover-name{font-size:clamp(52px,8.5vw,110px);display:block;}
+.cover-sub{font-size:clamp(24px,3.6vw,48px);color:transparent;-webkit-text-stroke:1px rgba(245,239,224,0.22);display:block;}
+.cover-rule{width:1px;height:52px;background:linear-gradient(to bottom,var(--orange),transparent);margin:32px 0;}
+.cover-tagline{font-family:var(--font-script);font-size:clamp(18px,2.2vw,24px);font-style:italic;color:var(--blush);max-width:520px;line-height:1.4;}
+.cover-meta{margin-top:44px;display:flex;gap:32px;flex-wrap:wrap;}
+.cover-meta-item{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+/* SOURCE STRIP */
+.source-strip{background:var(--slate);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;}
+.source-inner{max-width:var(--max-w);margin:0 auto;padding:0 40px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+.source-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);}
+.source-link{font-size:13px;color:var(--blush);}
+.source-link a{color:var(--amber);}
+
+/* SECTION */
+.section{padding:var(--gap) 0;border-top:1px solid var(--border);}
+.section:first-of-type{border-top:none;}
+.section-number{font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:18px;}
+.section-title{font-size:clamp(36px,5.5vw,60px);margin-bottom:28px;}
+.section-lead{max-width:720px;font-size:16px;color:var(--blush);line-height:1.7;margin-bottom:16px;}
+
+/* ROLES GRID */
+.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:36px;}
+.role-card{background:var(--slate);border:1px solid var(--border);padding:28px 30px;position:relative;}
+.role-card::before{content:'';position:absolute;top:0;left:0;width:36px;height:2px;background:var(--orange);}
+.role-name{font-family:var(--font-head);font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.01em;color:var(--cream);margin-bottom:4px;}
+.role-title{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+.role-responsibilities{list-style:none;margin-top:12px;}
+.role-responsibilities li{font-size:13.5px;color:var(--blush);padding:7px 0 7px 16px;border-bottom:1px solid rgba(245,239,224,0.06);position:relative;line-height:1.5;}
+.role-responsibilities li:last-child{border-bottom:none;}
+.role-responsibilities li::before{content:'—';position:absolute;left:0;color:var(--orange);}
+
+/* WORKFLOW LANES */
+.workflow-lanes{margin-top:36px;}
+.lane{margin-bottom:40px;background:var(--slate);border:1px solid var(--border);}
+.lane:last-child{margin-bottom:0;}
+.lane-header{padding:22px 28px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;}
+.lane-code{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:0.18em;color:var(--orange);}
+.lane-title{font-family:var(--font-head);font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);}
+.lane-owner{font-size:12px;color:var(--muted);font-style:italic;margin-left:auto;}
+.lane-steps{padding:0;}
+.lane-step{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--border);}
+.lane-step:last-child{border-bottom:none;}
+.step-num-col{padding:18px 20px;border-right:1px solid var(--border);background:rgba(200,90,32,0.04);}
+.step-num-big{font-family:var(--font-head);font-size:28px;font-weight:900;color:var(--orange);line-height:1;}
+.step-content{padding:18px 24px;}
+.step-who{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;}
+.step-action{font-family:var(--font-head);font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:var(--cream);margin-bottom:6px;line-height:1.2;}
+.step-detail{font-size:13.5px;color:var(--blush);line-height:1.55;}
+
+/* TIMELINE */
+.timeline-wrap{margin-top:36px;background:var(--slate);border:1px solid var(--border);padding:32px;}
+.timeline-title{font-family:var(--font-head);font-size:18px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:6px;}
+.timeline-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.timeline-row{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
+.timeline-row:last-child{border-bottom:none;}
+.timeline-when{font-family:var(--font-head);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--orange);line-height:1.3;}
+.timeline-when span{display:block;font-size:10px;font-weight:800;letter-spacing:0.14em;color:var(--muted);margin-top:2px;}
+.timeline-what{font-size:13.5px;color:var(--blush);line-height:1.55;}
+.timeline-what strong{color:var(--cream);}
+
+/* QA BLOCK */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;}
+.qa-card{border:1px solid var(--border);padding:26px 28px;background:var(--slate);}
+.qa-card h4{font-family:var(--font-head);font-size:16px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:14px;letter-spacing:0.03em;}
+.qa-card ul{list-style:none;}
+.qa-card ul li{font-size:13.5px;color:var(--blush);padding:7px 0 7px 22px;border-bottom:1px solid rgba(245,239,224,0.06);position:relative;line-height:1.5;}
+.qa-card ul li:last-child{border-bottom:none;}
+.qa-card ul li::before{content:'✓';position:absolute;left:0;top:7px;font-family:var(--font-head);font-size:12px;font-weight:900;color:var(--orange);}
+
+/* CADENCE BLOCK */
+.cadence-wrap{margin-top:32px;border:1px solid var(--border);}
+.cadence-row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--border);}
+.cadence-row:last-child{border-bottom:none;}
+.cadence-when{background:var(--slate);padding:22px 22px;border-right:1px solid var(--border);}
+.cadence-when-day{font-family:var(--font-head);font-size:14px;font-weight:900;text-transform:uppercase;color:var(--orange);letter-spacing:0.04em;line-height:1.2;}
+.cadence-when-detail{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:0.08em;text-transform:uppercase;}
+.cadence-what{padding:22px 26px;}
+.cadence-what h5{font-family:var(--font-head);font-size:13px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:6px;letter-spacing:0.03em;}
+.cadence-what p{font-size:13.5px;margin:0;line-height:1.55;}
+
+/* CALLOUT */
+.callout{border-left:2px solid var(--orange);padding:20px 28px;margin:36px 0;background:rgba(200,90,32,0.06);}
+.callout p{font-family:var(--font-script);font-size:clamp(17px,2.2vw,22px);font-style:italic;color:var(--cream);line-height:1.5;margin:0;}
+
+/* NOTION BOX */
+.notion-box{background:linear-gradient(135deg,rgba(200,90,32,0.1),rgba(232,132,58,0.04));border:1px solid rgba(200,90,32,0.3);padding:28px 32px;margin-top:32px;}
+.notion-box h4{font-family:var(--font-head);font-size:13px;font-weight:900;text-transform:uppercase;color:var(--orange);letter-spacing:0.12em;margin-bottom:10px;}
+.notion-box p{font-size:14px;margin-bottom:10px;}
+.notion-box p:last-child{margin-bottom:0;}
+
+/* RULES TABLE */
+.rules-table{width:100%;border-collapse:collapse;margin-top:32px;}
+.rules-table tr{border-bottom:1px solid var(--border);}
+.rules-table tr:last-child{border-bottom:none;}
+.rules-table td{padding:16px 0;vertical-align:top;font-size:13.5px;}
+.rules-table td:first-child{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);width:160px;padding-right:20px;padding-top:18px;}
+.rules-table td:last-child{color:var(--blush);line-height:1.6;}
+
+/* STATUS KEY */
+.status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:28px;border:1px solid var(--border);}
+.status-cell{padding:18px 20px;border-right:1px solid var(--border);}
+.status-cell:last-child{border-right:none;}
+.status-chip{display:inline-block;font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px;}
+.status-cell p{font-size:12px;line-height:1.5;margin:0;}
+
+/* FOOTER */
+.footer{background:var(--slate);padding:48px 0 34px;border-top:1px solid var(--border);margin-top:var(--gap);}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+.footer-name{font-family:var(--font-head);font-size:clamp(22px,3.5vw,38px);font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;}
+.footer-meta{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.7;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.cover-inner>*{animation:fadeUp 0.7s ease forwards;opacity:0;}
+.cover-kicker{animation-delay:0.1s;}.cover-name{animation-delay:0.2s;}.cover-sub{animation-delay:0.3s;}
+.cover-rule{animation-delay:0.4s;}.cover-tagline{animation-delay:0.5s;}.cover-meta{animation-delay:0.6s;}
+
+@media(max-width:800px){
+  .container{padding:0 20px;}
+  :root{--gap:56px;}
+  .roles-grid,.qa-grid{grid-template-columns:1fr;}
+  .status-grid{grid-template-columns:1fr 1fr;}
+  .lane-step{grid-template-columns:56px 1fr;}
+  .cadence-row{grid-template-columns:1fr;}
+  .cadence-when{border-right:none;border-bottom:1px solid var(--border);}
+  .timeline-row{grid-template-columns:1fr;gap:4px;}
+  .cover,.footer-inner,.source-inner{padding-left:20px;padding-right:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <span class="cover-kicker">Content Production SOP</span>
+    <span class="headline cover-name">Kacper<br>Wiloch</span>
+    <span class="headline cover-sub">How We Make the Work</span>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">One team. One cadence. One standard.<br>Strategy-led, data-informed, well-made.</p>
+    <div class="cover-meta">
+      <span class="cover-meta-item">April 2026</span>
+      <span class="cover-meta-item">Version 1.2</span>
+      <span class="cover-meta-item">Jack · Juan · Tommy · Lucy · Noah</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCE STRIP -->
+<div class="source-strip">
+  <div class="source-inner">
+    <span class="source-label">Single Source of Truth</span>
+    <span class="source-link">Merigrove Content workspace &middot; <a href="https://www.notion.so/Merigrove-Content-344e62dee43a80c586fddc0dc65c9328?source=copy_link" target="_blank" rel="noopener">notion.so/Merigrove-Content</a></span>
+  </div>
+</div>
+
+<main class="container">
+
+<!-- 01 PURPOSE -->
+<section class="section" id="purpose">
+  <span class="section-number">01 &mdash; Purpose</span>
+  <h2 class="headline section-title">What This <span class="script">Document Is</span></h2>
+
+  <p class="section-lead">This SOP governs how content is produced for Kacper Wiloch across Instagram, LinkedIn, and Threads. It is the operating layer beneath the brand guidelines and the fortnightly content plan. It names the people, the sequence, the deadlines, and the decision points.</p>
+
+  <p class="section-lead">Every piece of content for Kacper runs on a two-week production cycle. The cadence, pillars, and content types are already locked in the fortnightly content plan. This document is about how the work gets made, by whom, and when.</p>
+
+  <div class="callout">
+    <p>Brief on Friday. Shoot on Saturday. Edit and review early week. Post on schedule. The cadence protects the quality.</p>
+  </div>
+</section>
+
+<!-- 02 TEAM & RESPONSIBILITIES -->
+<section class="section" id="team">
+  <span class="section-number">02 &mdash; Team and Responsibilities</span>
+  <h2 class="headline section-title">Who Does <span class="script">What</span></h2>
+
+  <p class="section-lead">Five roles. Clear ownership at every stage. Nothing should ever be "in the middle" without a named person accountable for moving it forward.</p>
+
+  <div class="roles-grid">
+
+    <div class="role-card">
+      <div class="role-name">Jack</div>
+      <div class="role-title">Brand QA &middot; Value Prop Alignment</div>
+      <p style="font-size:14px;">Owns brand QA across all output and ensures messaging tracks with Kacper&rsquo;s core value proposition and broader corporate strategy. Co-runs QA with Juan and holds the client-facing relationship end-to-end.</p>
+      <ul class="role-responsibilities">
+        <li>Brand QA on every carousel, reel, and LinkedIn post</li>
+        <li>Ensures messaging aligns with the core value prop</li>
+        <li>Holds voice, tone, and visual system integrity</li>
+        <li>Manages Notion source-of-truth structure and hygiene</li>
+        <li>Owns the client-facing accountability with Kacper</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-name">Juan</div>
+      <div class="role-title">Strategy lead &middot; Scripts &amp; Analytics</div>
+      <p style="font-size:14px;">Owns the strategy for the entire content system &mdash; from fortnightly thematics down to format-level performance analytics. Writes all reel briefs, carousel copy, and holds the organic reach lens across the plan.</p>
+      <ul class="role-responsibilities">
+        <li>Runs the fortnightly strategy kick-off and retrospective</li>
+        <li>Owns performance analytics by format, pillar, and platform</li>
+        <li>Writes reel talking points and briefs for Kacper to shoot</li>
+        <li>Writes carousel copy and provides a design brief to Lucy</li>
+        <li>Manages publishing on Instagram (reels, carousels, grid)</li>
+        <li>Co-runs QA with Jack across every piece of content</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-name">Tommy</div>
+      <div class="role-title">Copywriter &middot; LinkedIn &amp; Threads</div>
+      <p style="font-size:14px;">Owns all written copy and publishing on LinkedIn and Threads. Works with more latitude than on reels or carousels &mdash; the guardrails are the brand voice guide and the format library, not a per-post brief.</p>
+      <ul class="role-responsibilities">
+        <li>Writes all 14 LinkedIn posts per fortnight</li>
+        <li>Writes both Threads batches (7 posts each, delivered Monday)</li>
+        <li>Manages publishing on LinkedIn and Threads</li>
+        <li>Uploads drafts to Notion in advance of publish date</li>
+        <li>Matches Kacper&rsquo;s voice: direct, earned, diagnostic, specific</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-name">Lucy</div>
+      <div class="role-title">Graphic designer &middot; Carousels</div>
+      <p style="font-size:14px;">Owns all carousel design to brand spec. Works from Juan's written brief and copy. Holds the visual system — typography pairings, palette, photography treatment — in every asset she produces.</p>
+      <ul class="role-responsibilities">
+        <li>Designs all IG carousels from Juan's brief (IG·C1, C2, C3)</li>
+        <li>Produces supporting graphics for LinkedIn posts where needed</li>
+        <li>Applies brand guidelines consistently across every asset</li>
+        <li>Delivers to Notion at least 3 working days before publish</li>
+        <li>Revises once per round based on Juan and Jack's feedback</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-name">Noah</div>
+      <div class="role-title">Video lead &middot; Reels</div>
+      <p style="font-size:14px;">Owns all short-form video output. Takes raw footage from Kacper plus Juan&rsquo;s brief and produces the edit to brand spec. Manages any sub-contracted editor capacity when volume demands it.</p>
+      <ul class="role-responsibilities">
+        <li>Edits all 10 short-form reels per fortnight</li>
+        <li>Manages editor capacity and sub-contracts if Kacper scales</li>
+        <li>Receives raw footage Monday morning, delivers edits by Friday</li>
+        <li>Maintains S-Log3 grading standard and brand typography</li>
+        <li>Supports Juan on publish-ready asset handover</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-name">Kacper</div>
+      <div class="role-title">Talent &middot; Approvals</div>
+      <p style="font-size:14px;">Films all talking heads in batched sessions &mdash; every Saturday at minimum, earlier in the week by choice. Supplies B-roll and lifestyle stills. Posts IG Stories and the Sunday LinkedIn note directly. Approves every reel and carousel before it goes live.</p>
+      <ul class="role-responsibilities">
+        <li>Films reels in batch sessions from Juan&rsquo;s briefs &mdash; Saturday at minimum</li>
+        <li>Optional earlier shoot slots through the week if preferred</li>
+        <li>Uploads raw footage to Drive and flags in Slack</li>
+        <li>Supplies B-roll and lifestyle stills on an ongoing basis</li>
+        <li>Approves all reel edits within 24 hours of delivery</li>
+        <li>Posts IG Stories and Sunday LI directly &mdash; no approval chain</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 PRODUCTION LANES -->
+<section class="section" id="lanes">
+  <span class="section-number">03 &mdash; Production Lanes</span>
+  <h2 class="headline section-title">Three <span class="script">Lanes</span>, Three Workflows</h2>
+
+  <p class="section-lead">Reels, carousels, and written posts each move through a different production chain. The person who owns each step is named. Nothing is ambiguous.</p>
+
+  <div class="workflow-lanes">
+
+    <!-- LANE 1 REELS -->
+    <div class="lane">
+      <div class="lane-header">
+        <span class="lane-code">Lane 01</span>
+        <span class="lane-title">Reels &middot; Talking Head + B-Roll</span>
+        <span class="lane-owner">Juan → Kacper → Noah → Juan &amp; Jack</span>
+      </div>
+      <div class="lane-steps">
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">01</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &middot; Brief</div>
+            <div class="step-action">Write Talking Points and Shot Brief</div>
+            <div class="step-detail">One document per reel. Names the format code (IG&middot;R1, R2, R3, etc.), the hook, 3&ndash;5 talking points, the CTA, and any B-roll references. Delivered to Notion by Friday of the prior week so Kacper has it ahead of any weekend or earlier-in-the-week shoot.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">02</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &amp; Jack &middot; Brief Review</div>
+            <div class="step-action">Align on Strategy and Brand Before Shoot</div>
+            <div class="step-detail">Juan and Jack review all reel briefs as a bundle by Thursday of the prior week. Juan owns strategic direction; Jack checks brand and value-prop alignment. Anything needing rework is handled before Kacper shoots.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">03</span></div>
+          <div class="step-content">
+            <div class="step-who">Kacper &middot; Shoot</div>
+            <div class="step-action">Film Batched Talking Heads (Saturday Minimum)</div>
+            <div class="step-detail">All five reel talking heads for the week filmed from Juan&rsquo;s approved briefs. Saturday is the default batch day; Kacper may elect to shoot earlier in the week. S-Log3 standard. Raw footage uploaded to the fortnight&rsquo;s Drive folder and flagged in Slack as soon as it lands.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">04</span></div>
+          <div class="step-content">
+            <div class="step-who">Noah &middot; Edit</div>
+            <div class="step-action">Full Week Edit Window &mdash; Mon to Fri</div>
+            <div class="step-detail">Kacper hands raw footage to Noah on Monday morning. Noah works through the edits across the full week: grade, typography, overlays, CTA cards. All five reels delivered to Notion by Friday, ready to publish the following week. The one-week window protects edit quality at volume.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">05</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &amp; Jack &middot; Joint QA</div>
+            <div class="step-action">Strategy and Brand Review</div>
+            <div class="step-detail">Juan reviews for strategy and format fidelity (does the hook land? does the CTA match? does the edit serve the brief?). Jack reviews for brand and value-prop alignment. Feedback consolidated into one revision pass back to Noah. Target turnaround: same day.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">06</span></div>
+          <div class="step-content">
+            <div class="step-who">Kacper &middot; Final Approval</div>
+            <div class="step-action">Authenticity Check and Greenlight</div>
+            <div class="step-detail">Kacper reviews each approved cut. 24-hour turnaround. Once greenlit, Juan publishes to Instagram on the scheduled date.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LANE 2 CAROUSELS -->
+    <div class="lane">
+      <div class="lane-header">
+        <span class="lane-code">Lane 02</span>
+        <span class="lane-title">Carousels &middot; Educational + Lifestyle</span>
+        <span class="lane-owner">Juan → Lucy → Juan &amp; Jack</span>
+      </div>
+      <div class="lane-steps">
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">01</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &middot; Copy + Brief</div>
+            <div class="step-action">Write Slide Copy and Design Brief</div>
+            <div class="step-detail">One document per carousel. Full copy slide-by-slide. Named format (IG&middot;C1, C2, C3). Clear message, target audience state, design notes (tone, reference patterns from the brand guide). Delivered to Notion by Thursday of the prior week.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">02</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &amp; Jack &middot; Copy Review</div>
+            <div class="step-action">Align Before Design Begins</div>
+            <div class="step-detail">Juan and Jack review the copy together before Lucy starts. If the hook or message needs sharpening, it happens here &mdash; not at the design stage. Thursday content meeting is the natural check-in for this.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">03</span></div>
+          <div class="step-content">
+            <div class="step-who">Lucy &middot; Design</div>
+            <div class="step-action">Produce Carousel to Brand Spec</div>
+            <div class="step-detail">Lucy designs from the approved brief and copy. Applies brand system: condensed heavy headline with cursive script accent, warm cream on charcoal, photography treatments per brand guide. Full deck delivered to Notion at least 3 working days before publish date.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">04</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &amp; Jack &middot; Joint QA</div>
+            <div class="step-action">Strategy and Brand Review</div>
+            <div class="step-detail">Juan reviews for hook quality and format fidelity. Jack reviews for brand system integrity and value-prop alignment. Consolidated feedback to Lucy. One revision round. Target turnaround: 1 working day.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">05</span></div>
+          <div class="step-content">
+            <div class="step-who">Kacper &middot; Final Approval</div>
+            <div class="step-action">Approve and Move to Publish</div>
+            <div class="step-detail">Kacper reviews and approves the final deck within 24 hours. Juan publishes to Instagram on the scheduled date.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LANE 3 WRITTEN -->
+    <div class="lane">
+      <div class="lane-header">
+        <span class="lane-code">Lane 03</span>
+        <span class="lane-title">LinkedIn &amp; Threads &middot; Written</span>
+        <span class="lane-owner">Tommy → Juan &amp; Jack → Kacper → Tommy publishes</span>
+      </div>
+      <div class="lane-steps">
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">01</span></div>
+          <div class="step-content">
+            <div class="step-who">Tommy &middot; Draft</div>
+            <div class="step-action">Write Against the Format Library</div>
+            <div class="step-detail">Tommy works from the 7-format LinkedIn rotation (LI&middot;Mon through LI&middot;Sun) and the Threads format library (Echo, Question, List, Receipt, Observation, Series). Full week of LinkedIn + full Threads batch delivered to Notion by Friday of the prior week.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">02</span></div>
+          <div class="step-content">
+            <div class="step-who">Juan &amp; Jack &middot; Joint QA</div>
+            <div class="step-action">Strategy and Brand Review</div>
+            <div class="step-detail">Juan reviews for hook quality, format compliance, and strategic alignment across the week&rsquo;s arc. Jack reviews for voice, brand, and value-prop alignment. Edits in Notion or flag for Tommy to revise. Target turnaround: 1 working day.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">03</span></div>
+          <div class="step-content">
+            <div class="step-who">Kacper &middot; Final Read</div>
+            <div class="step-action">Approve Voice</div>
+            <div class="step-detail">Kacper reads final drafts for voice authenticity and factual accuracy on any claims, numbers, or case studies. Approves in Notion.</div>
+          </div>
+        </div>
+
+        <div class="lane-step">
+          <div class="step-num-col"><span class="step-num-big">04</span></div>
+          <div class="step-content">
+            <div class="step-who">Tommy &middot; Publish</div>
+            <div class="step-action">Post to LinkedIn and Threads</div>
+            <div class="step-detail">Tommy publishes LinkedIn posts on the scheduled day. Threads batch (7 posts) scheduled Monday morning via a scheduler or posted live through the week per agreed rhythm. All publish confirmations logged in Notion.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 04 FORTNIGHT TIMELINE -->
+<section class="section" id="timeline">
+  <span class="section-number">04 &mdash; Fortnight Timeline</span>
+  <h2 class="headline section-title">Lead Times, <span class="script">Day by Day</span></h2>
+
+  <p class="section-lead">The content team meets weekly &mdash; Monday to confirm the weekend shoot landed cleanly and hand raw footage to Noah, Thursday to finalise briefs for the Friday handover. Because reels need a full week to edit at volume, production runs one week ahead of publish: Kacper shoots the content for the following week, not the current one.</p>
+
+  <div class="timeline-wrap">
+    <div class="timeline-title">Ramp-Up Week &middot; The 7 Days Before Publishing Begins</div>
+    <div class="timeline-sub">First fortnight only &mdash; from here, the cycle becomes self-sustaining.</div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Monday<span>Day -7</span></div>
+      <div class="timeline-what"><strong>Fortnight strategy kick-off.</strong> Juan leads the session with Jack and Kacper. Juan presents the previous fortnight&rsquo;s analytics by format, pillar, and platform. Confirm thematics, hooks, and tactical priorities. Sign off the format slot map from the content plan.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Tue &ndash; Wed<span>Days -6 to -5</span></div>
+      <div class="timeline-what"><strong>Brief and copy production.</strong> Juan writes all Week 1 reel briefs and carousel copy. Tommy writes Week 1 LinkedIn and Threads batch. All drafts into Notion as completed.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Thursday<span>Day -4</span></div>
+      <div class="timeline-what"><strong>Thursday content meeting.</strong> Full team. Juan and Jack review Week 1 briefs together. Lucy confirms carousel brief clarity. Noah flags any production considerations. Final tweaks landed before Friday handover.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Friday<span>Day -3</span></div>
+      <div class="timeline-what"><strong>Brief handover to Kacper.</strong> All Week 1 reel briefs and talking points delivered to Kacper. Carousel copy to Lucy. Tommy&rsquo;s Week 1 written copy in Notion for joint QA.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Sat (min)<span>Day -2</span></div>
+      <div class="timeline-what"><strong>Kacper shoots Week 1.</strong> Saturday default, earlier by election. All Week 1 talking heads filmed from approved briefs. Raw footage uploaded to Drive and flagged in Slack.</div>
+    </div>
+
+  </div>
+
+  <div class="timeline-wrap" style="margin-top:24px;">
+    <div class="timeline-title">Production Week A &middot; Days 1 to 7</div>
+    <div class="timeline-sub">Kacper&rsquo;s Week 1 footage is edited. Carousels, LinkedIn, Threads publish live. Week 2 briefs finalise.</div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Monday<span>Day 01</span></div>
+      <div class="timeline-what"><strong>Monday content meeting.</strong> Full team. Kacper hands Week 1 raw footage to Noah. Confirm everything uploaded cleanly. Noah begins the edit window. Carousels and written content begin publishing from Day 01 since they have their own lead times.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Mon &ndash; Fri<span>Days 01&ndash;05</span></div>
+      <div class="timeline-what"><strong>Noah&rsquo;s edit window.</strong> Full week to produce all five Week 1 reels. Grade, typography, overlays, CTA cards. Juan writes Week 2 briefs in parallel. Tommy writes Week 2 LinkedIn and Threads batch in parallel.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Thursday<span>Day 04</span></div>
+      <div class="timeline-what"><strong>Thursday content meeting.</strong> Full team. Juan and Jack review Week 2 briefs. Final tweaks before Friday handover. Lucy confirms Week 2 carousel status.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Friday<span>Day 05</span></div>
+      <div class="timeline-what"><strong>Week 1 edits delivered. Week 2 briefs handed to Kacper.</strong> Noah delivers all five edited Week 1 reels to Notion for joint QA. Juan and Jack begin Week 1 reel QA. Week 2 reel briefs go to Kacper for the weekend shoot.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Sat (min)<span>Day 06</span></div>
+      <div class="timeline-what"><strong>Kacper shoots Week 2.</strong> Saturday default, earlier by election. Week 2 talking heads filmed. Raw footage to Drive. Kacper posts IG Story direct.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Sunday<span>Day 07</span></div>
+      <div class="timeline-what"><strong>Week A closes.</strong> Kacper posts Sunday LinkedIn direct. Week 1 reel QA wraps up over the weekend so edits are approved and ready to publish from Monday.</div>
+    </div>
+
+  </div>
+
+  <div class="timeline-wrap" style="margin-top:24px;">
+    <div class="timeline-title">Production Week B &middot; Days 8 to 14</div>
+    <div class="timeline-sub">Week 1 reels publish. Week 2 footage is edited. Next fortnight&rsquo;s strategy begins.</div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Monday<span>Day 08</span></div>
+      <div class="timeline-what"><strong>Monday content meeting.</strong> Full team. Kacper hands Week 2 raw footage to Noah. Confirm Week 1 reels are all approved and scheduled. Week 1 reel publishing begins. Week 2 edit window opens.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Mon &ndash; Fri<span>Days 08&ndash;12</span></div>
+      <div class="timeline-what"><strong>Week 1 reels live. Week 2 in the edit.</strong> Juan publishes approved reels across the week to their scheduled Instagram slots. Noah works through the Week 2 edits. Juan begins writing next fortnight&rsquo;s briefs based on emerging Week 1 performance data.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Thursday<span>Day 11</span></div>
+      <div class="timeline-what"><strong>Thursday content meeting.</strong> Full team. Juan shares live performance signals from Week 1 reels. Review next fortnight&rsquo;s briefs and land final tweaks.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Friday<span>Day 12</span></div>
+      <div class="timeline-what"><strong>Week 2 edits delivered. Next fortnight&rsquo;s briefs handed to Kacper.</strong> Noah delivers all five Week 2 reels for joint QA. Next fortnight&rsquo;s Week 1 reel briefs go to Kacper for the weekend shoot.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Sat (min)<span>Day 13</span></div>
+      <div class="timeline-what"><strong>Kacper shoots next fortnight&rsquo;s Week 1.</strong> The cycle rolls forward. Saturday default, earlier by election.</div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-when">Sunday<span>Day 14</span></div>
+      <div class="timeline-what"><strong>Fortnight closes.</strong> DM TEAM conversion reel publishes. Juan runs the retrospective and analytics roll-up. Next cycle&rsquo;s Monday kick-off sits the following day.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 05 NOTION AS SOURCE OF TRUTH -->
+<section class="section" id="notion">
+  <span class="section-number">05 &mdash; Notion: Source of Truth</span>
+  <h2 class="headline section-title">Where the <span class="script">Work Lives</span></h2>
+
+  <p class="section-lead">Every piece of content &mdash; brief, copy, design, edit, approval status &mdash; lives in the Merigrove Content Notion workspace. Nothing shipped to production lives only in Slack or email. If it isn&rsquo;t in Notion, it doesn&rsquo;t exist.</p>
+
+  <div class="notion-box">
+    <h4>Workspace Link</h4>
+    <p><a href="https://www.notion.so/Merigrove-Content-344e62dee43a80c586fddc0dc65c9328?source=copy_link" target="_blank" rel="noopener">notion.so/Merigrove-Content-344e62dee43a80c586fddc0dc65c9328</a></p>
+    <p>All team members must have edit access. Any write operation from external tooling requires the page UUID in hyphenated format.</p>
+  </div>
+
+  <p class="section-lead" style="margin-top:32px;">Every content entry in Notion carries a consistent set of fields so status can be tracked at a glance.</p>
+
+  <table class="rules-table">
+    <tr><td>Format code</td><td>IG&middot;R1, LI&middot;Tue, TH&middot;Echo, etc. Pulled directly from the format library. Never invent a new code without strategy sign-off.</td></tr>
+    <tr><td>Publish date</td><td>The fixed calendar date the content will go live. Tied to the fortnightly content calendar.</td></tr>
+    <tr><td>Pillar</td><td>P1 Authority &middot; P2 Story &middot; P3 Proof &middot; P4 Belief Shift &middot; P5 CTA &amp; Offer. Exactly one per piece.</td></tr>
+    <tr><td>Owner</td><td>The person responsible for the current step. Changes as the piece moves through the lane. Never blank.</td></tr>
+    <tr><td>Status</td><td>One of the four values below.</td></tr>
+    <tr><td>Assets</td><td>Links to the brief, copy, raw footage, edited files, and final publishable asset. All in one place on the content entry.</td></tr>
+    <tr><td>Notes</td><td>Any revision history, context for Kacper, or performance observations after publish.</td></tr>
+  </table>
+
+  <div class="status-grid">
+    <div class="status-cell">
+      <span class="status-chip">01 Briefed</span>
+      <p>Brief written and submitted. Awaiting strategy greenlight from Jack.</p>
+    </div>
+    <div class="status-cell">
+      <span class="status-chip">02 In Production</span>
+      <p>Brief greenlit. Copy, design, or edit in progress. Owner named.</p>
+    </div>
+    <div class="status-cell">
+      <span class="status-chip">03 In QA</span>
+      <p>First draft delivered. Juan and Jack run joint QA, then Kacper does the final read.</p>
+    </div>
+    <div class="status-cell">
+      <span class="status-chip">04 Approved</span>
+      <p>Ready to publish on the scheduled date. All sign-offs recorded.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 QA STANDARDS -->
+<section class="section" id="qa">
+  <span class="section-number">06 &mdash; QA Standards</span>
+  <h2 class="headline section-title">What Every Piece <span class="script">Must Pass</span></h2>
+
+  <p class="section-lead">Three lenses across two QA passes. Juan and Jack run joint QA together. Kacper does the final authenticity read. Each lens asks different questions.</p>
+
+  <div class="qa-grid">
+
+    <div class="qa-card">
+      <h4>Juan &middot; Strategy &amp; Format QA</h4>
+      <ul>
+        <li>Does it match the strategic intent of the brief?</li>
+        <li>Is the hook doing the work it needs to do?</li>
+        <li>Is the target belief shift or insight landing clearly?</li>
+        <li>Does the pace and structure respect the named format?</li>
+        <li>Is the piece fit for the analytics signal we&rsquo;re testing?</li>
+      </ul>
+    </div>
+
+    <div class="qa-card">
+      <h4>Jack &middot; Brand &amp; Value Prop QA</h4>
+      <ul>
+        <li>Does the voice match the brand guide? Direct, diagnostic, earned.</li>
+        <li>Does the messaging track with the core value proposition?</li>
+        <li>British English throughout. No em-dashes.</li>
+        <li>Visual system intact: palette, typography pairing, photography treatment.</li>
+        <li>No claims that aren&rsquo;t backed by Kacper&rsquo;s lived experience.</li>
+      </ul>
+    </div>
+
+    <div class="qa-card">
+      <h4>Kacper &middot; Authenticity QA</h4>
+      <ul>
+        <li>Does this sound like something he would actually say?</li>
+        <li>Are the numbers, claims, and case studies accurate?</li>
+        <li>Is any personal context (family, fight training, clients) handled respectfully?</li>
+        <li>Is the CTA one he is willing to stand behind?</li>
+        <li>Final authority on publish, always.</li>
+      </ul>
+    </div>
+
+    <div class="qa-card">
+      <h4>Hard Stops &middot; Auto-Reject Triggers</h4>
+      <ul>
+        <li>Em-dashes anywhere in the copy</li>
+        <li>US spelling or phrasing</li>
+        <li>Vocabulary from the &ldquo;avoid&rdquo; list (hustle, grind, hack, mindset reset, etc.)</li>
+        <li>Generic stock or motivational imagery</li>
+        <li>Claims without proof when proof is required</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- 07 CADENCE RITUALS -->
+<section class="section" id="cadence">
+  <span class="section-number">07 &mdash; Cadence Rituals</span>
+  <h2 class="headline section-title">The Meetings That <span class="script">Run the Machine</span></h2>
+
+  <p class="section-lead">Four recurring rituals keep the production chain honest. None of them are optional.</p>
+
+  <div class="cadence-wrap">
+
+    <div class="cadence-row">
+      <div class="cadence-when">
+        <div class="cadence-when-day">Weekly</div>
+        <div class="cadence-when-detail">Monday &middot; 30 min</div>
+      </div>
+      <div class="cadence-what">
+        <h5>Monday Content Meeting</h5>
+        <p><strong>Who:</strong> Full content team (Juan, Tommy, Lucy, Noah, Jack). <strong>Purpose:</strong> Kacper hands raw footage from the weekend shoot to Noah. Confirm everything uploaded cleanly. Noah opens the week-long edit window. Any production blockers surfaced and assigned. Publishing slate for the week confirmed.</p>
+      </div>
+    </div>
+
+    <div class="cadence-row">
+      <div class="cadence-when">
+        <div class="cadence-when-day">Weekly</div>
+        <div class="cadence-when-detail">Thursday &middot; 30 min</div>
+      </div>
+      <div class="cadence-what">
+        <h5>Thursday Content Meeting</h5>
+        <p><strong>Who:</strong> Full content team. <strong>Purpose:</strong> Confirm the following week&rsquo;s briefs are ready for Friday handover to Kacper. Final tweaks on reel briefs, carousel copy, and written drafts. Juan and Jack joint-QA outstanding pieces live where useful. Lucy flags any carousel status risks.</p>
+      </div>
+    </div>
+
+    <div class="cadence-row">
+      <div class="cadence-when">
+        <div class="cadence-when-day">Fortnightly</div>
+        <div class="cadence-when-detail">Monday &middot; 60 min</div>
+      </div>
+      <div class="cadence-what">
+        <h5>Strategy Kick-off &middot; Juan-led</h5>
+        <p><strong>Who:</strong> Juan, Jack, Kacper. <strong>Purpose:</strong> Juan presents the previous fortnight&rsquo;s analytics and proposes the strategic direction for the next cycle. Confirm thematics, hooks, and tactical priorities. Lock the slot-level content plan. Greenlight the experiment block for Week 2 Wednesday.</p>
+      </div>
+    </div>
+
+    <div class="cadence-row">
+      <div class="cadence-when">
+        <div class="cadence-when-day">Fortnightly</div>
+        <div class="cadence-when-detail">End of Cycle &middot; 45 min</div>
+      </div>
+      <div class="cadence-what">
+        <h5>Retrospective &amp; Analytics Review &middot; Juan-led</h5>
+        <p><strong>Who:</strong> Juan, Jack. <strong>Purpose:</strong> Juan pulls performance data by format code, pillar, and platform. Which IG&middot;R types outperformed? Which LI days drove the most engagement? Which Threads formats carried? Juan ties insights directly to the next fortnight&rsquo;s strategy. This is where meaningful analytics enter the system.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 08 ESCALATION AND EXCEPTIONS -->
+<section class="section" id="escalation">
+  <span class="section-number">08 &mdash; Escalation and Exceptions</span>
+  <h2 class="headline section-title">When Things <span class="script">Go Sideways</span></h2>
+
+  <p class="section-lead">The production chain is built to absorb small friction without breaking. When bigger issues surface, there is a clear path forward &mdash; surfaced in the Thursday content meeting where possible, or directly between Juan and Jack where timing demands it.</p>
+
+  <table class="rules-table">
+    <tr><td>Brief misses Friday handover</td><td>The piece rolls forward to the next slot of the same format in the calendar. Juan and Jack decide together whether to backfill from the evergreen reserve or leave the slot dark.</td></tr>
+    <tr><td>Kacper shoot slips</td><td>If neither a Saturday nor an earlier-week slot lands before brief handover, draw from the evergreen reserve. Juan adjusts the publishing schedule for the affected week. No panic shoots &mdash; cadence matters more than any single piece.</td></tr>
+    <tr><td>Edit misses Friday delivery</td><td>Noah flags in the Thursday content meeting as soon as it&rsquo;s at risk. Juan and Jack decide whether to delay the affected reel by a week or swap the slot with an evergreen reserve piece.</td></tr>
+    <tr><td>Carousel misses 3-day window</td><td>Lucy flags in the Thursday content meeting or earlier via Slack. Juan and Jack decide together whether to delay publish or accept a truncated revision window.</td></tr>
+    <tr><td>Major voice or brand departure</td><td>Any team member can flag a piece that feels significantly off-brand or off-voice. Juan and Jack review together and decide to hold, revise, or publish. Ownership of the flag is not ownership of the decision.</td></tr>
+    <tr><td>Experiment block idea doesn&rsquo;t land</td><td>Default to a standard IG&middot;R3 diagnostic reel for Week 2 Wednesday. The slot is never left empty, but the experiment returns next fortnight.</td></tr>
+    <tr><td>Performance anomaly</td><td>A single piece underperforming by 50%+ against baseline is logged in Notion for Juan to factor into the retrospective. Not a crisis &mdash; data for the fortnightly review.</td></tr>
+  </table>
+
+  <div class="callout" style="margin-top:32px;">
+    <p>The evergreen reserve: three pre-approved talking-head reels on Kacper&rsquo;s strongest authority topics, filmed once a quarter, held for emergency use. No other unapproved content goes live under any circumstance.</p>
+  </div>
+</section>
+
+<!-- 09 SUMMARY CARD -->
+<section class="section" id="summary">
+  <span class="section-number">09 &mdash; At a Glance</span>
+  <h2 class="headline section-title">The Whole <span class="script">System</span></h2>
+
+  <table class="rules-table">
+    <tr><td>Cycle</td><td>Two weeks. Fourteen-day production cycle locked to the fortnightly content plan.</td></tr>
+    <tr><td>Team rhythm</td><td>Monday and Thursday content meetings, weekly. Fortnightly strategy kick-off and retrospective, both Juan-led.</td></tr>
+    <tr><td>Brief handover</td><td>Friday of the prior week. All reel briefs, carousel copy, and written drafts in place before Kacper shoots.</td></tr>
+    <tr><td>Shoot cadence</td><td>Saturday is the default batch day. Kacper may elect to shoot earlier in the week if his schedule allows.</td></tr>
+    <tr><td>Edit window</td><td>Kacper hands raw footage to Noah on Monday morning. Noah delivers all five edited reels by Friday. One full week per batch, protecting edit quality at volume.</td></tr>
+    <tr><td>Production lead</td><td>Reels run one week ahead of publish. Kacper shoots this week&rsquo;s batch for next week&rsquo;s publish slots. Carousels and written content follow their own lead times and can publish in the same week they&rsquo;re produced.</td></tr>
+    <tr><td>Carousel lead time</td><td>Minimum 3 working days from Lucy&rsquo;s receipt of approved copy to publish date.</td></tr>
+    <tr><td>Written copy lead time</td><td>Friday of the prior week for the full following week&rsquo;s LinkedIn and Threads batch.</td></tr>
+    <tr><td>Source of truth</td><td>Merigrove Content Notion workspace. No parallel systems. If it isn&rsquo;t in Notion, it doesn&rsquo;t exist.</td></tr>
+    <tr><td>QA model</td><td>Juan and Jack joint-QA every piece. Juan on strategy and format. Jack on brand and value prop. Kacper does the authenticity read before publish.</td></tr>
+    <tr><td>Publishing</td><td>Juan on Instagram. Tommy on LinkedIn and Threads. Kacper posts IG Stories and Sunday LI direct.</td></tr>
+    <tr><td>DM TEAM trigger</td><td>At minimum once per fortnight (Sunday Week 2 reel). Optional in any Diagnostic or Belief Shift reel where natural.</td></tr>
+  </table>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Kacper <span class="script">Wiloch</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:0.05em;">Content Production SOP &middot; Version 1.2</div>
+    </div>
+    <div class="footer-meta">
+      <div>Prepared April 2026</div>
+      <div>Jack Manley &middot; Brand &amp; Content Strategy</div>
+      <div>Juan (Strategy) &middot; Tommy (Copy) &middot; Lucy (Design) &middot; Noah (Video)</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
