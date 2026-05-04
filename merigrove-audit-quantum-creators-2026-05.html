@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<title>Merigrove | Quantum Creators — Finance & Operations Audit</title>
+<title>Merigrove | Quantum Creators — Full Business Audit</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +25,9 @@
     --serif: "Fraunces", Georgia, "Times New Roman", serif;
     --sans:  "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  body {
-    font-family: var(--sans);
-    color: var(--mg-ink);
-    background: var(--mg-cream);
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.6;
-  }
+  body { font-family: var(--sans); color: var(--mg-ink); background: var(--mg-cream); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.6; }
   img { max-width: 100%; display: block; }
   a { color: var(--mg-blue); text-decoration: none; }
   p { margin: 0 0 16px; }
@@ -44,265 +36,120 @@
   h1 { font-size: clamp(40px, 5.5vw, 80px); line-height: 0.96; }
   h2 { font-size: clamp(26px, 3vw, 44px); line-height: 1.06; }
   h3 { font-size: clamp(18px, 1.7vw, 24px); line-height: 1.18; }
-  h4 { font-size: 15px; font-family: var(--sans); font-weight: 600; letter-spacing: 0.01em; line-height: 1.3; text-transform: uppercase; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 44px; }
+  .wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 44px; }
+  @media (max-width: 640px) { .wrap, .wrap-narrow { padding: 0 24px; } }
 
-  .wrap        { max-width: 1160px; margin: 0 auto; padding: 0 44px; }
-  .wrap-narrow { max-width:  880px; margin: 0 auto; padding: 0 44px; }
-
-  @media (max-width: 640px) {
-    .wrap, .wrap-narrow { padding: 0 24px; }
-  }
-
-  /* ── Eyebrow ── */
-  .eyebrow {
-    font-family: var(--sans);
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--mg-mist);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .eyebrow .dot {
-    display: inline-block; width: 6px; height: 6px;
-    border-radius: 999px; background: var(--mg-blue); flex-shrink: 0;
-  }
+  .eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mg-mist); display: flex; align-items: center; gap: 10px; }
+  .eyebrow .dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; background: var(--mg-blue); flex-shrink: 0; }
   .eyebrow.on-blue { color: #B8BCF0; }
   .eyebrow.on-blue .dot { background: #fff; }
-  .eyebrow.on-dark { color: rgba(201,162,74,0.85); }
-  .eyebrow.on-dark .dot { background: var(--mg-gold); }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--mg-blue);
-    color: #fff;
-    padding: clamp(64px,9vw,120px) 0 clamp(80px,11vw,148px);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(62% 48% at 88% 14%, rgba(255,255,255,0.12), transparent 58%),
-      radial-gradient(46% 52% at 5% 92%, rgba(255,255,255,0.07), transparent 64%);
-  }
-  .hero-inner { position: relative; z-index: 2; }
-
-  .hero-wordmark {
-    display: flex; align-items: center; gap: 20px;
-    margin-bottom: 64px;
-  }
-  .hero-wordmark .brand {
-    font-family: var(--serif); font-weight: 500; font-size: 22px;
-    color: #fff; letter-spacing: -0.01em;
-  }
+  /* HERO */
+  .hero { background: var(--mg-blue); color: #fff; padding: clamp(64px,9vw,120px) 0 0; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(62% 48% at 88% 14%, rgba(255,255,255,0.12), transparent 58%), radial-gradient(46% 52% at 5% 92%, rgba(255,255,255,0.07), transparent 64%); }
+  .hero-inner { position: relative; z-index: 2; padding-bottom: clamp(64px,8vw,110px); }
+  .hero-wordmark { display: flex; align-items: center; gap: 20px; margin-bottom: 56px; }
+  .hero-wordmark .brand { font-family: var(--serif); font-weight: 500; font-size: 22px; color: #fff; letter-spacing: -0.01em; }
   .hero-wordmark .brand::after { content: "."; }
   .hero-wordmark .sep { color: rgba(255,255,255,0.25); }
   .hero-wordmark .doc { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #B8BCF0; }
-
-  .hero-kicker {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
-    text-transform: uppercase; color: #B8BCF0; margin-bottom: 24px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .hero-kicker::before {
-    content: ""; height: 1px; width: 40px;
-    background: rgba(255,255,255,0.4);
-  }
+  .hero-kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #B8BCF0; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+  .hero-kicker::before { content: ""; height: 1px; width: 40px; background: rgba(255,255,255,0.4); }
   .hero h1 { color: #fff; max-width: 860px; margin-bottom: 28px; }
   .hero h1 em { font-style: italic; color: #D7D9F5; font-weight: 300; }
-  .hero-lede {
-    font-family: var(--serif); font-size: clamp(16px,1.4vw,20px);
-    color: #B8BCF0; max-width: 640px; line-height: 1.55;
-    margin-bottom: 52px;
-  }
-
-  .hero-meta-grid {
-    display: grid; grid-template-columns: repeat(3, auto); gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 32px; width: fit-content;
-  }
-  .hero-meta-grid .hm {
-    padding: 0 40px 0 0; margin-right: 40px;
-    border-right: 1px solid rgba(255,255,255,0.15);
-  }
+  .hero-lede { font-family: var(--serif); font-size: clamp(16px,1.4vw,20px); color: #B8BCF0; max-width: 640px; line-height: 1.55; margin-bottom: 48px; }
+  .hero-meta-grid { display: grid; grid-template-columns: repeat(3, auto); gap: 0; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 28px; width: fit-content; }
+  .hero-meta-grid .hm { padding: 0 40px 0 0; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.15); }
   .hero-meta-grid .hm:last-child { border-right: none; padding-right: 0; margin-right: 0; }
   .hero-meta-grid .hm-label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #7D82CC; margin-bottom: 6px; }
   .hero-meta-grid .hm-val { font-family: var(--serif); font-size: 16px; color: #fff; }
+  @media (max-width: 640px) { .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .hero-meta-grid .hm { border-right: none; padding-right: 0; margin-right: 0; } }
 
-  @media (max-width: 640px) {
-    .hero-meta-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .hero-meta-grid .hm { border-right: none; padding-right: 0; margin-right: 0; }
-  }
+  /* TAB NAV */
+  .tab-nav { position: sticky; top: 0; z-index: 100; background: var(--mg-graphite); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tab-nav-inner { display: flex; align-items: stretch; max-width: 1160px; margin: 0 auto; padding: 0 44px; }
+  .tab-btn { display: flex; align-items: center; gap: 10px; padding: 18px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.42); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.18s, border-color 0.18s; white-space: nowrap; }
+  .tab-btn:hover { color: rgba(255,255,255,0.72); }
+  .tab-btn.active { color: #fff; border-bottom-color: var(--mg-blue); }
+  .tab-btn .tb-dot { width: 7px; height: 7px; border-radius: 999px; flex-shrink: 0; background: rgba(255,255,255,0.2); }
+  .tab-btn.active .tb-dot { background: var(--mg-blue); }
+  .tb-label-short { display: none; }
+  @media (max-width: 640px) { .tab-nav-inner { padding: 0 16px; } .tab-btn { padding: 16px 14px; font-size: 11px; gap: 8px; } .tb-label-long { display: none; } .tb-label-short { display: inline; } }
 
-  /* ── Section basics ── */
+  /* PANELS */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTIONS */
   section { padding: clamp(64px,8vw,120px) 0; }
-  .section-divider {
-    height: 1px; background: var(--mg-rule); margin: 0;
-  }
-
-  .section-head {
-    display: grid; grid-template-columns: 200px 1fr;
-    gap: 64px; align-items: start; margin-bottom: 56px;
-  }
+  .section-divider { height: 1px; background: var(--mg-rule); margin: 0; }
+  .section-head { display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: start; margin-bottom: 56px; }
   .section-head .eyebrow { padding-top: 10px; }
   @media (max-width: 820px) { .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 36px; } }
 
-  /* ── Pain point cards ── */
-  .pain-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; background: var(--mg-rule);
-    border: 1px solid var(--mg-rule);
-    margin-bottom: 48px;
-  }
+  /* PAIN CARDS */
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mg-rule); border: 1px solid var(--mg-rule); margin-bottom: 48px; }
   @media (max-width: 820px) { .pain-grid { grid-template-columns: 1fr; } }
-
-  .pain-card {
-    background: #fff; padding: 36px 40px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .pain-card .pc-head {
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .pain-card .pc-num {
-    font-family: var(--serif); font-size: 28px; line-height: 1;
-    color: var(--mg-rule); flex-shrink: 0; padding-top: 2px;
-  }
-  .pain-card .pc-title {
-    font-family: var(--serif); font-weight: 500; font-size: 20px;
-    line-height: 1.2; color: var(--mg-ink);
-  }
-  .pain-card .pc-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
-    text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
-    width: fit-content;
-  }
+  .pain-card { background: #fff; padding: 36px 40px; display: flex; flex-direction: column; gap: 14px; }
+  .pain-card .pc-head { display: flex; align-items: flex-start; gap: 16px; }
+  .pain-card .pc-num { font-family: var(--serif); font-size: 28px; line-height: 1; color: var(--mg-rule); flex-shrink: 0; padding-top: 2px; }
+  .pain-card .pc-title { font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; color: var(--mg-ink); }
+  .pain-card .pc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; width: fit-content; }
   .tag-critical { background: #FEE9E7; color: var(--mg-red); }
-  .tag-high     { background: #FEF3E2; color: var(--mg-amber); }
-  .tag-medium   { background: #E9F5EF; color: var(--mg-green); }
+  .tag-high { background: #FEF3E2; color: var(--mg-amber); }
+  .tag-medium { background: #E9F5EF; color: var(--mg-green); }
+  .pain-card .pc-body { font-size: 15px; line-height: 1.65; color: var(--mg-graphite); }
+  .pain-card .pc-evidence { font-size: 13px; color: var(--mg-mist); border-left: 3px solid var(--mg-blue-soft); padding-left: 14px; font-style: italic; line-height: 1.6; }
 
-  .pain-card .pc-body {
-    font-size: 15px; line-height: 1.65; color: var(--mg-graphite);
-  }
-  .pain-card .pc-evidence {
-    font-size: 13px; color: var(--mg-mist); border-left: 3px solid var(--mg-blue-soft);
-    padding-left: 14px; font-style: italic; line-height: 1.6;
-  }
-
-  /* ── Summary callout ── */
-  .callout-blue {
-    background: var(--mg-blue); color: #fff;
-    padding: clamp(40px,5vw,72px);
-    margin: 48px 0;
-  }
+  /* CALLOUT */
+  .callout-blue { background: var(--mg-blue); color: #fff; padding: clamp(40px,5vw,72px); margin: 48px 0; }
   .callout-blue h3 { color: #fff; margin-bottom: 18px; }
   .callout-blue p { color: #D7D9F5; margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
   .callout-blue p:last-child { margin-bottom: 0; }
   .callout-blue strong { color: #fff; }
 
-  /* ── Playbook ── */
+  /* PLAYBOOK */
   .month-block { margin-bottom: 64px; }
-  .month-header {
-    display: flex; align-items: center; gap: 24px;
-    margin-bottom: 36px; padding-bottom: 20px;
-    border-bottom: 2px solid var(--mg-ink);
-  }
-  .month-badge {
-    background: var(--mg-blue); color: #fff;
-    font-family: var(--serif); font-size: 14px; font-weight: 500;
-    letter-spacing: 0.06em; padding: 8px 18px; white-space: nowrap;
-  }
+  .month-header { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 2px solid var(--mg-ink); }
+  .month-badge { background: var(--mg-blue); color: #fff; font-family: var(--serif); font-size: 14px; font-weight: 500; letter-spacing: 0.06em; padding: 8px 18px; white-space: nowrap; }
+  .week-badge { background: var(--mg-graphite); color: #fff; font-family: var(--serif); font-size: 14px; font-weight: 500; letter-spacing: 0.06em; padding: 8px 18px; white-space: nowrap; }
   .month-label { font-family: var(--serif); font-size: clamp(22px,2.4vw,30px); }
   .month-label span { color: var(--mg-mist); font-weight: 300; font-style: italic; }
 
-  /* workstream rows */
-  .ws-row {
-    display: grid; grid-template-columns: 220px 1fr;
-    gap: 2px; background: var(--mg-rule);
-    border: 1px solid var(--mg-rule);
-    margin-bottom: 24px;
-  }
+  .ws-row { display: grid; grid-template-columns: 220px 1fr; gap: 2px; background: var(--mg-rule); border: 1px solid var(--mg-rule); margin-bottom: 24px; }
   @media (max-width: 820px) { .ws-row { grid-template-columns: 1fr; } }
-
-  .ws-label {
-    background: var(--mg-graphite); color: #fff;
-    padding: 28px 28px; display: flex; flex-direction: column;
-    justify-content: center; gap: 8px;
-  }
-  .ws-label .ws-cat {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #9FA3CC;
-  }
-  .ws-label .ws-name {
-    font-family: var(--serif); font-size: 17px; color: #fff; line-height: 1.3;
-  }
-
+  .ws-label { background: var(--mg-graphite); color: #fff; padding: 28px 28px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .ws-label .ws-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #9FA3CC; }
+  .ws-label .ws-name { font-family: var(--serif); font-size: 17px; color: #fff; line-height: 1.3; }
   .ws-content { background: #fff; padding: 28px 36px; }
 
   .task-list { list-style: none; padding: 0; margin: 0; }
-  .task-list li {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--mg-rule);
-    font-size: 15px; line-height: 1.6; color: var(--mg-graphite);
-  }
+  .task-list li { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--mg-rule); font-size: 15px; line-height: 1.6; color: var(--mg-graphite); }
   .task-list li:last-child { border-bottom: none; }
-  .task-list li::before {
-    content: ""; width: 6px; height: 6px; border-radius: 999px;
-    background: var(--mg-blue); flex-shrink: 0; margin-top: 8px;
-  }
+  .task-list li::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--mg-blue); flex-shrink: 0; margin-top: 8px; }
   .task-list li strong { color: var(--mg-ink); font-weight: 600; }
-
-  .task-owner {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--mg-mist);
-    margin-top: 14px; padding-top: 14px;
-    border-top: 1px solid var(--mg-rule);
-  }
+  .task-owner { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mg-mist); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--mg-rule); }
   .task-owner span { color: var(--mg-blue); }
+  .deliverables { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .del-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; background: var(--mg-blue-soft); color: var(--mg-blue); border-radius: 3px; }
 
-  /* deliverable tags */
-  .deliverables {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
-  }
-  .del-tag {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; padding: 4px 10px;
-    background: var(--mg-blue-soft); color: var(--mg-blue);
-    border-radius: 3px;
-  }
-
-  /* ── KPI table ── */
+  /* TABLES */
   .kpi-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
-  .kpi-table th {
-    background: var(--mg-graphite); color: #fff;
-    padding: 14px 20px; text-align: left;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
+  .kpi-table th { background: var(--mg-graphite); color: #fff; padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; border-right: 1px solid rgba(255,255,255,0.08); }
   .kpi-table th:last-child { border-right: none; }
-  .kpi-table td {
-    padding: 14px 20px; font-size: 14px; color: var(--mg-graphite);
-    border-bottom: 1px solid var(--mg-rule);
-    border-right: 1px solid var(--mg-rule);
-    line-height: 1.5;
-  }
+  .kpi-table td { padding: 14px 20px; font-size: 14px; color: var(--mg-graphite); border-bottom: 1px solid var(--mg-rule); border-right: 1px solid var(--mg-rule); line-height: 1.5; }
   .kpi-table td:last-child { border-right: none; }
   .kpi-table tr:last-child td { border-bottom: none; }
   .kpi-table tbody tr:nth-child(even) td { background: #fafaf7; }
   .kpi-table strong { color: var(--mg-ink); font-weight: 600; }
 
-  /* ── milestone strip ── */
-  .milestone-strip {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; background: var(--mg-rule);
-    border: 1px solid var(--mg-rule);
-    margin: 48px 0;
-  }
-  @media (max-width: 640px) { .milestone-strip { grid-template-columns: 1fr; } }
-
-  .ms-cell {
-    background: var(--mg-cream); padding: 32px 36px;
-    text-align: center;
-  }
+  /* STRIPS */
+  .milestone-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--mg-rule); border: 1px solid var(--mg-rule); margin: 48px 0; }
+  .week-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--mg-rule); border: 1px solid var(--mg-rule); margin: 48px 0; }
+  @media (max-width: 820px) { .week-strip { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .milestone-strip, .week-strip { grid-template-columns: 1fr; } }
+  .ms-cell { background: var(--mg-cream); padding: 32px 36px; text-align: center; }
   .ms-cell .ms-month { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mg-mist); margin-bottom: 10px; }
   .ms-cell .ms-title { font-family: var(--serif); font-size: 20px; margin-bottom: 12px; }
   .ms-cell .ms-desc { font-size: 14px; color: var(--mg-mist); line-height: 1.6; }
@@ -310,853 +157,722 @@
   .ms-cell.active .ms-month { color: #7D82CC; }
   .ms-cell.active .ms-title { color: #fff; }
   .ms-cell.active .ms-desc { color: #B8BCF0; }
+  .ms-cell.dark { background: var(--mg-graphite); }
+  .ms-cell.dark .ms-month { color: #9FA3CC; }
+  .ms-cell.dark .ms-title { color: #fff; }
+  .ms-cell.dark .ms-desc { color: rgba(255,255,255,0.5); }
 
-  /* ── big number callout ── */
-  .stat-row {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 2px; background: var(--mg-rule);
-    border: 1px solid var(--mg-rule); margin: 48px 0;
-  }
+  /* STAT ROW */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--mg-rule); border: 1px solid var(--mg-rule); margin: 48px 0; }
   @media (max-width: 820px) { .stat-row { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 480px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-cell { background: #fff; padding: 36px 32px; }
+  .stat-cell .st-num { font-family: var(--serif); font-size: clamp(30px,3.2vw,42px); line-height: 1; color: var(--mg-blue); margin-bottom: 8px; }
+  .stat-cell .st-label { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mg-mist); line-height: 1.4; }
 
-  .stat-cell {
-    background: #fff; padding: 36px 32px;
-  }
-  .stat-cell .st-num {
-    font-family: var(--serif); font-size: clamp(30px,3.2vw,42px);
-    line-height: 1; color: var(--mg-blue); margin-bottom: 8px;
-  }
-  .stat-cell .st-label {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--mg-mist); line-height: 1.4;
-  }
-
-  /* ── footer ── */
-  .doc-footer {
-    background: var(--mg-graphite); color: #fff;
-    padding: clamp(40px,5vw,72px) 0;
-  }
-  .footer-inner {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    flex-wrap: wrap; gap: 28px;
-  }
+  /* FOOTER */
+  .doc-footer { background: var(--mg-graphite); color: #fff; padding: clamp(40px,5vw,72px) 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 28px; }
   .footer-brand { font-family: var(--serif); font-size: 28px; color: #fff; }
   .footer-brand::after { content: "."; }
   .footer-meta { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; text-align: right; }
 
-  /* ── Print polish ── */
-  @media print {
-    .hero::before { display: none; }
-    section { page-break-inside: avoid; }
-  }
-
-  /* scroll reveal */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.52s ease, transform 0.52s ease; }
   .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
+<!-- HERO -->
 <header class="hero">
   <div class="wrap">
     <div class="hero-inner">
-
       <div class="hero-wordmark">
         <span class="brand">Merigrove</span>
         <span class="sep">/</span>
         <span class="doc">Client Audit Report</span>
       </div>
-
-      <div class="hero-kicker">Quantum Creators &mdash; Finance &amp; Operations</div>
-
-      <h1>Finance &amp; Operations<br><em>Audit Report</em></h1>
-
-      <p class="hero-lede">
-        A structured assessment of Quantum Creators' financial function and operating
-        model, identifying priority pain points and a 90-day playbook to build the
-        systems, discipline, and data infrastructure required for scalable growth.
-      </p>
-
+      <div class="hero-kicker">Quantum Creators &mdash; Full Business Audit</div>
+      <h1>Quantum Creators<br><em>Business Audit</em></h1>
+      <p class="hero-lede">A full-spectrum audit of Quantum Creators' sales engine, marketing function, financial architecture, and operating model. Each section identifies priority pain points and provides a structured playbook to resolve them.</p>
       <div class="hero-meta-grid">
-        <div class="hm">
-          <div class="hm-label">Prepared For</div>
-          <div class="hm-val">Quantum Creators</div>
-        </div>
-        <div class="hm">
-          <div class="hm-label">Respondent</div>
-          <div class="hm-val">Gallo (Co-Founder)</div>
-        </div>
-        <div class="hm">
-          <div class="hm-label">Audit Date</div>
-          <div class="hm-val">May 2026</div>
-        </div>
+        <div class="hm"><div class="hm-label">Prepared For</div><div class="hm-val">Quantum Creators</div></div>
+        <div class="hm"><div class="hm-label">Respondent</div><div class="hm-val">Gallo (Co-Founder)</div></div>
+        <div class="hm"><div class="hm-label">Audit Date</div><div class="hm-val">May 2026</div></div>
       </div>
-
     </div>
   </div>
 </header>
 
-
-<!-- ══════════════════════════════════════════
-     EXECUTIVE SUMMARY
-══════════════════════════════════════════ -->
-<section style="background:#fff; padding-top: clamp(56px,7vw,100px); padding-bottom: clamp(56px,7vw,100px);">
-  <div class="wrap-narrow">
-
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span>Overview</div>
-      <h2>Where Quantum Creators sits today</h2>
-    </div>
-
-    <p class="reveal" style="font-family:var(--serif); font-size:clamp(17px,1.5vw,21px); line-height:1.55; color:var(--mg-graphite); margin-bottom:28px;">
-      Quantum Creators is a fast-scaling online education and coaching business generating
-      approximately &euro;120,000 in monthly revenue, with a cost base of roughly &euro;70,000
-      and a unit economics profile that is materially better than the founders realise. The
-      business is founder-dependent, intuition-driven, and operating without the financial
-      architecture needed to support the next phase of growth.
-    </p>
-    <p class="reveal" style="font-size:15px; line-height:1.7; color:var(--mg-graphite); margin-bottom:28px;">
-      Gallo's audit responses reveal a founder who is commercially sharp, financially
-      literate in a transactional sense, and acutely aware that the current model is not
-      sustainable as the business scales. The risks are not existential today. They become
-      existential at 2x or 3x the current size if the infrastructure is not built now.
-    </p>
-    <p class="reveal" style="font-size:15px; line-height:1.7; color:var(--mg-graphite);">
-      This report identifies nine priority pain points drawn directly from the audit
-      responses, then provides a structured 90-day playbook to resolve them. The scope
-      covers financial reporting and controls, unit economics and data infrastructure,
-      the sales-to-finance data layer, and the operational systems needed to begin
-      extracting Gallo and Miguel from day-to-day execution.
-    </p>
-
-    <div class="stat-row reveal">
-      <div class="stat-cell">
-        <div class="st-num">~&euro;120k</div>
-        <div class="st-label">Monthly Revenue</div>
-      </div>
-      <div class="stat-cell">
-        <div class="st-num">~&euro;70k</div>
-        <div class="st-label">Monthly Cost Base</div>
-      </div>
-      <div class="stat-cell">
-        <div class="st-num">&euro;2,300</div>
-        <div class="st-label">Current CAC (Last Month)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="st-num">30&ndash;40%</div>
-        <div class="st-label">SOPs Documented</div>
-      </div>
-    </div>
-
+<!-- TAB NAV -->
+<nav class="tab-nav" id="tabNav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="sales" onclick="switchTab('sales')">
+      <span class="tb-dot"></span>
+      <span class="tb-label-long">Sales Engine Audit</span>
+      <span class="tb-label-short">Sales</span>
+    </button>
+    <button class="tab-btn" data-tab="finops" onclick="switchTab('finops')">
+      <span class="tb-dot"></span>
+      <span class="tb-label-long">Finance &amp; Operations Audit</span>
+      <span class="tb-label-short">Finance &amp; Ops</span>
+    </button>
   </div>
-</section>
-
-<div class="section-divider"></div>
+</nav>
 
 
-<!-- ══════════════════════════════════════════
-     PART 1: PAIN POINTS
-══════════════════════════════════════════ -->
-<section>
-  <div class="wrap">
+<!-- ═══════════════ TAB: SALES ═══════════════ -->
+<div class="tab-panel active" id="tab-sales">
 
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span>Part One</div>
-      <div>
-        <h2>Identified Pain Points</h2>
-        <p style="font-size:15px; color:var(--mg-mist); margin-top:14px; line-height:1.65;">
-          Nine priority issues surfaced from the audit questionnaire. Each is grounded in
-          a direct response from Gallo and assessed for severity and urgency.
-        </p>
+  <section style="background:#fff; padding-top:clamp(56px,7vw,100px); padding-bottom:clamp(56px,7vw,100px);">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Sales Overview</div>
+        <h2>The path to &euro;300k</h2>
+      </div>
+      <p class="reveal" style="font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--mg-graphite);margin-bottom:28px;">Gallo is the sales engine. If he steps out, closed deals drop by more than 50%. That is simultaneously the single biggest risk to the business and the single biggest lever for growth. The objective is clear: build a sales machine that closes &euro;250,000+ per month without Gallo on the phones.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.7;color:var(--mg-graphite);margin-bottom:28px;">This section covers three interconnected workstreams: the sales team itself (closers, setters, pipeline, capacity), the marketing function that feeds the pipeline (Meta spend, creative, CAC management, organic), and the post-close process that determines whether a closed deal translates into collected cash and a retained client.</p>
+      <div class="stat-row reveal">
+        <div class="stat-cell"><div class="st-num">&euro;250k+</div><div class="st-label">Target Monthly Closes</div></div>
+        <div class="stat-cell"><div class="st-num">50%+</div><div class="st-label">Close Drop if Gallo Out</div></div>
+        <div class="stat-cell"><div class="st-num">&euro;2,300</div><div class="st-label">Current CAC (Meta)</div></div>
+        <div class="stat-cell"><div class="st-num">90%</div><div class="st-label">Payments via Manual Transfer</div></div>
       </div>
     </div>
+  </section>
 
-    <!-- PAIN POINTS GRID -->
-    <div class="pain-grid reveal">
+  <div class="section-divider"></div>
 
-      <!-- 1 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">01</div>
-          <div>
-            <div class="pc-tag tag-critical">Critical</div>
-            <div class="pc-title">No formal P&amp;L, cash reporting, or structured monthly close</div>
-          </div>
+  <!-- WORKSTREAM 1: SALES TEAM -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Workstream 1</div>
+        <div>
+          <h2>Sales Team: Build the machine</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">Get to 2.5&ndash;3 full-time closers performing at standard. Reduce Gallo's closing load to 10&ndash;20%. Shift him into the sales manager role.</p>
         </div>
-        <p class="pc-body">
-          Gallo manages finances through a manual, transaction-by-transaction cash-basis
-          process. There is no structured P&amp;L, no cash movement report, and no formal
-          management accounts produced on a monthly cycle. Decisions are made intuitively
-          based on cash in the account rather than on a clear picture of profitability.
-          Gallo himself
-          acknowledges he cannot state gross margin or net margin without looking it up.
-        </p>
-        <p class="pc-evidence">
-          "I track everything on a cash flow basis. Transactions... I do a lot of
-          decisions almost intuitively if I see the ROI and the treasury allows it."
-        </p>
       </div>
 
-      <!-- 2 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">02</div>
-          <div>
-            <div class="pc-tag tag-critical">Critical</div>
-            <div class="pc-title">No unit economics visibility: margin per deal, LTV, LTV:CAC</div>
-          </div>
-        </div>
-        <p class="pc-body">
-          The business has a single core offer but no formal calculation of contribution
-          margin, cost per acquisition by channel, or LTV:CAC ratio. CAC is not tracked
-          as a standing metric. Without this data, pricing decisions, channel allocation,
-          and sales compensation cannot be optimised. The business is flying without
-          instruments at &euro;1.4M ARR run-rate.
-        </p>
-        <p class="pc-evidence">
-          "LTV:CAC I don't actually know but LTV is getting higher and higher."
-          "I don't know my contribution margin at current price points."
-        </p>
+      <div class="week-strip reveal">
+        <div class="ms-cell dark"><div class="ms-month">Weeks 1&ndash;2</div><div class="ms-title">Diagnose</div><div class="ms-desc">Pull the data. Find the gap. Map the ceiling.</div></div>
+        <div class="ms-cell active"><div class="ms-month">Weeks 2&ndash;3</div><div class="ms-title">Train</div><div class="ms-desc">Build the playbook. Launch weekly training. Reduce Gallo's load.</div></div>
+        <div class="ms-cell dark"><div class="ms-month">Weeks 3&ndash;4</div><div class="ms-title">Add Capacity</div><div class="ms-desc">Hire closer #3. Ramp into a system, not chaos.</div></div>
+        <div class="ms-cell"><div class="ms-month">Week 4+</div><div class="ms-title">Ongoing Rhythm</div><div class="ms-desc">Weekly training, daily scoreboard, weekly 1:1 reviews.</div></div>
       </div>
 
-      <!-- 3 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">03</div>
-          <div>
-            <div class="pc-tag tag-critical">Critical</div>
-            <div class="pc-title">No financial forecasting or budget against which to measure</div>
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 1&ndash;2</div><div class="month-label">Diagnose the machine</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Sales Analytics</div><div class="ws-name">90-Day Closer Performance Audit</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Pull every closer's individual data for the last 90 days from Close CRM.</strong> Calls taken, close rate, average deal size, cash collected, full-pay versus payment plan ratio. Do the same for Gallo's personal deal data. The gap between Gallo and the closers must be expressed in hard numbers, not gut feel. That gap is the coaching brief.</li>
+              <li><strong>Calculate the current sales ceiling.</strong> Total daily call slots across the team, multiplied by average show rate, close rate, average cash per deal, and 22 working days. This figure is the maximum monthly cash the current team can produce at current performance. If the ceiling is below &euro;300k, the business needs more capacity, better conversion, or both.</li>
+              <li><strong>Map the setter-to-closer pipeline.</strong> How many leads per day are setters qualifying, what is the booking rate, and what is the no-show rate on those bookings? If closers are taking two or three calls per day when the slots exist for five, the bottleneck may be upstream in setting, not in closing.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Closer Performance Report</span><span class="del-tag">Sales Ceiling Calculation</span><span class="del-tag">Pipeline Audit</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
           </div>
         </div>
-        <p class="pc-body">
-          The business operates without a formal financial plan, annual budget, or monthly
-          variance analysis. The only stated goal was to exceed &euro;1M post-tax in year one.
-          Without a budget, there is no mechanism to detect deterioration early, assess
-          whether ad spend is productive in context, or hold team leads accountable to
-          financial targets. The recent &euro;5k cash surplus month is a direct symptom of this.
-        </p>
-        <p class="pc-evidence">
-          "No. We have roughly goals personally and professionally. We set budgets
-          and goals monthly." "Last month we made only 5k&euro; cash surplus. We made
-          bad decisions in marketing."
-        </p>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Call Analysis</div><div class="ws-name">Closer Playbook Build</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Review five of Gallo's closes and five from each closer.</strong> Look for the specific moments where Gallo does something the closers do not: the depth of discovery, how he handles the price objection, the authority he carries as a founder, and whether he is offering custom terms or bonuses the closers cannot. These moments define the coaching content.</li>
+              <li><strong>Create a two-page closer playbook based on the call reviews.</strong> Not a training manual. A tactical framework: the opening (first 90 seconds), the discovery structure (what questions in what order), the pitch flow, the five most common objections with word-for-word responses, and the closing sequence Gallo uses. Tight enough to review in ten minutes before a call.</li>
+              <li><strong>Standardise the offer across the team.</strong> If Gallo closes better because he can offer a bonus or extended terms that closers cannot, either give closers the same toolkit with clear guardrails or remove it from Gallo's process entirely. Closers cannot be coached to match a founder playing with a different hand.</li>
+              <li><strong>Set up a daily closer scoreboard, visible to the whole sales team.</strong> Calls taken, close rate, cash collected. Updated by end of day. Competition and visibility alone will move numbers.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">2-Page Closer Playbook</span><span class="del-tag">Offer Standardisation</span><span class="del-tag">Daily Scoreboard Live</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Revenue Acceleration</div><div class="ws-name">PIF Push Implementation</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Implement a structured full-payment incentive.</strong> Test a concrete incentive for paying in full: a bonus 1-on-1 with Gallo, an exclusive module, or early access to something of value. Every deal that goes full-pay instead of a three-pay plan accelerates cash collection by months. Moving the full-pay ratio from 40% to 55% could add &euro;20,000&ndash;&euro;30,000 per month in collected cash without closing a single additional deal.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">PIF Incentive Defined</span><span class="del-tag">Full-Pay Ratio Baseline</span></div>
+            <div class="task-owner">Owner: <span>Gallo</span></div>
+          </div>
+        </div>
       </div>
 
-      <!-- 4 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">04</div>
-          <div>
-            <div class="pc-tag tag-high">High Priority</div>
-            <div class="pc-title">Cash management is reactive, not proactive</div>
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 2&ndash;3</div><div class="month-label">Train and reduce Gallo's load</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Sales Development</div><div class="ws-name">Weekly Sales Training Programme</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Launch a weekly 60-minute sales training block.</strong> Gallo leads it. Structure: 20 minutes reviewing a recorded call (rotate whose call gets reviewed), 20 minutes role-playing the weak spots identified, 20 minutes on a specific skill. Same day, same time, every week. Non-negotiable.</li>
+              <li><strong>Begin shifting Gallo's closing load down incrementally.</strong> Week 5: Gallo takes 40% of closes instead of 50%+. Week 6: 30%. Backfill calls to trained closers. Track conversion daily. If it dips, Gallo reviews those lost deals the same day and coaches in real time, not at the end of the week.</li>
+              <li><strong>Build a save process for deals closers lose.</strong> If a closer cannot close on the call, instead of the deal dying it goes into a structured follow-up sequence: specific follow-up message within two hours, a second touch at 24 hours, a third at 72 hours with a deadline or bonus. These deals are currently falling off the pipeline entirely.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Weekly Training Rhythm</span><span class="del-tag">Load Reduction Schedule</span><span class="del-tag">Save Sequence Built</span></div>
+            <div class="task-owner">Owner: <span>Gallo</span></div>
           </div>
         </div>
-        <p class="pc-body">
-          There is no cash flow forecast, no defined minimum reserve policy, and no
-          structured approach to managing seasonal pinch points such as Spanish holidays
-          or the December slowdown. The business holds approximately 1.5 months of
-          operating costs in liquid cash, below the three-month minimum for a business
-          of this risk profile. Ad spend of up to &euro;50,000 per month creates substantial
-          volatility against a &euro;110,000 reserve.
-        </p>
-        <p class="pc-evidence">
-          "No. I don't. We have been 'surviving' for the first year and reinvesting
-          everything." "We didn't manage those seasons properly."
-        </p>
       </div>
 
-      <!-- 5 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">05</div>
-          <div>
-            <div class="pc-tag tag-high">High Priority</div>
-            <div class="pc-title">No structured sales-to-finance data bridge</div>
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 3&ndash;4</div><div class="month-label">Add capacity</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Hiring</div><div class="ws-name">Closer #3 Hire and Ramp</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Hire closer number three to reach the 2.5&ndash;3 FTE target.</strong> By this point there is a playbook, a training rhythm, daily KPIs, and six weeks of data showing what good looks like. The new hire walks into a system, not chaos.</li>
+              <li><strong>Build a defined two-week ramp process.</strong> Week one is shadowing calls, studying the playbook, and role-play sessions with Gallo. Week two is taking live calls with Gallo listening and giving immediate feedback after each. Week three they are solo with daily check-ins.</li>
+              <li><strong>Gallo's role completes its transition to sales manager.</strong> Closing only 10&ndash;20% of deals: the large ones, referrals, and complex situations. Primary function is reviewing calls, coaching closers, and optimising the process. This is the hardest emotional transition and the most important structural one for reaching &euro;300k.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Closer #3 Onboarded</span><span class="del-tag">Ramp Process Documented</span><span class="del-tag">Gallo Role Transition Complete</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
           </div>
         </div>
-        <p class="pc-body">
-          Sales data sits in Close CRM and a Looker Studio dashboard, but this data
-          is not formally translated into financial metrics. Average revenue per deal,
-          closer earnings per deal, setter conversion rates and their financial impact,
-          cost per booked call, and cost per closed deal are not tracked as standing
-          metrics. The sales team cannot see the financial consequence of their
-          conversion rate, and Gallo cannot see the financial cost of each sales
-          motion at a granular level.
-        </p>
-        <p class="pc-evidence">
-          "We have a Looker Studio Dashboard that connects sales and marketing. We
-          only advertise on Meta." Close CRM tracks opportunities but not
-          financial unit-level outcomes per rep.
-        </p>
       </div>
 
-      <!-- 6 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">06</div>
-          <div>
-            <div class="pc-tag tag-high">High Priority</div>
-            <div class="pc-title">Collections are informal and founder-dependent</div>
-          </div>
-        </div>
-        <p class="pc-body">
-          90% of payments are taken by manual bank transfer with no structured follow-up
-          sequence for late payments. Gallo uses personal incentives such as 1-on-1
-          access to collect outstanding balances. This is not scalable, creates aged
-          debt that is managed informally, and ties founder time to a finance
-          administration function. As deal volume grows, this will create increasingly
-          significant cash flow drag.
-        </p>
-        <p class="pc-evidence">
-          "It is handled informally. We take 90% of payments via manual bank
-          transfers. I do a lot of bonuses like 'I give you 1on1 with me if you
-          liquidate the payment'. It takes my time as a founder."
-        </p>
-      </div>
-
-      <!-- 7 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">07</div>
-          <div>
-            <div class="pc-tag tag-high">High Priority</div>
-            <div class="pc-title">Unresolved statutory and tax compliance exposure</div>
-          </div>
-        </div>
-        <p class="pc-body">
-          Statutory filings including VAT returns, corporation tax, and payroll obligations
-          are described as being in a "grey zone" with a Cyprus restructure being planned
-          but not yet executed. There is no external accountant in an advisory capacity,
-          only transactional management of accounts. This represents a material compliance
-          and financial risk as the business approaches the scale where authorities
-          scrutinise more closely.
-        </p>
-        <p class="pc-evidence">
-          "No. We are on a grey zone. Planning to move to Cyprus the company."
-          "No external accountant."
-        </p>
-      </div>
-
-      <!-- 8 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">08</div>
-          <div>
-            <div class="pc-tag tag-high">High Priority</div>
-            <div class="pc-title">Founder dependency creates a single point of failure across all functions</div>
-          </div>
-        </div>
-        <p class="pc-body">
-          If Gallo is unavailable: deal volume drops by more than 50%, the sales team
-          loses its manager, salaries and banking cannot be processed, accounting stops,
-          and fires across departments go unmanaged. If Miguel is unavailable: all new
-          content stops, both paid and organic, and a significant portion of business
-          coaching delivery is lost. The business is structurally designed around two
-          people who cannot be absent. This is a ceiling on growth, not a strength.
-        </p>
-        <p class="pc-evidence">
-          "If Gallo is out (that is impossible to happen). First thing: closed
-          deals drops 50% or more, management of the sales team, paying salaries
-          and managing bank accounts, accounting, sales coaching on the delivery side."
-        </p>
-      </div>
-
-      <!-- 9 -->
-      <div class="pain-card">
-        <div class="pc-head">
-          <div class="pc-num">09</div>
-          <div>
-            <div class="pc-tag tag-medium">Medium Priority</div>
-            <div class="pc-title">Incomplete SOPs and undocumented institutional knowledge</div>
-          </div>
-        </div>
-        <p class="pc-body">
-          Between 30% and 40% of operational processes have documented SOPs, and those
-          that exist are described as not fully up to date. The client onboarding process
-          involves multiple manual steps owned by individual closers or the founders.
-          Without documented processes, the business cannot hire effectively, onboard
-          staff to standard, or identify and eliminate waste systematically. Automation
-          opportunities in delivery and sales follow-up are identified but not yet acted upon.
-        </p>
-        <p class="pc-evidence">
-          "I would say that we have SOPs for between 30% and 40% of tasks in the
-          business. Some are not up to date." "Yes, probably a ton [of automation
-          opportunities], especially on the delivery side and sales."
-        </p>
+      <div class="callout-blue reveal">
+        <h3>Ongoing sales rhythm after week 4</h3>
+        <p>Weekly sales training block led by Gallo, same day and time every week. Daily scoreboard updated by end of day. Every Monday, Gallo reviews last week's numbers per closer and identifies the single thing each closer needs to improve that week. Every closer gets one call reviewed per week with written or voice-note feedback.</p>
       </div>
 
     </div>
-    <!-- end pain grid -->
+  </section>
 
-    <div class="callout-blue reveal">
-      <h3>The pattern behind the pain points</h3>
-      <p>
-        Every pain point above connects to a single root cause: <strong>the business was
-        built for execution speed, not for scalability.</strong> Gallo and Miguel made
-        excellent decisions to get to &euro;120k/month. The same decisions that created
-        that velocity are now the ceiling. The next phase requires a different operating
-        model, not faster running of the existing one.
-      </p>
-      <p>
-        Critically, this business has strong underlying economics. The ad spend is large
-        but it is generating real revenue. The cost base is lean. The offer is working.
-        The opportunity loss from not having the data infrastructure and financial
-        architecture in place is significant. This is a <strong>high-return
-        intervention</strong>, not a remediation exercise.
-      </p>
-    </div>
+  <div class="section-divider"></div>
 
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-
-<!-- ══════════════════════════════════════════
-     PART 2: 90-DAY PLAYBOOK
-══════════════════════════════════════════ -->
-<section style="background:#fff;">
-  <div class="wrap">
-
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span>Part Two</div>
-      <div>
-        <h2>The 90-Day Playbook</h2>
-        <p style="font-size:15px; color:var(--mg-mist); margin-top:14px; line-height:1.65;">
-          A structured programme to build Quantum Creators' financial function,
-          data infrastructure, and operating systems across three sequential months.
-        </p>
-      </div>
-    </div>
-
-    <!-- milestone strip -->
-    <div class="milestone-strip reveal">
-      <div class="ms-cell">
-        <div class="ms-month">Month 1 &mdash; Weeks 1&ndash;4</div>
-        <div class="ms-title">Foundation</div>
-        <div class="ms-desc">Build the reporting infrastructure. Establish the unit economics data layer. Produce the first clean financial statements.</div>
-      </div>
-      <div class="ms-cell active">
-        <div class="ms-month">Month 2 &mdash; Weeks 5&ndash;8</div>
-        <div class="ms-title">Instrumentation</div>
-        <div class="ms-desc">Activate unit economics. Build the sales-finance bridge. Deploy cash forecasting.</div>
-      </div>
-      <div class="ms-cell">
-        <div class="ms-month">Month 3 &mdash; Weeks 9&ndash;12</div>
-        <div class="ms-title">Systematisation</div>
-        <div class="ms-desc">Document processes. Remove founders from day-to-day. Create the operations manual.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════ MONTH 1 ══════════════ -->
-<section style="background: var(--mg-cream);">
-  <div class="wrap">
-
-    <div class="month-block reveal">
-      <div class="month-header">
-        <div class="month-badge">Month 1</div>
-        <div class="month-label">Foundation <span>Build what should already exist</span></div>
-      </div>
-
-      <!-- WS 1.1 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Finance</div>
-          <div class="ws-name">Monthly Reporting Architecture</div>
+  <!-- WORKSTREAM 2: MARKETING -->
+  <section style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Workstream 2</div>
+        <div>
+          <h2>Marketing: More qualified calls at a stable CAC</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">Spending &euro;30k&ndash;&euro;50k per month on Meta with a rising CAC and no structured diagnostic process. YouTube organic is under-leveraged. The goal: feed the growing sales team enough qualified calls with CAC at or below &euro;2,000.</p>
         </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Consider migrating to a structured accounting platform.</strong> Tools such as QuickBooks or Xero are worth exploring for the longer term, but this is not a prerequisite to getting started. A well-structured Google Sheets setup with a defined chart of accounts and consistent categorisation will work effectively for now, and is the right starting point before investing in software overhead. What matters is discipline and structure, not the tool.</li>
-            <li><strong>Define the monthly close cycle.</strong> Establish a fixed monthly close calendar: books closed and reconciled by working day 5, management accounts produced by working day 10. Define who owns each step. Initially this is Gallo with Merigrove oversight; the goal is to transition to a bookkeeper by month three.</li>
-            <li><strong>Rebuild last month's financial statements as a standing template.</strong> Produce a clean P&amp;L and cash movement report for the most recent completed month. These two documents become the monthly template that Gallo completes at every close. The P&amp;L captures revenue, cost of sales, gross profit, operating expenses by category, and net profit. The cash movement report tracks opening balance, cash in by source, cash out by category, and closing balance. These are the two reports the business will produce every month, consistently, in the same format.</li>
-            <li><strong>Define the three-report monthly pack.</strong> The standard reporting pack going forward is: the P&amp;L, the cash movement report, and the unit economics summary. Nothing more is needed at this stage. Standardise the layout and tab structure now so the format is fixed and the close process becomes repeatable from month one.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Reporting Template Built</span>
-            <span class="del-tag">Last Month P&amp;L + Cash Report</span>
-            <span class="del-tag">Monthly Close SOP</span>
+      </div>
+
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 1&ndash;2</div><div class="month-label">Audit everything</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Funnel Analysis</div><div class="ws-name">Full Funnel Diagnostic</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Map the full funnel with exact numbers from the last 30 days.</strong> Ad impressions, clicks, landing page views, booked calls, show rate, qualified rate, close rate. Conversion rates at every step, not just top and bottom. The biggest drop-off is where focus goes first.</li>
+              <li><strong>Pull creative-level performance data from the Meta ad account.</strong> Which ads are spending? Which have the lowest cost per acquisition? When was the last genuinely new creative concept tested, meaning a different hook or angle, not just a variation? How many new creatives went live in the last 30 days?</li>
+              <li><strong>Review the media buyer's decision-making process.</strong> How do they decide what to test, when to kill an ad, when to scale? If the answer is intuition, that is the problem. At &euro;40k per month in spend, the process requires a systematic framework.</li>
+              <li><strong>Audit the Looker Studio dashboard.</strong> Is it tracking the metrics that matter (CPA by creative, cost per booked call, cost per qualified call, cost per close) or vanity metrics such as impressions and CTR? ROAS on revenue booked is not the same as ROAS on cash collected. Confirm which is being measured.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Full Funnel Map</span><span class="del-tag">Creative Performance Audit</span><span class="del-tag">Dashboard Audit</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Media Buyer + Merigrove</span></div>
           </div>
-          <div class="task-owner">Owner: <span>Gallo + Merigrove (Max)</span></div>
         </div>
       </div>
 
-      <!-- WS 1.2 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Unit Economics</div>
-          <div class="ws-name">Gross Margin and Contribution Model</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Build the contribution margin model per deal.</strong> Map every cost that is incurred as a direct consequence of closing a deal: closer commission (8% of cash), setter contribution (4% of cash plus base allocation), payment processing, onboarding cost, and delivery cost per client (coach time, Carlos time, platform seat). Calculate contribution margin in euros and as a percentage at the current &euro;7,000 price point.</li>
-            <li><strong>Segment by deal type.</strong> Distinguish between full-pay and payment plan deals. Payment plans carry additional collection cost and cash flow delay. The contribution margin on a payment plan deal is not the same as a full-pay deal and must be tracked separately.</li>
-            <li><strong>Calculate CAC by channel.</strong> Ad spend is Meta-only, which simplifies this. Divide total monthly Meta spend by number of new clients acquired. Cross-reference against the Looker Studio data to get cost per booked call and close rate from call to client. This gives a true CAC and cost per pipeline stage.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Contribution Margin Model</span>
-            <span class="del-tag">CAC by Channel</span>
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 2&ndash;3</div><div class="month-label">Fix the biggest leaks</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Paid Media</div><div class="ws-name">Creative Cadence and Kill Criteria</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Implement a creative testing cadence of at least three new ad concepts per week.</strong> Not minor tweaks. Different hooks, angles, and formats: talking head versus b-roll versus UGC style versus text-on-screen. The media buyer and editor should operate a shared production calendar so creative production is systematic, not reactive.</li>
+              <li><strong>Set hard kill and scale criteria for ads.</strong> If CPA exceeds target after a defined spend threshold, pause it. No exceptions. If CPA is below target after a defined spend threshold, increase budget by 20%. Make the rules mechanical so the media buyer is not making emotional decisions with company money.</li>
+              <li><strong>Restructure the media buyer's compensation model.</strong> Paying 5% of ROAS incentivises spending more, not spending better. Shift to a base plus a bonus tied to hitting a target cost per qualified booked call. They should win when the business gets cheaper, more qualified calls, not when spend increases.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Creative Calendar</span><span class="del-tag">Kill / Scale Rules</span><span class="del-tag">Media Buyer Comp Revised</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Media Buyer</span></div>
           </div>
-          <div class="task-owner">Owner: <span>Merigrove (Max) with Gallo data input</span></div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Funnel Conversion</div><div class="ws-name">Fix the Biggest Drop-Off</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Address the largest funnel drop-off identified in the audit.</strong> If it is show rate (the most common issue), build a multi-touch confirmation sequence: immediate confirmation with value content, SMS reminder 24 hours before the call, WhatsApp message one hour before with a short video from Gallo or Miguel reinforcing why the call matters. If it is landing page conversion, test two or three new page variants. If it is click-through from ad to page, it is a creative problem already being addressed above.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Show Rate Sequence</span><span class="del-tag">LP Variant Tests</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Media Buyer</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 3&ndash;5</div><div class="month-label">Scale spend and diversify</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Paid Scaling</div><div class="ws-name">Controlled Spend Scale</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Once CAC is stable at or below &euro;2,000 with the new creative process, begin scaling spend.</strong> Increase by &euro;5,000 per week, not large jumps. Monitor CAC on a rolling seven-day basis. If it rises above threshold for five consecutive days, pause the increase and diagnose before continuing.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Scaling Protocol</span><span class="del-tag">Rolling CAC Monitor</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Media Buyer</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Organic + Content</div><div class="ws-name">YouTube Systematisation</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Systematise YouTube organic production.</strong> Miguel filming ad hoc is not a strategy. Set up a monthly batch filming day: Miguel films four videos in one focused session; the editor handles everything else. This removes Miguel as the daily bottleneck without reducing his creative input.</li>
+              <li><strong>Repurpose the best-performing YouTube content into Meta ad creatives.</strong> This is free creative testing fuel. The content is already produced and proven to hold attention. Repurpose clips as Reels and Shorts for additional organic reach.</li>
+              <li><strong>Build a content repurposing pipeline from the delivery team.</strong> Client wins, testimonials, transformation stories: these are the highest-converting ad concepts. Set up a system where Carlos flags a strong client result and it becomes a case study ad within seven days.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Batch Filming System</span><span class="del-tag">Repurposing Pipeline</span></div>
+            <div class="task-owner">Owner: <span>Miguel + Editor</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Low-CAC Channels</div><div class="ws-name">Referrals and Channel Diversification</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Launch a client referral programme.</strong> Simple structure: an existing client refers someone who closes, and the referring client receives a meaningful bonus such as an extra 1-on-1, exclusive content, or cash credit toward renewal. Target three to five referred closes per month at near-zero CAC. This meaningfully reduces the blended CAC without increasing ad spend.</li>
+              <li><strong>Test YouTube ads using the best-performing organic content as pre-roll or in-stream.</strong> If organic YouTube is already working, paid YouTube is a logical secondary channel to reduce Meta dependency and lower blended CAC.</li>
+              <li><strong>Explore strategic collaborations.</strong> Podcast guest appearances and cross-promotions with complementary creators in the Spanish-speaking coaching space take longer to produce results but build a pipeline of warm leads that close at higher rates and lower cost than cold paid traffic.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Referral Programme</span><span class="del-tag">YouTube Ads Test</span><span class="del-tag">Collaboration Outreach</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Miguel</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-blue reveal">
+        <h3>Ongoing marketing rhythm</h3>
+        <p>Weekly creative review: media buyer, editor, and Miguel review what is working, what is dying, and what launches next week. Monthly funnel audit comparing conversion rates at every stage against the prior month. Monthly CAC review against target, broken down by channel.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- WORKSTREAM 3: POST-CLOSE -->
+  <section style="background:var(--mg-cream);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Workstream 3</div>
+        <div>
+          <h2>Post-Close: Making the handoff stick</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">The current post-close process is manual, closer-dependent, and leaky. Every deal that closes but does not collect fully or onboard cleanly is wasted acquisition cost.</p>
+        </div>
+      </div>
+
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 1&ndash;2</div><div class="month-label">Fix the post-close handoff</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Operations</div><div class="ws-name">Onboarding Automation</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Automate everything between "deal closed" and "client is active in the programme."</strong> Currently the closer manually takes payment, sends PandaDoc, updates CRM, sends an onboarding PDF via WhatsApp, and posts in Slack. That is five manual steps per deal, each a potential failure point. The target: deal marked closed in Close CRM triggers PandaDoc contract, triggers onboarding email sequence, triggers Skool community invite, triggers welcome message from Carlos, and triggers the first-call booking link. The closer's only post-close job is updating CRM and confirming payment received.</li>
+              <li><strong>Create a "first 48 hours" automated onboarding sequence.</strong> Email one (immediate): welcome, Skool access, and what to do first. Email two (24 hours): the onboarding video, ideally condensed from 90 minutes to 30. Email three (48 hours): book your first group call. No closer involvement required for basic onboarding steps.</li>
+              <li><strong>Set up a handoff tracker.</strong> A simple view in Close CRM or a shared sheet showing every deal from close date through "fully onboarded" status. If a client is seven or more days post-close and has not completed onboarding, the VA follows up, not Gallo, not a closer.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">CRM-Triggered Automation</span><span class="del-tag">48hr Onboarding Sequence</span><span class="del-tag">Handoff Tracker</span></div>
+            <div class="task-owner">Owner: <span>Gallo + N8N/AI resource</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Weeks 3&ndash;4</div><div class="month-label">Fix collections so closers stop chasing money</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Revenue Collection</div><div class="ws-name">Automated Payment Infrastructure</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Move clients off manual bank transfers onto auto-charging.</strong> Stripe recurring or GoCardless. Every manual payment is a payment that might not arrive and will need to be chased. The closer collects the first payment on the call and sets up auto-billing for the remainder in one interaction.</li>
+              <li><strong>Build an automated payment reminder sequence owned by the VA, not closers.</strong> Three days before payment due: reminder. Day of: confirmation. Day plus three: friendly nudge. Day plus seven: firm follow-up. Day plus fourteen: escalation call from VA. Day plus twenty-one: access paused. Remove closers and founders entirely from collections.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Auto-Charging Live</span><span class="del-tag">Payment Sequence</span><span class="del-tag">VA Collections Ownership</span></div>
+            <div class="task-owner">Owner: <span>Gallo + VA</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="month-block reveal">
+        <div class="month-header"><div class="week-badge">Week 4 Onward</div><div class="month-label">Track and optimise</div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Performance Metrics</div><div class="ws-name">Post-Close KPI Framework</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Measure "close-to-cash" rate.</strong> Of deals marked closed, what percentage actually collect the full amount within 90 days? This number reveals how much revenue is leaking between the sale and the bank account. It is a metric the business currently cannot see.</li>
+              <li><strong>Track onboarding completion rate.</strong> What percentage of new clients complete all onboarding steps within seven days? Low completion is an early churn signal and a direct waste of the CAC invested to acquire that client.</li>
+              <li><strong>Run a weekly pipeline review from closed through to payment current.</strong> Closed, onboarded, first payment received, ongoing payments current. Any blockage gets resolved the same week, not carried into the next review cycle.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Close-to-Cash Rate</span><span class="del-tag">Onboarding Completion Rate</span><span class="del-tag">Weekly Pipeline Review</span></div>
+            <div class="task-owner">Owner: <span>Gallo + VA</span></div>
+          </div>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
+  <div class="section-divider"></div>
 
-<!-- ══════════════ MONTH 2 ══════════════ -->
-<section style="background: #fff;">
-  <div class="wrap">
-
-    <div class="month-block reveal">
-      <div class="month-header">
-        <div class="month-badge">Month 2</div>
-        <div class="month-label">Instrumentation <span>Activate the data layer</span></div>
-      </div>
-
-      <!-- WS 2.1 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Data Infrastructure</div>
-          <div class="ws-name">Sales-to-Finance Bridge</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Define the sales metrics that flow into finance.</strong> The following must become standing weekly metrics: deals closed (volume and value), average deal value, payment plan ratio, booked calls from ads, show rate, close rate, cost per booked call, cost per close, setter-level conversion rates, closer-level earnings generated per deal net of commission. These are not just sales metrics. They are financial metrics.</li>
-            <li><strong>Create rep-level financial scorecards.</strong> Each closer and setter should be able to see, per week: how many deals they contributed to, the revenue generated, their commission earned, and the average contribution margin of their deals. This is not surveillance. It is the information needed to have financially grounded performance conversations.</li>
-            <li><strong>Establish the weekly data cadence.</strong> Define a weekly rhythm: on Monday, the previous week's sales data is pulled and cross-referenced against ad spend and cash received. Gallo reviews a one-page summary. This replaces the current informal daily monitoring with a structured information ritual.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Sales Metrics Framework</span>
-            <span class="del-tag">Rep Scorecards</span>
-            <span class="del-tag">Weekly Data Cadence</span>
-          </div>
-          <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
+  <section style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Sales Measurement</div>
+        <div>
+          <h2>Sales KPIs</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">The metrics that tell you whether the sales machine is being built correctly.</p>
         </div>
       </div>
-
-      <!-- WS 2.2 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Finance</div>
-          <div class="ws-name">Monthly Cash Forecast</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Build the monthly cash forecast template.</strong> A forward-looking monthly cash model maps every known cash outflow (ad spend, payroll, commissions, software) against expected cash inflows from confirmed deals and payment plan receipts. Built in the same Google Sheet as the reporting pack, it projects the next month's closing cash position based on current pipeline and committed costs. Updated at each monthly close, this is the instrument that prevents a repeat of the &euro;5k surplus month. It provides the early warning the business currently lacks.</li>
-            <li><strong>Set a minimum cash reserve policy.</strong> Formalise the rule: the business maintains a minimum of three months of operating costs, approximately &euro;210,000, in liquid cash at all times. Ad spend budgets are adjusted before this floor is breached, not after.</li>
-            <li><strong>Implement a monthly forecast review.</strong> On the same day management accounts are produced, review the prior month's forecast versus actual. Identify where the variance occurred. Refine the forecast inputs accordingly. Over time, the accuracy of the model improves and it becomes a genuinely reliable decision-making tool rather than a theoretical exercise.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Monthly Cash Forecast Template</span>
-            <span class="del-tag">Reserve Policy Defined</span>
-            <span class="del-tag">Forecast Review Process</span>
-          </div>
-          <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
-        </div>
-      </div>
-
-      <!-- WS 2.3 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Revenue Operations</div>
-          <div class="ws-name">Payment Collection Infrastructure</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Migrate to card-on-file or automated payment collection.</strong> The reliance on manual bank transfers for 90% of revenue is the root cause of the collections problem. Implementing card-on-file via Stripe or an equivalent payment processor changes the model fundamentally: all new deals, full-pay and payment plan, are taken by card at the point of close. Payment plan instalments are charged automatically on the agreed schedule. This removes the collections function from Gallo's workload entirely and eliminates the personal-incentive tactics currently used to recover late payments.</li>
-            <li><strong>Build the automated follow-up sequence for failed payments.</strong> Even with card-on-file, payments will occasionally fail due to card limits or insufficient funds. An automated sequence handles this without founder involvement: immediate notification to the client, retry on day three, automated follow-up on day five, closer escalation on day seven. This keeps the process consistent and measurable without manual intervention.</li>
-            <li><strong>Track payment collection as a financial metric.</strong> Monitor the percentage of monthly revenue received within the expected collection window. Any deterioration in this metric is an early indicator of client quality issues, comp plan misalignment, or sales process gaps. It belongs in the monthly reporting pack.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Card-on-File Process Live</span>
-            <span class="del-tag">Automated Follow-Up Sequence</span>
-            <span class="del-tag">Collection Rate Metric</span>
-          </div>
-          <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
-        </div>
-      </div>
-
+      <table class="kpi-table reveal">
+        <thead><tr><th>Metric</th><th>Current State</th><th>Target</th><th>Frequency</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Monthly cash closed (&euro;)</strong></td><td>~&euro;120k (Gallo-dependent)</td><td>&euro;250k+ without Gallo on phones</td><td>Monthly</td><td>Gallo</td></tr>
+          <tr><td><strong>Gallo's % of total closes</strong></td><td>50%+</td><td>&lt;20% by week 6</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Closer close rate (per rep)</strong></td><td>Unknown vs. Gallo gap</td><td>Gap quantified; coaching plan in place</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Full-pay (PIF) ratio</strong></td><td>~40%</td><td>&gt;55%</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Calls taken per closer per day</strong></td><td>2&ndash;3</td><td>4&ndash;5 (capacity utilisation)</td><td>Daily</td><td>Gallo</td></tr>
+          <tr><td><strong>CAC (Meta)</strong></td><td>&euro;2,300</td><td>&euro;2,000 or below</td><td>Monthly</td><td>Gallo + Media Buyer</td></tr>
+          <tr><td><strong>Show rate on booked calls</strong></td><td>Not formally tracked</td><td>Tracked; improvement plan if &lt;70%</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Close-to-cash rate (90 days)</strong></td><td>Not tracked</td><td>&gt;90%</td><td>Monthly</td><td>VA / Gallo</td></tr>
+          <tr><td><strong>Onboarding completion rate (7 days)</strong></td><td>Not tracked</td><td>&gt;85%</td><td>Monthly</td><td>VA</td></tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-</section>
+  </section>
+
+</div><!-- end tab-sales -->
 
 
-<!-- ══════════════ MONTH 3 ══════════════ -->
-<section style="background: var(--mg-cream);">
-  <div class="wrap">
+<!-- ═══════════════ TAB: FINANCE & OPS ═══════════════ -->
+<div class="tab-panel" id="tab-finops">
 
-    <div class="month-block reveal">
-      <div class="month-header">
-        <div class="month-badge">Month 3</div>
-        <div class="month-label">Systematisation <span>Remove founders from execution</span></div>
+  <section style="background:#fff; padding-top:clamp(56px,7vw,100px); padding-bottom:clamp(56px,7vw,100px);">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Finance &amp; Ops Overview</div>
+        <h2>Where Quantum Creators sits today</h2>
       </div>
-
-      <!-- WS 3.1 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Operations</div>
-          <div class="ws-name">SOP Completion and Documentation Sprint</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Audit the existing 30-40% of SOPs.</strong> Identify which documented processes are current and which are outdated. Retire outdated versions. For each active process, validate against how the work is actually being done today, not how it was done six months ago.</li>
-            <li><strong>Prioritise and complete the critical 60%.</strong> Focus the documentation sprint on the processes that currently depend on Gallo or Miguel. Sales team management, sales coaching, accounting and payroll, client onboarding, and content briefing and publishing. Each SOP must be written to a standard where someone new could follow it without asking a founder for clarification.</li>
-            <li><strong>Document the financial processes specifically.</strong> Monthly close procedure, budget review process, cash forecast update protocol, aged debt review, commission calculation and payroll processing. These are the finance function SOPs that remove Gallo from the accounting role and allow a bookkeeper to be onboarded.</li>
-            <li><strong>Create a process ownership map.</strong> For every core process, assign an owner who is not Gallo or Miguel. Where no capable owner currently exists, identify whether the gap is a hire, a training requirement, or an automation opportunity.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">SOP Library Complete</span>
-            <span class="del-tag">Ownership Map</span>
-            <span class="del-tag">Finance Function SOPs</span>
-          </div>
-          <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
-        </div>
-      </div>
-
-      <!-- WS 3.2 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">People + Operations</div>
-          <div class="ws-name">Founder Extraction: Finance and Admin</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Hire or contract a bookkeeper.</strong> By the end of month three, Gallo should not be doing the bookkeeping. A part-time bookkeeper (20 hours per month) working from the documented SOPs and the accounting system can own the close cycle, reconciliations, and commission calculations. Gallo reviews and approves. He does not produce.</li>
-            <li><strong>Define Gallo's non-negotiable founder accountabilities.</strong> There are things only Gallo can do: closing large deals, setting sales strategy, making capital allocation decisions, and holding the team's standards. Codify this list. Every task not on the list is a delegation or automation target.</li>
-            <li><strong>Define Miguel's non-negotiable founder accountabilities.</strong> Content strategy and the product vision are Miguel's domain. Client coaching for his key clients is Miguel's domain. Everything else is a build-out target: a content operator who manages the execution layer beneath Miguel's creative direction.</li>
-            <li><strong>Activate identified automation opportunities.</strong> Using the N8N and AI capability already in the business, implement automations for: sales call confirmation and reminder sequences, payment plan follow-up, Skool onboarding triggers, and internal reporting data pulls. These remove manual touchpoints without removing quality.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Bookkeeper Onboarded</span>
-            <span class="del-tag">Founder Role Definition</span>
-            <span class="del-tag">Automation Build List</span>
-          </div>
-          <div class="task-owner">Owner: <span>Gallo + Miguel + Merigrove</span></div>
-        </div>
-      </div>
-
-      <!-- WS 3.3 -->
-      <div class="ws-row">
-        <div class="ws-label">
-          <div class="ws-cat">Finance</div>
-          <div class="ws-name">Pricing and Margin Review</div>
-        </div>
-        <div class="ws-content">
-          <ul class="task-list">
-            <li><strong>Conduct a formal pricing review using the contribution model.</strong> The last price increase (from &euro;5k to &euro;7k in September) was based on external advice rather than internal economics analysis. By month three, the contribution margin model will show what the minimum viable price is, what the contribution is at &euro;7k, and whether there is headroom to increase. This decision should be data-driven.</li>
-            <li><strong>Review the commission structure against unit economics.</strong> Closer commission at 8% of cash and setter contribution at 4% are significant cost lines. Model the impact on contribution margin of different commission structures, including tiered structures that reward higher close rates or higher deal values. The goal is not to cut commissions. It is to ensure alignment between comp design and the financial outcomes the business needs.</li>
-            <li><strong>Establish the ongoing monthly finance review cadence.</strong> By end of month three, the following should happen every month without Merigrove's prompting: management accounts produced, budget versus actual reviewed, cash forecast updated, unit economics dashboard refreshed, sales-finance bridge report distributed to Gallo. This is the operating rhythm the business runs on for the next phase of growth.</li>
-          </ul>
-          <div class="deliverables">
-            <span class="del-tag">Pricing Review Output</span>
-            <span class="del-tag">Commission Model Review</span>
-            <span class="del-tag">Monthly Cadence Live</span>
-          </div>
-          <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-
-<!-- ══════════════════════════════════════════
-     KPI FRAMEWORK
-══════════════════════════════════════════ -->
-<section style="background:#fff;">
-  <div class="wrap">
-
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span>Measurement</div>
-      <div>
-        <h2>KPIs to track progress</h2>
-        <p style="font-size:15px; color:var(--mg-mist); margin-top:14px; line-height:1.65;">
-          These are the metrics that determine whether the 90-day programme is working.
-          They are split between financial discipline metrics and operational health metrics.
-        </p>
+      <p class="reveal" style="font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--mg-graphite);margin-bottom:28px;">Quantum Creators is a fast-scaling online education and coaching business generating approximately &euro;120,000 in monthly revenue, with a cost base of roughly &euro;70,000 and a unit economics profile that is materially better than the founders realise. The business is founder-dependent, intuition-driven, and operating without the financial architecture needed to support the next phase of growth.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.7;color:var(--mg-graphite);margin-bottom:28px;">Gallo's audit responses reveal a founder who is commercially sharp, financially literate in a transactional sense, and acutely aware that the current model is not sustainable as the business scales. The risks are not existential today. They become existential at 2x or 3x the current size if the infrastructure is not built now.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.7;color:var(--mg-graphite);">This section identifies nine priority pain points drawn directly from the audit responses, then provides a structured 90-day playbook to resolve them. The scope covers financial reporting and controls, unit economics and data infrastructure, the sales-to-finance data layer, and the operational systems needed to begin extracting Gallo and Miguel from day-to-day execution.</p>
+      <div class="stat-row reveal">
+        <div class="stat-cell"><div class="st-num">~&euro;120k</div><div class="st-label">Monthly Revenue</div></div>
+        <div class="stat-cell"><div class="st-num">~&euro;70k</div><div class="st-label">Monthly Cost Base</div></div>
+        <div class="stat-cell"><div class="st-num">&euro;2,300</div><div class="st-label">Current CAC (Last Month)</div></div>
+        <div class="stat-cell"><div class="st-num">30&ndash;40%</div><div class="st-label">SOPs Documented</div></div>
       </div>
     </div>
+  </section>
 
-    <table class="kpi-table reveal">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Current State</th>
-          <th>Target (90 Days)</th>
-          <th>Frequency</th>
-          <th>Owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Monthly management accounts produced</strong></td>
-          <td>Not produced formally</td>
-          <td>By working day 10, every month</td>
-          <td>Monthly</td>
-          <td>Bookkeeper / Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Gross margin %</strong></td>
-          <td>Unknown</td>
-          <td>Calculated and tracked monthly</td>
-          <td>Monthly</td>
-          <td>Merigrove / Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Contribution margin per deal (&euro;)</strong></td>
-          <td>Not calculated</td>
-          <td>Known figure, updated monthly</td>
-          <td>Monthly</td>
-          <td>Merigrove</td>
-        </tr>
-        <tr>
-          <td><strong>CAC (cost per client acquired)</strong></td>
-          <td>&euro;2,300 (last month)</td>
-          <td>Tracked monthly, target &lt;&euro;2,000</td>
-          <td>Monthly</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Cost per booked call</strong></td>
-          <td>Not tracked formally</td>
-          <td>Tracked weekly from ad data</td>
-          <td>Weekly</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Closer close rate</strong></td>
-          <td>Tracked in CRM, not linked to finance</td>
-          <td>Linked to revenue impact per rep</td>
-          <td>Weekly</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Cash reserve (months of opex)</strong></td>
-          <td>~1.5 months</td>
-          <td>&gt;3 months (&euro;210k+)</td>
-          <td>Monthly</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Payment collection rate (within window)</strong></td>
-          <td>Not tracked</td>
-          <td>&gt;95% of monthly revenue collected on schedule</td>
-          <td>Monthly</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>SOPs documented and current</strong></td>
-          <td>30&ndash;40%</td>
-          <td>90%+ of core processes</td>
-          <td>Monthly audit</td>
-          <td>Gallo</td>
-        </tr>
-        <tr>
-          <td><strong>Founder hours in day-to-day execution</strong></td>
-          <td>Majority of working hours</td>
-          <td>Gallo: &lt;30% execution; Miguel: &lt;40%</td>
-          <td>Monthly review</td>
-          <td>Gallo + Miguel</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="section-divider"></div>
 
-  </div>
-</section>
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Part One</div>
+        <div>
+          <h2>Identified Pain Points</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">Nine priority issues surfaced from the audit questionnaire. Each is grounded in a direct response from Gallo and assessed for severity and urgency.</p>
+        </div>
+      </div>
 
-<div class="section-divider"></div>
+      <div class="pain-grid reveal">
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">01</div><div><div class="pc-tag tag-critical">Critical</div><div class="pc-title">No formal P&amp;L, cash reporting, or structured monthly close</div></div></div>
+          <p class="pc-body">Gallo manages finances through a manual, transaction-by-transaction cash-basis process. There is no structured P&amp;L, no cash movement report, and no formal management accounts produced on a monthly cycle. Decisions are made intuitively based on cash in the account rather than on a clear picture of profitability. Gallo himself acknowledges he cannot state gross margin or net margin without looking it up.</p>
+          <p class="pc-evidence">"I track everything on a cash flow basis. Transactions... I do a lot of decisions almost intuitively if I see the ROI and the treasury allows it."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">02</div><div><div class="pc-tag tag-critical">Critical</div><div class="pc-title">No unit economics visibility: margin per deal, LTV, LTV:CAC</div></div></div>
+          <p class="pc-body">The business has a single core offer but no formal calculation of contribution margin, cost per acquisition by channel, or LTV:CAC ratio. CAC is not tracked as a standing metric. Without this data, pricing decisions, channel allocation, and sales compensation cannot be optimised. The business is flying without instruments at &euro;1.4M ARR run-rate.</p>
+          <p class="pc-evidence">"LTV:CAC I don't actually know but LTV is getting higher and higher." "I don't know my contribution margin at current price points."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">03</div><div><div class="pc-tag tag-critical">Critical</div><div class="pc-title">No financial forecasting or budget against which to measure</div></div></div>
+          <p class="pc-body">The business operates without a formal financial plan, annual budget, or monthly variance analysis. The only stated goal was to exceed &euro;1M post-tax in year one. Without a budget, there is no mechanism to detect deterioration early, assess whether ad spend is productive in context, or hold team leads accountable to financial targets. The recent &euro;5k cash surplus month is a direct symptom of this.</p>
+          <p class="pc-evidence">"No. We have roughly goals personally and professionally. We set budgets and goals monthly." "Last month we made only 5k&euro; cash surplus. We made bad decisions in marketing."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">04</div><div><div class="pc-tag tag-high">High Priority</div><div class="pc-title">Cash management is reactive, not proactive</div></div></div>
+          <p class="pc-body">There is no cash flow forecast, no defined minimum reserve policy, and no structured approach to managing seasonal pinch points such as Spanish holidays or the December slowdown. The business holds approximately 1.5 months of operating costs in liquid cash, below the three-month minimum for a business of this risk profile. Ad spend of up to &euro;50,000 per month creates substantial volatility against a &euro;110,000 reserve.</p>
+          <p class="pc-evidence">"No. I don't. We have been 'surviving' for the first year and reinvesting everything." "We didn't manage those seasons properly."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">05</div><div><div class="pc-tag tag-high">High Priority</div><div class="pc-title">No structured sales-to-finance data bridge</div></div></div>
+          <p class="pc-body">Sales data sits in Close CRM and a Looker Studio dashboard, but this data is not formally translated into financial metrics. Average revenue per deal, closer earnings per deal, setter conversion rates and their financial impact, cost per booked call, and cost per closed deal are not tracked as standing metrics. The sales team cannot see the financial consequence of their conversion rate, and Gallo cannot see the financial cost of each sales motion at a granular level.</p>
+          <p class="pc-evidence">"We have a Looker Studio Dashboard that connects sales and marketing. We only advertise on Meta." Close CRM tracks opportunities but not financial unit-level outcomes per rep.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">06</div><div><div class="pc-tag tag-high">High Priority</div><div class="pc-title">Collections are informal and founder-dependent</div></div></div>
+          <p class="pc-body">90% of payments are taken by manual bank transfer with no structured follow-up sequence for late payments. Gallo uses personal incentives to collect outstanding balances. This is not scalable, creates aged debt managed informally, and ties founder time to a finance administration function. As deal volume grows, this will create increasingly significant cash flow drag.</p>
+          <p class="pc-evidence">"It is handled informally. We take 90% of payments via manual bank transfers. I do a lot of bonuses like 'I give you 1on1 with me if you liquidate the payment'. It takes my time as a founder."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">07</div><div><div class="pc-tag tag-high">High Priority</div><div class="pc-title">Unresolved statutory and tax compliance exposure</div></div></div>
+          <p class="pc-body">Statutory filings including VAT returns, corporation tax, and payroll obligations are described as being in a "grey zone" with a Cyprus restructure planned but not yet executed. There is no external accountant in an advisory capacity. This represents a material compliance and financial risk as the business approaches the scale where authorities scrutinise more closely.</p>
+          <p class="pc-evidence">"No. We are on a grey zone. Planning to move to Cyprus the company." "No external accountant."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">08</div><div><div class="pc-tag tag-high">High Priority</div><div class="pc-title">Founder dependency creates a single point of failure across all functions</div></div></div>
+          <p class="pc-body">If Gallo is unavailable: deal volume drops by more than 50%, the sales team loses its manager, salaries and banking cannot be processed, accounting stops, and fires across departments go unmanaged. If Miguel is unavailable: all new content stops, both paid and organic, and a significant portion of business coaching delivery is lost. The business is structurally designed around two people who cannot be absent.</p>
+          <p class="pc-evidence">"If Gallo is out (that is impossible to happen). First thing: closed deals drops 50% or more, management of the sales team, paying salaries and managing bank accounts, accounting, sales coaching on the delivery side."</p>
+        </div>
+        <div class="pain-card">
+          <div class="pc-head"><div class="pc-num">09</div><div><div class="pc-tag tag-medium">Medium Priority</div><div class="pc-title">Incomplete SOPs and undocumented institutional knowledge</div></div></div>
+          <p class="pc-body">Between 30% and 40% of operational processes have documented SOPs, and those that exist are described as not fully up to date. The client onboarding process involves multiple manual steps owned by individual closers or the founders. Without documented processes, the business cannot hire effectively, onboard staff to standard, or identify and eliminate waste systematically.</p>
+          <p class="pc-evidence">"I would say that we have SOPs for between 30% and 40% of tasks in the business. Some are not up to date." "Yes, probably a ton [of automation opportunities], especially on the delivery side and sales."</p>
+        </div>
+      </div>
 
-
-<!-- ══════════════════════════════════════════
-     CLOSING NOTE
-══════════════════════════════════════════ -->
-<section style="background: var(--mg-cream);">
-  <div class="wrap-narrow">
-
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot"></span>Merigrove Assessment</div>
-      <h2>The opportunity</h2>
+      <div class="callout-blue reveal">
+        <h3>The pattern behind the pain points</h3>
+        <p>Every pain point above connects to a single root cause: <strong>the business was built for execution speed, not for scalability.</strong> Gallo and Miguel made excellent decisions to get to &euro;120k per month. The same decisions that created that velocity are now the ceiling. The next phase requires a different operating model, not faster running of the existing one.</p>
+        <p>Critically, this business has strong underlying economics. The ad spend is large but it is generating real revenue. The cost base is lean. The offer is working. The opportunity loss from not having the data infrastructure and financial architecture in place is significant. This is a <strong>high-return intervention</strong>, not a remediation exercise.</p>
+      </div>
     </div>
+  </section>
 
-    <p class="reveal" style="font-family:var(--serif); font-size:clamp(17px,1.5vw,21px); line-height:1.55; color:var(--mg-graphite); margin-bottom:28px;">
-      Quantum Creators is one of the more financially promising businesses at this stage
-      that Merigrove has audited. The underlying economics are solid, the offer is clearly
-      working, and both founders have the drive and commercial intelligence to execute
-      what is being prescribed here.
-    </p>
-    <p class="reveal" style="font-size:15px; line-height:1.75; color:var(--mg-graphite); margin-bottom:20px;">
-      The gap is not talent or market fit. The gap is infrastructure. Gallo is operating
-      as CFO, head of sales, head of finance administration, collections manager, and
-      occasional firefighter simultaneously. Miguel is in a comparable position on the
-      content and product side. Neither of them should be in those operational seats
-      90 days from now.
-    </p>
-    <p class="reveal" style="font-size:15px; line-height:1.75; color:var(--mg-graphite); margin-bottom:20px;">
-      The 90-day programme above is designed to be done in parallel with the business
-      running at full pace. Nothing here requires the business to slow down. It requires
-      the founders to allocate deliberate time each week to building the system beneath
-      them, rather than continuing to be the system.
-    </p>
-    <p class="reveal" style="font-size:15px; line-height:1.75; color:var(--mg-graphite); margin-bottom:0;">
-      At the end of 90 days, Quantum Creators should have: a clean financial reporting
-      function it did not have to build alone, a data layer that translates sales activity
-      into financial outcomes in real time, a documented operating model, and two founders
-      who are spending the majority of their time on the work that only they can do.
-      That is the version of this business that scales past &euro;3M and beyond.
-    </p>
+  <div class="section-divider"></div>
 
-  </div>
-</section>
+  <section style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Part Two</div>
+        <div>
+          <h2>The 90-Day Playbook</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">A structured programme to build Quantum Creators' financial function, data infrastructure, and operating systems across three sequential months.</p>
+        </div>
+      </div>
+      <div class="milestone-strip reveal">
+        <div class="ms-cell"><div class="ms-month">Month 1 &mdash; Weeks 1&ndash;4</div><div class="ms-title">Foundation</div><div class="ms-desc">Build the reporting infrastructure. Establish the unit economics data layer. Produce the first clean financial statements.</div></div>
+        <div class="ms-cell active"><div class="ms-month">Month 2 &mdash; Weeks 5&ndash;8</div><div class="ms-title">Instrumentation</div><div class="ms-desc">Activate unit economics. Build the sales-finance bridge. Deploy cash forecasting.</div></div>
+        <div class="ms-cell"><div class="ms-month">Month 3 &mdash; Weeks 9&ndash;12</div><div class="ms-title">Systematisation</div><div class="ms-desc">Document processes. Remove founders from day-to-day. Create the operations manual.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--mg-cream);">
+    <div class="wrap">
+      <div class="month-block reveal">
+        <div class="month-header"><div class="month-badge">Month 1</div><div class="month-label">Foundation <span>Build what should already exist</span></div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Finance</div><div class="ws-name">Monthly Reporting Architecture</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Consider migrating to a structured accounting platform.</strong> Tools such as QuickBooks or Xero are worth exploring for the longer term, but this is not a prerequisite to getting started. A well-structured Google Sheets setup with a defined chart of accounts and consistent categorisation will work effectively for now, and is the right starting point before investing in software overhead. What matters is discipline and structure, not the tool.</li>
+              <li><strong>Define the monthly close cycle.</strong> Establish a fixed monthly close calendar: books closed and reconciled by working day 5, management accounts produced by working day 10. Define who owns each step. Initially this is Gallo with Merigrove oversight; the goal is to transition to a bookkeeper by month three.</li>
+              <li><strong>Rebuild last month's financial statements as a standing template.</strong> Produce a clean P&amp;L and cash movement report for the most recent completed month. These two documents become the monthly template that Gallo completes at every close. The P&amp;L captures revenue, cost of sales, gross profit, operating expenses by category, and net profit. The cash movement report tracks opening balance, cash in by source, cash out by category, and closing balance.</li>
+              <li><strong>Define the three-report monthly pack.</strong> The standard reporting pack is: the P&amp;L, the cash movement report, and the unit economics summary. Standardise the layout and tab structure now so the format is fixed and the close process becomes repeatable from month one.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Reporting Template Built</span><span class="del-tag">Last Month P&amp;L + Cash Report</span><span class="del-tag">Monthly Close SOP</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove (Max)</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Unit Economics</div><div class="ws-name">Gross Margin and Contribution Model</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Build the contribution margin model per deal.</strong> Map every cost incurred as a direct consequence of closing a deal: closer commission (8% of cash), setter contribution (4% of cash plus base allocation), payment processing, onboarding cost, and delivery cost per client (coach time, Carlos time, platform seat). Calculate contribution margin in euros and as a percentage at the current &euro;7,000 price point.</li>
+              <li><strong>Segment by deal type.</strong> Distinguish between full-pay and payment plan deals. Payment plans carry additional collection cost and cash flow delay. The contribution margin on a payment plan deal is not the same as a full-pay deal and must be tracked separately.</li>
+              <li><strong>Calculate CAC by channel.</strong> Ad spend is Meta-only, which simplifies this. Divide total monthly Meta spend by number of new clients acquired. Cross-reference against Looker Studio data to get cost per booked call and close rate from call to client. This gives a true CAC and cost per pipeline stage.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Contribution Margin Model</span><span class="del-tag">CAC by Channel</span></div>
+            <div class="task-owner">Owner: <span>Merigrove (Max) with Gallo data input</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff;">
+    <div class="wrap">
+      <div class="month-block reveal">
+        <div class="month-header"><div class="month-badge">Month 2</div><div class="month-label">Instrumentation <span>Activate the data layer</span></div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Data Infrastructure</div><div class="ws-name">Sales-to-Finance Bridge</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Define the sales metrics that flow into finance.</strong> The following must become standing weekly metrics: deals closed (volume and value), average deal value, payment plan ratio, booked calls from ads, show rate, close rate, cost per booked call, cost per close, setter-level conversion rates, closer-level earnings generated per deal net of commission. These are not just sales metrics. They are financial metrics.</li>
+              <li><strong>Create rep-level financial scorecards.</strong> Each closer and setter should see per week: how many deals they contributed to, the revenue generated, their commission earned, and the average contribution margin of their deals. This is the information needed to have financially grounded performance conversations.</li>
+              <li><strong>Establish the weekly data cadence.</strong> On Monday, the previous week's sales data is pulled and cross-referenced against ad spend and cash received. Gallo reviews a one-page summary. This replaces the current informal daily monitoring with a structured information ritual.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Sales Metrics Framework</span><span class="del-tag">Rep Scorecards</span><span class="del-tag">Weekly Data Cadence</span></div>
+            <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Finance</div><div class="ws-name">Monthly Cash Forecast</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Build the monthly cash forecast template.</strong> A forward-looking monthly cash model maps every known cash outflow (ad spend, payroll, commissions, software) against expected cash inflows from confirmed deals and payment plan receipts. Built in the same Google Sheet as the reporting pack, it projects next month's closing cash position based on current pipeline and committed costs. Updated at each monthly close, this is the instrument that prevents a repeat of the &euro;5k surplus month.</li>
+              <li><strong>Set a minimum cash reserve policy.</strong> Formalise the rule: the business maintains a minimum of three months of operating costs, approximately &euro;210,000, in liquid cash at all times. Ad spend budgets are adjusted before this floor is breached, not after.</li>
+              <li><strong>Implement a monthly forecast review.</strong> On the same day management accounts are produced, review the prior month's forecast versus actual. Identify where variance occurred. Refine the forecast inputs accordingly so the model's accuracy improves over time.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Monthly Cash Forecast Template</span><span class="del-tag">Reserve Policy Defined</span><span class="del-tag">Forecast Review Process</span></div>
+            <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Revenue Operations</div><div class="ws-name">Payment Collection Infrastructure</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Migrate to card-on-file or automated payment collection.</strong> The reliance on manual bank transfers for 90% of revenue is the root cause of the collections problem. Implementing card-on-file via Stripe or equivalent changes the model fundamentally: all new deals, full-pay and payment plan, are taken by card at the point of close. Payment plan instalments are charged automatically on the agreed schedule. This removes the collections function from Gallo's workload entirely.</li>
+              <li><strong>Build the automated follow-up sequence for failed payments.</strong> Even with card-on-file, payments will occasionally fail. An automated sequence handles this without founder involvement: immediate notification to the client, retry on day three, automated follow-up on day five, closer escalation on day seven.</li>
+              <li><strong>Track payment collection as a financial metric.</strong> Monitor the percentage of monthly revenue received within the expected collection window. Any deterioration is an early indicator of client quality issues, comp plan misalignment, or sales process gaps. It belongs in the monthly reporting pack.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Card-on-File Process Live</span><span class="del-tag">Automated Follow-Up Sequence</span><span class="del-tag">Collection Rate Metric</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--mg-cream);">
+    <div class="wrap">
+      <div class="month-block reveal">
+        <div class="month-header"><div class="month-badge">Month 3</div><div class="month-label">Systematisation <span>Remove founders from execution</span></div></div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Operations</div><div class="ws-name">SOP Completion and Documentation Sprint</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Audit the existing 30&ndash;40% of SOPs.</strong> Identify which documented processes are current and which are outdated. Retire outdated versions. For each active process, validate against how the work is actually being done today, not how it was done six months ago.</li>
+              <li><strong>Prioritise and complete the critical 60%.</strong> Focus on the processes that currently depend on Gallo or Miguel. Sales team management, sales coaching, accounting and payroll, client onboarding, and content briefing and publishing. Each SOP must be written to a standard where someone new could follow it without asking a founder for clarification.</li>
+              <li><strong>Document the financial processes specifically.</strong> Monthly close procedure, cash forecast update protocol, commission calculation, and payroll processing. These are the finance function SOPs that allow a bookkeeper to be onboarded without Gallo as translator.</li>
+              <li><strong>Create a process ownership map.</strong> For every core process, assign an owner who is not Gallo or Miguel. Where no capable owner currently exists, identify whether the gap is a hire, a training requirement, or an automation opportunity.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">SOP Library Complete</span><span class="del-tag">Ownership Map</span><span class="del-tag">Finance Function SOPs</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Merigrove</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">People + Operations</div><div class="ws-name">Founder Extraction: Finance and Admin</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Hire or contract a bookkeeper.</strong> By the end of month three, Gallo should not be doing the bookkeeping. A part-time bookkeeper (approximately 20 hours per month) working from the documented SOPs and the accounting system can own the close cycle, reconciliations, and commission calculations. Gallo reviews and approves. He does not produce.</li>
+              <li><strong>Define Gallo's non-negotiable founder accountabilities.</strong> There are things only Gallo can do: closing large deals, setting sales strategy, making capital allocation decisions, and holding the team's standards. Codify this list. Every task not on the list is a delegation or automation target.</li>
+              <li><strong>Define Miguel's non-negotiable founder accountabilities.</strong> Content strategy and the product vision are Miguel's domain. Client coaching for his key clients is Miguel's domain. Everything else is a build-out target: a content operator who manages the execution layer beneath Miguel's creative direction.</li>
+              <li><strong>Activate identified automation opportunities.</strong> Using the N8N and AI capability already in the business, implement automations for: sales call confirmation and reminder sequences, payment plan follow-up, Skool onboarding triggers, and internal reporting data pulls.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Bookkeeper Onboarded</span><span class="del-tag">Founder Role Definition</span><span class="del-tag">Automation Build List</span></div>
+            <div class="task-owner">Owner: <span>Gallo + Miguel + Merigrove</span></div>
+          </div>
+        </div>
+
+        <div class="ws-row">
+          <div class="ws-label"><div class="ws-cat">Finance</div><div class="ws-name">Pricing and Margin Review</div></div>
+          <div class="ws-content">
+            <ul class="task-list">
+              <li><strong>Conduct a formal pricing review using the contribution model.</strong> The last price increase (from &euro;5k to &euro;7k in September) was based on external advice rather than internal economics analysis. By month three, the contribution margin model will show what the minimum viable price is, what the contribution is at &euro;7k, and whether there is headroom to increase. This decision should be data-driven.</li>
+              <li><strong>Review the commission structure against unit economics.</strong> Closer commission at 8% and setter contribution at 4% are significant cost lines. Model the impact on contribution margin of different commission structures, including tiered structures that reward higher close rates or higher deal values. The goal is alignment between comp design and the financial outcomes the business needs.</li>
+              <li><strong>Establish the ongoing monthly finance review cadence.</strong> By end of month three, the following should happen every month: management accounts produced, cash forecast updated, unit economics dashboard refreshed, and the sales-finance bridge report distributed to Gallo. This is the operating rhythm the business runs on for the next phase of growth.</li>
+            </ul>
+            <div class="deliverables"><span class="del-tag">Pricing Review Output</span><span class="del-tag">Commission Model Review</span><span class="del-tag">Monthly Cadence Live</span></div>
+            <div class="task-owner">Owner: <span>Merigrove (Max) + Gallo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Measurement</div>
+        <div>
+          <h2>Finance &amp; Ops KPIs</h2>
+          <p style="font-size:15px;color:var(--mg-mist);margin-top:14px;line-height:1.65;">These are the metrics that determine whether the 90-day programme is working.</p>
+        </div>
+      </div>
+      <table class="kpi-table reveal">
+        <thead><tr><th>Metric</th><th>Current State</th><th>Target (90 Days)</th><th>Frequency</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Monthly management accounts produced</strong></td><td>Not produced formally</td><td>By working day 10, every month</td><td>Monthly</td><td>Bookkeeper / Gallo</td></tr>
+          <tr><td><strong>Gross margin %</strong></td><td>Unknown</td><td>Calculated and tracked monthly</td><td>Monthly</td><td>Merigrove / Gallo</td></tr>
+          <tr><td><strong>Contribution margin per deal (&euro;)</strong></td><td>Not calculated</td><td>Known figure, updated monthly</td><td>Monthly</td><td>Merigrove</td></tr>
+          <tr><td><strong>CAC (cost per client acquired)</strong></td><td>&euro;2,300 (last month)</td><td>Tracked monthly, target &lt;&euro;2,000</td><td>Monthly</td><td>Gallo</td></tr>
+          <tr><td><strong>Cost per booked call</strong></td><td>Not tracked formally</td><td>Tracked weekly from ad data</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Closer close rate</strong></td><td>Tracked in CRM, not linked to finance</td><td>Linked to revenue impact per rep</td><td>Weekly</td><td>Gallo</td></tr>
+          <tr><td><strong>Cash reserve (months of opex)</strong></td><td>~1.5 months</td><td>&gt;3 months (&euro;210k+)</td><td>Monthly</td><td>Gallo</td></tr>
+          <tr><td><strong>Payment collection rate (within window)</strong></td><td>Not tracked</td><td>&gt;95% of monthly revenue collected on schedule</td><td>Monthly</td><td>Gallo</td></tr>
+          <tr><td><strong>SOPs documented and current</strong></td><td>30&ndash;40%</td><td>90%+ of core processes</td><td>Monthly audit</td><td>Gallo</td></tr>
+          <tr><td><strong>Founder hours in day-to-day execution</strong></td><td>Majority of working hours</td><td>Gallo: &lt;30% execution; Miguel: &lt;40%</td><td>Monthly review</td><td>Gallo + Miguel</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section style="background:var(--mg-cream);">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="dot"></span>Merigrove Assessment</div>
+        <h2>The opportunity</h2>
+      </div>
+      <p class="reveal" style="font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--mg-graphite);margin-bottom:28px;">Quantum Creators is one of the more financially promising businesses at this stage that Merigrove has audited. The underlying economics are solid, the offer is clearly working, and both founders have the drive and commercial intelligence to execute what is being prescribed here.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.75;color:var(--mg-graphite);margin-bottom:20px;">The gap is not talent or market fit. The gap is infrastructure. Gallo is operating as CFO, head of sales, head of finance administration, collections manager, and occasional firefighter simultaneously. Miguel is in a comparable position on the content and product side. Neither of them should be in those operational seats 90 days from now.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.75;color:var(--mg-graphite);margin-bottom:20px;">The 90-day programme above is designed to be done in parallel with the business running at full pace. Nothing here requires the business to slow down. It requires the founders to allocate deliberate time each week to building the system beneath them, rather than continuing to be the system.</p>
+      <p class="reveal" style="font-size:15px;line-height:1.75;color:var(--mg-graphite);margin-bottom:0;">At the end of 90 days, Quantum Creators should have: a clean financial reporting function, a data layer that translates sales activity into financial outcomes in real time, a documented operating model, and two founders spending the majority of their time on the work that only they can do. That is the version of this business that scales past &euro;3M and beyond.</p>
+    </div>
+  </section>
+
+</div><!-- end tab-finops -->
 
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="doc-footer">
   <div class="wrap">
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Merigrove</div>
-        <p style="font-size:13px; color:rgba(255,255,255,0.45); margin-top:10px; max-width:420px; line-height:1.65;">
-          Revenue Operating System Advisory. We help founder-led businesses grow through
-          Sales, Marketing, Finance, and Management discipline.
-        </p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:10px;max-width:420px;line-height:1.65;">Revenue Operating System Advisory. We help founder-led businesses grow through Sales, Marketing, Finance, and Management discipline.</p>
       </div>
       <div class="footer-meta">
         <div>Confidential &mdash; Quantum Creators</div>
         <div>Prepared by Kacper Wiloch &amp; Max Crow</div>
         <div>kacper@merigrove.com &nbsp;|&nbsp; max@merigrove.com</div>
-        <div style="margin-top:8px; color:rgba(255,255,255,0.25);">May 2026 &nbsp;&mdash;&nbsp; Not for distribution</div>
+        <div style="margin-top:8px;color:rgba(255,255,255,0.25);">May 2026 &nbsp;&mdash;&nbsp; Not for distribution</div>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  const els = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  els.forEach(el => io.observe(el));
-</script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector('[data-tab="' + name + '"]').classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+    window.scrollTo({ top: document.getElementById('tabNav').offsetTop, behavior: 'smooth' });
+    setTimeout(triggerReveals, 100);
+  }
 
+  function triggerReveals() {
+    const els = document.querySelectorAll('.tab-panel.active .reveal:not(.in)');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    els.forEach(el => io.observe(el));
+  }
+
+  triggerReveals();
+</script>
 </body>
 </html>
