@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bylt By Britt — Sales Management Playbook | Merigrove</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Faculty+Glyphic&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bb-gold:        #c4a86b;
+    --bb-gold-deep:   #956f2e;
+    --bb-gold-soft:   #f7f0e3;
+    --bb-gold-mid:    #e8d5b0;
+
+    --mg-ink:         #0a0a0a;
+    --mg-graphite:    #1a1a1e;
+    --mg-charcoal:    #2c2c30;
+    --mg-mid:         #5a5a60;
+    --mg-mist:        #8a8a90;
+    --mg-rule:        #d4d4d8;
+    --mg-light:       #f0f0f2;
+    --mg-white:       #ffffff;
+    --mg-ivory:       #f6f6f4;
+    --mg-cream:       #fafaf8;
+
+    --serif:          'Faculty Glyphic', Georgia, serif;
+    --sans:           'Plus Jakarta Sans', system-ui, sans-serif;
+
+    --radius-sm:      4px;
+    --radius-md:      8px;
+    --radius-lg:      16px;
+
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md:      0 4px 12px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+    --shadow-lg:      0 12px 32px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: var(--sans);
+    color: var(--mg-ink);
+    background: var(--mg-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: var(--serif); }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+
+  /* Hero */
+  .hero {
+    background: #1a1714;
+    color: var(--mg-white);
+    padding: 64px 48px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,168,107,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-logos {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 52px;
+  }
+  .hero-logos .divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.25);
+  }
+  .mg-wordmark {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: var(--mg-white);
+    text-transform: uppercase;
+  }
+  .bb-logo-wrap { opacity: 0.92; }
+  .bb-logo-wrap img { height: 28px; width: auto; }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bb-gold);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--mg-white);
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--bb-gold);
+  }
+  .hero-lede {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.72);
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    max-width: 700px;
+  }
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+  }
+
+  /* Sticky Nav */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--mg-white);
+    border-bottom: 1px solid var(--mg-rule);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .nav-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--mg-mist);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--mg-ink); }
+  .nav-tab.active {
+    color: var(--bb-gold-deep);
+    border-bottom-color: var(--bb-gold);
+  }
+
+  /* Tab Panels */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Sections */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .section-bg {
+    background: var(--mg-ivory);
+    padding: 64px 0;
+  }
+  .section-bg .section { padding-top: 0; padding-bottom: 0; }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bb-gold-deep);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--mg-graphite);
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--mg-mid);
+    line-height: 1.75;
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  /* Pain Cards */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .pain-card {
+    background: var(--mg-white);
+    border: 1px solid var(--mg-rule);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .pain-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s, border-color 0.2s;
+  }
+  .pain-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .pain-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  .severity-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .sev-critical { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6c6; }
+  .pain-card.sev-critical { border-left: 3px solid #e74c3c; }
+  .sev-high { background: #fff8e1; color: #b7770d; border: 1px solid #f5e0a0; }
+  .pain-card.sev-high { border-left: 3px solid #f39c12; }
+  .sev-medium { background: var(--bb-gold-soft); color: var(--bb-gold-deep); border: 1px solid var(--bb-gold-mid); }
+  .pain-card.sev-medium { border-left: 3px solid var(--bb-gold); }
+
+  .pain-card h3 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--mg-graphite);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .pain-card p { font-size: 13px; color: var(--mg-mid); line-height: 1.65; }
+  .pain-card .evidence {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--mg-ivory);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    color: var(--mg-mist);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Severity Legend */
+  .severity-legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mg-mid);
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* Playbook Timeline */
+  .playbook-timeline {
+    position: relative;
+    padding-left: 56px;
+  }
+  .playbook-timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 16px;
+    bottom: 32px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--bb-gold), var(--bb-gold-deep));
+    opacity: 0.3;
+  }
+  .month-block {
+    position: relative;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .month-block.visible { opacity: 1; transform: translateX(0); }
+  .month-node {
+    position: absolute;
+    left: -45px;
+    top: 16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bb-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #1a1714;
+    box-shadow: 0 0 0 4px var(--mg-white), 0 0 0 6px var(--bb-gold-mid);
+    z-index: 2;
+  }
+  .month-header {
+    background: #1a1714;
+    color: var(--mg-white);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .month-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bb-gold);
+    margin-bottom: 4px;
+  }
+  .month-title { font-size: 20px; font-weight: 400; color: var(--mg-white); }
+  .month-weeks {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+  .month-body {
+    background: var(--mg-white);
+    border: 1px solid var(--mg-rule);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .month-objective {
+    padding: 20px 28px;
+    background: var(--bb-gold-soft);
+    border-bottom: 1px solid var(--bb-gold-mid);
+  }
+  .month-objective-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bb-gold-deep);
+    margin-bottom: 4px;
+  }
+  .month-objective p { font-size: 14px; color: var(--bb-gold-deep); font-weight: 500; line-height: 1.5; }
+  .workstreams { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .workstream {
+    padding: 24px 28px;
+    border-right: 1px solid var(--mg-rule);
+    border-bottom: 1px solid var(--mg-rule);
+  }
+  .workstream:nth-child(2n) { border-right: none; }
+  .workstream:nth-last-child(-n+2) { border-bottom: none; }
+  .workstream-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mg-mist);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .workstream-label::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--bb-gold);
+  }
+  .workstream h4 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--mg-graphite);
+    margin-bottom: 8px;
+  }
+  .workstream ul { list-style: none; padding: 0; }
+  .workstream ul li {
+    font-size: 13px;
+    color: var(--mg-mid);
+    line-height: 1.6;
+    padding: 3px 0 3px 14px;
+    position: relative;
+  }
+  .workstream ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 1px;
+    background: var(--bb-gold);
+  }
+  .month-footer-bar {
+    background: var(--mg-ivory);
+    border-top: 1px solid var(--mg-rule);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .month-footer-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mg-mist);
+  }
+  .outcome-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .outcome-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--bb-gold-deep);
+    background: var(--bb-gold-soft);
+    border: 1px solid var(--bb-gold-mid);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* Milestone Strip */
+  .milestone-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: #1a1714;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+  .milestone-item {
+    padding: 24px 20px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+  .milestone-item:last-child { border-right: none; }
+  .milestone-item:hover { background: rgba(255,255,255,0.04); }
+  .milestone-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--bb-gold);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .milestone-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mg-white);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .milestone-weeks { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+  /* KPI Table */
+  .kpi-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--mg-rule);
+  }
+  .kpi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .kpi-table thead th {
+    background: #1a1714;
+    color: var(--mg-white);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .kpi-table tbody tr {
+    border-bottom: 1px solid var(--mg-rule);
+    transition: background 0.15s;
+  }
+  .kpi-table tbody tr:last-child { border-bottom: none; }
+  .kpi-table tbody tr:hover { background: var(--mg-ivory); }
+  .kpi-table td { padding: 14px 20px; vertical-align: top; }
+  .kpi-table td:first-child { font-weight: 600; color: var(--mg-graphite); }
+  .kpi-table .kpi-current { color: #c0392b; font-style: italic; }
+  .kpi-table .kpi-target { font-weight: 600; color: var(--bb-gold-deep); }
+  .kpi-table .kpi-month { font-size: 11px; font-weight: 600; color: var(--mg-mist); }
+
+  /* Overview */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .overview-card {
+    background: var(--mg-white);
+    border: 1px solid var(--mg-rule);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .overview-card h3 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--mg-graphite);
+    margin-bottom: 10px;
+  }
+  .overview-card p { font-size: 13px; color: var(--mg-mid); line-height: 1.7; }
+  .overview-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .stat-block {
+    text-align: center;
+    padding: 28px 16px;
+    background: var(--mg-white);
+    border: 1px solid var(--mg-rule);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--bb-gold-deep);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { font-size: 12px; font-weight: 600; color: var(--mg-mid); letter-spacing: 0.04em; }
+
+  /* Brand note box */
+  .brand-note {
+    margin-top: 48px;
+    padding: 28px;
+    background: var(--bb-gold-soft);
+    border: 1px solid var(--bb-gold-mid);
+    border-left: 3px solid var(--bb-gold);
+    border-radius: var(--radius-md);
+  }
+  .brand-note h3 {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bb-gold-deep);
+    margin-bottom: 12px;
+  }
+  .brand-note p { font-size: 13px; color: var(--mg-mid); line-height: 1.7; }
+
+  /* Additional findings cards */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .finding-card {
+    background: var(--mg-white);
+    border: 1px solid var(--mg-rule);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .finding-card h3 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--mg-graphite);
+    margin-bottom: 8px;
+  }
+  .finding-card p { font-size: 13px; color: var(--mg-mid); line-height: 1.65; }
+  .finding-category {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bb-gold);
+    margin-bottom: 8px;
+  }
+
+  /* CTA */
+  .cta-panel {
+    background: linear-gradient(135deg, #1a1714 0%, #2a2420 100%);
+    border-radius: var(--radius-lg);
+    padding: 52px 48px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 64px 0 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .cta-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bb-gold);
+    margin-bottom: 12px;
+  }
+  .cta-title { font-size: 28px; font-weight: 400; color: var(--mg-white); margin-bottom: 16px; line-height: 1.2; }
+  .cta-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 520px; }
+  .cta-pricing { display: flex; flex-direction: column; gap: 16px; min-width: 220px; }
+  .price-row {
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .price-amount { font-family: var(--serif); font-size: 22px; color: var(--mg-white); line-height: 1; }
+  .price-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  /* Footer */
+  footer {
+    background: #1a1714;
+    color: rgba(255,255,255,0.45);
+    padding: 36px 48px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  footer strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+  footer .footer-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { padding: 40px 24px 52px; }
+    .nav-inner { padding: 0 20px; overflow-x: auto; }
+    .section { padding: 48px 24px; }
+    .workstreams { grid-template-columns: 1fr; }
+    .workstream { border-right: none; }
+    .workstream:nth-last-child(-n+2) { border-bottom: 1px solid var(--mg-rule); }
+    .workstream:last-child { border-bottom: none; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .overview-stats { grid-template-columns: 1fr 1fr; }
+    .findings-grid { grid-template-columns: 1fr; }
+    .cta-panel { padding: 36px 28px; }
+    .pain-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Login Overlay */
+  #login-overlay {
+    position: fixed;
+    inset: 0;
+    background: #1a1714;
+    color: var(--mg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    font-family: var(--sans);
+    padding: 24px;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  #login-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .login-card {
+    background: #2a2420;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    border-top: 4px solid var(--bb-gold);
+  }
+  .login-logo {
+    font-family: var(--serif);
+    font-size: 24px;
+    letter-spacing: 0.18em;
+    color: var(--mg-white);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .login-subtitle {
+    font-size: 13px;
+    color: var(--bb-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .login-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .login-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .login-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    color: var(--mg-white);
+    font-family: var(--sans);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .login-input:focus {
+    border-color: var(--bb-gold);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .login-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--bb-gold);
+    color: #1a1714;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 12px;
+  }
+  .login-btn:hover {
+    background: var(--bb-gold-mid);
+  }
+  .login-btn:active {
+    transform: scale(0.98);
+  }
+  .login-error {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 16px;
+    min-height: 18px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .login-error.visible {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay">
+  <div class="login-card">
+    <div class="login-logo">Merigrove.</div>
+    <div class="login-subtitle">Bylt By Britt Playbook</div>
+    <div class="login-group">
+      <label class="login-label" for="bb-password">Password Required</label>
+      <input type="password" id="bb-password" class="login-input" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="checkPassword()">Unlock Playbook</button>
+    <div id="login-error" class="login-error">Incorrect password. Please try again.</div>
+  </div>
+</div>
+
+<div id="playbook-content" style="display: none;">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-logos">
+    <span class="mg-wordmark">Merigrove.</span>
+    <div class="divider"></div>
+    <div class="bb-logo-wrap">
+      <img src="data:image/png;base64,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" alt="Bylt By Britt">
+    </div>
+  </div>
+
+  <p class="hero-eyebrow">Sales Management Audit — Confidential</p>
+  <h1 class="hero-title">Bylt By Britt:<br><em>Sales Management</em> Playbook</h1>
+  <p class="hero-lede">This document summarises the findings from an independent audit of Bylt By Britt's commercial and operational function, based on Britt Blanco's responses to a structured diagnostic questionnaire. Merigrove is aware that the primary objective and pain point is sales management — this playbook has been prepared to address that directly, while flagging all other key issues surfaced by the audit that deserve Britt's attention.</p>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Prepared For</div>
+      <div class="meta-value">Britt Blanco — Bylt By Britt</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Respondent</div>
+      <div class="meta-value">Britt Blanco (Founder)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Primary Focus</div>
+      <div class="meta-value">Sales Management</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Prepared By</div>
+      <div class="meta-value">Merigrove</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Date</div>
+      <div class="meta-value">June 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="nav-tab" onclick="switchTab('sales')">Sales Management</button>
+    <button class="nav-tab" onclick="switchTab('additional')">Additional Findings</button>
+  </div>
+</nav>
+
+
+<!-- PANEL: OVERVIEW -->
+<div id="panel-overview" class="panel active">
+  <div class="section">
+    <p class="section-eyebrow">About This Audit</p>
+    <h2 class="section-title">A high-growth business with a manageable set of structural gaps</h2>
+    <p class="section-intro">Bylt By Britt is a women's fitness coaching business built around a substantial organic audience and two premium coaching offers. The business has real commercial momentum — a dedicated team, a growing paid acquisition channel, and a founder who is acutely aware of where the gaps are. What follows is a frank assessment of those gaps, led by the sales management function that Britt herself identified as the primary constraint on growth.</p>
+
+    <div class="overview-stats">
+      <div class="stat-block">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Closers on Team</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Setters &amp; Support</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">$4.5k</div>
+        <div class="stat-label">VIP Offer (6-month PIF)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">$12k</div>
+        <div class="stat-label">Elite 1:1 Offer (6-month)</div>
+      </div>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>What was assessed</h3>
+        <p>The audit covered the full commercial and operational function: sales team structure, lead generation and pipeline performance, follow-up infrastructure, CRM and tech stack, compensation and incentives, hiring and onboarding, financial reporting and cash visibility, unit economics, cost base, operational workflows, and key-person risk.</p>
+      </div>
+      <div class="overview-card">
+        <h3>The primary priority</h3>
+        <p>Sales management is the dominant constraint. The business lost its sales manager and has not yet rebuilt the management layer — no call review cadence, no training system, no defined accountability structure. In the absence of that layer, closer inconsistency is ungovernable, revenue is unforecastable, and the team cannot improve systematically.</p>
+      </div>
+      <div class="overview-card">
+        <h3>What is at risk without action</h3>
+        <p>Britt stated directly: "I will fire my entire sales team because my business will break" if the core bottleneck is not resolved within 90 days. The business is currently generating revenue through founder oversight and team effort, but without a management infrastructure, that performance is unpredictable and unsustainable as the team scales.</p>
+      </div>
+      <div class="overview-card">
+        <h3>How this playbook is structured</h3>
+        <p>The Sales Management section sets out the nine issues identified across the sales function, sequenced by severity, followed by a 30/60/90 day implementation plan and a set of measurable targets. The Additional Findings section covers brand, product, finance, and operations — areas that matter but are not the immediate priority.</p>
+      </div>
+    </div>
+
+    <div class="brand-note">
+      <h3>A note on brand and product</h3>
+      <p>Merigrove noted two brand-level observations during the audit that are worth flagging here, though they sit outside the primary scope. First, the current visual and naming conventions — "VIP" and "Elite" — are category-level descriptors rather than proprietary positioning. In a saturated women's coaching market, brand differentiation is an acquisition asset and the current identity does not fully exploit Britt's existing audience authority. Second, the Britt AI concept is genuinely interesting as a scalable entry-point offer, but it enters a hypercompetitive space with well-resourced incumbents. Before meaningful investment, it needs a defined positioning thesis and a clear moat. These are longer-term considerations — not distractions from fixing sales first.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- PANEL: SALES -->
+<div id="panel-sales" class="panel">
+
+  <!-- Snapshot -->
+  <div class="section">
+    <p class="section-eyebrow">Sales Audit — Current State</p>
+    <h2 class="section-title">The team is working. The system is not.</h2>
+    <p class="section-intro">The sales audit identified nine distinct issues across the sales function. The single most important observation is structural: the sales management layer that was previously provided by the departed sales manager has not been replaced. Without it, the team operates without oversight, call quality cannot improve systematically, and revenue remains unforecastable. Every other issue is downstream of this one.</p>
+
+    <div class="overview-stats" style="grid-template-columns: repeat(4,1fr);">
+      <div class="stat-block">
+        <div class="stat-num">—</div>
+        <div class="stat-label">Close Rate (untracked)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">—</div>
+        <div class="stat-label">Show Rate (untracked)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">2-4d</div>
+        <div class="stat-label">Lead to Close Cycle</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Post-Call SOP Owner</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pain Points -->
+  <div class="section-bg">
+    <div class="section">
+      <p class="section-eyebrow">Diagnostic Findings</p>
+      <h2 class="section-title">Nine issues. Two are structural failures.</h2>
+      <p class="section-intro">The two critical issues represent active structural risk that will compound with every hire and every month of inaction. Five are high severity and require resolution within the first 60 days. Two are medium severity and form the predictability layer once the foundations are in place.</p>
+
+      <div class="severity-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#e74c3c"></div>
+          Critical — Active structural risk; address immediately
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#f39c12"></div>
+          High — Material gap; resolve within 60 days
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#c4a86b"></div>
+          Medium — Predictability layer; address in days 61–90
+        </div>
+      </div>
+
+      <div class="pain-grid">
+
+        <div class="pain-card sev-critical">
+          <div class="pain-card-top"><span class="severity-badge sev-critical">Critical</span></div>
+          <h3>No sales management layer since the last manager departed</h3>
+          <p>When the sales manager left, the management function left with them. There is currently no call review cadence, no weekly training system, no accountability structure for either setters or closers, and no one responsible for diagnosing or improving team performance. The team is effectively self-managing — which means it cannot improve.</p>
+          <div class="evidence">"We currently do not have a set training system after our last sales manager." / "My old sales manager was reviewing recordings weekly… currently nobody."</div>
+        </div>
+
+        <div class="pain-card sev-critical">
+          <div class="pain-card-top"><span class="severity-badge sev-critical">Critical</span></div>
+          <h3>Revenue is unforecastable because no diagnostic data exists</h3>
+          <p>Close rate, show rate, and average deal size are all unknown — not because the data does not exist in GHL, but because no one is extracting, tracking, or reviewing it. Without knowing where deals break, improvements cannot be targeted. Britt attributes inconsistency to her closers, but without call-level data, that diagnosis itself is an assumption.</p>
+          <div class="evidence">"No because my closers are so inconsistent." / "Consistency, and true MRR. And a real updated tracking sheet."</div>
+        </div>
+
+        <div class="pain-card sev-high">
+          <div class="pain-card-top"><span class="severity-badge sev-high">High</span></div>
+          <h3>No post-call follow-up SOP and no named owner</h3>
+          <p>There is no documented post-call sequence for any call outcome — no-show, not closed on the day, or gone inactive. Closers are "supposed to" follow up but there is no process, no SOP, no tracking, and explicitly no ownership. "No one" is responsible for ensuring follow-up happens. Every unconverted lead that leaves without a follow-up protocol is dormant revenue.</p>
+          <div class="evidence">"Not at the moment." / "Who is responsible for making sure follow-up gets done? No one."</div>
+        </div>
+
+        <div class="pain-card sev-high">
+          <div class="pain-card-top"><span class="severity-badge sev-high">High</span></div>
+          <h3>Setter qualification failure: emotional intelligence gap in lead triage</h3>
+          <p>Britt's own diagnosis of the biggest bottleneck points directly to setters: "having emotional intelligence to qualify the correct leads to book." The team is booking calls from leads that are not ready or not qualified — this inflates call volume, dilutes closer capacity, and drives the close rate down. No triage framework or qualification rubric is currently in place.</p>
+          <div class="evidence">"It's a combination of setters qualifying and closers being able to close." / "Trying to find a system to tag them as high, medium and low intent."</div>
+        </div>
+
+        <div class="pain-card sev-high">
+          <div class="pain-card-top"><span class="severity-badge sev-high">High</span></div>
+          <h3>Sales assets exist but are dismissed — a management failure, not a materials failure</h3>
+          <p>Canva sales decks have been built but closers refuse to use them because they "think it's cheap." This is not a materials problem — it is a management problem. Resources that exist but are not used represent both a missed revenue opportunity and a signal that the team operates without accountability. Rebuilding the assets may help; enforcing their use requires a management layer.</p>
+          <div class="evidence">"We have Canva slides, but the closures don't use them. They think it's cheap."</div>
+        </div>
+
+        <div class="pain-card sev-high">
+          <div class="pain-card-top"><span class="severity-badge sev-high">High</span></div>
+          <h3>No structured onboarding for new reps — institutional knowledge does not transfer</h3>
+          <p>Questions 35 and 36 on onboarding process and ramp-up timeline were left blank. This is a direct indicator that no formal onboarding process exists for incoming sales reps. Every new hire enters the team without a defined training path, product knowledge structure, or performance ramp standard — making every new hire a slow-ramp risk and compounding the management gap.</p>
+          <div class="evidence">"No response to onboarding questionnaire." / Hiring criteria: "experience, personable, organised, takes initiative, wants to make money."</div>
+        </div>
+
+        <div class="pain-card sev-high">
+          <div class="pain-card-top"><span class="severity-badge sev-high">High</span></div>
+          <h3>Compensation structure does not drive differentiated performance</h3>
+          <p>A flat 10% for closers and 5% for setters provides no mechanism to reward quality over quantity. The team previously rejected a tiered system on close rate — but that rejection should be understood as a management and framing challenge, not evidence that performance-based comp is wrong. Flat comp with random bonuses does not systematically incentivise the behaviours that improve close rate or lead quality.</p>
+          <div class="evidence">"10% on closes. We have tried a tiered system on close rate but they didn't like it." / "Just the random bonuses."</div>
+        </div>
+
+        <div class="pain-card sev-medium">
+          <div class="pain-card-top"><span class="severity-badge sev-medium">Medium</span></div>
+          <h3>No pre-sale value sequence: leads arrive at the call cold</h3>
+          <p>There is no structured nurture sequence delivering value before the call — no free macro chart, no training sample, no reciprocity-building asset. The pre-call infrastructure was revamped on the day of the audit, which is positive, but the broader gap is a deliberate pre-call value offer that builds intent and commitment before the prospect shows up. The VSL is pending editing, which compounds this gap.</p>
+          <div class="evidence">"Waiting on my VSL to be edited." / Pre-call revamped "just today."</div>
+        </div>
+
+        <div class="pain-card sev-medium">
+          <div class="pain-card-top"><span class="severity-badge sev-medium">Medium</span></div>
+          <h3>Pricing tiers appear intuitive rather than strategic</h3>
+          <p>The VIP offer has four distinct price points ($2,700 / $4,500 PIF / $825 monthly / $7,997 annual) and the Elite is $12,000 or $2,200/month. These were arrived at through intuition and market observation, not contribution margin analysis. With no unit economics by offer, it is unknown which price point is most profitable per close, whether monthly versus PIF creates cash flow risk, or whether the Elite price reflects its true delivery cost.</p>
+          <div class="evidence">"We just increased prices from $3,300 to $4,500." / "No" to knowing contribution margin at current price points.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 30/60/90 Plan -->
+  <div class="section">
+    <p class="section-eyebrow">30/60/90 Day Implementation Plan</p>
+    <h2 class="section-title">Diagnose. Build. Make it predictable.</h2>
+    <p class="section-intro">The three phases are ordered by dependency. Days 1 to 30 install the management layer and get visibility on what is actually happening. Days 31 to 60 use that visibility to build the systems and structures that make performance repeatable. Days 61 to 90 convert repeatable performance into forecastable revenue. Nothing in days 31 to 60 works if days 1 to 30 are skipped.</p>
+
+    <div class="milestone-strip">
+      <div class="milestone-item">
+        <div class="milestone-num">Days 1–30</div>
+        <div class="milestone-name">Diagnose &amp; Install</div>
+        <div class="milestone-weeks">Visibility, management layer, post-call SOP, lead triage.</div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-num">Days 31–60</div>
+        <div class="milestone-name">Build the Systems</div>
+        <div class="milestone-weeks">Comp redesign, resources, training cadence, onboarding.</div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-num">Days 61–90</div>
+        <div class="milestone-name">Create Predictability</div>
+        <div class="milestone-weeks">Forecasting, value sequences, hiring framework, SOP library.</div>
+      </div>
+    </div>
+
+    <div class="playbook-timeline">
+
+      <!-- Days 1-30 -->
+      <div class="month-block">
+        <div class="month-node" style="font-size:9px;font-weight:800;">30</div>
+        <div class="month-header">
+          <div class="month-meta">
+            <div class="month-label">Days 1–30</div>
+            <div class="month-title">Diagnose &amp; Install the Management Layer</div>
+          </div>
+          <div class="month-weeks">Addresses: 2 Critical, 2 High</div>
+        </div>
+        <div class="month-body">
+          <div class="month-objective">
+            <div class="month-objective-label">Primary Objective</div>
+            <p>Get visibility on what is actually happening in the pipeline and install the minimum management infrastructure. By day 30, there should be a named manager running weekly call reviews, a live post-call SOP, a working lead triage system, and the first real baseline data on close rate, show rate, and drop-off points.</p>
+          </div>
+          <div class="workstreams">
+            <div class="workstream">
+              <div class="workstream-label">Management Layer</div>
+              <h4>Appoint or assign a named sales manager immediately</h4>
+              <ul>
+                <li>Identify whether an internal candidate can be elevated or whether an interim external is needed</li>
+                <li>Define the manager's weekly responsibilities: call reviews, team meetings, pipeline oversight, rep feedback</li>
+                <li>Set a target split between personal selling time and management time if the manager is also a closer</li>
+                <li>Weekly call review cadence starts in week one — one self-reviewed call per closer per week, written feedback required</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Diagnostic Pull</div>
+              <h4>Extract all available pipeline data from GHL</h4>
+              <ul>
+                <li>Pull show rate by setter — identify the gap between best and worst performer</li>
+                <li>Pull close rate by closer — establish the actual baseline, not an estimate</li>
+                <li>Map all current pipeline stages and identify where deals are stalling</li>
+                <li>Tag the last 30 days of lost deals with a reason: objection not handled, no urgency, price, no-show, went cold</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Post-Call SOP</div>
+              <h4>Build and deploy a documented follow-up sequence immediately</h4>
+              <ul>
+                <li>No-show: immediate re-book attempt, then 3 touchpoints over 7 days</li>
+                <li>Not closed on the day: 5-touch sequence over 14 days — named owner, not the closer alone</li>
+                <li>Inactive lead threshold: define it (e.g., 30 days no response) and move to nurture pipeline in GHL</li>
+                <li>Assign a named owner for weekly follow-up compliance review — this is not optional discretion for closers</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Lead Triage System</div>
+              <h4>Build and activate a high/medium/low intent tagging framework</h4>
+              <ul>
+                <li>Define the criteria for each tier — what signals high intent versus low intent at the point of lead capture</li>
+                <li>Build the tagging logic into GHL automations and the setter qualification script</li>
+                <li>High-intent leads routed to closers first; medium/low routed into nurture or handled by the nurture specialist</li>
+                <li>Track booked call rate by intent tier from week two — this data shows whether the triage criteria are calibrated correctly</li>
+              </ul>
+            </div>
+          </div>
+          <div class="month-footer-bar">
+            <span class="month-footer-label">Day 30 Outcomes:</span>
+            <div class="outcome-tags">
+              <span class="outcome-tag">Named sales manager in role</span>
+              <span class="outcome-tag">Call review cadence running</span>
+              <span class="outcome-tag">Post-call SOP live</span>
+              <span class="outcome-tag">Lead triage active in GHL</span>
+              <span class="outcome-tag">Baseline data established</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Days 31-60 -->
+      <div class="month-block">
+        <div class="month-node" style="font-size:9px;font-weight:800;">60</div>
+        <div class="month-header">
+          <div class="month-meta">
+            <div class="month-label">Days 31–60</div>
+            <div class="month-title">Build Repeatable Systems</div>
+          </div>
+          <div class="month-weeks">Addresses: 3 High Issues</div>
+        </div>
+        <div class="month-body">
+          <div class="month-objective">
+            <div class="month-objective-label">Primary Objective</div>
+            <p>Use the data gathered in days 1 to 30 to build systems that make performance repeatable rather than personality-dependent. Redesign the compensation structure, rebuild or reframe sales resources, install a setter training cadence, and build the onboarding process so every new hire enters with a defined ramp path.</p>
+          </div>
+          <div class="workstreams">
+            <div class="workstream">
+              <div class="workstream-label">Compensation Redesign</div>
+              <h4>Build a comp plan that drives the right behaviours by role</h4>
+              <ul>
+                <li>Closers: introduce a performance tier above the base 10% — triggered at a defined close rate threshold, not arbitrary bonus</li>
+                <li>Setters: move from 5% on closed calls to a structure that rewards booked-and-showed rate, not just volume — volume without quality is the current problem</li>
+                <li>Present the new structure with clear reasoning: it rewards better performance, not less pay</li>
+                <li>Set a 30-day review point — if a comp change is working, the data shows it; if the team resists, address it as a management conversation, not a comp conversation</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Sales Resources</div>
+              <h4>Rebuild or re-present sales assets under manager authority</h4>
+              <ul>
+                <li>Audit the existing Canva decks — are they genuinely weak or simply not enforced?</li>
+                <li>If the materials are weak, commission a rebuild aligned to the BYLT VIP and Elite offer narratives</li>
+                <li>If materials are sufficient, the manager enforces adoption — "too cheap" is not a closer's decision to make unilaterally</li>
+                <li>Build out the DM resources Britt is working on: pre-call value assets and post-call objection support for closers</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Setter Training Cadence</div>
+              <h4>Install a weekly setter development programme</h4>
+              <ul>
+                <li>Weekly group setter session: role-plays, qualification script review, and one recorded call critiqued per session</li>
+                <li>Specific focus: emotional intelligence in lead qualifying — identify the signals that distinguish a serious prospect from one booking out of curiosity</li>
+                <li>Define and document the qualification criteria for each offer tier: what must a prospect present to be booked for VIP versus Elite versus Britt AI (once live)</li>
+                <li>Track setter qualification accuracy weekly: what percentage of calls booked convert to closed</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Rep Onboarding SOP</div>
+              <h4>Build the onboarding process that does not currently exist</h4>
+              <ul>
+                <li>Week 1: product deep-dive — both VIP and Elite offers, the transformation journey, the client avatar in depth</li>
+                <li>Week 2: process training — GHL, qualification script, post-call SOP, CRM hygiene standards</li>
+                <li>Weeks 3–4: shadow calls, then live calls with weekly debrief from manager</li>
+                <li>Define the ramp KPIs: what does a new rep need to hit by week 4 and week 8 to be considered on-track</li>
+              </ul>
+            </div>
+          </div>
+          <div class="month-footer-bar">
+            <span class="month-footer-label">Day 60 Outcomes:</span>
+            <div class="outcome-tags">
+              <span class="outcome-tag">Comp plan redesigned and communicated</span>
+              <span class="outcome-tag">Sales assets rebuilt or enforced</span>
+              <span class="outcome-tag">Setter training cadence running</span>
+              <span class="outcome-tag">Rep onboarding SOP documented</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Days 61-90 -->
+      <div class="month-block">
+        <div class="month-node" style="font-size:9px;font-weight:800;">90</div>
+        <div class="month-header">
+          <div class="month-meta">
+            <div class="month-label">Days 61–90</div>
+            <div class="month-title">Create Predictable Revenue</div>
+          </div>
+          <div class="month-weeks">Addresses: 2 Medium Issues + Predictability Layer</div>
+        </div>
+        <div class="month-body">
+          <div class="month-objective">
+            <div class="month-objective-label">Primary Objective</div>
+            <p>Convert the repeatable process built in days 1 to 60 into forecastable revenue. By day 90, next month's revenue should be estimable within 15% of actual before the month begins. This requires live pipeline forecasting, a pre-sale value sequence running in the background, a meaningful hiring framework for future reps, and a complete sales SOP library.</p>
+          </div>
+          <div class="workstreams">
+            <div class="workstream">
+              <div class="workstream-label">Forecasting System</div>
+              <h4>Build weekly pipeline forecasting across the full conversion chain</h4>
+              <ul>
+                <li>Weekly pipeline review using the full chain: leads tagged, calls booked, show rate, close rate, revenue</li>
+                <li>Target: next month's revenue forecastable within 15% of actual by day 90</li>
+                <li>This is only possible with clean GHL data — CRM hygiene must be enforced from day one</li>
+                <li>Assign the manager as the named owner of the weekly pipeline review; this is not a founder task</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Pre-Sale Value Sequence</div>
+              <h4>Design and launch a value-first nurture sequence before the call</h4>
+              <ul>
+                <li>Build a sequence of two to three value touchpoints delivered between booking confirmation and call: a free macro resource, a short training asset, a transformation story from a client</li>
+                <li>These assets build reciprocity and intent — a prospect who has received real value before the call shows up warmer and more committed</li>
+                <li>Coordinate with VSL completion: once the VSL is live, integrate it as the primary pre-call asset</li>
+                <li>Track show rate change after sequence launch — this is a direct measure of whether it is working</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">Hiring Framework</div>
+              <h4>Build a meaningful assessment process for closer and setter candidates</h4>
+              <ul>
+                <li>Current criteria ("personable, takes initiative, wants to make money") are generic and difficult to assess — they describe attitude, not sales capability</li>
+                <li>Build a role-play assessment as a mandatory stage: give candidates a live objection scenario against the BYLT offer</li>
+                <li>Define the competency rubric: what does a strong setter or closer look like in practice, and how is that scored</li>
+                <li>Remove subjective "feel" as the primary hiring signal — it is the reason the current team is inconsistent</li>
+              </ul>
+            </div>
+            <div class="workstream">
+              <div class="workstream-label">SOP Library</div>
+              <h4>Complete the full sales SOP library</h4>
+              <ul>
+                <li>Setter qualification SOP: criteria, script, intent-tagging logic</li>
+                <li>Pre-call sequence SOP: asset delivery, timing, owner</li>
+                <li>Post-call follow-up SOP: all call outcomes, touchpoint cadence, inactive threshold</li>
+                <li>CRM hygiene SOP: stage progression rules, task-setting requirements, weekly compliance review</li>
+                <li>Call review SOP: submission format, feedback structure, weekly and monthly cadences</li>
+              </ul>
+            </div>
+          </div>
+          <div class="month-footer-bar">
+            <span class="month-footer-label">Day 90 Outcomes:</span>
+            <div class="outcome-tags">
+              <span class="outcome-tag">Revenue forecastable within 15%</span>
+              <span class="outcome-tag">Pre-sale value sequence live</span>
+              <span class="outcome-tag">Hiring framework documented</span>
+              <span class="outcome-tag">Full SOP library complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 90-Day KPI Table -->
+  <div class="section-bg">
+    <div class="section">
+      <p class="section-eyebrow">90-Day Success Metrics</p>
+      <h2 class="section-title">What the sales function looks like at day 90</h2>
+      <p class="section-intro">The table below maps each critical metric from its current state — where data exists — to the target state at day 90. The most important column is the primary driver: it names the specific workstream that closes each gap. Where day 0 shows unknown or untracked, the first task is establishing a baseline, not hitting an arbitrary target.</p>
+
+      <div class="kpi-table-wrap">
+        <table class="kpi-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Day 0</th>
+              <th>Day 90 Target</th>
+              <th>Primary Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sales Management Coverage</td>
+              <td class="kpi-current">None — no manager since SM left</td>
+              <td class="kpi-target">Named manager in role, running weekly reviews</td>
+              <td class="kpi-month">Days 1–30</td>
+            </tr>
+            <tr>
+              <td>Close Rate</td>
+              <td class="kpi-current">Unknown — not tracked</td>
+              <td class="kpi-target">Baseline established; trend improving</td>
+              <td class="kpi-month">Call review cadence (Days 1–30)</td>
+            </tr>
+            <tr>
+              <td>Show Rate</td>
+              <td class="kpi-current">Unknown — not tracked by setter</td>
+              <td class="kpi-target">70%+ average; setter gap closed</td>
+              <td class="kpi-month">Pre-call sequence + setter coaching (Days 31–90)</td>
+            </tr>
+            <tr>
+              <td>Post-Call Follow-Up</td>
+              <td class="kpi-current">None — no SOP, no owner</td>
+              <td class="kpi-target">Documented SOP running; all outcomes covered</td>
+              <td class="kpi-month">Days 1–30</td>
+            </tr>
+            <tr>
+              <td>Lead Triage System</td>
+              <td class="kpi-current">None — all leads treated equally</td>
+              <td class="kpi-target">Live in GHL; high/medium/low routing active</td>
+              <td class="kpi-month">Days 1–30</td>
+            </tr>
+            <tr>
+              <td>Sales Assets Adoption</td>
+              <td class="kpi-current">0% — dismissed by closers</td>
+              <td class="kpi-target">Rebuilt or enforced; used on every sales call</td>
+              <td class="kpi-month">Days 31–60</td>
+            </tr>
+            <tr>
+              <td>Rep Onboarding Process</td>
+              <td class="kpi-current">None — blank in questionnaire</td>
+              <td class="kpi-target">Documented; 4-week ramp plan with KPIs</td>
+              <td class="kpi-month">Days 31–60</td>
+            </tr>
+            <tr>
+              <td>Compensation Structure</td>
+              <td class="kpi-current">Flat 10%/5%; no performance differentiation</td>
+              <td class="kpi-target">Tiered; rewards close rate and show quality</td>
+              <td class="kpi-month">Days 31–60</td>
+            </tr>
+            <tr>
+              <td>Revenue Forecasting Accuracy</td>
+              <td class="kpi-current">Impossible — no pipeline data</td>
+              <td class="kpi-target">Within 15% of actual monthly revenue</td>
+              <td class="kpi-month">Days 61–90</td>
+            </tr>
+            <tr>
+              <td>Pre-Sale Value Sequence</td>
+              <td class="kpi-current">None — VSL pending edit</td>
+              <td class="kpi-target">Live; 2–3 value assets delivered pre-call</td>
+              <td class="kpi-month">Days 61–90</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:40px; padding:24px 28px; background:var(--bb-gold-soft); border-radius:var(--radius-md); border:1px solid var(--bb-gold-mid);">
+        <p style="font-size:13px; color:var(--mg-mid); line-height:1.75;"><strong style="color:var(--mg-graphite);">On the real answer to revenue predictability.</strong> Britt's response to question 40 — "no, because my closers are so inconsistent" — points at a symptom, not the cause. Closer inconsistency is a management output problem. It is what happens when there is no call review cadence, no training system, no performance feedback loop, and no accountability structure. The closers are not the problem to fix. The system around them is. Fix the system; closer consistency follows.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section">
+    <div class="cta-panel">
+      <div class="cta-content">
+        <div class="cta-eyebrow">Optional Partnership</div>
+        <h2 class="cta-title">Merigrove can deliver<br>this playbook with you</h2>
+        <p class="cta-body">This document outlines the work that needs to be done. Bylt By Britt can execute it independently, with freelance support, or with a dedicated advisory partner who has built sales management systems across multiple founder-led businesses. Merigrove specialises in revenue optimisation, sales infrastructure, and operational scale. If you would like to explore what a structured engagement looks like, the proposed structure is below.</p>
+      </div>
+      <div class="cta-pricing">
+        <div class="price-row">
+          <div class="price-label">Month 1 — Setup</div>
+          <div class="price-amount">$10,000</div>
+          <div class="price-sub">Onboarding and business acclimation</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Month 2+ — Active Engagement</div>
+          <div class="price-amount">$10,000</div>
+          <div class="price-sub">Full collaboration and delivery</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">Ongoing Performance</div>
+          <div class="price-amount">10%</div>
+          <div class="price-sub">Of cash collected — aligned incentive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panel-sales -->
+
+
+<!-- PANEL: ADDITIONAL FINDINGS -->
+<div id="panel-additional" class="panel">
+
+  <!-- Brand & Product -->
+  <div class="section">
+    <p class="section-eyebrow">Brand &amp; Product</p>
+    <h2 class="section-title">Observations outside the primary scope</h2>
+    <p class="section-intro">These findings are not the immediate priority — sales management comes first. But they are worth documenting because they represent medium-term levers for acquisition efficiency and product strategy. They should be revisited once the sales management foundation is in place.</p>
+
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="finding-category">Brand Identity</div>
+        <h3>No recognisable design language reflecting a distinct market position</h3>
+        <p>The BYLT by Britt brand is built primarily on Britt's personal authority and Instagram audience. The visual identity and naming conventions ("VIP" and "Elite") are functional but do not establish proprietary market positioning. In a saturated women's coaching space, brand differentiation is an acquisition asset — a distinct visual language and naming system that signals Britt's specific methodology would sharpen ICP attraction and reduce the friction between audience and conversion.</p>
+      </div>
+      <div class="finding-card">
+        <div class="finding-category">Product Naming</div>
+        <h3>Generic product names describe tier, not transformation</h3>
+        <p>"VIP Coaching" and "Elite" describe access level rather than the outcome the client is purchasing. The product documents themselves — "Everything you're built for" and "The BYLT Elite Woman" — contain powerful positioning language that does not carry through to the offer names. Renaming products around the transformation (not the tier) would make the offer language stickier and easier for closers to sell against.</p>
+      </div>
+      <div class="finding-card">
+        <div class="finding-category">Britt AI</div>
+        <h3>Interesting concept entering a hypercompetitive space without a defined strategy</h3>
+        <p>The Britt AI concept — an AI-powered downsell with no assigned coach but full plan-building and tracking capability — is genuinely interesting as a scalable entry point. The problem is the space: AI fitness coaching is being pursued by well-funded operators with significant technical and distribution advantages. Before meaningful investment in build, the product needs a defined positioning thesis. What does Britt AI do that no existing AI fitness tool does? What moat does Britt's brand create in this category? The answers to those questions should precede the build.</p>
+      </div>
+      <div class="finding-card">
+        <div class="finding-category">Sales Resources</div>
+        <h3>VSL delay is compounding the pre-call value gap</h3>
+        <p>The VSL is described as "being edited" — which means the primary high-intent conversion asset is not available to the funnel. This is particularly significant given the Facebook ads to Instagram call-booking funnel that is just starting to scale. Cold traffic entering a funnel without a VSL at the point of highest intent represents a meaningful conversion drag. The VSL should be treated as an urgent commercial deliverable, not a pending creative project.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Finance & Operations -->
+  <div class="section-bg">
+    <div class="section">
+      <p class="section-eyebrow">Finance &amp; Operations</p>
+      <h2 class="section-title">The financial foundations need attention — not urgently, but intentionally</h2>
+      <p class="section-intro">The finance and operations findings are not crises. The bookkeeper is in place, the business account exists, and the CPA handles compliance. But the current setup produces backward-looking transactional data rather than forward-looking management information. Britt acknowledged directly: "I don't understand our finances like I should." That is a solvable problem and the path is straightforward.</p>
+
+      <div class="findings-grid">
+        <div class="finding-card">
+          <div class="finding-category">Financial Reporting</div>
+          <h3>Bookkeeper exists but management accounts do not</h3>
+          <p>The bookkeeper tracks commissions, payroll, and revenue — this is operational record-keeping. It is not the same as a management P&amp;L that shows gross margin by offer, operating expense ratios, and net profitability. Without a monthly P&amp;L, Britt cannot answer basic performance questions: which offer is most profitable, what is the payroll-to-revenue ratio, where is margin being compressed. The bookkeeper should be upgraded or supplemented to produce a monthly P&amp;L within five business days of month end.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-category">Unit Economics</div>
+          <h3>No gross profit by offer, no CAC, no LTV — pricing decisions made without data</h3>
+          <p>The recent price increase from $3,300 to $4,500 was made without contribution margin analysis. This may have been the right call, but it was arrived at through market intuition rather than financial evidence. With two offers at materially different price points and delivery costs (VIP group coaching versus Elite 1:1), the unit economics will differ significantly. Knowing the gross margin per offer type changes how closers are directed, how acquisition spend is allocated, and whether the Elite offer is actually more profitable per client than VIP.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-category">Key-Person Risk</div>
+          <h3>"Quite literally everything" breaks without Britt — the most important operational statement in the audit</h3>
+          <p>Britt's answer to the business continuity question is the most telling response in the entire questionnaire. It signals that the business has no functional management layer beneath the founder — in sales, in delivery, in operations, or in finance. The long-term answer is not just fixing the sales manager gap: it is building an org chart with defined roles, responsibilities, and reporting lines that allows the business to operate independently for meaningful periods. Fixing sales management is the short-term lever; org design is the enduring solution.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-category">Cash Flow</div>
+          <h3>Cash gets tight when investing in mentors and systems — no forecast to manage around it</h3>
+          <p>Britt identified the pattern: cash shortfalls coincide with investment decisions. Without a cash flow forecast, those investment decisions are made on available balance rather than available runway. A simple 13-week rolling cash forecast — mapping all inflows (Stripe payments, instalment schedules) against all outflows (payroll, commissions, ad spend, software) — would make those decisions far less reactive. The bookkeeper should be able to build and maintain this with a clear brief.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-category">Collections</div>
+          <h3>Collections process lost with the COO departure</h3>
+          <p>The collections process was previously managed by the COO, who is no longer in the business. The current process is described as informal: "reach out via message and email." For a business running payment plans through Affirm and Klarna, plus direct payment structures, a formal accounts receivable process with a named owner and an escalation path is not optional — it is a cash protection measure. This should be assigned and documented as part of the broader operations rebuild.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-category">Organisational Design</div>
+          <h3>The final answer in the audit names the real long-term constraint</h3>
+          <p>Question 30 asked for the single operational or financial problem that, if fixed today, would have the biggest impact on the next 90 days. Britt answered: "sales and overall business organisation as a whole to scale. If I don't know data I'll never be able to scale." This is the most sophisticated observation in the questionnaire. It correctly identifies that the root constraint is not any single function — it is the absence of an operating system: an org chart with defined R&amp;Rs, a data reporting structure, and a management layer that runs the business without the founder in every conversation. Sales management is where that build starts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panel-additional -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logos">
+    <span class="mg-wordmark">Merigrove.</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.2)"></div>
+    <span style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;">BYLT BY BRITT</span>
+  </div>
+  <p><strong>Confidential — prepared by Merigrove for Bylt By Britt, June 2026.</strong></p>
+  <p style="margin-top:8px">This document is based on information provided by Britt Blanco in response to a structured audit questionnaire. All figures and statements are as provided by the respondent and have not been independently verified. This document does not constitute financial or legal advice.</p>
+</footer>
+
+</div><!-- /playbook-content -->
+
+<script>
+  // Password protection logic
+  const correctPassword = "!Britt2026!";
+
+  function checkPassword() {
+    const input = document.getElementById('bb-password');
+    const errorEl = document.getElementById('login-error');
+    if (input.value === correctPassword) {
+      sessionStorage.setItem('bb_playbook_auth', 'true');
+      unlockPage();
+    } else {
+      errorEl.classList.add('visible');
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  function unlockPage() {
+    const overlay = document.getElementById('login-overlay');
+    const content = document.getElementById('playbook-content');
+    
+    // Hide overlay and show content
+    overlay.classList.add('hidden');
+    content.style.display = 'block';
+    
+    // Trigger scroll and reveal animations
+    setTimeout(() => {
+      triggerReveal();
+    }, 100);
+  }
+
+  function switchTab(name) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const panel = document.getElementById('panel-' + name);
+    if (panel) panel.classList.add('active');
+    const tabs = document.querySelectorAll('.nav-tab');
+    const tabMap = { overview: 0, sales: 1, additional: 2 };
+    if (tabs[tabMap[name]]) tabs[tabMap[name]].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(triggerReveal, 100);
+  }
+
+  function triggerReveal() {
+    if (!window.IntersectionObserver) {
+      document.querySelectorAll('.pain-card, .month-block').forEach(el => {
+        el.classList.add('visible');
+      });
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.pain-card:not(.visible), .month-block:not(.visible)').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const passwordInput = document.getElementById('bb-password');
+    if (passwordInput) {
+      passwordInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          checkPassword();
+        }
+      });
+      passwordInput.addEventListener('input', () => {
+        document.getElementById('login-error').classList.remove('visible');
+      });
+    }
+
+    // Check existing authentication
+    if (sessionStorage.getItem('bb_playbook_auth') === 'true') {
+      unlockPage();
+    } else {
+      const overlay = document.getElementById('login-overlay');
+      if (overlay) overlay.style.display = 'flex';
+      if (passwordInput) passwordInput.focus();
+    }
+  });
+</script>
+</body>
+</html>
