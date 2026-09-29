@@ -1,0 +1,810 @@
+<style>
+/* Fonts. Upload the four files from the pack's fonts folder to GHL Media, then paste each file's URL in place of its placeholder. */
+@font-face{font-family:"TT Commons Pro";src:url("[TTCommons-Light.otf URL]") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"TT Commons Pro";src:url("[TTCommons-Regular.otf URL]") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"TT Commons Pro";src:url("[TTCommons-Medium.otf URL]") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";src:url("[CormorantGaramond-Italic-VariableFont_wght.ttf URL]") format("truetype");font-weight:300 700;font-style:italic;font-display:swap}
+/* Merigrove global block. Tokens, fonts and a scoped base reset for every .mg section.
+   Paste first on every page. Every rule is scoped under .mg so GHL page styles are untouched.
+   Block rules use two class specificity and load after this block, so they override the reset. */
+.mg{
+  --mg-blue-50:#F0F5FF;--mg-blue-100:#DDE8FF;--mg-blue-200:#BAD1FF;--mg-blue-300:#89B0FF;--mg-blue-400:#4E84FF;--mg-blue-500:#1652FE;--mg-blue-600:#0332D0;--mg-blue-700:#02249D;--mg-blue-800:#01166E;--mg-blue-900:#01104B;--mg-blue-950:#01092E;
+  --mg-grey-50:#F6F7F9;--mg-grey-100:#EBEDEF;--mg-grey-200:#D9DBDF;--mg-grey-300:#C1C4C9;--mg-grey-400:#9EA2A8;--mg-grey-500:#70747B;--mg-grey-600:#575B62;--mg-grey-700:#3F4248;--mg-grey-800:#292B30;--mg-grey-900:#17181C;--mg-grey-950:#0B0C0E;
+  --mg-white:#FFFFFF;--mg-ink-base:#0A0A0A;--mg-night-0:#0B0C10;--mg-night-1:#15171C;--mg-night-2:#1D2027;
+
+  --mg-font-sans:"tt-commons-pro","TT Commons Pro",Arial,sans-serif;
+  --mg-font-serif:"cormorant-garamond","Cormorant Garamond",Georgia,serif;
+  --mg-font-mono:"tt-commons-pro","TT Commons Pro",Arial,sans-serif;
+  --mg-turn-scale:1.12em;
+
+  --mg-t-h1:clamp(42px,6.11vw,88px);--mg-lh-h1:1;--mg-w-h1:300;--mg-tr-h1:-0.015em;
+  --mg-t-h2:clamp(34px,4.17vw,60px);--mg-lh-h2:1.05;--mg-w-h2:400;--mg-tr-h2:-0.01em;
+  --mg-t-h3:clamp(28px,2.78vw,40px);--mg-lh-h3:1.12;
+  --mg-t-lead:clamp(20px,1.67vw,24px);--mg-lh-lead:1.4;
+  --mg-t-body:clamp(16px,1.18vw,17px);--mg-lh-body:1.5;
+  --mg-t-small:clamp(14px,1.04vw,15px);--mg-t-caption:13px;
+
+  --mg-space-1:4px;--mg-space-2:8px;--mg-space-3:12px;--mg-space-4:16px;--mg-space-5:20px;--mg-space-6:24px;--mg-space-8:32px;--mg-space-10:40px;--mg-space-12:48px;--mg-space-16:64px;--mg-space-24:96px;
+  --mg-radius-input:8px;--mg-radius-button:12px;--mg-radius-panel:16px;--mg-radius-plate:24px;--mg-radius-pill:999px;
+
+  --mg-spring-gentle:120 20 1;--mg-spring-snappy:400 30 1;--mg-spring-settle:210 20 1;
+  --mg-ease-gentle:cubic-bezier(0.22,1,0.36,1);--mg-ease-snappy:cubic-bezier(0.3,1.25,0.5,1);--mg-ease-settle:cubic-bezier(0.34,1.3,0.64,1);
+  --mg-ease-standard:cubic-bezier(0.2,0,0,1);--mg-ease-exit:cubic-bezier(0.4,0,1,1);
+  --mg-dur-gentle:660ms;--mg-dur-snappy:460ms;--mg-dur-settle:760ms;--mg-dur-1:120ms;--mg-dur-2:200ms;--mg-dur-3:320ms;--mg-dur-4:560ms;
+
+  --mg-surface:var(--mg-white);--mg-surface-raised:var(--mg-white);--mg-surface-floating:var(--mg-white);--mg-surface-mist:var(--mg-grey-50);--mg-surface-plate:var(--mg-blue-700);
+  --mg-lift-raised:0 2px 8px rgba(10,10,10,0.06);--mg-lift-floating:0 12px 40px rgba(10,10,10,0.10);
+  --mg-ink:var(--mg-ink-base);--mg-ink-secondary:var(--mg-grey-600);--mg-ink-tertiary:var(--mg-grey-500);--mg-ink-disabled:var(--mg-grey-400);
+  --mg-signal:var(--mg-blue-700);--mg-signal-hover:var(--mg-blue-800);--mg-signal-pressed:var(--mg-blue-900);--mg-on-signal:var(--mg-white);--mg-on-plate:var(--mg-white);
+  --mg-focus:var(--mg-ink);
+  --mg-focus-ring:0 0 0 2px var(--mg-surface),0 0 0 4px var(--mg-focus);
+  --mg-ask-foot-h:48px;
+}
+@media (max-width:600px){.mg{--mg-ask-foot-h:60px}}
+.mg[data-mg-theme="dark"]{
+  --mg-surface:var(--mg-night-0);--mg-surface-raised:var(--mg-night-1);--mg-surface-floating:var(--mg-night-2);--mg-surface-mist:var(--mg-night-1);
+  --mg-lift-raised:0 2px 8px rgba(0,0,0,0.20);--mg-lift-floating:0 12px 40px rgba(0,0,0,0.28);
+  --mg-ink:var(--mg-grey-50);--mg-ink-secondary:var(--mg-grey-300);--mg-ink-tertiary:var(--mg-grey-400);--mg-ink-disabled:var(--mg-grey-600);
+  --mg-signal:var(--mg-blue-400);--mg-signal-hover:var(--mg-blue-300);--mg-signal-pressed:var(--mg-blue-500);--mg-on-signal:var(--mg-ink-base);
+  --mg-focus:var(--mg-ink);
+  --mg-focus-ring:0 0 0 2px var(--mg-surface),0 0 0 4px var(--mg-focus);
+  color-scheme:dark;
+}
+:is(#mg-ask,#mg-ask-foot).mg{box-sizing:border-box;margin:0;padding:0;border:0;font-family:var(--mg-font-sans);font-size:16px;font-weight:400;font-style:normal;line-height:1.5;letter-spacing:0;color:var(--mg-ink);text-align:left;text-transform:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+:is(#mg-ask,#mg-ask-foot).mg :where(div,section,header,footer,nav,main,p,span,h1,h2,h3,h4,a,button,input,label,form,ul,ol,li,strong,em,small,figure,svg,canvas){box-sizing:border-box;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;text-transform:none;background:none;box-shadow:none;text-shadow:none;max-width:none;min-width:0}
+:is(#mg-ask,#mg-ask-foot).mg :where(*,*::before,*::after){box-sizing:border-box}
+:is(#mg-ask,#mg-ask-foot).mg :where(h1,h2,h3,h4){font-weight:400;text-wrap:balance}
+:is(#mg-ask,#mg-ask-foot).mg :where(p){text-wrap:pretty}
+:is(#mg-ask,#mg-ask-foot).mg :where(button,input){appearance:none;-webkit-appearance:none;border-radius:0;outline:none}
+:is(#mg-ask,#mg-ask-foot).mg :where(button){cursor:pointer}
+:is(#mg-ask,#mg-ask-foot).mg :where(a){color:var(--mg-ink);text-decoration:none;cursor:pointer}
+:is(#mg-ask,#mg-ask-foot).mg :where(a:hover){color:var(--mg-ink-secondary)}
+:is(#mg-ask,#mg-ask-foot).mg :where(svg,canvas){display:block}
+:is(#mg-ask,#mg-ask-foot).mg :where(:focus-visible){outline:none;box-shadow:var(--mg-focus-ring)}
+:is(#mg-ask,#mg-ask-foot).mg [hidden]{display:none!important}
+:is(#mg-ask,#mg-ask-foot).mg .mg-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+:is(#mg-ask,#mg-ask-foot).mg .mg-turn{font-family:var(--mg-font-serif);font-style:italic;font-weight:500;font-size:var(--mg-turn-scale);letter-spacing:-0.01em;line-height:0}
+/* Page builder wrappers (GHL sections, rows, columns, code elements): no padding, margins, gaps, max widths, animations or transforms around the Ask blocks, so they sit edge to edge and stack with no gaps. */
+:is(.c-section,.c-row,.c-column,.c-wrapper,.c-custom-code,.custom-code-container,.inner,.vertical,.horizontal,[class*="custom-code"]):has(#mg-ask,#mg-ask-foot,#mg-global){padding:0!important;margin:0!important;gap:0!important;max-width:none!important;min-height:0!important;border:0!important;box-shadow:none!important;transform:none!important;animation:none!important;filter:none!important;opacity:1!important}
+:is(.c-section,.c-row,.c-column,.c-wrapper,.inner):has(#mg-ask){width:100%!important}
+:is(.c-custom-code,.custom-code-container,[class*="custom-code"]):has(> #mg-global){display:none!important}
+body:has(#mg-ask){margin:0;background:#0B0C10}
+</style>
+<section class="mg mg-global" id="mg-global" hidden aria-hidden="true"></section>
+<style>
+/* mg-ask. Ask the ball: the whole experience. Requires mg-global above it and mg-ask-foot below it. */
+#mg-ask.mg{--mg-ask-h1:min(var(--mg-t-h2),6vh);--mg-ask-sup:var(--mg-t-body-lg);--mg-ask-h1-lines:2;--mg-ask-win:0.5;--mg-ask-gap:clamp(12px,2.4vh,24px);position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;row-gap:var(--mg-ask-gap);width:100%;min-height:calc(100vh - var(--mg-ask-foot-h));padding:20px clamp(20px,2.8vw,40px) 12px;background:var(--mg-surface);color:var(--mg-ink);overflow:hidden}
+@supports (height:100svh){#mg-ask.mg{min-height:calc(100svh - var(--mg-ask-foot-h))}}
+@media (min-width:1280px){#mg-ask.mg{--mg-ask-h1-lines:1}}
+@media (max-width:600px){#mg-ask.mg{--mg-ask-h1:var(--mg-t-h3);--mg-ask-sup:16px;--mg-ask-gap:16px;padding:16px 20px 12px}#mg-ask.mg.mg-ask--after{grid-template-rows:auto auto minmax(calc(44vw * 1.08 + 4px),1fr) auto}}
+
+#mg-ask .mg-ask-top{display:flex;align-items:center;height:20px}
+#mg-ask .mg-ask-logo{display:block;color:var(--mg-ink);border-radius:4px}
+#mg-ask .mg-ask-logo svg{display:block;height:17px;width:auto}
+
+#mg-ask .mg-ask-head{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:calc(var(--mg-ask-h1) * 1.05 * var(--mg-ask-h1-lines) + 10px + var(--mg-ask-sup) * 1.45 * 2);text-align:center}
+@media (max-width:600px){#mg-ask .mg-ask-head{min-height:0}}
+#mg-ask .mg-ask-headlive,#mg-ask .mg-ask-ns-head{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+#mg-ask .mg-ask-h1{max-width:1240px;font-family:var(--mg-font-sans);font-size:var(--mg-ask-h1);font-weight:300;line-height:1.05;letter-spacing:-0.015em;color:var(--mg-ink);text-align:center;text-wrap:balance}
+#mg-ask .mg-ask-wd{display:inline-block;will-change:transform,opacity}
+#mg-ask .mg-ask-sup{max-width:36em;font-size:var(--mg-ask-sup);line-height:1.45;color:var(--mg-ink-secondary);text-align:center;text-wrap:balance}
+
+#mg-ask .mg-ask-ballrow{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;container-type:size}
+#mg-ask .mg-ask-stage{--mg-ask-vh:46px;--mg-ask-d:min(520px,76vw,calc(44vh - var(--mg-ask-vh)));position:relative;flex:none;width:var(--mg-ask-d);height:calc(var(--mg-ask-d) * 1.03 + var(--mg-ask-vh));transform-origin:50% 50%}
+@media (max-width:600px){#mg-ask .mg-ask-stage{--mg-ask-vh:42px}}
+@supports (width:1cqh){#mg-ask .mg-ask-stage{--mg-ask-d:max(80px,min(520px,76vw,calc((100cqh - 4px - var(--mg-ask-vh)) / 1.03)))}}
+#mg-ask .mg-ask-voice{--mg-ask-vw:min(480px,calc(100vw - 40px));position:absolute;left:50%;width:var(--mg-ask-vw);margin:0 0 0 calc(var(--mg-ask-vw) / -2);top:calc(var(--mg-ask-d) * 1.03 + 4px);font-size:14px;line-height:1.35;text-wrap:balance;color:var(--mg-ink-tertiary);text-align:center;opacity:0;transition:opacity var(--mg-dur-3) var(--mg-ease-standard)}
+#mg-ask .mg-ask-voice.mg-ask-on{opacity:1}
+@media (max-width:600px){#mg-ask .mg-ask-voice{font-size:13px}}
+
+#mg-ask .mg-ask-shadow{position:absolute;left:14%;width:72%;top:calc(var(--mg-ask-d) * 0.975);height:calc(var(--mg-ask-d) * 0.09);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,0.85),rgba(0,0,0,0.5) 40%,rgba(0,0,0,0));will-change:transform,opacity}
+#mg-ask .mg-ask-ball{position:absolute;left:0;top:0;width:var(--mg-ask-d);height:var(--mg-ask-d);border-radius:50%;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;will-change:transform;-webkit-touch-callout:none}
+#mg-ask.mg-ask--live .mg-ask-ball{cursor:grab}
+#mg-ask.mg-ask--live .mg-ask-ball.mg-ask-held{cursor:grabbing}
+#mg-ask .mg-ask-ball:focus-visible{outline:none;box-shadow:0 0 0 4px var(--mg-surface),0 0 0 6px var(--mg-focus)}
+#mg-ask .mg-ask-spin,#mg-ask .mg-ask-light{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:50%}
+#mg-ask .mg-ask-light{pointer-events:none;overflow:hidden}
+#mg-ask .mg-ask-body{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:50%;
+  background:
+    radial-gradient(ellipse 62% 34% at 52% 96%,rgba(78,132,255,0.07),rgba(78,132,255,0) 70%),
+    radial-gradient(ellipse 90% 70% at 38% 28%,rgba(193,196,201,0.07),rgba(193,196,201,0) 60%),
+    radial-gradient(circle at 42% 38%,rgba(0,0,0,0) 0,rgba(0,0,0,0.35) 45%,rgba(0,0,0,0.72) 100%),
+    radial-gradient(circle at 40% 36%,var(--mg-night-1) 0,var(--mg-night-0) 30%,var(--mg-ink-base) 64%,var(--mg-grey-950) 100%);
+  box-shadow:inset 0 0 calc(var(--mg-ask-d) * 0.05) rgba(193,196,201,0.07),inset calc(var(--mg-ask-d) * -0.03) calc(var(--mg-ask-d) * -0.05) calc(var(--mg-ask-d) * 0.12) rgba(0,0,0,0.75),inset calc(var(--mg-ask-d) * 0.012) calc(var(--mg-ask-d) * 0.018) calc(var(--mg-ask-d) * 0.05) rgba(246,247,249,0.035)}
+#mg-ask .mg-ask-spec{position:absolute;left:11%;top:5%;width:44%;height:28%;border-radius:50%;background:radial-gradient(closest-side,rgba(246,247,249,0.15),rgba(246,247,249,0.06) 50%,rgba(246,247,249,0));filter:blur(calc(var(--mg-ask-d) * 0.018));transform:rotate(-34deg);will-change:transform}
+#mg-ask .mg-ask-spec::after{content:"";position:absolute;left:30%;top:28%;width:34%;height:36%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,0.3),rgba(255,255,255,0.1) 50%,rgba(255,255,255,0))}
+#mg-ask .mg-ask-rim{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:50%;background:radial-gradient(closest-side,rgba(193,196,201,0) 91%,rgba(193,196,201,0.34) 98%,rgba(193,196,201,0) 100%);-webkit-mask-image:radial-gradient(circle at 84% 86%,#000 0,rgba(0,0,0,0.55) 24%,rgba(0,0,0,0) 48%);mask-image:radial-gradient(circle at 84% 86%,#000 0,rgba(0,0,0,0.55) 24%,rgba(0,0,0,0) 48%)}
+#mg-ask .mg-ask-bounce{position:absolute;left:24%;width:52%;bottom:1.5%;height:12%;border-radius:50%;background:radial-gradient(closest-side,rgba(112,116,123,0.12),rgba(112,116,123,0))}
+#mg-ask .mg-ask-win{position:absolute;left:50%;top:55%;width:calc(var(--mg-ask-d) * var(--mg-ask-win));height:calc(var(--mg-ask-d) * var(--mg-ask-win));transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;isolation:isolate;
+  background:radial-gradient(circle at 50% 72%,var(--mg-blue-600) 0,var(--mg-blue-700) 26%,var(--mg-blue-800) 50%,var(--mg-blue-950) 76%,var(--mg-night-0) 100%);
+  box-shadow:0 0 0 calc(var(--mg-ask-d) * 0.013) var(--mg-grey-950),0 calc(var(--mg-ask-d) * 0.006) calc(var(--mg-ask-d) * 0.012) calc(var(--mg-ask-d) * 0.013) rgba(158,162,168,0.09),0 calc(var(--mg-ask-d) * -0.006) calc(var(--mg-ask-d) * 0.02) calc(var(--mg-ask-d) * 0.01) rgba(0,0,0,0.8)}
+#mg-ask .mg-ask-die,#mg-ask .mg-ask-canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+#mg-ask .mg-ask-canvas{opacity:0;transition:opacity var(--mg-dur-4) var(--mg-ease-standard)}
+#mg-ask.mg-ask--live .mg-ask-canvas{opacity:1}
+#mg-ask .mg-ask-lens{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:50%;pointer-events:none;z-index:2;box-shadow:inset 0 calc(var(--mg-ask-d) * 0.02) calc(var(--mg-ask-d) * 0.045) rgba(0,0,0,0.75),inset 0 0 calc(var(--mg-ask-d) * 0.035) calc(var(--mg-ask-d) * 0.008) rgba(1,9,46,0.6);background:radial-gradient(ellipse 22% 11% at 33% 17%,rgba(246,247,249,0.11),rgba(246,247,249,0) 70%),radial-gradient(ellipse 58% 30% at 36% 15%,rgba(246,247,249,0.08),rgba(246,247,249,0) 70%)}
+#mg-ask .mg-ask-answer{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+#mg-ask .mg-ask-text{position:absolute;left:50%;top:31%;width:82%;transform:translate(-50%,0);transform-origin:50% 40%;display:flex;flex-direction:column;align-items:center;text-align:center;font-family:var(--mg-font-sans);font-weight:500;font-size:calc(var(--mg-ask-d) * var(--mg-ask-win) * 0.088);line-height:1.08;letter-spacing:-0.005em;color:var(--mg-white)}
+#mg-ask .mg-ask-text span{display:block;white-space:nowrap}
+#mg-ask .mg-ask-text[data-state="hidden"]{opacity:0;filter:blur(6px);color:var(--mg-blue-300);transform:translate(-50%,0) scale(0.86)}
+
+#mg-ask .mg-ask-actions{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-items:start;min-height:100px}
+@media (max-width:600px){#mg-ask .mg-ask-actions{min-height:0}}
+#mg-ask .mg-ask-form,#mg-ask .mg-ask-turnbox,#mg-ask .mg-ask-ns-act{grid-area:1/1;display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+#mg-ask .mg-ask-turnbox,#mg-ask .mg-ask-ns-act{flex-direction:column;gap:14px}
+#mg-ask .mg-ask-actions{position:relative}
+#mg-ask .mg-ask-form{position:relative;transition:opacity var(--mg-dur-2) var(--mg-ease-exit),visibility 0s linear 0s}
+/* Only the active control takes layout height: the turn box sits out of flow until the turn, the bar after it. */
+#mg-ask .mg-ask-turnbox{position:absolute;left:0;right:0;top:0}
+#mg-ask.mg-ask--turn .mg-ask-turnbox{position:relative}
+#mg-ask.mg-ask--turn .mg-ask-form{position:absolute;left:0;right:0;top:0;margin:0 auto}
+#mg-ask .mg-ask-turnbox{opacity:0;visibility:hidden;transition:opacity var(--mg-dur-2) var(--mg-ease-exit),transform var(--mg-dur-2) var(--mg-ease-exit),visibility 0s linear var(--mg-dur-2)}
+#mg-ask.mg-ask--turn .mg-ask-form{opacity:0;visibility:hidden;transition:opacity var(--mg-dur-2) var(--mg-ease-exit),visibility 0s linear var(--mg-dur-2)}
+#mg-ask.mg-ask--turn .mg-ask-turnbox{opacity:1;visibility:visible;transform:none;transition:opacity var(--mg-dur-3) var(--mg-ease-standard) 120ms,transform var(--mg-dur-snappy) var(--mg-ease-settle) 120ms,visibility 0s linear 0s}
+@media (max-width:600px){#mg-ask .mg-ask-form{flex-direction:column;gap:10px}}
+
+#mg-ask .mg-ask-field{display:block;width:min(400px,100%);height:52px;padding:0 24px;border:0;border-radius:var(--mg-radius-pill);background:var(--mg-surface-mist);color:var(--mg-ink);font-family:var(--mg-font-sans);font-size:16px;font-weight:400;line-height:52px;box-shadow:none;transition:background-color var(--mg-dur-2) var(--mg-ease-standard)}
+#mg-ask .mg-ask-field::placeholder{color:var(--mg-ink-tertiary);opacity:1}
+#mg-ask .mg-ask-field:hover{background:var(--mg-surface-floating)}
+#mg-ask .mg-ask-field:focus-visible,#mg-ask .mg-ask-field:focus{outline:none;background:var(--mg-surface-floating);box-shadow:var(--mg-focus-ring)}
+#mg-ask .mg-ask-field[readonly]{color:var(--mg-ink-secondary)}
+@media (max-width:600px){#mg-ask .mg-ask-field{width:100%}}
+
+#mg-ask .mg-ask-cta{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border:0;border-radius:var(--mg-radius-pill);font-family:var(--mg-font-sans);font-size:16px;font-weight:500;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:transform var(--mg-dur-snappy) var(--mg-ease-snappy),box-shadow var(--mg-dur-snappy) var(--mg-ease-snappy),background-color var(--mg-dur-2) var(--mg-ease-standard),color var(--mg-dur-2) var(--mg-ease-standard)}
+/* The question bar: liquid glass, the one exception to the no glassmorphism rule. One surface holds the field and the button. The baked 220 by 64 refraction map is stretched through its flat middle to the bar's width at runtime, so the rim lensing matches the box. Nothing above the bar is transformed. */
+#mg-ask .mg-ask-pool{position:absolute;left:50%;top:-150px;width:760px;height:300px;margin-left:-380px;border-radius:50%;pointer-events:none;background:radial-gradient(ellipse 30% 22% at 50% 36%,rgba(78,132,255,0.2),rgba(78,132,255,0) 100%),radial-gradient(closest-side,rgba(3,50,208,0.34),rgba(3,50,208,0.12) 55%,rgba(3,50,208,0))}
+@media (max-width:600px){#mg-ask .mg-ask-pool{top:-110px;width:440px;height:300px;margin-left:-220px}}
+#mg-ask .mg-ask-submit,#mg-ask .mg-ask-cta{-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+#mg-ask .mg-ask-glassdefs{position:absolute;width:0;height:0;overflow:hidden}
+#mg-ask .mg-ask-glassbar{position:relative;flex:none;display:flex;align-items:center;justify-content:flex-start;gap:6px;box-sizing:border-box;width:min(640px,100%);height:64px;padding:6px;border-radius:26.4px;
+  -webkit-backdrop-filter:blur(0px) saturate(1);backdrop-filter:blur(0px) saturate(1);background:rgba(255,255,255,0.043);border:1px solid rgba(255,255,255,0.216);box-shadow:0 12px 32px rgba(0,0,0,0.208);
+  color:var(--mg-ink);font-family:var(--mg-font-sans);font-size:17px;font-weight:500;line-height:1;white-space:nowrap;transition:background-color var(--mg-dur-2) var(--mg-ease-standard),opacity var(--mg-dur-2) var(--mg-ease-standard)}
+@supports (background: paint(gg-glass-probe)) { #mg-ask .mg-ask-glassbar { -webkit-backdrop-filter: url(#mg-ask-bar-filter) blur(0px) saturate(1); backdrop-filter: url(#mg-ask-bar-filter) blur(0px) saturate(1); } }
+/* Get RevOS: the spec glass at its baked 220 by 64, tinted with the lifted blue. */
+#mg-ask .mg-ask-glass{-webkit-backdrop-filter:blur(0px) saturate(1);backdrop-filter:blur(0px) saturate(1)}
+@supports (background: paint(gg-glass-probe)) { #mg-ask .mg-ask-glass { -webkit-backdrop-filter: url(#gg-glass-filter) blur(0px) saturate(1); backdrop-filter: url(#gg-glass-filter) blur(0px) saturate(1); } }
+#mg-ask .mg-ask-glassbar::before,#mg-ask .mg-ask-glass::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,0.31),rgba(255,255,255,0.031) 40%,rgba(0,0,0,0.217));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none}
+#mg-ask .mg-ask-glass-shine{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(210deg,rgba(255,255,255,0.408) 0%,rgba(255,255,255,0) 45%);box-shadow:inset -0.5px 0.866px 0 rgba(255,255,255,0.34);pointer-events:none;transition:opacity var(--mg-dur-1) var(--mg-ease-standard)}
+#mg-ask .mg-ask-glass-shine::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(210deg,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 55%);opacity:0;transition:opacity var(--mg-dur-1) var(--mg-ease-standard)}
+#mg-ask .mg-ask-glassbar:hover{background:rgba(255,255,255,0.06)}
+#mg-ask .mg-ask-glassbar:focus-within{outline:2px solid var(--mg-ink);outline-offset:4px}
+#mg-ask .mg-ask-glassbar .mg-ask-field{position:relative;flex:1 1 auto;min-width:0;width:auto;height:52px;padding:0 18px;border-radius:20.4px;background:transparent;box-shadow:none;font-size:17px;text-overflow:ellipsis}
+#mg-ask .mg-ask-glassbar .mg-ask-field:hover,#mg-ask .mg-ask-glassbar .mg-ask-field:focus,#mg-ask .mg-ask-glassbar .mg-ask-field:focus-visible{background:transparent;box-shadow:none;outline:none}
+#mg-ask .mg-ask-glassbar .mg-ask-submit{position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;width:200px;height:52px;padding:0;border:0;border-radius:20.4px;cursor:pointer;
+  background:linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08));box-shadow:inset 0 1px 0 rgba(255,255,255,0.26),0 4px 12px rgba(0,0,0,0.18);
+  color:var(--mg-ink);font-family:var(--mg-font-sans);font-size:17px;font-weight:500;line-height:1;white-space:nowrap;transition:background-color var(--mg-dur-1) var(--mg-ease-standard),opacity var(--mg-dur-2) var(--mg-ease-standard)}
+#mg-ask .mg-ask-glassbar .mg-ask-submit:hover{background:linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.11))}
+#mg-ask .mg-ask-glassbar .mg-ask-submit:active{background:linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.16))}
+#mg-ask .mg-ask-glassbar:has(.mg-ask-submit:active) .mg-ask-glass-shine::after{opacity:1}
+#mg-ask .mg-ask-glassbar .mg-ask-submit:focus-visible{outline:2px solid var(--mg-ink);outline-offset:2px}
+#mg-ask .mg-ask-glassbar .mg-ask-submit[aria-disabled="true"]{opacity:0.5;cursor:default;background:linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))}
+@media (max-width:600px){#mg-ask .mg-ask-glassbar.mg-ask-form{flex-direction:row;gap:4px}#mg-ask .mg-ask-glassbar .mg-ask-field{padding:0 12px 0 16px;font-size:16px}#mg-ask .mg-ask-glassbar .mg-ask-submit{width:132px;font-size:16px}}
+@media (prefers-reduced-transparency: reduce){#mg-ask .mg-ask-glassbar,#mg-ask .mg-ask-glassbar:hover{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,0.92)}#mg-ask .mg-ask-glassbar .mg-ask-glass-shine{display:none}#mg-ask .mg-ask-glassbar .mg-ask-field,#mg-ask .mg-ask-glassbar .mg-ask-field[readonly]{color:var(--mg-ink-base)}#mg-ask .mg-ask-glassbar .mg-ask-field::placeholder{color:#50555D}#mg-ask .mg-ask-glassbar .mg-ask-submit,#mg-ask .mg-ask-glassbar .mg-ask-submit:hover,#mg-ask .mg-ask-glassbar .mg-ask-submit:active,#mg-ask .mg-ask-glassbar .mg-ask-submit[aria-disabled="true"]{background:rgba(11,12,16,0.08);box-shadow:none;color:var(--mg-ink-base)}#mg-ask .mg-ask-glassbar:focus-within,#mg-ask .mg-ask-glassbar .mg-ask-submit:focus-visible{outline-color:var(--mg-ink)}}
+#mg-ask .mg-ask-cta{padding:0 26px;background:var(--mg-signal);color:var(--mg-on-signal)}
+#mg-ask .mg-ask-cta:hover{background:var(--mg-signal-hover);color:var(--mg-on-signal);transform:translateY(-2px);box-shadow:var(--mg-lift-raised)}
+#mg-ask .mg-ask-cta:active{background:var(--mg-signal-pressed);transform:none;box-shadow:none}
+#mg-ask .mg-ask-cta.mg-ask-glass{position:relative;box-sizing:border-box;width:220px;height:64px;padding:0;border-radius:26.4px;background:rgba(78,132,255,0.16);border:1px solid rgba(255,255,255,0.216);box-shadow:0 12px 32px rgba(0,0,0,0.208);color:var(--mg-ink);font-size:17px;font-weight:500;text-decoration:none;transform:none;transition:background-color var(--mg-dur-2) var(--mg-ease-standard)}
+#mg-ask .mg-ask-cta.mg-ask-glass:hover{background:rgba(78,132,255,0.22);color:var(--mg-ink);transform:none;box-shadow:0 12px 32px rgba(0,0,0,0.208)}
+#mg-ask .mg-ask-cta.mg-ask-glass:active{background:rgba(78,132,255,0.3);transform:none;box-shadow:0 12px 32px rgba(0,0,0,0.208)}
+#mg-ask .mg-ask-cta.mg-ask-glass:active .mg-ask-glass-shine::after{opacity:1}
+#mg-ask .mg-ask-cta.mg-ask-glass:focus-visible{outline:2px solid var(--mg-ink);outline-offset:4px;box-shadow:0 12px 32px rgba(0,0,0,0.208)}
+#mg-ask .mg-ask-glass-label{position:relative}
+@media (prefers-reduced-transparency: reduce){#mg-ask .mg-ask-cta.mg-ask-glass,#mg-ask .mg-ask-cta.mg-ask-glass:hover,#mg-ask .mg-ask-cta.mg-ask-glass:active{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,0.92);color:var(--mg-ink-base)}#mg-ask .mg-ask-cta.mg-ask-glass .mg-ask-glass-shine{display:none}}
+#mg-ask .mg-ask-cta:focus-visible,#mg-ask .mg-ask-again:focus-visible,#mg-ask .mg-ask-logo:focus-visible{outline:none;box-shadow:var(--mg-focus-ring)}
+#mg-ask .mg-ask-route{max-width:40em;font-size:16px;line-height:1.45;color:var(--mg-ink-secondary);text-align:center;text-wrap:balance}
+#mg-ask .mg-ask-ctas{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 20px}
+#mg-ask .mg-ask-again{display:inline-flex;align-items:center;height:48px;padding:0 10px;border:0;border-radius:var(--mg-radius-input);background:none;color:var(--mg-ink-secondary);font-family:var(--mg-font-sans);font-size:16px;font-weight:400;line-height:1;cursor:pointer;transition:color var(--mg-dur-2) var(--mg-ease-standard)}
+#mg-ask .mg-ask-again:hover{color:var(--mg-ink);text-decoration:underline;text-underline-offset:4px}
+@media (max-width:600px){#mg-ask .mg-ask-route{font-size:15px}#mg-ask .mg-ask-turnbox{gap:10px}#mg-ask .mg-ask-ctas{gap:4px 12px}}
+
+/* Short phones, portrait: tighter type and gaps; in the turn the explainer gives its room back to the ball. */
+@media (max-width:600px) and (max-height:700px){
+  #mg-ask.mg{--mg-ask-h1:min(var(--mg-t-h3),5vh);--mg-ask-sup:15px;--mg-ask-gap:10px;padding:12px 20px 10px}
+  #mg-ask .mg-ask-sup{line-height:1.4}
+  #mg-ask.mg.mg-ask--after{grid-template-rows:auto auto minmax(0,1fr) auto}
+  #mg-ask.mg.mg-ask--turn .mg-ask-stage{--mg-ask-vh:0px}
+  #mg-ask.mg.mg-ask--turn .mg-ask-voice{display:none}
+  #mg-ask.mg.mg-ask--after:not(.mg-ask--turn) .mg-ask-headlive .mg-ask-sup{display:none}
+  #mg-ask .mg-ask-route{font-size:14px;line-height:1.4}
+  #mg-ask .mg-ask-turnbox{gap:8px}
+}
+/* Phones: a slightly larger window so the answer stays legible on a smaller ball. */
+@media (max-width:600px){#mg-ask .mg-ask-win{width:calc(var(--mg-ask-d) * 0.56);height:calc(var(--mg-ask-d) * 0.56)}}
+@media (max-width:600px){#mg-ask .mg-ask-again{padding:0 6px;font-size:15px}#mg-ask .mg-ask-ctas{gap:4px 8px}}
+/* Phones in landscape: ball on the left, words and actions on the right. */
+@media (max-height:480px) and (orientation:landscape){
+  #mg-ask.mg{--mg-ask-h1:min(var(--mg-t-h3),7vh);--mg-ask-sup:14px;--mg-ask-gap:8px;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);grid-template-rows:auto auto auto minmax(0,1fr);column-gap:32px;padding:8px clamp(20px,3vw,40px) 8px}
+  #mg-ask.mg.mg-ask--after{grid-template-rows:auto auto auto minmax(0,1fr)}
+  #mg-ask .mg-ask-top{grid-column:2;grid-row:1}
+  #mg-ask .mg-ask-head{grid-column:2;grid-row:2;min-height:0}
+  #mg-ask .mg-ask-ballrow{grid-column:1;grid-row:1/5}
+  #mg-ask .mg-ask-actions{grid-column:2;grid-row:3;min-height:0}
+  #mg-ask .mg-ask-sup{line-height:1.4}
+  #mg-ask .mg-ask-voice{--mg-ask-vw:min(360px,40vw);font-size:13px}
+  #mg-ask .mg-ask-stage{--mg-ask-vh:36px}
+  #mg-ask .mg-ask-win{width:calc(var(--mg-ask-d) * 0.6);height:calc(var(--mg-ask-d) * 0.6)}
+  #mg-ask.mg.mg-ask--turn .mg-ask-top{display:none}
+  #mg-ask .mg-ask-route{font-size:14px;line-height:1.4}
+  #mg-ask .mg-ask-turnbox{gap:8px}
+  #mg-ask .mg-ask-pool{top:-120px;width:520px;margin-left:-260px}
+}
+#mg-ask.mg-ask--still .mg-ask-text,#mg-ask.mg-ask--still .mg-ask-canvas,#mg-ask.mg-ask--still .mg-ask-form,#mg-ask.mg-ask--still .mg-ask-turnbox,#mg-ask.mg-ask--still .mg-ask-voice,#mg-ask.mg-ask--still .mg-ask-sup,#mg-ask.mg-ask--still .mg-ask-wd{transition:none!important}
+@media (prefers-reduced-motion:reduce){
+  #mg-ask .mg-ask-cta{transition:background-color var(--mg-dur-1) linear}
+  #mg-ask .mg-ask-cta:hover{transform:none}
+  #mg-ask .mg-ask-text[data-state="hidden"]{filter:none;transform:translate(-50%,0)}
+  #mg-ask .mg-ask-turnbox,#mg-ask.mg-ask--turn .mg-ask-turnbox{transform:none}
+}
+/* No-JS fallback, done without <noscript>: some HTML sanitisers/embed pipelines (GHL's included, in at least one
+   reproduced case) parse pasted markup in a scripting-disabled context, which unwraps <noscript> and leaves its
+   children live even though real users have JS on. Default to no-js and let the inline script below clear it. */
+#mg-ask.no-js .mg-ask-headlive,#mg-ask.no-js .mg-ask-form,#mg-ask.no-js .mg-ask-turnbox,#mg-ask.no-js .mg-ask-voice{display:none!important}
+</style>
+<section class="mg mg-ask no-js" id="mg-ask" data-mg-theme="dark" aria-label="Ask the ball"
+  data-mg-travel="24" data-mg-rotation="8"
+  data-mg-shake="850" data-mg-rise="1000" data-mg-flat="1750" data-mg-resolve="2000" data-mg-reveal="500" data-mg-reset="200" data-mg-turn-delay="1400"
+  data-mg-shake-stiffness="380" data-mg-shake-damping="6" data-mg-settle-stiffness="210" data-mg-settle-damping="16"
+  data-mg-liquid-lag="0.5" data-mg-float="4" data-mg-float-period="6" data-mg-window="0.5" data-mg-spin-gain="0.009" data-mg-spin-drag="1.6" data-mg-rock="6"
+  data-mg-voice="on"
+  data-mg-examples="Should I hire a head of sales? | Is my price too low? | Why are my leads drying up? | How many months of cash do I have? | Should I launch a cheaper offer? | Why do deals stall after the proposal?"
+  data-mg-answers="h:consultant:Increase / revenue ~ True of every business, so it tells you nothing. It comes from advice given without seeing your numbers. | h:consultant:Decrease / costs ~ It cuts without knowing which costs earn their keep. It is the easiest advice to give from outside. | h:consultant:Let’s circle / back to / that ~ The question waits and the decision goes with it. People say it when nobody owns the answer. | h:consultant:Let’s put a / pin in that ~ A pinned question is still open, only quieter. It arises when the meeting runs out of time or facts. | h:team:I need more / data ~ The data usually exists, just not in one place. It arises when your numbers live across five tools. | h:board:Please fix ~ An instruction with no plan attached. Boards say it when they see the outcome but not the cause. | -:consultant:It depends ~ Correct, and useless without knowing on what. Advisers say it when they lack your context. | -:consultant:Align the / stakeholders ~ Agreement is not a decision. It comes up when nobody has the facts to settle the argument. | -:consultant:Leverage your / synergies ~ Nobody can act on it on Monday. Jargon fills the gap where specifics should be. | -:consultant:Unlock hidden / value ~ If the value were visible, it would have a name. The phrase appears when nobody has done the diagnosis. | -:consultant:Think bigger ~ Scale without a plan is a larger problem. It is advice that needs no knowledge of your business. | -:consultant:Focus on the / customer ~ Every founder thinks they already do. It is what you hear when nobody has read your client data. | -:consultant:Double down / on what / works ~ Only useful if you know what works. Most founders guess because results are not tracked by source. | -:consultant:Optimise the / funnel ~ Which stage, and by how much? It arises when nobody has measured where leads drop out. | -:consultant:Build a / flywheel ~ A diagram with no next step. Frameworks stand in for answers when nobody has seen your pipeline. | -:consultant:Move the / needle ~ It never names the needle. The phrase appears when goals were never tied to a number. | -:consultant:Take it / offline ~ The question leaves the room and rarely returns. It happens when an answer needs facts nobody brought. | -:consultant:Low hanging / fruit ~ Easy wins are rarely the ones that matter. They get picked first when priorities are not ranked. | -:consultant:Consider / a pivot ~ A pivot answers a question you did not ask. It comes up when the current plan cannot be diagnosed. | -:consultant:Run a / workshop ~ A day of sticky notes is not a decision. Workshops get booked when the answer needs data nobody has. | -:consultant:That’s a / phase two / thing ~ Phase two rarely arrives. Hard questions get deferred when scope was set before the facts were known. | -:consultant:Don’t boil / the ocean ~ Sensible, but silent on where to start. It fills the gap when priorities are unclear. | -:consultant:Let’s unpack / that ~ More talk, same question. It buys time when nobody in the room has the numbers. | -:consultant:Invoice to / follow ~ You paid for the question, not the answer. Retainers reward hours spent over problems solved. | -:team:I thought you / had that ~ Two people assumed and nobody acted. It happens when ownership lives in memory instead of a file. | -:team:In a / spreadsheet / somewhere ~ Information you cannot find is information you do not have. Every team keeps its own copy. | -:team:Waiting on / finance ~ The work stops at a handoff. It arises when one person holds the numbers everyone else needs. | -:team:Who owns / that? ~ If nobody knows, nobody does. Ownership goes missing when roles grow faster than anyone writes them down. | -:team:On my list ~ A list is not a deadline. It arises when tasks are tracked in heads rather than one shared place. | -:team:Should be done / by Friday ~ Hope with a date attached. Estimates slip when nobody can see the real status of the work. | -:team:The CRM / is wrong ~ Decisions made on bad records are guesses. The CRM drifts when updating it is nobody’s job. | -:team:Nobody / told me ~ The information existed but never travelled. It happens when decisions live in calls instead of files. | -:team:Let me check / and revert ~ The answer is a day away at best. It arises when facts sit with one person, not in the business. | -:team:It’s with / legal ~ A question parked rather than answered. Contracts stall when terms and past decisions are not written down. | -:team:Did you see / my Slack? ~ The decision is buried in a thread. It happens when messages stand in for a record. | -:team:We tried / that once ~ Once, long ago, in different conditions. Past attempts are rarely written up, so nobody learns from them. | -:team:The dashboard / is broken ~ No dashboard, no view of the business. Reporting breaks when it is built once and owned by nobody. | -:board:Great, now / double it ~ A target without a route. Boards set it when they see the result but not what produced it. | -:board:Hire a head / of sales ~ A hire before a diagnosis. It is the default answer when nobody knows why sales are flat. | -:board:What’s the / exit plan? ~ A fair question that skips this quarter. It comes up when the board cannot see the path in between.">
+  <script>document.currentScript.parentElement.classList.remove('no-js')</script>
+  <div class="mg-ask-top"><a class="mg-ask-logo" href="/" aria-label="Merigrove home"><svg viewBox="0 0 1666.51 286.03" fill="currentColor" aria-hidden="true" focusable="false"><path d="M181.44,166.42l.08-137.72c-4.36,12.38-8.41,23.68-13.58,35.91l-57.81,136.61L49.41,56.29l-9.99-26.62-.46,111.31,1.38,66c.24,11.44,3.79,21.59,10.42,31.01-17.23-.6-33.27-.63-50.75-.03,5.02-7.88,8.27-16.32,8.96-25.49.86-11.34,1.6-21.91,1.59-33.56l-.13-131.75c0-9.69-1.16-18.24-2.2-27.65L.31,3.01c21.33.76,41.95.91,63.37-.25l42.28,100.7c3.32,7.9,6.28,15.28,8.68,22.26L166.74,3.34c20.76.84,40.82.79,62.41-.16-4.98,8.36-8.41,16.83-9.16,26.41-.71,11-1.51,21.27-1.5,32.56l.13,127.76c.01,10.3.74,19.68,2.44,29.62,1.11,6.47,5.15,12.49,8.04,18.39-20.25-.56-38.99-.55-59.02.05,5.56-7.9,8.96-16.34,9.61-25.89,1.05-15.28,1.74-29.49,1.75-45.65Z"/><path d="M1133.97,263.9c-16.27,11.64-33.86,23.29-53.56,22.04-43.08-2.74-74.06-32.26-96.35-67.52l-44.1-69.76c-8.01-12.67-16.46-18.63-32.06-16.65l1.23,74.04c.19,11.69,3.65,22.03,10.1,31.87l-59.22.02c6.69-9.68,9.74-20.15,9.93-31.77l1.44-86.16-1.23-85.7c-.16-11.47-3.59-21.59-10.11-31.23l47.47.13c26.66.07,55.98-2.2,80.17,9.57,12.02,5.85,20.83,15.73,24.55,28.57,8.66,29.91-.89,62.89-30.08,76.35-11.6,5.46-23.68,6.83-36.85,7.73,27.44,3.64,39.41,22.76,52.98,45.79l21.87,37.09c21.71,36.83,70.39,59.01,113.81,55.58ZM972.49,85.55c3.72-11.62,3.49-23.12.99-34.52-7.05-28.71-38.26-27-65.58-25.7v84.95c27.71.48,53.93,4.22,64.59-24.73Z"/><path d="M1162.71,236.77c-23.22,6.13-46.61,5.68-69.07-.77-26.53-7.62-46.89-26.16-57.94-51.25-16.7-37.92-14.53-90.49,2.02-128.29,12.25-27.98,35.5-47.8,65.54-53.74,21.39-4.23,42.94-3.61,63.84,2.66,38.35,11.49,60.4,43.92,66.36,82.85,5.42,35.42.87,78.18-17.92,108.85-12,19.6-29.97,33.67-52.83,39.71ZM1191.13,157.67c4.51-25.02,4.54-50.29.11-75.31-5.8-32.73-24.16-56.9-58.7-58.29-36.77-1.48-57.4,24.77-63.72,59.31-4.58,25.03-4.61,50.4-.19,75.47,5.86,33.21,24.75,57.72,59.84,58.24,36.77.55,56.44-24.88,62.66-59.42Z"/><path d="M583.86,236.52c-18.39,4.77-40.03,5.2-53.39-8.49-5.54-5.67-10.13-11.84-14.42-18.62l-32.88-52c-10.29-16.28-17.81-28.44-37.8-25.2l1.23,73.78c.2,11.75,3.57,22.17,10.18,31.97-19.96-.62-38.57-.61-59.07-.03,5.05-8.32,8.75-16.98,9.23-26.63l1.56-31.4-.2-128.76c-.02-10.3-.73-19.67-2.44-29.59-1.13-6.53-5.07-12.66-8.3-18.41,32.13,1.71,64.02-2.01,95.67,1.2,25.21,2.56,49.23,12.07,56.56,37.34,9.01,31.03-2.16,65.03-33.29,77.42-10.62,4.35-21.36,5.41-33.25,6.39,30.67,4.4,42.07,28.55,57.1,53.66l22.81,38.09c4.97,8.3,11.87,14,20.69,19.27ZM509.64,86.65c4.5-13.84,4.14-28.03-.45-41.35-10.21-23.16-39.11-20.93-63.8-20.05v85.1c27.57.32,52.99,4.06,64.25-23.7Z"/><path d="M804.49,214.28l-1.57-56.61c-.29-10.43-3.98-19.86-9.9-28.68h58.91c-6.34,9.6-9.54,19.75-9.79,31.08l-1.51,70.85c-48.42,14.44-114.08,15.07-151.67-20.35-35.82-33.75-39.54-94.5-24.33-139.22,10.47-30.79,33.88-52.86,64.5-62.83,19.33-6.3,38.86-8.08,59.39-7.34,18.15.66,35.92,2.41,53.24,9.09l-.08,46.25c-5.64-7.48-11.25-13.77-18.02-19.67-19.4-13.97-49.98-13.76-72.68-7.38-39.9,11.21-53.35,48.35-54.34,87.56-.46,18.29.73,36.09,6.59,53.15,15.13,44.02,57.51,50.38,101.28,44.09Z"/><path d="M1374.32,3.19l60.73-.04c-4.42,5.47-8.92,10.71-11.38,17.08l-14.79,38.35-58.35,179.5-50.37.05-57.89-181.61-12.07-33.18c-2.76-7.58-7.49-14.17-12.8-20.23l68.66.06c-14.85,11.5-9.75,27.9-5.35,45.82l47.11,157.62,2.12,9.68,49.53-166.1c4.63-18.32,10.2-35.7-5.15-47.01Z"/><path d="M292.56,131.75l-.03,82.65,53.88-.55c9.07-.09,17.34-2.86,25.38-6.46,7.32-5.37,12.56-12.11,17.61-19.67l-4.01,50.08-141.45.05c5.37-8.99,8.23-16.89,9.27-26.05l1.48-30.91-.31-134.74c-.02-9.58-1.28-18.06-2.55-27.25l-7.71-15.66,137.96.07c-.38,13.09-.26,25.74.43,38.81-5.06-3.98-10.16-7.4-15.75-10.59-8.94-2.61-17.8-4.75-27.29-4.77l-46.93-.08v82.05s45.99-.4,45.99-.4c13.63-.12,25.73-4.6,36.08-14.05-.87,18.22-.85,34.21-.01,52.33-9.66-9.69-21.11-13.4-34.18-14.51l-47.86-.37Z"/><path d="M1498.03,131.77l-.05,82.69,43.51-.12c10.31-.03,20.33-1.31,29.95-4.33,10.52-4.02,16.39-12.26,23.23-21.73l-3.86,49.52-141.31.06c2.82-5.74,6.23-10.83,7.35-16.39,2.19-10.87,3.03-21.24,3.03-32.56l.04-139.85c0-10.28-.67-19.82-2.94-29.64-1.3-5.65-5.05-11.08-7.48-16.18l138.03.08.18,38.77c-11.03-10.35-23.84-13.98-38.25-15.23l-51.46-.21v82.06s46.44-.39,46.44-.39c13.36-.11,24.97-4.45,35.59-13.94l.19,51.83-16.3-10.74c-8.5-2.08-16.63-3.27-25.41-3.69h-40.47Z"/><path d="M650.63,237.89l-60.3.08c5.47-8.17,9.03-17.01,9.5-26.69l1.64-34.37-.22-124.77c-.02-10.64-.74-20.32-2.45-30.57-1.09-6.57-5.09-12.6-8.33-18.43h60.2c-5.66,8.45-9.16,17.57-9.6,27.64l-1.59,36.35-.02,111.81,1.39,31.87c.42,9.76,4.03,18.3,9.78,27.09Z"/><path d="M1665.75,217.37c-2.87,12.84-18.82,22.76-32.64,18.18-7.33-2.43-13.48-7.04-16.08-13.03-3.37-7.76-3.32-16.03.89-23.25,4.62-7.93,13.93-13.78,23.4-13.64,6.43.09,13.23,3.52,17.84,7.68,6.76,6.09,8.59,15.09,6.59,24.06Z"/></svg></a></div>
+  <div class="mg-ask-head">
+    <div class="mg-ask-headlive">
+      <h1 class="mg-ask-h1">Every business question, answered.</h1>
+      <p class="mg-ask-sup">Type it in, give it a shake, and receive wisdom from the deep.</p>
+    </div>
+    <noscript><div class="mg-ask-ns-head"><h1 class="mg-ask-h1">Stop running your business on <span class="mg-turn">a shake and a guess</span>.</h1><p class="mg-ask-sup">RevOS gives you an executive team of AI agents that answer from your own numbers, pipeline and clients, while you stay CEO.</p></div></noscript>
+  </div>
+  <div class="mg-ask-ballrow">
+    <div class="mg-ask-stage">
+      <div class="mg-ask-shadow" aria-hidden="true"></div>
+      <div class="mg-ask-ball" role="img" aria-label="A ball of dark glass with a round window. Inside, a blue twenty sided die presses one face to the glass. It reads: Let’s circle back to that." data-mg-event="shake-ball">
+        <div class="mg-ask-spin">
+          <div class="mg-ask-body"></div>
+          <div class="mg-ask-win">
+            <svg class="mg-ask-die" viewBox="-1 -1 2 2" aria-hidden="true" focusable="false"><defs><filter id="mg-ask-diesoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="0.035"/></filter></defs><g filter="url(#mg-ask-diesoft)"><polygon points="-1.079,-0.623 0,-0.689 0,-1.343" fill="#01124F" fill-opacity="0.35"/><polygon points="-1.079,-0.623 -1.163,0.672 -0.597,0.345" fill="#01124F" fill-opacity="0.35"/><polygon points="0,0.95 1.163,0.672 0,1.246" fill="#011556" fill-opacity="0.6"/><polygon points="0,0.95 0,1.246 -1.163,0.672" fill="#011556" fill-opacity="0.6"/><polygon points="-0.823,-0.475 -1.163,0.672 -1.079,-0.623" fill="#011A6A" fill-opacity="0.7"/><polygon points="-0.823,-0.475 -1.079,-0.623 0,-1.343" fill="#011A6C" fill-opacity="0.7"/><polygon points="0.823,-0.475 1.079,-0.623 1.163,0.672" fill="#011660" fill-opacity="0.7"/><polygon points="0.823,-0.475 0,-1.343 1.079,-0.623" fill="#011866" fill-opacity="0.7"/><polygon points="0,0.95 -1.163,0.672 -0.823,-0.475" fill="#022184" fill-opacity="0.92"/><polygon points="0,0.95 0.823,-0.475 1.163,0.672" fill="#021D78" fill-opacity="0.92"/><polygon points="-0.823,-0.475 0,-1.343 0.823,-0.475" fill="#02238C" fill-opacity="0.92"/><polygon points="0,0.95 -0.823,-0.475 0.823,-0.475" fill="#022592"/></g><polygon points="0,0.95 -0.823,-0.475 0.823,-0.475" fill="#022592"/></svg>
+            <canvas class="mg-ask-canvas" aria-hidden="true"></canvas>
+            <div class="mg-ask-answer" aria-hidden="true"><p class="mg-ask-text" data-state="shown"><span>Let’s circle</span><span>back to</span><span>that</span></p></div>
+            <div class="mg-ask-lens"></div>
+          </div>
+        </div>
+        <div class="mg-ask-light" aria-hidden="true"><div class="mg-ask-bounce"></div><div class="mg-ask-rim"></div><div class="mg-ask-spec"></div></div>
+      </div>
+      <p class="mg-ask-voice"></p>
+    </div>
+  </div>
+  <div class="mg-ask-actions">
+    <div class="mg-ask-glassdefs"><svg width="0" height="0" aria-hidden="true">
+  <defs>
+    <filter id="gg-glass-filter" color-interpolation-filters="sRGB" x="0" y="0" width="220" height="64" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="220" height="64" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-47.772" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-50.822" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-53.871" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+    <filter id="mg-ask-bar-filter" color-interpolation-filters="sRGB" x="0" y="0" width="220" height="64" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="220" height="64" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-47.772" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-50.822" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-53.871" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+  </defs>
+</svg></div>
+    <div class="mg-ask-pool" aria-hidden="true"></div>
+    <form class="mg-ask-form mg-ask-glassbar" role="search" novalidate>
+      <span class="mg-ask-glass-shine" aria-hidden="true"></span>
+      <label class="mg-sr" for="mg-ask-q">Your question</label>
+      <input class="mg-ask-field" id="mg-ask-q" type="text" maxlength="120" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Should I hire a head of sales?">
+      <button class="mg-ask-submit" type="submit" data-mg-event="ask">Shake the ball</button>
+    </form>
+    <div class="mg-ask-turnbox">
+      <p class="mg-ask-route">In RevOS, every question starts with your Chief of Staff, who answers from your whole business file.</p>
+      <div class="mg-ask-ctas"><a class="mg-ask-cta mg-ask-glass" href="/?from=ask" data-mg-event="cta"><span class="mg-ask-glass-shine" aria-hidden="true"></span><span class="mg-ask-glass-label">Get RevOS</span></a><button class="mg-ask-again" type="button" data-mg-event="ask-again">Shake it again</button></div>
+    </div>
+    <noscript><div class="mg-ask-ns-act"><p class="mg-ask-route">In RevOS, every question starts with your Chief of Staff, who answers from your whole business file.</p><div class="mg-ask-ctas"><a class="mg-ask-cta mg-ask-glass" href="/?from=ask" data-mg-event="cta"><span class="mg-ask-glass-shine" aria-hidden="true"></span><span class="mg-ask-glass-label">Get RevOS</span></a></div></div></noscript>
+  </div>
+  <p class="mg-ask-live mg-sr" aria-live="polite"></p>
+</section>
+<script>
+(function(){
+'use strict';
+var ID='mg-ask';
+var PUNCH=[['Stop running your business on '],['a shake and a guess',1],['.']];
+var TURN_SUP='RevOS gives you an executive team of AI agents that answer from your own numbers, pipeline and clients, while you stay CEO.';
+var COUNT=['','','Asking twice rarely helps with consultants either.','Third shake. It still hasn’t seen your numbers.','The ball is billing you for this.'];
+var NUMW=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen','Twenty'];
+var VOICE={consultant:'Your consultant',team:'Your team',board:'Your board'};
+var ROUTES=[
+  {slug:'legal',line:'In RevOS, a question about contracts goes to your legal counsel, who answers from your own terms and decisions.',kw:'contract* terms legal lawyer* solicitor* gdpr privacy compliance liability agreement* nda trademark* copyright clause* dispute* refund* insurance employment ir35 regulation* licence* license*'},
+  {slug:'finance',line:'In RevOS, a question about money goes to your CFO, who answers from your own numbers.',kw:'price* pricing charge* margin* cash cashflow cheap* discount* payment* payroll profit* cost* revenue invoice* pay paid fee fees budget* forecast* runway afford* tax taxes vat loan* funding raise valuation spend* ltv cac'},
+  {slug:'operations',line:'In RevOS, a question about operations goes to your COO, who answers from your own team, delivery and decisions.',kw:'hire hires hiring hired recruit* team teams staff operation* ops process* system* deliver* onboard* capacity workload automat* sop sops freelancer* contractor* outsourc* software supplier* workflow* bottleneck*'},
+  {slug:'sales',line:'In RevOS, a question about sales goes to your CRO, who answers from your own pipeline and deal history.',kw:'sale* sell* deal* pipeline close closing prospect* proposal* discovery objection* convert* conversion* reps sdr sdrs quota* commission* crm outbound cold calls demo demos negotiat* upsell*'},
+  {slug:'data',line:'In RevOS, a question about reporting goes to your CDO, who answers from your own numbers and pipeline data.',kw:'data report* dashboard* metric* kpi* track* measure* analytic* attribution spreadsheet* chart* trend* benchmark* insight* visibility cohort*'},
+  {slug:'brand',line:'In RevOS, a question about positioning goes to your CBO, who answers from your own offer, clients and voice.',kw:'brand* rebrand* position* voice tone messaging story identity logo* naming reputation differentiat* niche premium perception tagline* values mission offer*'},
+  {slug:'marketing',line:'In RevOS, a question about leads goes to your CMO, who answers from your own funnel, content and clients.',kw:'marketing market lead leads funnel* content post posts posting linkedin instagram social ads advert* campaign* seo email* newsletter* webinar* audience* traffic website* landing inbound organic follower* reach'},
+  {slug:'management',line:'In RevOS, a question about priorities goes to your Chief of Staff, who answers from your own decisions and plans.',kw:'priorit* focus plan* strategy goal* quarter* meeting* delegat* overwhelm* decision* decide* vision grow growth scale scaling board investor* okr*'}
+];
+var NOMATCH={slug:'general',line:'In RevOS, a question like yours goes to your Chief of Staff, who answers from your whole business file.'};
+var NOTHING={slug:'general',line:'In RevOS, every question starts with your Chief of Staff, who answers from your whole business file.'};
+ROUTES.forEach(function(r){r.keys=r.kw.split(' ').map(function(k){var s=k.charAt(k.length-1)==='*';return {b:s?k.slice(0,-1):k,s:s}})});
+/* The question is read here to pick a routing line and is used for nothing else. */
+function route(q){
+  if(!q)return NOTHING;
+  var words=q.toLowerCase().replace(/['’‘`]/g,'').split(/[^a-z0-9\u00c0-\u024f]+/).filter(Boolean),best=null,bs=0;
+  ROUTES.forEach(function(r){var s=0;r.keys.forEach(function(k){for(var i=0;i<words.length;i++){if(k.s?words[i].indexOf(k.b)===0:words[i]===k.b){s++;break}}});if(s>bs){bs=s;best=r}});
+  return best||NOMATCH}
+
+function boot(){
+  var root=document.getElementById(ID);
+  if(!root||root.getAttribute('data-mg-ready'))return;
+  var $=function(s){return root.querySelector(s)};
+  var stage=$('.mg-ask-stage'),ball=$('.mg-ask-ball'),spin=$('.mg-ask-spin'),spec=$('.mg-ask-spec'),shadow=$('.mg-ask-shadow'),win=$('.mg-ask-win'),cv=$('.mg-ask-canvas'),ans=$('.mg-ask-answer'),txt=$('.mg-ask-text'),live=$('.mg-ask-live');
+  var h1=$('.mg-ask-headlive .mg-ask-h1'),sup=$('.mg-ask-headlive .mg-ask-sup'),form=$('.mg-ask-form'),field=$('.mg-ask-field'),submit=$('.mg-ask-submit'),routeEl=$('.mg-ask-turnbox .mg-ask-route'),cta=$('.mg-ask-turnbox .mg-ask-cta'),again=$('.mg-ask-again'),voiceEl=$('.mg-ask-voice');
+  var ctx=cv&&cv.getContext&&cv.getContext('2d');
+  if(!ctx||!h1||!field)return;
+  /* Stretch the baked refraction map through its flat middle column to the bar's width. Height and corners stay exactly as baked. */
+  var gF=document.getElementById('mg-ask-bar-filter'),gI=gF&&gF.querySelector('feImage'),gImg=new Image(),gW=0;
+  function glassMap(){if(!gI||!gImg.naturalWidth)return;var w=Math.round(form.getBoundingClientRect().width);if(w<220||w===gW)return;gW=w;
+    var c=document.createElement('canvas');c.width=w;c.height=64;var x=c.getContext('2d');x.imageSmoothingEnabled=false;
+    x.drawImage(gImg,0,0,110,64,0,0,110,64);x.drawImage(gImg,110,0,1,64,110,0,w-220,64);x.drawImage(gImg,110,0,110,64,w-110,0,110,64);
+    try{gI.setAttribute('href',c.toDataURL('image/png'));gI.setAttribute('width',w);gF.setAttribute('width',w)}catch(_){}}
+  if(gI){gImg.onload=glassMap;gImg.src=gI.getAttribute('href');if('ResizeObserver' in window)new ResizeObserver(glassMap).observe(form);else window.addEventListener('resize',glassMap)}
+  root.setAttribute('data-mg-ready','1');
+  /* Analytics: pushes the action name only, never the question, to Google Tag Manager if the page has it, and fires mg:event for anything else listening. */
+  function track(n){try{if(window.dataLayer&&window.dataLayer.push)window.dataLayer.push({event:'mg_ask',mg_action:n})}catch(_){}try{root.dispatchEvent(new CustomEvent('mg:event',{bubbles:true,detail:{action:n}}))}catch(_){}}
+
+  /* Tunables come from data-mg-* attributes on the section. Times in ms, distances in px, rotation in degrees. */
+  /* Timeline from the press: shake ends at shake, the die starts to rise at rise, lies flat at flat, text resolves by resolve over reveal. */
+  var C={travel:24,rot:8,tShake:850,tRise:1000,tFlat:1750,tResolve:2000,tReveal:500,tReset:200,tTurn:1400,shakeK:380,shakeC:6,settleK:210,settleC:16,lag:0.5,float:4,floatPeriod:6,win:0.5,spinGain:0.009,spinDrag:1.6,rock:6};
+  var MAP={travel:'travel',rot:'rotation',tShake:'shake',tRise:'rise',tFlat:'flat',tResolve:'resolve',tReveal:'reveal',tReset:'reset',tTurn:'turn-delay',shakeK:'shake-stiffness',shakeC:'shake-damping',settleK:'settle-stiffness',settleC:'settle-damping',lag:'liquid-lag',float:'float',floatPeriod:'float-period',win:'window',spinGain:'spin-gain',spinDrag:'spin-drag',rock:'rock'};
+  var BANK=[],EX=[],voiceOn=true;
+  function readCfg(){
+    for(var k in MAP){var v=parseFloat(root.getAttribute('data-mg-'+MAP[k]));if(isFinite(v))C[k]=v}
+    var a=root.getAttribute('data-mg-answers');
+    if(a){var list=[];a.split('|').forEach(function(s){var p=s.trim().split(':');if(p.length<3)return;var body=p.slice(2).join(':').split('~'),why=(body[1]||'').trim(),lines=body[0].split('/').map(function(t){return t.trim()}).filter(Boolean);if(lines.length)list.push({house:p[0].trim()==='h',voice:p[1].trim(),lines:lines,why:why})});if(list.length)BANK=list}
+    var e=root.getAttribute('data-mg-examples');if(e)EX=e.split('|').map(function(t){return t.trim()}).filter(Boolean);
+    voiceOn=root.getAttribute('data-mg-voice')!=='off';
+    root.style.setProperty('--mg-ask-win',C.win);computeNorm()}
+
+  var mq=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+  var reduced=!!(mq&&mq.matches);
+  var cs=getComputedStyle(root);
+  function tok(n,f){var v=cs.getPropertyValue(n);return (v&&v.trim())||f}
+  function hex(h){h=h.replace('#','');return [parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)]}
+  var K={b300:hex(tok('--mg-blue-300','#89B0FF')),b400:hex(tok('--mg-blue-400','#4E84FF')),b600:hex(tok('--mg-blue-600','#0332D0')),b700:hex(tok('--mg-blue-700','#02249D')),b800:hex(tok('--mg-blue-800','#01166E')),b950:hex(tok('--mg-blue-950','#01092E')),n0:hex(tok('--mg-night-0','#0B0C10')),w:[255,255,255]};
+  function rgba(c,a){return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'}
+  var BASE=mix(K.b800,K.b700,0.5),FOG=mix(K.b950,K.b800,0.4);
+  function mix(a,b,t){return [Math.round(a[0]+(b[0]-a[0])*t),Math.round(a[1]+(b[1]-a[1])*t),Math.round(a[2]+(b[2]-a[2])*t)]}
+  function clamp(v,a,b){return v<a?a:v>b?b:v}
+  function sstep(a,b,x){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)}
+  var seed=(Date.now()%2147483647)|0;
+  function rnd(){seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+
+  /* Icosahedron. */
+  function sub(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]}
+  function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+  function cross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+  function norm(a){var l=Math.sqrt(dot(a,a))||1;return [a[0]/l,a[1]/l,a[2]/l]}
+  function dist(a,b){var d=sub(a,b);return Math.sqrt(dot(d,d))}
+  var PHI=(1+Math.sqrt(5))/2,V=[],F=[],FN=[];
+  [-1,1].forEach(function(a){[-1,1].forEach(function(b){V.push(norm([0,a,b*PHI]),norm([a,b*PHI,0]),norm([b*PHI,0,a]))})});
+  (function(){var i,j,k,el=1e9;for(i=1;i<12;i++)el=Math.min(el,dist(V[0],V[i]));
+    for(i=0;i<12;i++)for(j=i+1;j<12;j++)for(k=j+1;k<12;k++){if(Math.abs(dist(V[i],V[j])-el)<1e-3&&Math.abs(dist(V[i],V[k])-el)<1e-3&&Math.abs(dist(V[j],V[k])-el)<1e-3){var n=cross(sub(V[j],V[i]),sub(V[k],V[i])),c=[V[i][0]+V[j][0]+V[k][0],V[i][1]+V[j][1]+V[k][1],V[i][2]+V[j][2]+V[k][2]];F.push(dot(n,c)<0?[i,k,j]:[i,j,k]);FN.push(norm(c))}}})();
+  var INR=dot(V[F[0][0]],FN[0]),FCIRC=Math.sqrt(1-INR*INR),CAM=5,GLASS=0.95,SCALE=GLASS/(FCIRC*(CAM/(CAM-INR)));
+  var LIGHT=norm([-0.5,-0.6,0.8]);
+
+  /* Quaternions [w,x,y,z]; q maps die space to view space. */
+  function qmul(a,b){return [a[0]*b[0]-a[1]*b[1]-a[2]*b[2]-a[3]*b[3],a[0]*b[1]+a[1]*b[0]+a[2]*b[3]-a[3]*b[2],a[0]*b[2]-a[1]*b[3]+a[2]*b[0]+a[3]*b[1],a[0]*b[3]+a[1]*b[2]-a[2]*b[1]+a[3]*b[0]]}
+  function qnorm(q){var l=Math.sqrt(q[0]*q[0]+q[1]*q[1]+q[2]*q[2]+q[3]*q[3])||1;return [q[0]/l,q[1]/l,q[2]/l,q[3]/l]}
+  function qrot(q,v){var u=[q[1],q[2],q[3]],t=cross(u,v);t=[2*t[0],2*t[1],2*t[2]];var c=cross(u,t);return [v[0]+q[0]*t[0]+c[0],v[1]+q[0]*t[1]+c[1],v[2]+q[0]*t[2]+c[2]]}
+  function qconj(q){return [q[0],-q[1],-q[2],-q[3]]}
+  function qfromRows(x,y,z){var m00=x[0],m01=x[1],m02=x[2],m10=y[0],m11=y[1],m12=y[2],m20=z[0],m21=z[1],m22=z[2],tr=m00+m11+m22,s;
+    if(tr>0){s=Math.sqrt(tr+1)*2;return qnorm([s/4,(m21-m12)/s,(m02-m20)/s,(m10-m01)/s])}
+    if(m00>m11&&m00>m22){s=Math.sqrt(1+m00-m11-m22)*2;return qnorm([(m21-m12)/s,s/4,(m01+m10)/s,(m02+m20)/s])}
+    if(m11>m22){s=Math.sqrt(1+m11-m00-m22)*2;return qnorm([(m02-m20)/s,(m01+m10)/s,s/4,(m12+m21)/s])}
+    s=Math.sqrt(1+m22-m00-m11)*2;return qnorm([(m10-m01)/s,(m02+m20)/s,(m12+m21)/s,s/4])}
+  /* Settled face: normal toward the viewer, one vertex pointing down, so the widest edge is at the top. */
+  function faceTarget(fi,apexV){var n=FN[fi],a=V[apexV],d=dot(a,n),y=norm([a[0]-n[0]*d,a[1]-n[1]*d,a[2]-n[2]*d]),x=cross(y,n);return qfromRows(x,y,n)}
+  var qCanon=faceTarget(0,F[0][0]);
+  function randomQuat(){return qnorm([rnd()-0.5,rnd()-0.5,rnd()-0.5,rnd()-0.5])}
+
+  /* One simulation. The ball's motion pushes the liquid and the liquid pushes the die. A press starts one timeline: shake, spin, rise, press flat, resolve. */
+  var phase='rest',pt=0,clock=0,seqDrag=false,revealed=false;
+  /* Held shake: while a finger, key, drag or phone keeps shaking, the timeline waits in the shake. Release lets it decay into the rise. */
+  var hSrc=0,phoneUntil=0,hs=0,blend=0;
+  function isHeld(){return hSrc||(seqDrag&&dragging)||performance.now()<phoneUntil}
+  function sustain(t){var w0=Math.sqrt(C.shakeK),z=Math.min(0.95,C.shakeC/(2*w0)),wd=w0*Math.sqrt(1-z*z),P0=Math.min(260,C.tShake*0.3)/1000,a=1.25*Math.exp(-z*w0*P0)/shakeNorm*(1+0.12*Math.sin(t*3.1));
+    return [C.travel*a*Math.sin(wd*t),C.travel*0.22*a*Math.sin(2*wd*t+0.4),C.rot*a*Math.sin(wd*t-0.7)]}
+  var X=0,Y=0,Rt=0,bvx=0,bvy=0,dx=0,dy=0,dvx=0,dvy=0,tx=0,ty=0,dragging=false;
+  var lx=0,ly=0,lvx=0,lvy=0,relX=0,relY=0,fax=0,fay=0,axis=[0,0,1];
+  var q=qCanon,qf=qCanon,qHold=qCanon,qT=null,w=[0,0,0],D=0,vD=0,riseD=0,dark=0,vdark=0;
+  var bubbles=[],flick=0,flickT=0,cur=-1,pending=-1,shown=true,frozen=false,rBusy=false;
+  var specX=0,specY=0,ptrX=0,ptrY=0,fl=null;
+  var W=0,R=0,dpr=1,shakeNorm=1,fontFam='Arial';
+  function qint(a,v,h){return qnorm([a[0]+0.5*h*(-v[0]*a[1]-v[1]*a[2]-v[2]*a[3]),a[1]+0.5*h*(v[0]*a[0]+v[1]*a[3]-v[2]*a[2]),a[2]+0.5*h*(-v[0]*a[3]+v[1]*a[0]+v[2]*a[1]),a[3]+0.5*h*(v[0]*a[2]-v[1]*a[1]+v[2]*a[0])])}
+  function qslerp(a,b,t){var d=a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3];if(d<0){b=[-b[0],-b[1],-b[2],-b[3]];d=-d}
+    if(d>0.9995)return qnorm([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t,a[3]+(b[3]-a[3])*t]);
+    var th=Math.acos(d),sn=Math.sin(th),wa=Math.sin((1-t)*th)/sn,wb=Math.sin(t*th)/sn;return [a[0]*wa+b[0]*wb,a[1]*wa+b[1]*wb,a[2]*wa+b[2]*wb,a[3]*wa+b[3]*wb]}
+  function nearestFace(a){var bi=0,bz=-2,i;for(i=0;i<20;i++){var z=qrot(a,FN[i])[2];if(z>bz){bz=z;bi=i}}
+    var ap=F[bi][0],by=-1e9;F[bi].forEach(function(vi){var y=qrot(a,V[vi])[1];if(y>by){by=y;ap=vi}});return faceTarget(bi,ap)}
+  /* The face that lands is the one the free spin was heading for, so the rise never rewinds the die. */
+  function predict(){var a=qf,v=w.slice(),n=40,h=(C.tFlat-C.tRise)*0.6/1000/n,dm=Math.exp(-C.spinDrag*h),i;for(i=0;i<n;i++){a=qint(a,v,h);v=[v[0]*dm,v[1]*dm,v[2]*dm]}return nearestFace(a)}
+
+  function computeNorm(){var w0=Math.sqrt(C.shakeK),z=Math.min(0.95,C.shakeC/(2*w0)),wd=w0*Math.sqrt(1-z*z),T=Math.max(0.05,C.tShake/1000),m=0.0001,s;for(s=0;s<=T;s+=T/240)m=Math.max(m,Math.abs(Math.exp(-z*w0*s)*Math.sin(wd*s)));shakeNorm=m}
+  function shakeAt(s){var w0=Math.sqrt(C.shakeK),z=Math.min(0.95,C.shakeC/(2*w0)),wd=w0*Math.sqrt(1-z*z),e=Math.exp(-z*w0*s),k=(1-sstep(0.72,1,s/Math.max(0.05,C.tShake/1000)))/shakeNorm;
+    return [C.travel*e*Math.sin(wd*s)*k,C.travel*0.22*e*Math.sin(2*wd*s+0.4)*k,C.rot*e*Math.sin(wd*s-0.7)*k]}
+
+  /* Answer layout. Line breaks are hand set; this finds the largest size that fits the face. */
+  var mc=document.createElement('canvas').getContext('2d'),LH=1.08;
+  function layout(lines){
+    if(!R&&!measure())return null;
+    fontFam=getComputedStyle(txt).fontFamily||fontFam;
+    var Rf=GLASS*R,side=Rf*Math.sqrt(3),h=1.5*Rf,topY=R-Rf/2,apexY=R+Rf;
+    function fits(fs,top0){mc.font='500 '+fs+'px '+fontFam;var lh=fs*LH,pad=fs*0.3,k;
+      for(k=0;k<lines.length;k++){var bot=top0+(k+1)*lh-fs*0.15;if(mc.measureText(lines[k]).width>side*(apexY-bot)/h-2*pad)return false}return true}
+    var top0=topY+Rf*0.1,lo=6,hi=Math.min(R*0.2,30),i;
+    if(fits(hi,top0))lo=hi;else for(i=0;i<16;i++){var m=(lo+hi)/2;if(fits(m,top0))lo=m;else hi=m}
+    var fs=Math.floor(lo*10)/10,want=R-Rf*0.06-lines.length*fs*LH/2,shift=Math.max(0,want-top0);
+    for(i=10;i>0;i--){if(fits(fs,top0+shift*i/10)){top0+=shift*i/10;break}}
+    return {fs:fs,top:top0,side:side}}
+  function renderText(lines){
+    var f=layout(lines);if(!f)return;
+    while(txt.firstChild)txt.removeChild(txt.firstChild);
+    lines.forEach(function(l){var s=document.createElement('span');s.textContent=l;txt.appendChild(s)});
+    txt.style.fontSize=f.fs+'px';txt.style.top=f.top+'px';txt.style.width=f.side+'px'}
+  function setTextState(state,ms){
+    var e=ms+'ms',ez='cubic-bezier(0.2,0,0,1)';
+    txt.style.transition=state==='shown'?('opacity '+Math.round(ms*0.7)+'ms '+ez+',filter '+e+' '+ez+',color '+e+' '+ez+',transform '+e+' cubic-bezier(0.34,1.3,0.64,1)'):('opacity '+e+' '+ez+',filter '+e+' '+ez+',color '+e+' '+ez+',transform '+e+' '+ez);
+    txt.setAttribute('data-state',state);shown=state==='shown'}
+
+  /* Answer bank: the first answer of a visit is from the house set; no repeats until the bank is exhausted; never twice in a row. */
+  var used=[],lastPick=-1,reveals=0;
+  function pick(forced){
+    if(forced!=null&&BANK[forced]){pending=forced;return}
+    var pool=[],i;
+    if(reveals===0){for(i=0;i<BANK.length;i++)if(BANK[i].house)pool.push(i)}
+    if(!pool.length){for(i=0;i<BANK.length;i++)if(used.indexOf(i)<0&&i!==lastPick)pool.push(i)}
+    if(!pool.length){used=[];for(i=0;i<BANK.length;i++)if(i!==lastPick)pool.push(i)}
+    pending=pool[Math.floor(rnd()*pool.length)]}
+  function say(s){live.textContent='';setTimeout(function(){live.textContent=s},60)}
+  function reveal(ms){
+    cur=pending;used.push(cur);lastPick=cur;renderText(BANK[cur].lines);void txt.offsetWidth;setTextState('shown',ms);
+    say('The ball says: '+BANK[cur].lines.join(' ')+'.');onReveal()}
+
+  function startSeq(drag){phase='seq';pt=drag?C.tShake:0;hs=Math.min(260,C.tShake*0.3)/1000;blend=0;seqDrag=drag;revealed=false;qT=null;axis=norm([rnd()-0.5,rnd()-0.5,rnd()-0.5]);if(shown)setTextState('hidden',C.tReset)}
+  function idle(){return reduced?!rBusy:(phase==='rest'||phase==='hold')}
+  function ask(src,o){
+    o=o||{};
+    if(!idle()||!BANK.length)return false;
+    root.setAttribute('data-mg-event-last',src||'ask');if(!frozen)track(src||'ask');
+    if(reduced){reducedAsk(o.answer);return true}
+    pick(o.answer);startSeq(src==='shake-drag');
+    schedule();return true}
+  function reducedAsk(forced){
+    pick(forced);rBusy=true;
+    if(shown){setTextState('hidden',200);setTimeout(function(){reveal(C.tReveal);setTimeout(function(){rBusy=false},C.tReveal)},220)}
+    else{reveal(C.tReveal);setTimeout(function(){rBusy=false},C.tReveal)}
+    draw()}
+
+  function step(dt){
+    clock+=dt*1000;pt+=dt*1000;
+    var seq=phase==='seq',hold=seq&&isHeld(),P0=Math.min(260,C.tShake*0.3),sx=0,sy=0,sr=0,v;
+    if(hold&&seqDrag&&pt>C.tShake)pt=C.tShake;
+    if(hold&&!seqDrag&&pt>P0)pt=P0;
+    var T=pt;
+    if(seq&&!seqDrag&&T<C.tShake){v=shakeAt(T/1000);
+      var bT=hold&&T>=P0?1:0;blend=clamp(blend+(bT?1:-1)*dt/0.12,0,1);
+      if(blend>0||bT){hs+=dt;var u=sustain(hs);v=[v[0]+(u[0]-v[0])*blend,v[1]+(u[1]-v[1])*blend,v[2]+(u[2]-v[2])*blend]}
+      sx=v[0];sy=v[1];sr=v[2]}
+    var flt=(C.float/2)*Math.sin(2*Math.PI*clock/1000/Math.max(0.5,C.floatPeriod));
+    var kd=dragging?260:C.settleK,cd=dragging?24:C.settleC;
+    dvx+=(kd*(tx-dx)-cd*dvx)*dt;dx+=dvx*dt;dvy+=(kd*(ty-dy)-cd*dvy)*dt;dy+=dvy*dt;
+    var nX=dx+sx,nY=dy+sy-flt,nR=clamp(dvx*0.012,-10,10)+sr;
+    var vx=(nX-X)/dt,vy=(nY-Y)/dt,ax=(vx-bvx)/dt,ay=(vy-bvy)/dt;bvx=vx;bvy=vy;X=nX;Y=nY;Rt=nR;
+    var lk=900*Math.pow(60/900,C.lag),lc=2*Math.sqrt(lk)*0.3;
+    lvx+=(lk*(X-lx)-lc*lvx)*dt;lx+=lvx*dt;lvy+=(lk*(Y-ly)-lc*lvy)*dt;ly+=lvy*dt;
+    relX=clamp(lx-X,-R*0.45,R*0.45);relY=clamp(ly-Y,-R*0.45,R*0.45);
+    /* The liquid lags the glass by a few frames and carries the die with it: each jolt tips it, and the sum of the jolts spins it. */
+    var fk=Math.min(1,dt/0.03);fax+=(ax-fax)*fk;fay+=(ay-fay)*fk;
+    var am=Math.sqrt(fax*fax+fay*fay),g=C.spinGain,rising=seq&&T>=C.tRise,held=phase==='hold'||(phase==='rest'&&shown);
+    if(!rising){
+      w[0]-=fay*g*0.4*dt;w[1]+=fax*g*0.4*dt;
+      axis=norm([axis[0]+(rnd()-0.5)*dt*3,axis[1]+(rnd()-0.5)*dt*3,axis[2]+(rnd()-0.5)*dt*3]);
+      var push=am*g*dt;w=[w[0]+axis[0]*push,w[1]+axis[1]*push,w[2]+axis[2]*push*0.6]}
+    if(held){var e=qmul(qHold,qconj(qf));if(e[0]<0)e=[-e[0],-e[1],-e[2],-e[3]];var th=2*Math.acos(clamp(e[0],-1,1)),sn=Math.sin(th/2),a3=sn>1e-5?[e[1]/sn,e[2]/sn,e[3]/sn]:[0,0,0];
+      for(var i=0;i<3;i++)w[i]+=(C.settleK*th*a3[i]-C.settleC*w[i])*dt}
+    else{var dm=Math.exp(-(seq?C.spinDrag:1.4)*dt);w=[w[0]*dm,w[1]*dm,w[2]*dm];
+      if(phase==='rest'){w[0]+=(rnd()-0.5)*0.5*dt;w[1]+=(rnd()-0.5)*0.5*dt;w[2]+=(rnd()-0.5)*0.3*dt}}
+    var wl=Math.sqrt(dot(w,w));if(wl>18)w=[w[0]*18/wl,w[1]*18/wl,w[2]*18/wl];
+    qf=qint(qf,w,dt);q=qf;
+    if(seq){
+      if(rising&&!qT){qT=predict();riseD=Math.max(D,0.3)}
+      if(qT){var s=clamp((T-C.tRise)/Math.max(1,C.tFlat-C.tRise),0,1),u=T-C.tFlat;
+        if(s<1){q=qslerp(qf,qT,s*s*s*(s*(s*6-15)+10));D=riseD*Math.pow(1-s,1.6);vD=0}
+        else{var ra=C.rock*Math.PI/180*Math.exp(-u/150)*Math.sin(2*Math.PI*u/340);q=qmul([Math.cos(ra/2),Math.sin(ra/2),0,0],qT);D=0.035*Math.exp(-u/90)*Math.abs(Math.sin(Math.PI*u/220));vD=0}}
+      else{vD+=(40*(0.72-D)-12*vD)*dt;D+=vD*dt}
+      if(!revealed&&T>=C.tResolve-C.tReveal){revealed=true;reveal(C.tReveal)}
+      if(qT&&T>=Math.max(C.tFlat+700,C.tResolve)){phase='hold';pt=0;qf=qT;qHold=qT;q=qT;w=[0,0,0];D=0;vD=0}}
+    else{var Dt=held?0:0.82,k=held?C.settleK:10,c=held?C.settleC:6;vD+=(k*(Dt-D)-c*vD)*dt;D+=vD*dt;if(D<-0.05){D=-0.05;vD=Math.abs(vD)*0.3}}
+    var dT=seq&&T<C.tRise?0.18:0;vdark+=(20*(dT-dark)-9*vdark)*dt;dark+=vdark*dt;
+    var sp=Math.sqrt(vx*vx+vy*vy);
+    if(((seq&&T<C.tShake)||dragging)&&bubbles.length<16&&rnd()<sp*dt*0.02)bubbles.push({x:R*(0.35+rnd()*1.3),y:R*2+4,r:(1+rnd()*2.2)*(R/100),v:R*(0.5+rnd()*0.6),ph:rnd()*6,a:0.5+rnd()*0.4});
+    for(var b=bubbles.length-1;b>=0;b--){var bb=bubbles[b];bb.y-=bb.v*dt;bb.ph+=dt*6;if(bb.y<-10)bubbles.splice(b,1)}
+    if(seq&&T<C.tRise+300){flickT+=dt*1000;if(flickT>70){flickT=0;flick++}}
+    var ek=Math.min(1,dt*6);specX+=(ptrX-specX)*ek;specY+=(ptrY-specY)*ek;
+    if(fl){fl.vx+=(-120*fl.x-20*fl.vx)*dt;fl.x+=fl.vx*dt;fl.vy+=(-120*fl.y-20*fl.vy)*dt;fl.y+=fl.vy*dt;fl.vs+=(-120*fl.s-20*fl.vs)*dt;fl.s+=fl.vs*dt;
+      if(Math.abs(fl.x)+Math.abs(fl.y)<0.3&&Math.abs(fl.s)<0.001&&Math.abs(fl.vx)+Math.abs(fl.vy)<2)fl=null}}
+
+  /* The die is drawn into a small buffer and scaled up, so it is soft; depth fogs each facet into the liquid; only the face pressed to the glass is drawn sharp. */
+  var LENS=0.09,LR=0.3,off=document.createElement('canvas'),octx=off.getContext('2d'),EDGES=[],PARTS=[];
+  (function(){var i,j;for(i=0;i<20;i++)for(j=i+1;j<20;j++){var sh=F[i].filter(function(a){return F[j].indexOf(a)>=0});if(sh.length===2)EDGES.push([sh[0],sh[1],i,j])}
+    for(i=0;i<34;i++)PARTS.push({x:rnd()*2-1,y:rnd()*2-1,z:rnd()*2-1,r:rnd(),ph:rnd()*6.283,sp:0.4+rnd()*0.8})})();
+  function shade(n){var l=dot(n,LIGHT);return l>0?mix(BASE,K.b600,l*0.22):mix(BASE,K.b950,-l*0.22)}
+  function drawDie(cx,cy){
+    var Dc=clamp(D,0,1),S=SCALE*R*(1-0.5*D),P=[],N=[],FG=[],list=[],i,sc=off.width/W;
+    for(i=0;i<12;i++){var v=qrot(q,V[i]),f=CAM/(CAM-v[2]);P.push([S*v[0]*f,S*v[1]*f])}
+    function lens(x,y){var k=1+LENS*(x*x+y*y)/(R*R);return [cx+x*k,cy+y*k]}
+    function tri(c2,f3){c2.beginPath();var e,s,first=true;for(e=0;e<3;e++){var a=P[f3[e]],b=P[f3[(e+1)%3]];for(s=0;s<4;s++){var p=lens(a[0]+(b[0]-a[0])*s/4,a[1]+(b[1]-a[1])*s/4);if(first){c2.moveTo(p[0],p[1]);first=false}else c2.lineTo(p[0],p[1])}}c2.closePath()}
+    for(i=0;i<20;i++){var n=qrot(q,FN[i]);N.push(n);FG.push(1-Math.exp(-((1-n[2])*0.5+Dc*0.75)*3.4));list.push(i)}
+    list.sort(function(a,b){return N[a][2]-N[b][2]});
+    octx.setTransform(1,0,0,1,0,0);octx.clearRect(0,0,off.width,off.height);octx.setTransform(sc,0,0,sc,0,0);
+    list.forEach(function(fi){tri(octx,F[fi]);octx.fillStyle=rgba(mix(shade(N[fi]),FOG,FG[fi]),clamp(1-FG[fi]*0.9,0,1));octx.fill()});
+    octx.lineCap='round';octx.lineWidth=Math.max(1,R*0.05);
+    EDGES.forEach(function(ed){var n1=N[ed[2]],n2=N[ed[3]];if(n1[2]<0.05||n2[2]<0.05)return;var en=norm([n1[0]+n2[0],n1[1]+n2[1],n1[2]+n2[2]]),s=dot(en,LIGHT);if(s<0.6)return;
+      var a=P[ed[0]],b=P[ed[1]],k;octx.beginPath();for(k=0;k<=4;k++){var p=lens(a[0]+(b[0]-a[0])*k/4,a[1]+(b[1]-a[1])*k/4);if(k)octx.lineTo(p[0],p[1]);else octx.moveTo(p[0],p[1])}
+      octx.strokeStyle=rgba(K.b300,0.2*(s-0.6)/0.4*(1-(FG[ed[2]]+FG[ed[3]])/2));octx.stroke()});
+    if(phase==='seq'&&pt<C.tRise&&BANK.length)list.forEach(function(fi){var n=N[fi];if(n[2]<0.3)return;var f3=F[fi],a=lens(P[f3[0]][0],P[f3[0]][1]),b=lens(P[f3[1]][0],P[f3[1]][1]),c=lens(P[f3[2]][0],P[f3[2]][1]);
+      var ux=(b[0]-c[0])/173.2,uy=(b[1]-c[1])/173.2,mx=(a[0]-(b[0]+c[0])/2)/-150,my=(a[1]-(b[1]+c[1])/2)/-150,ox=(a[0]+b[0]+c[0])/3,oy=(a[1]+b[1]+c[1])/3;
+      octx.save();octx.setTransform(sc*ux,sc*uy,sc*mx,sc*my,sc*ox,sc*oy);
+      var str=BANK[(flick+fi*5)%BANK.length].lines.join(' ');octx.font='500 24px '+fontFam;var tw=octx.measureText(str).width,k2=Math.min(1,120/tw);
+      octx.scale(k2,k2);octx.textAlign='center';octx.textBaseline='middle';octx.fillStyle=rgba(K.w,0.4*n[2]*(1-FG[fi]));octx.fillText(str,0,22/k2);octx.restore()});
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(off,0,0,W,W);
+    var bi=list[19],sharp=clamp(1-D/0.12,0,1)*sstep(0.955,0.995,N[bi][2]);
+    if(sharp>0.01){tri(ctx,F[bi]);ctx.fillStyle=rgba(mix(shade(N[bi]),FOG,FG[bi]),sharp);ctx.fill()}
+    /* The answer is printed on the die: until its face lies flat it turns with the die, then the crisp HTML answer takes over. */
+    var ai=phase==='seq'?(pt>=C.tRise?pending:-1):cur,nz=N[bi][2];
+    if(ai>=0&&BANK[ai]&&sharp<0.99&&nz>0.3){var f3=F[bi],a=lens(P[f3[0]][0],P[f3[0]][1]),b=lens(P[f3[1]][0],P[f3[1]][1]),c=lens(P[f3[2]][0],P[f3[2]][1]);
+      var ux=(b[0]-c[0])/173.2,uy=(b[1]-c[1])/173.2,mx=(a[0]-(b[0]+c[0])/2)/-150,my=(a[1]-(b[1]+c[1])/2)/-150,ox=(a[0]+b[0]+c[0])/3,oy=(a[1]+b[1]+c[1])/3,L=BANK[ai].lines,j,mw=0;
+      ctx.save();ctx.setTransform(dpr*ux,dpr*uy,dpr*mx,dpr*my,dpr*ox,dpr*oy);ctx.font='500 22px '+fontFam;for(j=0;j<L.length;j++)mw=Math.max(mw,ctx.measureText(L[j]).width);
+      var k3=Math.min(1,96/Math.max(1,mw),78/(L.length*25));ctx.scale(k3,k3);ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillStyle=rgba(K.w,0.85*sstep(0.3,0.8,nz)*(1-FG[bi])*(1-sharp));for(j=0;j<L.length;j++)ctx.fillText(L[j],0,(22+(j-(L.length-1)/2)*25*k3)/k3);ctx.restore()}
+    return sharp}
+  function parts(front,ox,oy){var t=clock/1000;PARTS.forEach(function(p){if((p.z>0)!==front)return;
+    var dep=(p.z+1)/2,yy=((p.y+1+t*0.012*p.sp)%2)-1,x=R+p.x*R*0.92+Math.sin(t*0.5*p.sp+p.ph)*R*0.04+ox*(0.2+0.9*dep)+relX*0.25*dep,y=R+yy*R*0.92+oy*(0.2+0.9*dep),
+      r=(front?1.1+p.r*1.1:0.5+p.r*0.6)*R/110,a=front?0.08+p.r*0.08:0.07+p.r*0.08;
+    ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.fillStyle=rgba(front?K.b300:K.b400,a);ctx.fill()})}
+  function draw(){
+    ball.style.transform='translate3d('+X.toFixed(2)+'px,'+Y.toFixed(2)+'px,0)';
+    spin.style.transform='rotate('+Rt.toFixed(3)+'deg)';
+    spec.style.transform='translate('+specX.toFixed(2)+'px,'+specY.toFixed(2)+'px) rotate(-34deg)';
+    stage.style.transform=fl?('translate('+fl.x.toFixed(2)+'px,'+fl.y.toFixed(2)+'px) scale('+(1+fl.s).toFixed(4)+')'):'';
+    var sh=clamp(1+Y*0.004,0.8,1.2);shadow.style.transform='translateX('+(X*0.75).toFixed(2)+'px) scale('+sh.toFixed(3)+')';shadow.style.opacity=clamp(0.9+Y*0.012,0.55,1).toFixed(3);
+    var ox=relX*0.8,oy=relY*0.8;ans.style.transform='translate('+ox.toFixed(2)+'px,'+oy.toFixed(2)+'px)';
+    if(!W&&!measure())return;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var gx=R+ox*0.6+Math.sin(clock/5200)*R*0.07,gy=R*1.24+oy*0.6+Math.cos(clock/6100)*R*0.05,g=ctx.createRadialGradient(gx,gy,0,R+ox*0.3,R+oy*0.3,R*1.22);
+    g.addColorStop(0,rgba(K.b600,1));g.addColorStop(0.28,rgba(K.b700,1));g.addColorStop(0.55,rgba(K.b800,1));g.addColorStop(0.8,rgba(K.b950,1));g.addColorStop(1,rgba(K.n0,1));
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,W);
+    var cx2=R+Math.cos(clock/7300)*R*0.4,cy2=R*1.1+Math.sin(clock/8900)*R*0.3,g2=ctx.createRadialGradient(cx2,cy2,0,cx2,cy2,R*0.7);
+    g2.addColorStop(0,rgba(K.b600,0.22));g2.addColorStop(1,rgba(K.b600,0));ctx.fillStyle=g2;ctx.fillRect(0,0,W,W);
+    parts(false,ox,oy);
+    var tk=drawDie(R+ox,R+oy);ans.style.opacity=reduced?'':tk.toFixed(3);
+    if(dark>0.005){ctx.fillStyle=rgba(K.n0,clamp(dark,0,0.8));ctx.fillRect(0,0,W,W)}
+    bubbles.forEach(function(b){var x=b.x+Math.sin(b.ph)*R*0.02+ox*0.4,al=b.a*clamp(b.y/(R*1.6),0,1);ctx.beginPath();ctx.arc(x,b.y,b.r,0,6.2832);ctx.fillStyle=rgba(K.b300,0.28*al);ctx.fill();ctx.beginPath();ctx.arc(x-b.r*0.3,b.y-b.r*0.3,b.r*0.35,0,6.2832);ctx.fillStyle=rgba(K.w,0.5*al);ctx.fill()});
+    parts(true,ox,oy);
+    var vg=ctx.createRadialGradient(R,R,R*0.55,R,R,R);vg.addColorStop(0,rgba(K.n0,0));vg.addColorStop(1,rgba(K.n0,0.78));ctx.fillStyle=vg;ctx.fillRect(0,0,W,W)}
+
+  /* Loop. Pauses when the tab is hidden or the block is off screen. */
+  var raf=0,last=0,acc=0,H=1000/120,visible=!document.hidden,inView=true;
+  function frame(ts){raf=0;if(!last)last=ts;var d=Math.min(50,ts-last);last=ts;acc+=d;while(acc>=H){step(H/1000);acc-=H}draw();schedule()}
+  function schedule(){if(!raf&&visible&&inView&&!frozen&&!reduced)raf=requestAnimationFrame(frame)}
+  function halt(){if(raf){cancelAnimationFrame(raf);raf=0}last=0;acc=0}
+  document.addEventListener('visibilitychange',function(){visible=!document.hidden;if(visible)schedule();else halt()});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){inView=es[0].isIntersecting;if(inView)schedule();else halt()}).observe(root);
+
+  function measure(){
+    var nw=win.clientWidth||win.getBoundingClientRect().width||parseFloat(getComputedStyle(win).width)||0;if(!nw)return false;
+    var nd=Math.min(2,window.devicePixelRatio||1);if(nw===W&&nd===dpr&&cv.width===Math.round(W*dpr))return true;
+    W=nw;R=W/2;dpr=nd;cv.width=Math.round(W*dpr);cv.height=Math.round(W*dpr);off.width=off.height=Math.max(24,Math.round(W*LR));if(cur>=0)renderText(BANK[cur].lines);return true}
+  function resize(){measure();draw()}
+  if('ResizeObserver' in window)new ResizeObserver(resize).observe(win);else window.addEventListener('resize',resize);
+
+  /* Glass tier, for reporting: the CSS @supports gate does the work. */
+  var gRT=window.matchMedia&&matchMedia('(prefers-reduced-transparency: reduce)').matches,gRef=!!(window.CSS&&CSS.supports&&CSS.supports("background", "paint(gg-glass-probe)") && CSS.supports("backdrop-filter", "url(#gg-glass-probe)"));
+  root.setAttribute('data-mg-glass',gRT?'reduced':gRef?'refraction':'fallback');
+
+  /* Page: headline, field, turn. */
+  var headHTML=h1.innerHTML,supText=sup.textContent,mode='arrival',busy=false,routeRes=null,turnT=0,swapT=[],instant=false,progFocus=false;
+  function setMode(m){mode=m;root.classList.toggle('mg-ask--turn',m==='turn');if(m!=='arrival')root.classList.add('mg-ask--after');else root.classList.remove('mg-ask--after')}
+  function flip(fn){
+    var a=stage.getBoundingClientRect();fn();if(instant||reduced){fl=null;draw();return}
+    stage.style.transform='';var b=stage.getBoundingClientRect();if(!b.width)return;
+    var nx=(a.left+a.width/2)-(b.left+b.width/2),ny=(a.top+a.height/2)-(b.top+b.height/2),ns=a.width/b.width-1;
+    if(Math.abs(nx)+Math.abs(ny)<1&&Math.abs(ns)<0.004)return;
+    fl={x:nx,y:ny,s:ns,vx:0,vy:0,vs:0};draw();schedule()}
+  function wordsOf(segs){
+    var frag=document.createDocumentFragment(),all=[];
+    segs.forEach(function(sg){var host=frag;if(sg[1]){host=document.createElement('span');host.className='mg-turn';frag.appendChild(host)}
+      sg[0].split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){host.appendChild(document.createTextNode(' '));return}var s=document.createElement('span');s.className='mg-ask-wd';s.textContent=t;host.appendChild(s);all.push(s)})});
+    return {frag:frag,words:all}}
+  /* The old line falls away, the new one sets word by word. Layout changes happen inside flip so the ball eases to its new place. */
+  function setHead(segs,supNew,cb){
+    swapT.forEach(clearTimeout);swapT=[];
+    var supChange=supNew!=null&&sup.textContent!==supNew;
+    function put(anim){var r=wordsOf(segs);if(anim)r.words.forEach(function(wd){wd.style.opacity='0';wd.style.transform='translateY(-0.3em)'});
+      h1.textContent='';h1.appendChild(r.frag);if(supChange){sup.textContent=supNew}if(cb)cb();return r.words}
+    if(instant||reduced){flip(function(){put(false);sup.style.opacity=''});return}
+    var old=[].slice.call(h1.querySelectorAll('.mg-ask-wd'));
+    if(!old.length){var r0=wordsOf([[h1.textContent]]);h1.textContent='';h1.appendChild(r0.frag);old=r0.words;void h1.offsetWidth}
+    old.forEach(function(wd,i){wd.style.transition='transform 220ms cubic-bezier(0.4,0,1,1) '+(i*16)+'ms,opacity 200ms cubic-bezier(0.4,0,1,1) '+(i*16)+'ms';wd.style.transform='translateY(0.32em)';wd.style.opacity='0'});
+    if(supChange){sup.style.transition='opacity 200ms cubic-bezier(0.4,0,1,1)';sup.style.opacity='0'}
+    swapT.push(setTimeout(function(){
+      var nw;flip(function(){nw=put(true)});
+      if(supChange){sup.style.transition='none';sup.style.opacity='0';void sup.offsetWidth;sup.style.transition='opacity 420ms cubic-bezier(0.2,0,0,1) '+(nw.length*40)+'ms';sup.style.opacity='1'}
+      void h1.offsetWidth;
+      nw.forEach(function(wd,i){wd.style.transition='transform 460ms cubic-bezier(0.34,1.3,0.64,1) '+(i*40)+'ms,opacity 320ms cubic-bezier(0.2,0,0,1) '+(i*40)+'ms';wd.style.transform='none';wd.style.opacity='1'})
+    },220+old.length*16))}
+  function headFor(n){if(n<=1)return PUNCH;if(n<5)return [[COUNT[n]]];return [[(n<NUMW.length?NUMW[n]:String(n))+' questions. Zero answers. The button is below.']]}
+  function onReveal(){
+    reveals++;
+    if(voiceOn){voiceEl.textContent=BANK[cur].why||VOICE[BANK[cur].voice]||'';voiceEl.classList.add('mg-ask-on')}
+    clearTimeout(turnT);turnT=setTimeout(function(){doTurn()},reduced?C.tReveal:C.tTurn)}
+  function doTurn(){
+    var segs=headFor(reveals),res=routeRes||NOTHING;
+    routeEl.textContent=res.line;cta.setAttribute('href','/?from=ask&area='+res.slug);
+    setHead(segs,TURN_SUP,function(){setMode('turn');field.readOnly=false});
+    busy=false;submit.removeAttribute('aria-disabled');
+    say(segs.map(function(s){return s[0]}).join('')+' '+res.line)}
+  function startAsk(src,o){
+    o=o||{};
+    if(busy||!idle())return false;
+    var fieldOn=mode!=='turn',v=fieldOn?field.value.trim().slice(0,120):'';
+    if(fieldOn&&(src==='ask'||v))routeRes=route(v);else if(!routeRes)routeRes=NOTHING;
+    busy=true;submit.setAttribute('aria-disabled','true');field.readOnly=true;stopTyping();voiceEl.classList.remove('mg-ask-on');
+    say('Shaking.');
+    var go=function(){if(!ask(src,o)){busy=false;submit.removeAttribute('aria-disabled')}};
+    if(src==='ask'){var wasField=document.activeElement===field;try{ball.focus({preventScroll:true})}catch(_){ball.focus()}
+      if(wasField&&!o.sync)afterKeyboard(go);else go()}
+    else go();
+    return true}
+  function afterKeyboard(cb){
+    var vv=window.visualViewport,done=false,t=0;
+    if(!vv||vv.height>window.innerHeight*0.85){cb();return}
+    var h0=vv.height;function fin(){if(done)return;done=true;vv.removeEventListener('resize',onR);clearTimeout(t);cb()}
+    function onR(){if(vv.height>h0+60)fin()}
+    vv.addEventListener('resize',onR);t=setTimeout(fin,300)}
+  form.addEventListener('submit',function(e){e.preventDefault();startAsk('ask')});
+  var ctaEl=$('.mg-ask-cta');if(ctaEl)ctaEl.addEventListener('click',function(){track('cta')});
+  again.addEventListener('click',function(){
+    if(busy||mode!=='turn')return;track('ask-again');
+    motionInit(true);
+    flip(function(){setMode('reask')});
+    field.value='';field.readOnly=false;progFocus=true;try{field.focus({preventScroll:true})}catch(_){field.focus()}progFocus=false;startTyping()});
+
+  /* Placeholder: types each example, pauses, clears. Stops once the visitor focuses or types. */
+  var exI=0,tyT=0,tyOn=false;
+  function stopTyping(){tyOn=false;clearTimeout(tyT);if(EX.length)field.setAttribute('placeholder',EX[exI])}
+  function startTyping(){clearTimeout(tyT);if(reduced||!EX.length){tyOn=false;exI=0;if(EX.length)field.setAttribute('placeholder',EX[0]);return}tyOn=true;typeStep(0,1)}
+  function typeStep(n,dir){
+    if(!tyOn)return;if(!visible||!inView){tyT=setTimeout(function(){typeStep(n,dir)},400);return}
+    var s=EX[exI];field.setAttribute('placeholder',s.slice(0,n));
+    if(dir>0){if(n<s.length)tyT=setTimeout(function(){typeStep(n+1,1)},40+rnd()*40);else tyT=setTimeout(function(){typeStep(n,-1)},1800)}
+    else if(n>0)tyT=setTimeout(function(){typeStep(n-1,-1)},16);else{exI=(exI+1)%EX.length;tyT=setTimeout(function(){typeStep(0,1)},360)}}
+  field.addEventListener('focus',function(){if(!progFocus)stopTyping()});
+  field.addEventListener('input',function(){if(tyOn)stopTyping()});
+  field.addEventListener('keydown',function(){if(tyOn)stopTyping()});
+  if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){
+    if(document.activeElement!==field)return;var vv=window.visualViewport,r=submit.getBoundingClientRect(),vb=vv.offsetTop+vv.height;if(r.bottom>vb-8)window.scrollBy(0,r.bottom-vb+16)});
+
+  /* Pointer: tap, or grab and shake. */
+  var held=null,moved=0,sv=0,fired=false,lastPX=0,lastPT=0,holdT=0,ballHold=false;
+  function rubber(v,m){var a=Math.abs(v);return (v<0?-1:1)*m*(1-Math.exp(-a/m))}
+  ball.addEventListener('pointerdown',function(e){
+    if(e.button>0)return;held={x:e.clientX,y:e.clientY,id:e.pointerId};moved=0;sv=0;fired=false;lastPX=e.clientX;lastPT=performance.now();
+    try{ball.setPointerCapture(e.pointerId)}catch(_){}
+    if(!reduced){dragging=true;ball.classList.add('mg-ask-held');schedule()}
+    /* Press and hold without moving: the ball shakes in the hand until released. */
+    clearTimeout(holdT);holdT=setTimeout(function(){if(held&&moved<=6&&!fired&&!busy&&idle()){if(startAsk('shake-ball')){ballHold=true;hSrc=1}}},180)});
+  ball.addEventListener('pointermove',function(e){
+    if(!held||e.pointerId!==held.id)return;var ddx=e.clientX-held.x,ddy=e.clientY-held.y;moved=Math.max(moved,Math.sqrt(ddx*ddx+ddy*ddy));
+    if(reduced)return;var m=(W||200)*0.9;tx=rubber(ddx,m);ty=rubber(ddy,m*0.6);
+    var now=performance.now(),v=(e.clientX-lastPX)/Math.max(1,now-lastPT);sv=sv*0.6+v*0.4;lastPX=e.clientX;lastPT=now;
+    if(!fired&&moved>6&&Math.abs(sv)>1.2&&!busy&&idle()){fired=true;clearTimeout(holdT);startAsk('shake-drag')}});
+  function release(){if(!held)return;try{ball.releasePointerCapture(held.id)}catch(_){}held=null;dragging=false;tx=0;ty=0;ball.classList.remove('mg-ask-held');schedule()}
+  ball.addEventListener('pointerup',function(){clearTimeout(holdT);if(!held)return;var tap=moved<=6&&!fired&&!ballHold;if(ballHold){ballHold=false;hSrc=0}release();if(tap)startAsk('shake-ball')});
+  ball.addEventListener('pointercancel',function(){clearTimeout(holdT);if(ballHold){ballHold=false;hSrc=0}release()});
+  function btnUp(){if(hSrc===2)hSrc=0}
+  submit.addEventListener('pointerdown',function(e){if(e.button>0||reduced)return;if(startAsk('ask'))hSrc=2});
+  window.addEventListener('pointerup',btnUp);window.addEventListener('pointercancel',btnUp);document.addEventListener('visibilitychange',function(){if(document.hidden)btnUp()});
+  submit.addEventListener('keydown',function(e){if((e.key===' '||e.key==='Spacebar')&&!e.repeat&&!reduced){if(startAsk('ask'))hSrc=2}});
+  submit.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Spacebar')btnUp()});
+  ball.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){e.preventDefault();if(!e.repeat)startAsk('shake-ball')}});
+  root.addEventListener('pointermove',function(e){if(reduced)return;var r=ball.getBoundingClientRect();ptrX=clamp((e.clientX-(r.left+r.width/2))/r.width,-1,1)*6;ptrY=clamp((e.clientY-(r.top+r.height/2))/r.height,-1,1)*4;schedule()});
+
+  /* Phone shake. On iOS, permission is requested from the Shake it again handler only, never awaited. */
+  var motionOn=false,motionAsked=false,jolts=[],lastJolt=0;
+  function onMotion(e){if(document.activeElement===field)return;var a=e.acceleration,m;if(a&&a.x!=null)m=Math.sqrt(a.x*a.x+a.y*a.y+(a.z||0)*(a.z||0));else{var g=e.accelerationIncludingGravity;if(!g||g.x==null)return;m=Math.abs(Math.sqrt(g.x*g.x+g.y*g.y+(g.z||0)*(g.z||0))-9.81)}
+    var now=performance.now();if(m>13&&phase==='seq'&&!reduced)phoneUntil=now+320;if(m>13&&now-lastJolt>110){lastJolt=now;jolts.push(now);jolts=jolts.filter(function(t){return now-t<1200});if(jolts.length>=4&&!busy&&idle()){jolts=[];startAsk('shake-phone')}}}
+  function listenMotion(){if(motionOn)return;motionOn=true;window.addEventListener('devicemotion',onMotion)}
+  function motionInit(fromAgain){if(typeof window.DeviceMotionEvent==='undefined')return;var DME=window.DeviceMotionEvent;
+    if(typeof DME.requestPermission==='function'){if(!fromAgain||motionAsked)return;motionAsked=true;try{DME.requestPermission().then(function(r){if(r==='granted')listenMotion()},function(){})}catch(_){}}else listenMotion()}
+  motionInit(false);
+
+  if(mq){var onMq=function(){reduced=mq.matches;if(reduced){ans.style.opacity='';halt();D=0;vD=0;q=qf=qHold=qCanon;w=[0,0,0];X=Y=Rt=dx=dy=dvx=dvy=tx=ty=0;relX=relY=0;dark=0;bubbles=[];fl=null;phase=shown?'hold':'rest';release();startTyping();draw()}else{startTyping();schedule()}};if(mq.addEventListener)mq.addEventListener('change',onMq);else if(mq.addListener)mq.addListener(onMq)}
+
+  /* Attribute changes re-read the tunables. data-mg-freeze is a prototype hook for the states board: "arrival", "seq;t=ms after the press", "hold" or "turn", with ";q=question;n=asks;a=answer". */
+  function resetAll(){
+    clearTimeout(turnT);swapT.forEach(clearTimeout);swapT=[];busy=false;hSrc=0;phoneUntil=0;submit.removeAttribute('aria-disabled');rBusy=false;reveals=0;used=[];lastPick=-1;cur=-1;pending=-1;routeRes=null;
+    setMode('arrival');h1.innerHTML=headHTML;sup.textContent=supText;sup.style.opacity='';sup.style.transition='';voiceEl.classList.remove('mg-ask-on');
+    field.value='';field.readOnly=false;routeEl.textContent=NOTHING.line;cta.setAttribute('href','/?from=ask');
+    phase='rest';pt=0;clock=0;q=qf=randomQuat();qHold=qCanon;qT=null;revealed=false;seqDrag=false;fax=fay=0;w=[0,0,0];D=0.82;vD=0;dark=0;bubbles=[];fl=null;X=Y=Rt=dx=dy=dvx=dvy=0;lx=ly=lvx=lvy=0;setTextState('hidden',0)}
+  function freeze(spec){
+    var parts=spec.split(';'),target=parts[0]||'arrival',o={};parts.slice(1).forEach(function(p){var i=p.indexOf('=');if(i>0)o[p.slice(0,i)]=p.slice(i+1)});
+    var n=Math.max(1,parseInt(o.n||'1',10)),dt=H/1000,steps=0,i;
+    halt();measure();frozen=false;seed=7;instant=true;var wasReduced=reduced;reduced=false;root.classList.add('mg-ask--still');
+    resetAll();tyOn=false;clearTimeout(tyT);
+    if(target==='arrival'){while(steps++<240)step(dt)}
+    else{
+      while(steps++<120)step(dt);
+      for(i=1;i<=n;i++){
+        var lastA=i===n;if(i>1)setMode('reask');
+        field.value=i===1?(o.q||''):'';
+        startAsk('ask',{sync:true,answer:lastA&&o.a!=null?+o.a:undefined});
+        var goal=lastA&&target==='seq'?+(o.t||0):null,guard=0;
+        while(guard++<6000){step(dt);if(goal!=null){if(phase!=='seq'||pt>=goal)break}else if(phase==='hold'&&pt>=300)break}
+        clearTimeout(turnT);
+        if(!lastA||target==='turn')doTurn()}}
+    tyOn=false;clearTimeout(tyT);exI=0;if(EX.length)field.setAttribute('placeholder',EX[0]);
+    reduced=wasReduced;frozen=true;draw();root.classList.add('mg-ask--live');instant=false}
+  new MutationObserver(function(ms){var f=null,cfg=false;ms.forEach(function(m){var n=m.attributeName||'';if(n==='data-mg-freeze')f=root.getAttribute('data-mg-freeze');else if(n.indexOf('data-mg-')===0&&n!=='data-mg-event-last'&&n!=='data-mg-ready')cfg=true});
+    if(cfg){readCfg();W=0;resize()}if(f)freeze(f)}).observe(root,{attributes:true});
+
+  /* Start: the canvas fades in over the static ball, then the settled face sinks into the dark. */
+  readCfg();
+  ball.setAttribute('role','button');ball.setAttribute('tabindex','0');ball.setAttribute('aria-label','Shake the ball');
+  startTyping();
+  resize();
+  /* A second boot (the builder re-rendered the section) goes live with no intro, so the swap is invisible. */
+  var reboot=!!window.__mgAskBooted;window.__mgAskBooted=true;
+  if(reboot){root.classList.add('mg-ask--still');setTextState('hidden',0)}
+  var wentLive=false;function goLive(){if(wentLive)return;wentLive=true;draw();root.classList.add('mg-ask--live')}
+  if(reboot)goLive();else setTimeout(goLive,120);
+  requestAnimationFrame(function(){
+    goLive();
+    if(reboot)requestAnimationFrame(function(){if(!frozen)root.classList.remove('mg-ask--still')});
+    else setTimeout(function(){if(!frozen&&phase==='rest'&&cur<0)setTextState('hidden',reduced?320:700)},reduced?0:500);
+    schedule()});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){measure();if(cur>=0)renderText(BANK[cur].lines);draw()});
+  if(document.readyState!=='complete')window.addEventListener('load',resize);
+  if(root.getAttribute('data-mg-freeze'))freeze(root.getAttribute('data-mg-freeze'));
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+/* Page builders can re-render custom code after load. If the section is replaced, boot the new copy; stop watching after 20 seconds. */
+window.addEventListener('load',boot);
+if('MutationObserver' in window){var mgMo=new MutationObserver(function(){var r=document.getElementById(ID);if(r&&!r.getAttribute('data-mg-ready'))boot()});mgMo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mgMo.disconnect()},20000)}
+})();
+</script>
+<style>
+/* mg-ask-foot. One quiet line at the foot of the viewport. Its height is --mg-ask-foot-h, shared with mg-ask. */
+#mg-ask-foot.mg{display:flex;align-items:center;width:100%;height:var(--mg-ask-foot-h);padding:0 clamp(20px,2.8vw,40px);background:var(--mg-surface);color:var(--mg-ink-tertiary);overflow:hidden}
+#mg-ask-foot .mg-ask-foot-line{max-width:calc(100% - 96px);font-size:12px;line-height:1.45;color:var(--mg-ink-tertiary);text-align:left}
+#mg-ask-foot .mg-ask-foot-line a{color:var(--mg-ink-tertiary);text-decoration:underline;text-underline-offset:2px;border-radius:2px}
+#mg-ask-foot .mg-ask-foot-line a:hover{color:var(--mg-ink)}
+#mg-ask-foot .mg-ask-foot-line a:focus-visible{outline:none;box-shadow:var(--mg-focus-ring)}
+@media (max-width:600px){#mg-ask-foot .mg-ask-foot-line{max-width:calc(100% - 72px)}}
+</style>
+<section class="mg mg-ask-foot" id="mg-ask-foot" data-mg-theme="dark">
+  <p class="mg-ask-foot-line">© 2026 Ethos Revenue Group, trading as Merigrove. Poland. <a href="/privacy">Privacy</a>. <a href="/terms">Terms</a>.</p>
+</section>
